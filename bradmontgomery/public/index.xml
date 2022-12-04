@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Brad Montgomery</title>
+    <link>http://bradmontgomery.github.io/</link>
+    <description>Recent content on Brad Montgomery</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Dec 2022 19:31:49 -0600</lastBuildDate><atom:link href="http://bradmontgomery.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contact</title>
+      <link>http://bradmontgomery.github.io/pages/contact/</link>
+      <pubDate>Sat, 03 Dec 2022 19:31:49 -0600</pubDate>
+      
+      <guid>http://bradmontgomery.github.io/pages/contact/</guid>
+      <description>Get In Touch Tweet at me, email me, or (if you must) call
+There are a number of ways to get in touch with me. Here are the best:
+ The quickest way to get in touch with me is to mention me or DM me on twitter (@bkmontgomery) You can also [send me an email](mailto: brad @ bradmontgomery . net?subject=contact page). If you&amp;rsquo;re a phone person, you can call my google voice number: (901) 730-6835.</description>
+    </item>
+    
+    <item>
+      <title>Services</title>
+      <link>http://bradmontgomery.github.io/pages/services/</link>
+      <pubDate>Sat, 03 Dec 2022 19:31:44 -0600</pubDate>
+      
+      <guid>http://bradmontgomery.github.io/pages/services/</guid>
+      <description>I&amp;rsquo;m not currently accepting any consulting work.  Python &amp;amp; Web Development, Startup Consulting
+I&amp;rsquo;m occasionally available for short-term contract work or consulting services. If you&amp;rsquo;re interested in hiring me, get in touch and I&amp;rsquo;d be happy to talk. Projects on which I typically work may involve:
+ Back-end web development using Django or Flask Front-end web development using JavaScript Miscellaneous software development using Python  </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://bradmontgomery.github.io/pages/about/</link>
+      <pubDate>Sat, 03 Dec 2022 19:31:15 -0600</pubDate>
+      
+      <guid>http://bradmontgomery.github.io/pages/about/</guid>
+      <description>Who is this guy anyway? the obligatory 3rd-person and some links
+Brad Montgomery is a software engineer &amp;amp; entrepreneur in Memphis, TN. He has years of software development experience, and is currently the Head of Engineering for Preteckt.
+Brad has previously worked with organizations of various sizes operating in multiple domains including educational institutions, consulting firms, and silicon valley startups. He holds BS and MS degrees in Computer Science from Arkansas State University and is a Seed Hatchery alumni, where he co-founded the now-defunct technical recruiting startup, Work for Pie.</description>
+    </item>
+    
+  </channel>
+</rss>
