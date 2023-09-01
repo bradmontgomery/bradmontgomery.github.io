@@ -1,0 +1,116 @@
+---
+date: '2013-03-15T03:43:17.745865+00:00'
+title: How in the world do you Mock a name attribute?
+draft: false
+tags:
+- mock
+- python
+- testing
+slug: how-world-do-you-mock-name-attribute
+description: <p><strong>Or... </s...
+markup: html
+url: /blog/how-world-do-you-mock-name-attribute/
+aliases:
+- /blog/2013/03/15/how-world-do-you-mock-name-attribute/
+
+---
+
+<p><strong>Or... </strong> My adventures with Mock. Part 1.</p>
+
+<p>I've been working a lot with
+<a href="http://www.voidspace.org.uk/python/mock/">Mock</a>
+lately (and by <em>lately</em>, I meand for the last three months). Though it
+takes a while to wrap your head around it, it's an amazing and powerful testing
+tool.</p>
+
+<p>To get started, let's look at some of the neat things you can do with Mock.
+Take this class, for example:</p>
+
+<pre class="python"><code>class Thing(object):
+    shape = 'square'
+    color = 'blue'
+
+    def calculate(self):
+        # ... do some stuff ...
+</code></pre>
+
+<p>If you were writing a test, and you wanted a Mocked <code>Thing</code>, but
+still wanted to ensure that your mock object had <code>shape</code> and
+<code>color</code> attributes, you'd do the following:</pre>
+
+<pre class="python"><code>&gt;&gt;&gt; from mock import Mock
+&gt;&gt;&gt; thing = Mock(shape='square', color='blue')
+&gt;&gt;&gt; thing.shape
+'square'
+&gt;&gt;&gt; thing.color
+'blue'</code></pre>
+
+<p>Cool! You get attributes whose values you can test against, and you still
+have a mock object on which you can call methods:</p>
+
+<pre class="python"><code>&gt;&gt;&gt; from mock import Mock
+&gt;&gt;&gt; thing.calculate()  # pretend this calculates something
+&lt;Mock name='mock.calculate()' id='4338034768'&gt;</code></pre>
+
+<p>I think Mock really shines when you're working with code that hits external
+APIs (I do this a <em>lot</em> with
+<a href="https://workforpie.com">Work for Pie</a>). Imagine for a minute that
+the <code>Thing.calculate()</code> sent some data up to an external API, then
+used the results to calculate and return a value. With a Mocked object, your
+tests can run without hitting the api. This is a Good Thing! In order to write
+that test, you'd do somethign like this</p>
+
+<pre class="python"><code>from mock import calls
+
+def test_calculate():
+    thing = Mock(shape='square', color='blue')
+    thing.calculate()
+    thing.assert_has_calls([call.calculate()])</code></pre>
+
+<h2>So what was that thing about <code>name</code> attributes?</h2>
+
+<p>Now here's where things get tricky. For one reason or another, many of my
+API-wrapper classes have a <code>name</code> attribute. The Mock class also
+has a keyword argument <code>name</code>, that lets you give the Mock a name
+(the <a href="http://www.voidspace.org.uk/python/mock/mock.html#mock.Mock">docs</a> say this is useful for debugging).</p>
+
+<p>So, how in the world am I supposed to write a Mock for something like this,
+and still be able to specify the value of an attribute?</p>
+
+<pre class="python"><code>class SomeAPIWrapper(object):
+    name = 'brad'
+    token = 'secret'</code></pre>
+
+<p>Well, this <strong>does not work</strong>:</p>
+
+<pre class="python"><code>&gt;&gt;&gt; api = Mock(name='brad', token='secret')
+&gt;&gt;&gt; api.token  # Ok, this looks fine.
+'secret'
+&gt;&gt;&gt; api.name  # not what I want
+&lt;Mock name='important-thing-here.name' id='4337316944'&gt;</code></pre>
+
+<p>Luckily, there's this neat class called a
+<a href="http://www.voidspace.org.uk/python/mock/mock.html#mock.PropertyMock">
+PropertyMock</a>. It took me a bit to figure out how to use it, but it's
+essentially used as a property or an attribute on another class (including
+another mock). I honestly don't know if this is <em>supposed to work this
+way</em> or if this is a nasty hack (feel free to <a href="/contact/">let me
+know</a> one way or another), but this is how I attached a <code>name</code>
+attribute to a Mock object:</p>
+
+<pre class="python"><code>&gt;&gt;&gt; from mock import Mock, PropertyMock
+&gt;&gt;&gt; # Create a Mock for my ``SomeAPIWrapper`` class above
+&gt;&gt;&gt; api = Mock(token='secret')
+&gt;&gt;&gt; # Create a PropertyMock representing the ``name`` attribute
+&gt;&gt;&gt; p = PropertyMock(return_value='brad')
+&gt;&gt;&gt; # Replace Mock's name with our new property
+&gt;&gt;&gt; type(api).name = p
+&gt;&gt;&gt;
+&gt;&gt;&gt; # Now see what happens
+&gt;&gt;&gt; api.token
+'secret'
+&gt;&gt;&gt; api.name
+'brad'</code></pre>
+
+<p>Now, your Mock objects can have a name attribute with an expected return
+value.</p>

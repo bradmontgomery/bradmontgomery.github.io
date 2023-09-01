@@ -1,0 +1,18 @@
+---
+date: '2008-11-17T12:41:00+00:00'
+title: Soup's On! And it IS Beautiful!
+draft: false
+tags:
+- Programming
+- Python
+- web
+slug: soups-on-and-it-is-beautiful
+description: "Here's the problem: ..."
+markup: html
+url: /blog/soups-on-and-it-is-beautiful/
+aliases:
+- /blog/2008/11/17/soups-on-and-it-is-beautiful/
+
+---
+
+Here's the problem: There's a BAJILLIION static html pages sitting out on a server, and I need to migrate all that content to a new Database-driven <abbr title="Content Management System">CMS</abbr>.  Additionally, I need to get rid of a lot of non-essential hard-coded presentational markup  (like align="center" or font="whatever") and any inline styles that may exist... (you know, because external CSS is the way to go).<br /><br />I <em>could</em> spend hours and hours just copy-/pasting stuff... but meh.  Enter <a href="http://www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a>, <a href="http://www.python.org/doc/2.5.2/lib/module-urllib.html">urllib</a>, and <a href="http://www.python.org/doc/2.5.2/lib/module-sqlite3.html">sqlite</a>... all glued together with <a href="http://python.org">python</a>.<br /><br />Now, for the most part, the content I want to scrape from these static html pages aIso contains links to the other pages I want to keep.  So, here's what we can do, use urlllib to grab the content from the web server, use BeautifulSoup to extract all the values from href attributes in our "a" elements, and keep a list of these (checking to make sure they point to sites we want to keep).  <br /><br />Then, I use BeautifulSoup to parse the page, keeping the bits that I want to keep.  Lucky for me, the pages I'm particularly interested in have handy "InstanceBeginEditable" and "InstanceEndEditable" in comments (thanks Dreamweaver), so I just strip out everything before and after that, and parse what's left over.  Of course, this sort of thing is going to be different for everybody, but luckily, parsing <em>X</em>HTML isn't that difficulty thanks to <a href="http://www.crummy.com/software/BeautifulSoup/documentation.html">BeautifulSoup's mostly-comprehensive documentation</a>.<br /><br /><br />So, the part you've been waiting for... Download the Code, try it out, and leave me some feedback!<br /><big><a href="http://bradmontgomery.net/files/migrate_web.zip">http://bradmontgomery.net/files/migrate_web.zip</a></big><br /><br /><a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/us/80x15.png" /></a><br /><span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dc:title" rel="dc:type">migrate_web.py</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://bradmontgomery.net/" property="cc:attributionName" rel="cc:attributionURL">Brad Montgomery</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 United States License</a>.<br />Based on a work at <a xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://bradmontgomery.net/files/migrate_web.py" rel="dc:source">bradmontgomery.net</a>.<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4123748873183487963-4651340280840269055?l=bradmontgomery.blogspot.com' alt='' /></div>

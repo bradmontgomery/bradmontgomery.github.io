@@ -1,0 +1,64 @@
+---
+date: '2013-03-13T15:44:30.420174+00:00'
+title: Why I deleted Mailbox after only an hour.
+draft: false
+tags:
+- email
+- gmail
+- inboxzero
+- ios
+- mailbox
+slug: why-i-deleted-mailbox-after-only-hour
+description: <p>I'll be honest; I...
+markup: html
+url: /blog/why-i-deleted-mailbox-after-only-hour/
+aliases:
+- /blog/2013/03/13/why-i-deleted-mailbox-after-only-hour/
+
+---
+
+<p>I'll be honest; I was really excited about <a href="http://www.mailboxapp.com/">Mailbox</a>.
+When I first heard about it, I'd become increasingly <a href="http://markosullivan.ca/dont-suck-at-email/">Sucky at Email</a>.
+My inbox was a mess. I had <strong>five</strong> different kinds of flags/stars,
+multiple kinds of <strong>todo</strong> flags, and I was one of those
+<em>read-an-email-and-mark-it-as-unread</em> people.</p>
+
+<p>So, when Mailbox showed up, I really did have high hopes that it'd help me
+learn <em>A New Way</em> of managing email. I wanted to be productive.</p>
+
+<p>But then, I had to wait for <strong>a half million people</strong>. Honestly,
+had this not happend, I'd probably be a happy Mailbox user.</p>
+
+<p>Instead, I stumbled upon <a href="https://twitter.com/krarick">Keith Rarick</a>'s
+email system: <a href="http://xph.us/2013/01/22/inbox-zero-for-life.html">Inbox Zero for Life</a>.
+It's Gmail-centric and incredibly simple. I enabled keyboard shortcuts (that alone is life-changing),
+ditched my varaious flags and todo labels, and in about an hour and a half on a Saturday
+morning, I hit <strong>Inbox Zero</strong>. It was liberating.</p>
+
+<p>I then picked up the <a href="https://itunes.apple.com/us/app/gmail-email-from-google/id422689480">Gmail app for iOS</a>,
+which lets me more easily use the same technique on my phone. This makes me happy.</p>
+
+<p>So, yesterday, I finally got access to the Mailbox app. I was still somewhat
+excited to try it out, but it quickly became apparent that it just wasn't going to work.
+The reason? It made things <strong>More Complex</strong>.</p>
+
+<p>I went from having to deal with <em>Starred items</em>, to having multiple types of
+todo lists (Later Today, This Evening, Tomorrow, To Buy, To Read, To Watch, Oh My!).
+This felt like a step backward. On top of that, it just didn't feel right when I went
+back to the Gmail web interface, which is where I read <em>most</em> of my email.
+I'd finally found a system that really worked, and Mailbox disrupted it.
+Seriously. I don't need these extra labels in Gmail:</p>
+
+<pre>[Mailbox]
+    Later
+    To Buy
+    To Read
+    To Watch</pre>
+
+<p>I <em>do</em> think Mailbox was a really well-written app. I like the aesthetic and
+the interface. It just doesn't work with my preferred technique. So, after an hour
+of using it, I deleted it from my phone.</p>
+
+<hr/>
+
+<p><strong>Update</strong>: Mailbox is gone now, but the folks over at <a href="https://www.getmailbird.com">mailbird</a> asked if I'd link to their article about what might have happened. And so, <a href="https://www.getmailbird.com/what-happened-to-mailboxapp-com/">here it is: what happened to mailbox</a>.</p>

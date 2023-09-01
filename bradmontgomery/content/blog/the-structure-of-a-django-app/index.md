@@ -1,0 +1,19 @@
+---
+date: '2008-07-15T10:57:00+00:00'
+title: The Structure of a Django App
+draft: false
+tags:
+- Programming
+- Python
+- django
+- web
+slug: the-structure-of-a-django-app
+description: <a href="http://brad...
+markup: html
+url: /blog/the-structure-of-a-django-app/
+aliases:
+- /blog/2008/07/15/the-structure-of-a-django-app/
+
+---
+
+<a href="http://bradmontgomery.blogspot.com/2008/06/lions-tigers-and-web-development.html">Previously</a>, I'd lamented the difficultly present in choosing an web development framework.  I'd worked through several <a href="http://www.symfony-project.org/">symfony</a> tutorials, and though I could see the benefits down the road, it just didn't feel right to me (yes... "feel" is a technical drawback).<br /><br />So, I checked out a copy of <a href="http://www.djangoproject.com/">Django</a>, and I haven't looked back.  If you're the least bit proficient with python, and you need to build a database-driven web site, USE DJANGO!  They have superb <a href="http://www.djangoproject.com/documentation/">documentation</a>, a free book (the <a href="http://djangobook.com/">The Django Book</a>), and there's a built-in development server included so you don't <b>have</b> to get Apache and mod-python (or some other webserver) running somewhere before you can start writing code. <br /><br />The fist thing that really made me like Django was the structure of it.  First of all, a site is organized as a project.  Multiple projects may be set up for different websites.  Inside a project, you build an App. (Note that a project may have one or more Apps).<br /><br />The App is where you do most of your work, it really consists of four parts:<ol><li>Models</li><li>Views</li><li>The URLconf</li><li>Template(s)</li></ol>  <br /><br /><b>Models</b> (models.py) define your data.  Instead of building tables in your database, you build python classes in your model.  Django will give you the SQL to create your database tables.  Now, what's really cool, is Django's Automatically generated Admin interface.  All you really need is the model, and the Admin interface provides a password-protected, web-based, interface to your data.  <br /><br /><b>Views</b> (views.py) are essentially functions that extract the correct data based on some (or no) input.  Some may think this is an over-simplification, but in Django, the View is the "view of your data".  The functions in your View will pass data back to the Templates where they are displayed.<br /><br />The <b>URLconf</b> (urls.py) is magic. Well, it sort of seems that way, but it just uses regular expressions to match urls and pass data to the View.  So, "out of the box", Django supports pretty URLs so there's no need to do any url rewriting to get them.<br /><br />Last (but not least) are the <b>Templates</b>.  Django sports it's own template language, and apparently it also supports a host of pre-existing template engines.  I personally have never used existing template engines, so this is all a bit new to me.  However, the Django template language appears both concise and powerful.<br /><br />Now, there's a bit more to it that what I've described here, but if you're wondering about Django (like I was), go ahead and check out <a href="http://www.djangoproject.com/documentation/overview/">their overview</a>, skim <a href="http://www.djangoproject.com/documentation/install/">the installaltion guide</a>, and then start working <a href="http://www.djangoproject.com/documentation/tutorial01/">the tutorial</a>.  I did, and I haven't looked back.<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4123748873183487963-4197258512698216949?l=bradmontgomery.blogspot.com' alt='' /></div>
