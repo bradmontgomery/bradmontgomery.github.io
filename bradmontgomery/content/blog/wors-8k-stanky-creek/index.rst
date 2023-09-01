@@ -6,7 +6,7 @@ tags:
 - running
 - trails
 slug: wors-8k-stanky-creek
-description: Sunday afternoon was...
+description: ''
 markup: rst
 url: /blog/wors-8k-stanky-creek/
 aliases:
@@ -14,22 +14,22 @@ aliases:
 
 ---
 
-Sunday afternoon was the `WORS 8K <https://wintercc.racesonline.com/>`_ at
+Sunday afternoon was the `WORS 8K `\_ at
 Stanky Creek. I'd already spent most of the weekend working at
-`GiveCamp Memphis <http://givecampmemphis.org/>`_, so I really didn't know
+`GiveCamp Memphis `\_, so I really didn't know
 how well I'd fare during this race.
 
 Turns out, it's possible to
-`run an 8K quite well <http://connect.garmin.com/activity/443085806>`_ with
+`run an 8K quite well `\_ with
 very little sleep!
 
 I felt pretty good for most of the race. The weather was cool (36F) and the
 trails were soppy, muddy, and slippery. There's really not much else to say
 about this race, other than I'm really happy that I bought the
-`Salomons <http://goo.gl/aqylpB>`_. They performed exactly as I'd hoped, keeping
+`Salomons `\_. They performed exactly as I'd hoped, keeping
 me on track while many other runners were slipping and sliding all over the
 place.
 
-Next week is the 10K at `Shelby Farms <http://www.shelbyfarmspark.org/>`_
+Next week is the 10K at `Shelby Farms `\_
 (another amazing place to run). I'm looking forward to the race, but I'm a
 little bummed to see this series end. It's been a blast!

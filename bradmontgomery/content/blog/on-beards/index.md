@@ -6,12 +6,14 @@ tags:
 - Fun
 - beard
 slug: on-beards
-description: I just ran across an...
-markup: html
+description: ''
+markup: md
 url: /blog/on-beards/
 aliases:
 - /blog/2008/10/05/on-beards/
 
 ---
 
-I just ran across an interesting <a href="http://www.vimeo.com/1819723">beard video on vimeo</a>.  Lots of cool links including <a href="http://www.beards.org/">beards.org</a>, the <a href="http://www.worldbeardchampionships.com/">World Beard and Moustache Championships</a>, and the <a href="http://www.beardliberationfront.com/">BLF</a>. <br /><br />Fun stuff.<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4123748873183487963-7285899308137797208?l=bradmontgomery.blogspot.com' alt='' /></div>
+I just ran across an interesting [beard video on vimeo](http://www.vimeo.com/1819723). Lots of cool links including [beards.org](http://www.beards.org/), the [World Beard and Moustache Championships](http://www.worldbeardchampionships.com/), and the [BLF](http://www.beardliberationfront.com/).   
+  
+Fun stuff.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7285899308137797208?l=bradmontgomery.blogspot.com)

@@ -7,12 +7,83 @@ tags:
 - django
 - web
 slug: adding-q-objects-in-django
-description: I've got a Django ap...
-markup: html
+description: ''
+markup: md
 url: /blog/adding-q-objects-in-django/
 aliases:
 - /blog/2009/06/26/adding-q-objects-in-django/
 
 ---
 
-I've got a Django app with the following Model:<br /><br /><div class="highlight" ><pre><br /><span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Story</span>(models<span style="color: #666666">.</span>Model):<br />    title <span style="color: #666666">=</span> models<span style="color: #666666">.</span><span style="color: #007020">CharField</span>(max_length<span style="color: #666666">=</span><span style="color: #40a070">255</span>)<br />    content <span style="color: #666666">=</span> models<span style="color: #666666">.</span><span style="color: #007020">TextField</span>()<br /></pre></div><br /><br /><span style="font-weight:bold;">The Problem:  </span><br />I wanted to build a simple search feature that OR'ed all the search terms.  Essentially, I wanted SQL resembling the following:<br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">SELECT</span> <span style="color: #666666">*</span> <span style="color: #007020; font-weight: bold">from</span> myapp_stories <span style="color: #007020; font-weight: bold">where</span> <br />    title <span style="color: #007020; font-weight: bold">LIKE</span> <span style="color: #4070a0">&#39;%term1%&#39;</span> <span style="color: #007020; font-weight: bold">OR</span> content <span style="color: #007020; font-weight: bold">LIKE</span> <span style="color: #4070a0">&#39;%term1%&#39;</span> <span style="color: #007020; font-weight: bold">OR</span> <br />    title <span style="color: #007020; font-weight: bold">LIKE</span> <span style="color: #4070a0">&#39;%term2%&#39;</span> <span style="color: #007020; font-weight: bold">OR</span> content <span style="color: #007020; font-weight: bold">LIKE</span> <span style="color: #4070a0">&#39;%term2%&#39;</span>; <br /></pre></div><br /><br /><span style="font-weight:bold;">The Solution: </span><br />You can <em>add</em> django's Q objects together!  This is a feature not currently discussed in the docs, but I dug through the source code and I discovered that a Q object is really just a node in a Tree! More specifically, Q is a subclass of django.utils.tree.Node (check it out, it's cool!)  A Node has a attribute called a <em>connector</em>.  Q objects have two possible connectors: <em>AND</em> and <em>OR</em>.  But how do we connect Q objects?  Well, a Node has a handy <em>add(node, conn_type)</em> method whose parameters include another Node and a connection type.<br /><br />As previously mentioned, the possible connection types for Q objects are <em>AND</em> and <em>OR</em>, so Q objects can be added together by doing something like this:<br /><br /><div class="highlight" ><pre><span style="color: #60a0b0; font-style: italic"># ANDing Q objects</span><br />q_object <span style="color: #666666">=</span> Q()<br />q_object<span style="color: #666666">.</span>add(Q(), Q<span style="color: #666666">.</span>AND)<br /><br /><span style="color: #60a0b0; font-style: italic"># ORing Q objects</span><br />q_object <span style="color: #666666">=</span> Q()<br />q_object<span style="color: #666666">.</span>add(Q(), Q<span style="color: #666666">.</span>OR)<br /></pre></div><br /><br />So, the solution to my Search view is as follows:<br /><br /><div class="highlight" ><pre><br /><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">django.db.models</span> <span style="color: #007020; font-weight: bold">import</span> Q<br /><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">models</span> <span style="color: #007020; font-weight: bold">import</span> Story<br /><br /><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">search</span>(request):<br />    <span style="color: #4070a0; font-style: italic">&#39;&#39;&#39; </span><br /><span style="color: #4070a0; font-style: italic">    Generic Search: GET should contain the following: </span><br /><span style="color: #4070a0; font-style: italic">    terms - the search keywords separated by spaces</span><br /><span style="color: #4070a0; font-style: italic">    &#39;&#39;&#39;</span><br />    terms <span style="color: #666666">=</span> request<span style="color: #666666">.</span>GET<span style="color: #666666">.</span>get(<span style="color: #4070a0">&#39;terms&#39;</span>, <span style="color: #007020">None</span>)<br />    term_list <span style="color: #666666">=</span> terms<span style="color: #666666">.</span>split(<span style="color: #4070a0">&#39; &#39;</span>)<br /><br />    stories <span style="color: #666666">=</span> Story<span style="color: #666666">.</span>objects<span style="color: #666666">.</span>all()<br /><br />    q <span style="color: #666666">=</span> Q(content__icontains<span style="color: #666666">=</span>term_list[<span style="color: #40a070">0</span>]) <span style="color: #666666">|</span> Q(title__icontains<span style="color: #666666">=</span>term_list[<span style="color: #40a070">0</span>])<br />    <span style="color: #007020; font-weight: bold">for</span> term <span style="color: #007020; font-weight: bold">in</span> term_list[<span style="color: #40a070">1</span>:]:<br />        q<span style="color: #666666">.</span>add((Q(content__icontains<span style="color: #666666">=</span>term) <span style="color: #666666">|</span> Q(title__icontains<span style="color: #666666">=</span>term)), q<span style="color: #666666">.</span>connector)<br /><br />    stories <span style="color: #666666">=</span> stories<span style="color: #666666">.</span>filter(q)<br /><br />    <span style="color: #007020; font-weight: bold">return</span> render_to_response(<span style="color: #4070a0">&#39;myapp/search.html&#39;</span>, <span style="color: #007020">locals</span>(), \<br />            context_instance<span style="color: #666666">=</span>RequestContext(request))<br /></pre></div><br /><br />Needless to say, Q objects are quite powerful!<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4123748873183487963-102694916469535041?l=bradmontgomery.blogspot.com' alt='' /></div>
+I've got a Django app with the following Model:  
+  
+
+```
+  
+class Story(models.Model):  
+    title = models.CharField(max_length=255)  
+    content = models.TextField()  
+
+```
+  
+  
+The Problem:   
+I wanted to build a simple search feature that OR'ed all the search terms. Essentially, I wanted SQL resembling the following:  
+
+```
+SELECT \* from myapp_stories where   
+    title LIKE '%term1%' OR content LIKE '%term1%' OR   
+    title LIKE '%term2%' OR content LIKE '%term2%';   
+
+```
+  
+  
+The Solution:   
+You can *add* django's Q objects together! This is a feature not currently discussed in the docs, but I dug through the source code and I discovered that a Q object is really just a node in a Tree! More specifically, Q is a subclass of django.utils.tree.Node (check it out, it's cool!) A Node has a attribute called a *connector*. Q objects have two possible connectors: *AND* and *OR*. But how do we connect Q objects? Well, a Node has a handy *add(node, conn\_type)* method whose parameters include another Node and a connection type.  
+  
+As previously mentioned, the possible connection types for Q objects are *AND* and *OR*, so Q objects can be added together by doing something like this:  
+  
+
+```
+# ANDing Q objects  
+q_object = Q()  
+q_object.add(Q(), Q.AND)  
+  
+# ORing Q objects  
+q_object = Q()  
+q_object.add(Q(), Q.OR)  
+
+```
+  
+  
+So, the solution to my Search view is as follows:  
+  
+
+```
+  
+from django.db.models import Q  
+from models import Story  
+  
+def search(request):  
+    '''   
+ Generic Search: GET should contain the following:   
+ terms - the search keywords separated by spaces  
+ '''  
+    terms = request.GET.get('terms', None)  
+    term_list = terms.split(' ')  
+  
+    stories = Story.objects.all()  
+  
+    q = Q(content__icontains=term_list[0]) | Q(title__icontains=term_list[0])  
+    for term in term_list[1:]:  
+        q.add((Q(content__icontains=term) | Q(title__icontains=term)), q.connector)  
+  
+    stories = stories.filter(q)  
+  
+    return render_to_response('myapp/search.html', locals(), \  
+            context_instance=RequestContext(request))  
+
+```
+  
+  
+Needless to say, Q objects are quite powerful!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-102694916469535041?l=bradmontgomery.blogspot.com)

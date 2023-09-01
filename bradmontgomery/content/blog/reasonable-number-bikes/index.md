@@ -5,7 +5,7 @@ draft: false
 tags:
 - bikes
 slug: reasonable-number-bikes
-description: If you know me in pe...
+description: ''
 markup: md
 url: /blog/reasonable-number-bikes/
 aliases:
@@ -13,9 +13,9 @@ aliases:
 
 ---
 
-If you know me in person, then it's possible that you know I [have a thing about cycling](https://www.strava.com/athletes/1020859). And bikes. And shame on me for not writing about this stuff here. Anyway, a recent conversation among friends  led me to thinking about the question: *What is a reasonable number of bikes?*
+If you know me in person, then it's possible that you know I [have a thing about cycling](https://www.strava.com/athletes/1020859). And bikes. And shame on me for not writing about this stuff here. Anyway, a recent conversation among friends led me to thinking about the question: \*What is a reasonable number of bikes?\*
 
-You see, among cyclists, there's the [N+1](https://www.bikeforums.net/fifty-plus-50/822639-what-does-n-1-rule-mean.html) debate.  (it's not really a debate, you need N+1 bikes)
+You see, among cyclists, there's the [N+1](https://www.bikeforums.net/fifty-plus-50/822639-what-does-n-1-rule-mean.html) debate. (it's not really a debate, you need N+1 bikes)
 
 Anyway, when confronted with the question, here's my answer to this pressing question:
 

@@ -8,12 +8,148 @@ tags:
 - Python
 - web
 slug: convert-tables-to-unordered-lists
-description: If you've ever had t...
-markup: html
+description: ''
+markup: md
 url: /blog/convert-tables-to-unordered-lists/
 aliases:
 - /blog/2010/05/28/convert-tables-to-unordered-lists/
 
 ---
 
-If you've ever had the pleasure of working with old HTML content, you've surely seen some &lt;table&gt;'s where they don't belong.  Lately, that's the sort of thing I've been dealing with on a regular basis, and for some reason, I often see a list of information in a table.<br /><br />Wouldn't it be nice if there were an easy way to turn these tables into unordered lists?  Thanks to <a href="http://www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a>, this is really not that difficult.<br /><br />Here's the code:<br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">BeautifulSoup</span> <span style="color: #007020; font-weight: bold">import</span> BeautifulSoup, Tag <br /><br /><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">table2ul</span>(content, flatten_rows<span style="color: #666666">=</span><span style="color: #007020">False</span>):<br />    <span style="color: #4070a0; font-style: italic">&quot;&quot;&quot; </span><br /><span style="color: #4070a0; font-style: italic">    Convert a &lt;table&gt; into a &lt;ul&gt;.</span><br /><span style="color: #4070a0; font-style: italic">    Each cell, &lt;td&gt;, gets converted into a list item &lt;li&gt; unless</span><br /><span style="color: #4070a0; font-style: italic">    the flatten_rows paramter is given. In this case, all content from </span><br /><span style="color: #4070a0; font-style: italic">    a table row, &lt;tr&gt;, gets converted into a list item.</span><br /><span style="color: #4070a0; font-style: italic">    &quot;&quot;&quot;</span><br />    soup <span style="color: #666666">=</span> BeautifulSoup(content, convertEntities<span style="color: #666666">=</span>BeautifulSoup<span style="color: #666666">.</span>HTML_ENTITIES, smartQuotesTo<span style="color: #666666">=</span><span style="color: #4070a0">&quot;html&quot;</span>)<br /><br />    <span style="color: #007020; font-weight: bold">for</span> table <span style="color: #007020; font-weight: bold">in</span> soup<span style="color: #666666">.</span>findAll(<span style="color: #4070a0">&#39;table&#39;</span>):<br />        ul <span style="color: #666666">=</span> Tag(soup, <span style="color: #4070a0">&#39;ul&#39;</span>)<br /><br />        <span style="color: #007020; font-weight: bold">if</span> flatten_rows:<br />            <span style="color: #007020; font-weight: bold">for</span> row <span style="color: #007020; font-weight: bold">in</span> table<span style="color: #666666">.</span>findAll(<span style="color: #4070a0">&#39;tr&#39;</span>):<br />                li <span style="color: #666666">=</span> Tag(soup, <span style="color: #4070a0">&#39;li&#39;</span>)<br />                <span style="color: #007020; font-weight: bold">for</span> cell <span style="color: #007020; font-weight: bold">in</span> row<span style="color: #666666">.</span>findAll(<span style="color: #4070a0">&#39;td&#39;</span>):<br />                    li<span style="color: #666666">.</span>contents<span style="color: #666666">.</span>extend(cell<span style="color: #666666">.</span>contents)<br />                ul<span style="color: #666666">.</span>append(li)<br />        <span style="color: #007020; font-weight: bold">else</span>:<br />            <span style="color: #007020; font-weight: bold">for</span> cell <span style="color: #007020; font-weight: bold">in</span> table<span style="color: #666666">.</span>findAll(<span style="color: #4070a0">&#39;td&#39;</span>):<br />                li <span style="color: #666666">=</span> Tag(soup, <span style="color: #4070a0">&#39;li&#39;</span>)<br />                li<span style="color: #666666">.</span>contents <span style="color: #666666">=</span> cell<span style="color: #666666">.</span>contents<br />                ul<span style="color: #666666">.</span>append(li)<br />        table<span style="color: #666666">.</span>replaceWith(ul)<br /><br />    <span style="color: #007020; font-weight: bold">return</span> soup<span style="color: #666666">.</span>prettify()</pre></div><br /><br />Now, suppose we had the following HTML snippet:<div class="highlight" ><pre><span style="color: #062873; font-weight: bold">&lt;h1&gt;</span>Some heading<span style="color: #062873; font-weight: bold">&lt;/h1&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;p&gt;</span>Some paragraph with stuff in it<span style="color: #062873; font-weight: bold">&lt;/p&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;table&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span> row 1, <span style="color: #062873; font-weight: bold">&lt;strong&gt;</span>col1<span style="color: #062873; font-weight: bold">&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;</span>row 1, col2<span style="color: #062873; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;tr&gt;&lt;td&gt;</span> row 2, col1<span style="color: #062873; font-weight: bold">&lt;/td&gt;&lt;td&gt;&lt;em&gt;&lt;a</span> <span style="color: #4070a0">href=&quot;http://google.com&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span>row 2<span style="color: #062873; font-weight: bold">&lt;/a&gt;&lt;/em&gt;</span>, col2<span style="color: #062873; font-weight: bold">&lt;/td&gt;&lt;/tr&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;/table&gt;</span><br /><br /><span style="color: #062873; font-weight: bold">&lt;h2&gt;</span>A second heading<span style="color: #062873; font-weight: bold">&lt;/h2&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;p&gt;</span>more peee<span style="color: #062873; font-weight: bold">&lt;/p&gt;</span></pre></div><br /><br />Passing this in to <strong>table2ul</strong> would convert each cell into a list item, &lt;li&gt;. <div class="highlight" ><pre><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>table2ul(content)</pre></div><br /><div class="highlight" ><pre><span style="color: #062873; font-weight: bold">&lt;h1&gt;</span><br /> Some heading<br /><span style="color: #062873; font-weight: bold">&lt;/h1&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;p&gt;</span><br /> Some paragraph with stuff in it<br /><span style="color: #062873; font-weight: bold">&lt;/p&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;ul&gt;</span><br /> <span style="color: #062873; font-weight: bold">&lt;li&gt;</span><br />  row 1,<br />  <span style="color: #062873; font-weight: bold">&lt;strong&gt;</span><br />   col1<br />  <span style="color: #062873; font-weight: bold">&lt;/strong&gt;</span><br /> <span style="color: #062873; font-weight: bold">&lt;/li&gt;</span><br /> <span style="color: #062873; font-weight: bold">&lt;li&gt;</span><br />  row 1, col2<br /> <span style="color: #062873; font-weight: bold">&lt;/li&gt;</span><br /> <span style="color: #062873; font-weight: bold">&lt;li&gt;</span><br />  row 2, col1<br /> <span style="color: #062873; font-weight: bold">&lt;/li&gt;</span><br /> <span style="color: #062873; font-weight: bold">&lt;li&gt;</span><br />  <span style="color: #062873; font-weight: bold">&lt;em&gt;</span><br />   <span style="color: #062873; font-weight: bold">&lt;a</span> <span style="color: #4070a0">href=&quot;http://google.com&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span><br />    row 2<br />   <span style="color: #062873; font-weight: bold">&lt;/a&gt;</span><br />  <span style="color: #062873; font-weight: bold">&lt;/em&gt;</span><br />  , col2<br /> <span style="color: #062873; font-weight: bold">&lt;/li&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;/ul&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;h2&gt;</span><br /> A second heading<br /><span style="color: #062873; font-weight: bold">&lt;/h2&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;p&gt;</span><br /> more peee<br /><span style="color: #062873; font-weight: bold">&lt;/p&gt;</span></pre></div><br /><br />But what if we don't want each &lt;td&gt; converted into an &lt;li%gt>? What if we want all the content from entire row in an &lt;li&gt;?  In that case, just set the optional <strong>flatten_rows</strong> parameter:<br /><div class="highlight" ><pre><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>table2ul(content, flatten_rows<span style="color: #666666">=</span><span style="color: #007020">True</span>)</pre></div><br /><div class="highlight" ><pre><span style="color: #062873; font-weight: bold">&lt;h1&gt;</span><br /> Some heading<br /><span style="color: #062873; font-weight: bold">&lt;/h1&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;p&gt;</span><br /> Some paragraph with stuff in it<br /><span style="color: #062873; font-weight: bold">&lt;/p&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;ul&gt;</span><br /> <span style="color: #062873; font-weight: bold">&lt;li&gt;</span><br />  row 1,<br />  <span style="color: #062873; font-weight: bold">&lt;strong&gt;</span><br />   col1<br />  <span style="color: #062873; font-weight: bold">&lt;/strong&gt;</span>  row 1, col2<br /> <span style="color: #062873; font-weight: bold">&lt;/li&gt;</span><br /> <span style="color: #062873; font-weight: bold">&lt;li&gt;</span><br />  row 2, col1<br />  <span style="color: #062873; font-weight: bold">&lt;em&gt;</span><br />   <span style="color: #062873; font-weight: bold">&lt;a</span> <span style="color: #4070a0">href=&quot;http://google.com&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span><br />    row 2<br />   <span style="color: #062873; font-weight: bold">&lt;/a&gt;</span><br />  <span style="color: #062873; font-weight: bold">&lt;/em&gt;</span><br />  , col2<br /> <span style="color: #062873; font-weight: bold">&lt;/li&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;/ul&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;h2&gt;</span><br /> A second heading<br /><span style="color: #062873; font-weight: bold">&lt;/h2&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;p&gt;</span><br /> more peee<br /><span style="color: #062873; font-weight: bold">&lt;/p&gt;</span></pre></div><br /><br />This has been somewhat useful for me.  Hope it's useful for you!<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4123748873183487963-2232988455138779924?l=bradmontgomery.blogspot.com' alt='' /></div>
+If you've ever had the pleasure of working with old HTML content, you've surely seen some <table>'s where they don't belong. Lately, that's the sort of thing I've been dealing with on a regular basis, and for some reason, I often see a list of information in a table.  
+  
+Wouldn't it be nice if there were an easy way to turn these tables into unordered lists? Thanks to [BeautifulSoup](http://www.crummy.com/software/BeautifulSoup/), this is really not that difficult.  
+  
+Here's the code:  
+
+```
+from BeautifulSoup import BeautifulSoup, Tag   
+  
+def table2ul(content, flatten_rows=False):  
+    """   
+ Convert a <table> into a <ul>.  
+ Each cell, <td>, gets converted into a list item <li> unless  
+ the flatten\_rows paramter is given. In this case, all content from   
+ a table row, <tr>, gets converted into a list item.  
+ """  
+    soup = BeautifulSoup(content, convertEntities=BeautifulSoup.HTML_ENTITIES, smartQuotesTo="html")  
+  
+    for table in soup.findAll('table'):  
+        ul = Tag(soup, 'ul')  
+  
+        if flatten_rows:  
+            for row in table.findAll('tr'):  
+                li = Tag(soup, 'li')  
+                for cell in row.findAll('td'):  
+                    li.contents.extend(cell.contents)  
+                ul.append(li)  
+        else:  
+            for cell in table.findAll('td'):  
+                li = Tag(soup, 'li')  
+                li.contents = cell.contents  
+                ul.append(li)  
+        table.replaceWith(ul)  
+  
+    return soup.prettify()
+```
+  
+  
+Now, suppose we had the following HTML snippet:
+```
+<h1>Some heading</h1>  
+<p>Some paragraph with stuff in it</p>  
+<table>  
+<tr><td> row 1, <strong>col1</strong></td><td>row 1, col2</td></tr>  
+<tr><td> row 2, col1</td><td><em><a href="http://google.com">row 2</a></em>, col2</td></tr>  
+</table>  
+  
+<h2>A second heading</h2>  
+<p>more peee</p>
+```
+  
+  
+Passing this in to **table2ul** would convert each cell into a list item, <li>. 
+```
+>>> table2ul(content)
+```
+  
+
+```
+<h1>  
+ Some heading  
+</h1>  
+<p>  
+ Some paragraph with stuff in it  
+</p>  
+<ul>  
+ <li>  
+  row 1,  
+  <strong>  
+   col1  
+  </strong>  
+ </li>  
+ <li>  
+  row 1, col2  
+ </li>  
+ <li>  
+  row 2, col1  
+ </li>  
+ <li>  
+  <em>  
+   <a href="http://google.com">  
+    row 2  
+   </a>  
+  </em>  
+  , col2  
+ </li>  
+</ul>  
+<h2>  
+ A second heading  
+</h2>  
+<p>  
+ more peee  
+</p>
+```
+  
+  
+But what if we don't want each <td> converted into an <li%gt>? What if we want all the content from entire row in an <li>? In that case, just set the optional **flatten\_rows** parameter:  
+
+```
+>>> table2ul(content, flatten_rows=True)
+```
+  
+
+```
+<h1>  
+ Some heading  
+</h1>  
+<p>  
+ Some paragraph with stuff in it  
+</p>  
+<ul>  
+ <li>  
+  row 1,  
+  <strong>  
+   col1  
+  </strong>  row 1, col2  
+ </li>  
+ <li>  
+  row 2, col1  
+  <em>  
+   <a href="http://google.com">  
+    row 2  
+   </a>  
+  </em>  
+  , col2  
+ </li>  
+</ul>  
+<h2>  
+ A second heading  
+</h2>  
+<p>  
+ more peee  
+</p>
+```
+  
+  
+This has been somewhat useful for me. Hope it's useful for you!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2232988455138779924?l=bradmontgomery.blogspot.com)

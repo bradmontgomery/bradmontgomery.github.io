@@ -8,54 +8,67 @@ tags:
 - python
 - web
 slug: customizing-djangos-password_change-view
-description: <p>If you have a sit...
-markup: html
+description: ''
+markup: md
 url: /blog/customizing-djangos-password_change-view/
 aliases:
 - /blog/2012/10/30/customizing-djangos-password_change-view/
 
 ---
 
-<p>If you have a site where users have the traditional
-<em>username</em>/<em>password</em> combination, you've got to provide some
-way to let users <strong>change</strong> their password. Luckily, this is
-fairly easy to do with Django. The <code>auth</code> app comes with a 
-<a href="http://goo.gl/sMDqI" _mce_href="http://goo.gl/sMDqI">password_change</a> view that does what you'd
-probably expect.</p>
+If you have a site where users have the traditional
+*username*/*password* combination, you've got to provide some
+way to let users **change** their password. Luckily, this is
+fairly easy to do with Django. The `auth` app comes with a 
+[password\_change](http://goo.gl/sMDqI) view that does what you'd
+probably expect.
 
-<p>It's also fairly easy to set up. You add a line similar to the following
-to your root URLConf:</p>
 
-<pre class="python"><code>url(r'^accounts/', include('django.contrib.auth.urls')),</code></pre>
+It's also fairly easy to set up. You add a line similar to the following
+to your root URLConf:
 
-<p>You also have to set up some additional templates (e.g. <code>registration/password_change_form.html</code>),
+
+
+```
+url(r'^accounts/', include('django.contrib.auth.urls')),
+```
+
+You also have to set up some additional templates (e.g. `registration/password_change_form.html`),
 but once you've done that, users can change their password using a form that 
-looks something like this:</p>
+looks something like this:
 
-<div style="padding:1em;margin:1em;border:1px solid #ccc;" _mce_style="padding: 1em; margin: 1em; border: 1px solid #ccc;">
-<label for="id_old_password">Old password:</label> <input type="password" name="old_password" id="id_old_password"><br>
-<label for="id_new_password1">New password:</label> <input type="password" name="new_password1" id="id_new_password1"><br>
-<label for="id_new_password2">New password confirmation:</label> <input type="password" name="new_password2" id="id_new_password2">
-</div>
 
-<p>Easy! Until...</p>
 
-<h2>What if I can't remember my old password?</h2>
+Old password:   
 
-<p>Or worse, yet, what if your users don't have a usable password? If you're
-using something like the excellent <a href="http://django-social-auth.readthedocs.org/" _mce_href="http://django-social-auth.readthedocs.org/">
-django-social-auth</a>, which lets users log in using OAuth or OpenID (i.e. via
-Facebook, Twitter, Google, or some other source) you may run into this case.</p>
+New password:   
 
-<p>So, how can I omit the <em>Old Password</em> requirement in the change
-password form? We're in luck. The <code>password_change</code> view accepts a
-<code>password_change_form</code> parameter that allows you to specify what form
-is used. The <code>auth</code> app also contains a form that doesn't require
+New password confirmation: 
+
+Easy! Until...
+
+
+What if I can't remember my old password?
+-----------------------------------------
+
+
+Or worse, yet, what if your users don't have a usable password? If you're
+using something like the excellent [django-social-auth](http://django-social-auth.readthedocs.org/), which lets users log in using OAuth or OpenID (i.e. via
+Facebook, Twitter, Google, or some other source) you may run into this case.
+
+
+So, how can I omit the *Old Password* requirement in the change
+password form? We're in luck. The `password_change` view accepts a
+`password_change_form` parameter that allows you to specify what form
+is used. The `auth` app also contains a form that doesn't require
 entering the Old password (it's used in the admin app!). It's called, 
-<code>AdminPasswordChangeForm</code>. So, all we have to do is update our
-root URLConf yet again:</p>
+`AdminPasswordChangeForm`. So, all we have to do is update our
+root URLConf yet again:
 
-<pre class="python"><code>from django.contrib.auth.forms import AdminPasswordChangeForm
+
+
+```
+from django.contrib.auth.forms import AdminPasswordChangeForm
 
 ulrpatterns = patterns('', 
     
@@ -65,24 +78,28 @@ ulrpatterns = patterns('',
         'django.contrib.auth.views.password_change',
         {'password_change_form': AdminPasswordChangeForm},
         name="password_change"),
-    url(r'^accounts/', include('django.contrib.auth.urls')),</code></pre>
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+```
 
-<p>Remember that the <a href="http://goo.gl/A2pLz" _mce_href="http://goo.gl/A2pLz">url function</a> allows you
+Remember that the [url function](http://goo.gl/A2pLz) allows you
 to specify keword parameters for views, and that's exactly what we've done with
-this: <code class="python">{'password_change_form': AdminPasswordChangeForm}</code>. That
-customizes the form that gets used in the <code>password_change</code> view.</p>
-
-<p>Now, when our users try to change their password, the form looks something
-like this:</p>
-
-<div style="padding:1em;margin:1em;border:1px solid #ccc;" _mce_style="padding: 1em; margin: 1em; border: 1px solid #ccc;">
-<label for="id_new_password1">New password:</label> <input type="password" name="new_password1" id="id_new_password1"><br>
-<label for="id_new_password2">New password confirmation:</label> <input type="password" name="new_password2" id="id_new_password2">
-</div>
+this: `{'password_change_form': AdminPasswordChangeForm}`. That
+customizes the form that gets used in the `password_change` view.
 
 
-<p>Disclaimer: This <em>does</em> remove one additional step that a potential
+Now, when our users try to change their password, the form looks something
+like this:
+
+
+
+New password:   
+
+New password confirmation: 
+
+Disclaimer: This *does* remove one additional step that a potential
 attacker would need to overcome in order to steal an account. So, make sure you
-understand why you'd implement this before you do so.</p>
+understand why you'd implement this before you do so.
 
-<p>Cheers!</p>
+
+Cheers!
+

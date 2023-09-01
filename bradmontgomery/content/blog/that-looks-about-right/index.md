@@ -6,12 +6,30 @@ tags:
 - Programming
 - meme
 slug: that-looks-about-right
-description: <pre><br /> history ...
-markup: html
+description: ''
+markup: md
 url: /blog/that-looks-about-right/
 aliases:
 - /blog/2008/12/04/that-looks-about-right/
 
 ---
 
-<pre><br /> history | awk '{ print $2 }' | sort | uniq -c | sort -rn | head<br /> 152 cd<br /> 145 ll<br />  73 vi<br />  20 rm<br />  18 svn<br />  13 exit<br />   9 ls<br />   8 grep<br />   7 php<br />   5 wget<br /></pre><br /><br />via <a href="http://www.b-list.org/weblog/2008/apr/10/meme/">b-list.org</a><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4123748873183487963-140923247933426192?l=bradmontgomery.blogspot.com' alt='' /></div>
+
+```
+  
+ history | awk '{ print $2 }' | sort | uniq -c | sort -rn | head  
+ 152 cd  
+ 145 ll  
+  73 vi  
+  20 rm  
+  18 svn  
+  13 exit  
+   9 ls  
+   8 grep  
+   7 php  
+   5 wget  
+
+```
+  
+  
+via [b-list.org](http://www.b-list.org/weblog/2008/apr/10/meme/)![](https://blogger.googleusercontent.com/tracker/4123748873183487963-140923247933426192?l=bradmontgomery.blogspot.com)

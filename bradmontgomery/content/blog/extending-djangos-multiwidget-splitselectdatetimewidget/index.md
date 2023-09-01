@@ -6,12 +6,53 @@ tags:
 - Python
 - django
 slug: extending-djangos-multiwidget-splitselectdatetimewidget
-description: <p>This entry is an ...
-markup: html
+description: ''
+markup: md
 url: /blog/extending-djangos-multiwidget-splitselectdatetimewidget/
 aliases:
 - /blog/2008/11/19/extending-djangos-multiwidget-splitselectdatetimewidget/
 
 ---
 
-<p>This entry is an update to <a href="/blog/selecttimewidget-a-custom-django-widget/" _mce_href="/blog/selecttimewidget-a-custom-django-widget/" style="">SelectTimeWidget: A custom Django Widget</a>.  <br><br>The Problem:  I want to use a Single widget object for a DateTimeField, but I want it to consist of select elements with appropriate options for month, day, year, hour, minute, and second.  Additionally, I want to be able to specify a 12-hour format, so I would then need options for "a.m." and "p.m."<br><br>Fortunately, Django's SelectDateWidget (from django.forms.extras.widgets) takes care of the Date portion of this, and I've previously written a similar SelectTimeWidget.  Now, I just need to find some way to appropriately combine the two widgets.<br><br>After a little digging in Django's source code, I found something called a MultiWidget (in django.forms.widgets).  From it's docstring:</p><blockquote>A widget that is composed of multiple widgets.</blockquote><p>Wow! This sounds like JUST what I need!  Luckily, just beneath it is the definition of a SplitDateTimeWidget(MultiWidget), which combines two TextInput widgets for DateTimeFields.  So taking that as an example, I've written the <a href="http://www.djangosnippets.org/snippets/1206/" _mce_href="http://www.djangosnippets.org/snippets/1206/"> SplitSelectDateTimeWidget</a>.<br><br>To Use the SplitSelectDateTimeWidget you might do something similar to this:</p><div class="highlight"><pre><span style="color: #60a0b0; font-style: italic" _mce_style="color: #60a0b0; font-style: italic;"># Default usage of SplitSelectDateTimeWidget</span><br><span style="color: #007020; font-weight: bold" _mce_style="color: #007020; font-weight: bold;">class</span> <span style="color: #0e84b5; font-weight: bold" _mce_style="color: #0e84b5; font-weight: bold;">TimeForm</span>(Form):<br>    dt <span style="color: #666666" _mce_style="color: #666666;">=</span> <span style="color: #007020" _mce_style="color: #007020;">DateTimeField</span>(widget<span style="color: #666666" _mce_style="color: #666666;">=</span>SplitSelectDateTimeWidget())<br></pre></div><p><br><br>A slightly more complex example hooks into the flexibility of the underlying widgets (SelectDateWidget and SelecTimeWidget):<br></p><div class="highlight"><pre><span style="color: #007020; font-weight: bold" _mce_style="color: #007020; font-weight: bold;">class</span> <span style="color: #0e84b5; font-weight: bold" _mce_style="color: #0e84b5; font-weight: bold;">TimeForm</span>(Form)<br>    dt <span style="color: #666666" _mce_style="color: #666666;">=</span> <span style="color: #007020" _mce_style="color: #007020;">DateTimeField</span>(widget<span style="color: #666666" _mce_style="color: #666666;">=</span>SplitSelectDateTimeWidget(hour_step<span style="color: #666666" _mce_style="color: #666666;">=</span><span style="color: #40a070" _mce_style="color: #40a070;">2</span>, \<br>    minute_step<span style="color: #666666" _mce_style="color: #666666;">=</span><span style="color: #40a070" _mce_style="color: #40a070;">15</span>, second_step<span style="color: #666666" _mce_style="color: #666666;">=</span><span style="color: #40a070" _mce_style="color: #40a070;">30</span>, twelve_hr<span style="color: #666666" _mce_style="color: #666666;">=</span><span style="color: #007020" _mce_style="color: #007020;">True</span>, years<span style="color: #666666" _mce_style="color: #666666;">=</span>[<span style="color: #40a070" _mce_style="color: #40a070;">2008</span>,<span style="color: #40a070" _mce_style="color: #40a070;">2009</span>,<span style="color: #40a070" _mce_style="color: #40a070;">2010</span>]))<br></pre></div><p><br>The above example displays hours in increments of 2, minutes in increments of 15, and seconds in increments of 30. Likewise, only the years 2008, 2009,and 2010 are displayed in the years' options.<br><br>The output of a form using the SplitSelectDateTimeWidget looks something similar to this:<br><br><img src="http://files.bradmontgomery.net/images/datetimeselect.png" _mce_src="http://files.bradmontgomery.net/images/datetimeselect.png" alt="SplitSelectDateTimeWidget" width="346" height="124" title="SplitSelectDateTimeWidget" style="" _mce_style=""></p><div class="blogger-post-footer"><img width="1" height="1" src="https://blogger.googleusercontent.com/tracker/4123748873183487963-8329154980397267028?l=bradmontgomery.blogspot.com" _mce_src="https://blogger.googleusercontent.com/tracker/4123748873183487963-8329154980397267028?l=bradmontgomery.blogspot.com" alt=""></div>
+This entry is an update to [SelectTimeWidget: A custom Django Widget](/blog/selecttimewidget-a-custom-django-widget/).   
+  
+The Problem: I want to use a Single widget object for a DateTimeField, but I want it to consist of select elements with appropriate options for month, day, year, hour, minute, and second. Additionally, I want to be able to specify a 12-hour format, so I would then need options for "a.m." and "p.m."  
+  
+Fortunately, Django's SelectDateWidget (from django.forms.extras.widgets) takes care of the Date portion of this, and I've previously written a similar SelectTimeWidget. Now, I just need to find some way to appropriately combine the two widgets.  
+  
+After a little digging in Django's source code, I found something called a MultiWidget (in django.forms.widgets). From it's docstring:
+
+
+> A widget that is composed of multiple widgets.
+
+Wow! This sounds like JUST what I need! Luckily, just beneath it is the definition of a SplitDateTimeWidget(MultiWidget), which combines two TextInput widgets for DateTimeFields. So taking that as an example, I've written the  [SplitSelectDateTimeWidget](http://www.djangosnippets.org/snippets/1206/).  
+  
+To Use the SplitSelectDateTimeWidget you might do something similar to this:
+
+
+```
+# Default usage of SplitSelectDateTimeWidget  
+class TimeForm(Form):  
+    dt = DateTimeField(widget=SplitSelectDateTimeWidget())  
+
+```
+  
+  
+A slightly more complex example hooks into the flexibility of the underlying widgets (SelectDateWidget and SelecTimeWidget):  
+
+
+
+```
+class TimeForm(Form)  
+    dt = DateTimeField(widget=SplitSelectDateTimeWidget(hour_step=2, \  
+    minute_step=15, second_step=30, twelve_hr=True, years=[2008,2009,2010]))  
+
+```
+  
+The above example displays hours in increments of 2, minutes in increments of 15, and seconds in increments of 30. Likewise, only the years 2008, 2009,and 2010 are displayed in the years' options.  
+  
+The output of a form using the SplitSelectDateTimeWidget looks something similar to this:  
+  
+![SplitSelectDateTimeWidget](http://files.bradmontgomery.net/images/datetimeselect.png "SplitSelectDateTimeWidget")
+
+![](https://blogger.googleusercontent.com/tracker/4123748873183487963-8329154980397267028?l=bradmontgomery.blogspot.com)

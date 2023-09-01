@@ -8,95 +8,135 @@ tags:
 - map
 - python
 slug: little-things
-description: <p>I ran across an i...
-markup: html
+description: ''
+markup: md
 url: /blog/little-things/
 aliases:
 - /blog/2013/12/29/little-things/
 
 ---
 
-<p>I ran across an interesting line of code today, and thought I'd share some
+I ran across an interesting line of code today, and thought I'd share some
 insights. First, though we need a little context. Imagine reading several lines
 of data from a csv file (using
-<a href="http://docs.python.org/2/library/csv.html">python's built-in
-<code>csv</code> module</a>). You'll typically have some code that looks
-something like this:</p>
+[python's built-in
+`csv` module](http://docs.python.org/2/library/csv.html)). You'll typically have some code that looks
+something like this:
 
-<pre><code class="python">import csv
+
+
+```
+import csv
 with open('data.csv', 'rb') as csvfile:
     reader = csv.reader(csvfile)
     for row in reader:
         # Do some stuff with each row,
-        # where the row is a list of strings.</code></pre>
+        # where the row is a list of strings.
+```
 
-<p>So, that's what we've got, and within the <code>for</code> loop, I found
-this code:</p>
+So, that's what we've got, and within the `for` loop, I found
+this code:
 
-<pre><code class="python">row = map(lambda x: x.strip(), row)</code></pre>
 
-<p>What does it do? It simply strips whitespace from the beginng and ending of
-each item in our list of strings. But <em>how</em> it accomplishes this is worth
-picking apart.</p>
 
-<p>First, this code uses <code>map</code> to apply a function to each item in
-the list. Then, we construct an anonymous <code>lambda</code> function which
-accepts a parameter, calls the input's <code>strip</code> method and returns
-the result.</p>
+```
+row = map(lambda x: x.strip(), row)
+```
 
-<p>Essentially, we call a function for each item in the list. Keep in mind,
-we're also doing this inside a <code>for</code> loop. That's a function call
-for each cell in your CSV file.</p>
+What does it do? It simply strips whitespace from the beginng and ending of
+each item in our list of strings. But *how* it accomplishes this is worth
+picking apart.
 
-<p>We can also achieve the same outcome with a list comprehension:</p>
-<pre><code class="python">row = [x.strip() for x in row]</code></pre>
 
-<p>OR with a generator! (note the parenthesis instead of square brackets)</p>
-<pre><code class="python">row = (x.strip() for x in row)</code></pre>
+First, this code uses `map` to apply a function to each item in
+the list. Then, we construct an anonymous `lambda` function which
+accepts a parameter, calls the input's `strip` method and returns
+the result.
 
-<h2>Measure it</h2>
-<p>Out of curiosity, I decided to time this with just a few rows of data
-(10, in particular). I used <code>timeit</code> to run this code on my
-laptop (a late-2011 macbook air) with some simple data. Here's what I found:</p>
 
-<pre><code class="python">&gt;&gt;&gt; import timeit
-&gt;&gt;&gt; timeit.timeit(
+Essentially, we call a function for each item in the list. Keep in mind,
+we're also doing this inside a `for` loop. That's a function call
+for each cell in your CSV file.
+
+
+We can also achieve the same outcome with a list comprehension:
+
+
+
+```
+row = [x.strip() for x in row]
+```
+
+OR with a generator! (note the parenthesis instead of square brackets)
+
+
+
+```
+row = (x.strip() for x in row)
+```
+
+Measure it
+----------
+
+
+Out of curiosity, I decided to time this with just a few rows of data
+(10, in particular). I used `timeit` to run this code on my
+laptop (a late-2011 macbook air) with some simple data. Here's what I found:
+
+
+
+```
+>>> import timeit
+>>> timeit.timeit(
 ...    stmt="map(lambda x: x.strip(), row)",
 ...    setup="row = [' {0} '.format(i) for i in range(10)]"
 ... )
 2.491640090942383
-</code></pre>
 
-<p>With 1,000,000 rows of data (the default number of test iterations, and
+```
+
+With 1,000,000 rows of data (the default number of test iterations, and
 an admittedly unlikely scenario for a one-off CSV import) this code runs in
-about two and a half seconds.</p>
+about two and a half seconds.
 
-<p>Now lets see how the list comprehension and generator versions for the
-same code stack up!</p>
 
-<pre><code class="python">&gt;&gt;&gt; timeit.timeit(
+Now lets see how the list comprehension and generator versions for the
+same code stack up!
+
+
+
+```
+>>> timeit.timeit(
 ...    stmt="[x.strip() for x in row]",
 ...    setup="row = [' {0} '.format(i) for i in range(10)]"
 ... )
 1.6442670822143555
-</code></pre>
 
-<p>Quite a bit better! <em>Nearly</em> a second faster. Let's see about
-the generator:</p>
+```
 
-<pre><code class="python">&gt;&gt;&gt; timeit.timeit(
+Quite a bit better! *Nearly* a second faster. Let's see about
+the generator:
+
+
+
+```
+>>> timeit.timeit(
 ...    stmt="(x.strip() for x in row)",
 ...    setup="row = [' {0} '.format(i) for i in range(10)]"
 ... )
 0.48253297805786133
-</code></pre>
 
-<p>Yep. About two whole seconds faster than our original code.</p>
+```
 
-<p>So what's the take-away, here?  Well,
-<a href="http://www.python.org/dev/peps/pep-0289/">generator expressions</a>
-are pretty amazing. <strong>Use them</strong>.</p>
+Yep. About two whole seconds faster than our original code.
 
-<p>Finally, small things add up. Little decisions, like whether to use
-<code>map</code> + <code>lambda</code> or a generator expression can have
-fairly significant impact on the performance of your software.</p>
+
+So what's the take-away, here? Well,
+[generator expressions](http://www.python.org/dev/peps/pep-0289/)
+are pretty amazing. **Use them**.
+
+
+Finally, small things add up. Little decisions, like whether to use
+`map` + `lambda` or a generator expression can have
+fairly significant impact on the performance of your software.
+

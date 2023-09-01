@@ -7,12 +7,142 @@ tags:
 - mysql
 - web
 slug: how-to-set-up-a-foreign-key-constraint-in-mysql
-description: <p>The default <a hr...
-markup: html
+description: ''
+markup: md
 url: /blog/how-to-set-up-a-foreign-key-constraint-in-mysql/
 aliases:
 - /blog/2009/04/01/how-to-set-up-a-foreign-key-constraint-in-mysql/
 
 ---
 
-<p>The default <a href="http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html">storage engine</a> in MySQL (<a href="http://dev.mysql.com/doc/refman/5.0/en/myisam-storage-engine.html">MyISAM</a>) does not support Foreign Key constraints.  If you want to use Foreign Keys in Mysql, you need to use <a href="http://dev.mysql.com/doc/refman/5.0/en/using-innodb-tables.html">InnoDB</a>.</p><br /><p>The following is a simple example that illustrates Foreign Key constraints, we'll create tables to store information about Authors and their Books. The Foreign key will link a book to an Author. Note, that in MySQL we need to use the <a href="http://dev.mysql.com/doc/refman/5.0/en/using-innodb-tables.html">InnoDB</a> storage engine to support <a href="http://dev.mysql.com/doc/refman/5.0/en/innodb-foreign-key-constraints.html">Foreign Key Constraints</a>.</p><br /><p>First, we need to create a simple table for Authors. There are only two columns: a primary key and the author's name</p><pre>CREATE TABLE author (id integer primary key auto_increment, name text) ENGINE=InnoDB;</pre><br /><p>Next, we create a simple table for Books. Again, we need a primary key (id), the title of the book, and the column that will be used as the Foreign Kye (author_id).  The author_id column will be a Foreign Key that references the author table's id column (i.e. it's primary key).</p><br /><pre>CREATE TABLE books (id integer primary key auto_increment, title text, author_id integer NOT NULL) ENGINE=InnoDB;</pre><br /><p>Finally, we alter the books table to add the Foreign Key constraint. Below, the <em>author_id_refs</em> is just a name for the constraint, and this could be anything that we want (as long as it's sensible!)</p><br /><pre>ALTER TABLE `books` ADD CONSTRAINT author_id_refs FOREIGN KEY (`author_id`) REFERENCES `author` (`id`);</pre><br /><p>Another example is available in the MySQL documentation that covers <a href="http://dev.mysql.com/doc/refman/5.0/en/innodb-foreign-key-constraints.html">Foreign Key Constraints</a>.</p><br /><h2>An Example</h2><br /><p>Insert a couple of Authors:</p><br /><pre>insert into author (name) values ('Brad Montgomery');<br />insert into author (name) values ('John Doe');</pre><br /><p>Let's see what's in the author table:</p><br /><pre><br />mysql> select * from author;<br />+----+-----------------+<br />| id | name            |<br />+----+-----------------+<br />|  1 | Brad Montgomery | <br />|  2 | John Doe        | <br />+----+-----------------+<br />2 rows in set (0.00 sec)<br /></pre><br /><p>Lets put some stuff in the Books table. Note that author_id column corresponds to the id column in the author table above.</p><br /><pre>insert into books (title, author_id) values ('Brads book', 1);<br />insert into books (title, author_id) values ('John Does book', 2);</pre><br /><br /><p>Lets see what the books table looks like and what's in it:</p><br /><pre><br />mysql> describe books;<br />+-----------+---------+------+-----+---------+----------------+<br />| Field     | Type    | Null | Key | Default | Extra          |<br />+-----------+---------+------+-----+---------+----------------+<br />| id        | int(11) | NO   | PRI | NULL    | auto_increment | <br />| title     | text    | YES  |     | NULL    |                | <br />| author_id | int(11) | NO   | MUL | NULL    |                | <br />+-----------+---------+------+-----+---------+----------------+<br />3 rows in set (0.00 sec)<br /><br />mysql> select * from books;<br />+----+----------------+-----------+<br />| id | title          | author_id |<br />+----+----------------+-----------+<br />|  1 | Brads book     |         1 | <br />|  2 | John Does book |         2 | <br />+----+----------------+-----------+<br />2 rows in set (0.00 sec)<br /></pre><br /><br /><h2>Try to Delete Something</h2><br /><p>When you try to delete an author, an Error will occur</p><br /><pre>delete from author where id=2;<br />ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails <br />(`brad/books`, CONSTRAINT `author_id_refs` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`))<br /></pre><br /><p>This happens because the data in the books table depends on the data in the author table.  The Default constraint prevents you from deleting these books, without first deleting the author</p><br /><pre><br />mysql> delete from books where author_id=2;<br />Query OK, 1 row affected (0.00 sec)<br /><br />mysql> delete from author where id=2;<br />Query OK, 1 row affected (0.01 sec)</pre><br /><p>When you delete the author's books first, the author no longer has any dependencies.  You can therefore delete the author.</p><div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4123748873183487963-4345063366065028230?l=bradmontgomery.blogspot.com' alt='' /></div>
+The default [storage engine](http://dev.mysql.com/doc/refman/5.0/en/storage-engines.html) in MySQL ([MyISAM](http://dev.mysql.com/doc/refman/5.0/en/myisam-storage-engine.html)) does not support Foreign Key constraints. If you want to use Foreign Keys in Mysql, you need to use [InnoDB](http://dev.mysql.com/doc/refman/5.0/en/using-innodb-tables.html).
+
+  
+The following is a simple example that illustrates Foreign Key constraints, we'll create tables to store information about Authors and their Books. The Foreign key will link a book to an Author. Note, that in MySQL we need to use the [InnoDB](http://dev.mysql.com/doc/refman/5.0/en/using-innodb-tables.html) storage engine to support [Foreign Key Constraints](http://dev.mysql.com/doc/refman/5.0/en/innodb-foreign-key-constraints.html).
+
+  
+First, we need to create a simple table for Authors. There are only two columns: a primary key and the author's name
+
+
+```
+CREATE TABLE author (id integer primary key auto_increment, name text) ENGINE=InnoDB;
+```
+  
+Next, we create a simple table for Books. Again, we need a primary key (id), the title of the book, and the column that will be used as the Foreign Kye (author\_id). The author\_id column will be a Foreign Key that references the author table's id column (i.e. it's primary key).
+
+  
+
+```
+CREATE TABLE books (id integer primary key auto_increment, title text, author_id integer NOT NULL) ENGINE=InnoDB;
+```
+  
+Finally, we alter the books table to add the Foreign Key constraint. Below, the *author\_id\_refs* is just a name for the constraint, and this could be anything that we want (as long as it's sensible!)
+
+  
+
+```
+ALTER TABLE `books` ADD CONSTRAINT author_id_refs FOREIGN KEY (`author_id`) REFERENCES `author` (`id`);
+```
+  
+Another example is available in the MySQL documentation that covers [Foreign Key Constraints](http://dev.mysql.com/doc/refman/5.0/en/innodb-foreign-key-constraints.html).
+
+  
+An Example
+----------
+
+  
+Insert a couple of Authors:
+
+  
+
+```
+insert into author (name) values ('Brad Montgomery');  
+insert into author (name) values ('John Doe');
+```
+  
+Let's see what's in the author table:
+
+  
+
+```
+  
+mysql> select * from author;  
++----+-----------------+  
+| id | name            |  
++----+-----------------+  
+|  1 | Brad Montgomery |   
+|  2 | John Doe        |   
++----+-----------------+  
+2 rows in set (0.00 sec)  
+
+```
+  
+Lets put some stuff in the Books table. Note that author\_id column corresponds to the id column in the author table above.
+
+  
+
+```
+insert into books (title, author_id) values ('Brads book', 1);  
+insert into books (title, author_id) values ('John Does book', 2);
+```
+  
+  
+Lets see what the books table looks like and what's in it:
+
+  
+
+```
+  
+mysql> describe books;  
++-----------+---------+------+-----+---------+----------------+  
+| Field     | Type    | Null | Key | Default | Extra          |  
++-----------+---------+------+-----+---------+----------------+  
+| id        | int(11) | NO   | PRI | NULL    | auto_increment |   
+| title     | text    | YES  |     | NULL    |                |   
+| author_id | int(11) | NO   | MUL | NULL    |                |   
++-----------+---------+------+-----+---------+----------------+  
+3 rows in set (0.00 sec)  
+  
+mysql> select * from books;  
++----+----------------+-----------+  
+| id | title          | author_id |  
++----+----------------+-----------+  
+|  1 | Brads book     |         1 |   
+|  2 | John Does book |         2 |   
++----+----------------+-----------+  
+2 rows in set (0.00 sec)  
+
+```
+  
+  
+Try to Delete Something
+-----------------------
+
+  
+When you try to delete an author, an Error will occur
+
+  
+
+```
+delete from author where id=2;  
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails   
+(`brad/books`, CONSTRAINT `author_id_refs` FOREIGN KEY (`author_id`) REFERENCES `author` (`id`))  
+
+```
+  
+This happens because the data in the books table depends on the data in the author table. The Default constraint prevents you from deleting these books, without first deleting the author
+
+  
+
+```
+  
+mysql> delete from books where author_id=2;  
+Query OK, 1 row affected (0.00 sec)  
+  
+mysql> delete from author where id=2;  
+Query OK, 1 row affected (0.01 sec)
+```
+  
+When you delete the author's books first, the author no longer has any dependencies. You can therefore delete the author.
+
+![](https://blogger.googleusercontent.com/tracker/4123748873183487963-4345063366065028230?l=bradmontgomery.blogspot.com)

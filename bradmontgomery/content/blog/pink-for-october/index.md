@@ -5,12 +5,12 @@ draft: false
 tags:
 - Fun
 slug: pink-for-october
-description: <a href="http://en.w...
-markup: html
+description: ''
+markup: md
 url: /blog/pink-for-october/
 aliases:
 - /blog/2006/10/02/pink-for-october/
 
 ---
 
-<a href="http://en.wikipedia.org/wiki/Breast_cancer"><img src="http://bradmontgomery.net/images/Pink_ribbon.png" alt="Pink Ribbon for Breast Cancer" style="float: left;"/></a> If you visit my site often (or even occasionally), you may have noticed a slight change.  Well, it's sorta <a href="http://pinkforoctober.org/">Pink for October</a>, in honor of <a href="http://nbcam.org/">National Breast Cancer Awareness Month</a>.  Also, my Mom's running in the <a href="http://www.ar-raceforthecure.org/">Little Rock Race for the Cure</a>... Good Luck!<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4123748873183487963-1713250558875272245?l=bradmontgomery.blogspot.com' alt='' /></div>
+[![Pink Ribbon for Breast Cancer](http://bradmontgomery.net/images/Pink_ribbon.png)](http://en.wikipedia.org/wiki/Breast_cancer) If you visit my site often (or even occasionally), you may have noticed a slight change. Well, it's sorta [Pink for October](http://pinkforoctober.org/), in honor of [National Breast Cancer Awareness Month](http://nbcam.org/). Also, my Mom's running in the [Little Rock Race for the Cure](http://www.ar-raceforthecure.org/)... Good Luck!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-1713250558875272245?l=bradmontgomery.blogspot.com)

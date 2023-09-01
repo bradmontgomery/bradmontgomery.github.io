@@ -7,12 +7,151 @@ tags:
 - ajax
 - django
 slug: a-simple-django-example-with-ajax
-description: I often employ Ajax ...
-markup: html
+description: ''
+markup: md
 url: /blog/a-simple-django-example-with-ajax/
 aliases:
 - /blog/2008/11/24/a-simple-django-example-with-ajax/
 
 ---
 
-I often employ Ajax in HTML forms in order to update the list of options in select elements.  For example, suppose a form consists of two select elements, and the options in the second depends on the values selected in the first. A simple example of this might be an Automobile Rental website that lets you choose the type of vehicle as well as the color.  Not all vehicles come in the same color, though, so you might have a form that looks similar to the following:<br /><br /><div class="highlight" ><pre><span style="color: #062873; font-weight: bold">&lt;select</span> <span style="color: #4070a0">name=&quot;auto&quot;</span> <span style="color: #4070a0">id=&quot;auto&quot;</span> <span style="color: #4070a0">onchange=&quot;get_vehicle_colors();&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;option</span> <span style="color: #4070a0">value=&quot;&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span>-- select a vehicle type --<span style="color: #062873; font-weight: bold">&lt;/option&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;option</span> <span style="color: #4070a0">value=&quot;car&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span>Car<span style="color: #062873; font-weight: bold">&lt;/option&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;option</span> <span style="color: #4070a0">value=&quot;truck&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span>Truck<span style="color: #062873; font-weight: bold">&lt;/option&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;option</span> <span style="color: #4070a0">value=&quot;motorcycle&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span>Motorcycle<span style="color: #062873; font-weight: bold">&lt;/option&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;/select&gt;</span><br /><br /><span style="color: #062873; font-weight: bold">&lt;select</span> <span style="color: #4070a0">name=&quot;color&quot;</span> <span style="color: #4070a0">id=&quot;color&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;option</span> <span style="color: #4070a0">value=&quot;&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span>-- choose a vehicle first--<span style="color: #062873; font-weight: bold">&lt;/option&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;/select&gt;</span><br /></pre></div><br />In this example, you would choose the type of automobile you wanted, then employ Ajax to set the appropriate color values for the <em>color</em> element.<br /><br />A Django app that provides this sort of functionality, might have a Model resembling the following (omitting various methods and Meta classes):<br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Color</span>(models<span style="color: #666666">.</span>Model):<br />    color <span style="color: #666666">=</span> models<span style="color: #666666">.</span><span style="color: #007020">CharField</span>(max_length<span style="color: #666666">=</span><span style="color: #40a070">256</span>)<br /><br /><span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Auto</span>(models<span style="color: #666666">.</span>Model):<br />    <span style="color: #007020">type</span> <span style="color: #666666">=</span> models<span style="color: #666666">.</span><span style="color: #007020">CharField</span>(<span style="color: #4070a0">&#39;auto type&#39;</span>, max_length<span style="color: #666666">=</span><span style="color: #40a070">256</span>)<br />    colors <span style="color: #666666">=</span> models<span style="color: #666666">.</span><span style="color: #007020">ManyToManyField</span>(Color) <br /></pre></div><br />Likewise, a form (similar to the one above) could be built with:<br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">django</span> <span style="color: #007020; font-weight: bold">import</span> forms<br /><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">models</span> <span style="color: #007020; font-weight: bold">import</span> Color, Auto<br /><br /><span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">AutoForm</span>(forms<span style="color: #666666">.</span>Form):<br />    TYPE_CHOICES <span style="color: #666666">=</span> [(<span style="color: #4070a0">&#39;&#39;</span>, <span style="color: #4070a0">&#39;-- choose a type --&#39;</span>), ] <span style="color: #666666">+</span> [(t<span style="color: #666666">.</span>type, t<span style="color: #666666">.</span>type) <span style="color: #007020; font-weight: bold">for</span> t <span style="color: #007020; font-weight: bold">in</span> Auto<span style="color: #666666">.</span>objects<span style="color: #666666">.</span>all()]<br />    COLOR_CHOICES <span style="color: #666666">=</span> [(c<span style="color: #666666">.</span>color, c<span style="color: #666666">.</span>color) <span style="color: #007020; font-weight: bold">for</span> c <span style="color: #007020; font-weight: bold">in</span> Color<span style="color: #666666">.</span>objects<span style="color: #666666">.</span>all()]<br />    COLOR_CHOICES<span style="color: #666666">.</span>insert(<span style="color: #40a070">0</span>, (<span style="color: #4070a0">&#39;&#39;</span>, <span style="color: #4070a0">&#39;-- choose a vehicle type first --&#39;</span>))<br />    <br />    <span style="color: #007020">type</span> <span style="color: #666666">=</span> forms<span style="color: #666666">.</span>ChoiceField(choices<span style="color: #666666">=</span>TYPE_CHOICES, widget<span style="color: #666666">=</span>forms<span style="color: #666666">.</span>Select(attrs<span style="color: #666666">=</span>{<span style="color: #4070a0">&#39;onchange&#39;</span>:<span style="color: #4070a0">&#39;get_vehicle_color();&#39;</span>}))<br />    color <span style="color: #666666">=</span> forms<span style="color: #666666">.</span>ChoiceField(choices<span style="color: #666666">=</span>COLOR_CHOICES)<br /></pre></div><br />Notice the use of the <em>widget</em> paramter on the Form's <em>type</em> field.  Django Forms only render the most basic HTML, so in order to set an <em>onchange</em> attribute for a select element, we have to specify that attribute in <em>attrs</em>, which is a dictionary of element attribute name/value pairs. More information about customizing Form widgets can be found in Django's <a href="http://docs.djangoproject.com/en/dev/ref/forms/widgets/#ref-forms-widgets">widget reference</a>.<br /><br />Another thing to note is the COLOR_CHOICES attribute.  A ChoiceField will validate that any user-submitted content is conteint in its provided <em>choices</em>.  So, the COLOR_CHOICES must contain all valid colors for an Auto.  However, we make sure the first choice is a default value that will later get updated by our AJAX request.<br /><br />For the most part, this form would be used as in any other Django app, but since we're adding in a little Ajax, I include my javascript libraries (in this example, <a href="http://prototypejs.org/">Prototype</a>) in the same template as the form.  So, my template code looks something like this:<br /><div class="highlight" ><pre><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">extends</span> <span style="color: #4070a0">&quot;base.html&quot;</span> <span style="color: #007020">%}</span><br /><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">block</span> <span style="color: #bb60d5">head</span> <span style="color: #007020">%}</span><br /><span style="color: #062873; font-weight: bold">&lt;script </span><span style="color: #4070a0">type=&quot;text/javascript&quot;</span> <span style="color: #4070a0">src=&quot;/site_media/prototype.js&quot;</span><span style="color: #062873; font-weight: bold">&gt;&lt;/script&gt;</span><br /><span style="color: #062873; font-weight: bold">&lt;script </span><span style="color: #4070a0">type=&quot;text/javascript&quot;</span> <span style="color: #4070a0">src=&quot;/site_media/my_ajax_function.js&quot;</span><span style="color: #062873; font-weight: bold">&gt;&lt;/script&gt;</span><br /><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endblock</span> <span style="color: #007020">%}</span><br /><br /><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">block</span> <span style="color: #bb60d5">content</span> <span style="color: #007020">%}</span><br />    <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">if</span> <span style="color: #bb60d5">form_was_valid</span> <span style="color: #007020">%}</span><br />        {# ... show whatever... #}<br />    <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020">%}</span><br />        <span style="color: #062873; font-weight: bold">&lt;form</span> <span style="color: #4070a0">action=&quot;/auto/reserve/&quot;</span> <span style="color: #4070a0">method=&quot;POST&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span><br />        <span style="color: #062873; font-weight: bold">&lt;ul&gt;</span><br />        <span style="color: #007020">{{</span> <span style="color: #bb60d5">form.as_ul</span><span style="color: #007020">}}</span><br />        <span style="color: #062873; font-weight: bold">&lt;li&gt;&lt;label</span> <span style="color: #4070a0">for=&quot;submit&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span><span style="color: #d55537; font-weight: bold">&amp;nbsp;</span><span style="color: #062873; font-weight: bold">&lt;/label&gt;</span><br />        <span style="color: #062873; font-weight: bold">&lt;input</span> <span style="color: #4070a0">type=&quot;submit&quot;</span> <span style="color: #4070a0">id=&quot;submit&quot;</span> <span style="color: #4070a0">name=&quot;submit&quot;</span> <span style="color: #4070a0">value=&quot;Submit&quot;</span><span style="color: #062873; font-weight: bold">/&gt;&lt;/li&gt;</span><br />        <span style="color: #062873; font-weight: bold">&lt;/ul&gt;</span><br />        <span style="color: #062873; font-weight: bold">&lt;/form&gt;</span><br />    <span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endif</span> <span style="color: #007020">%}</span><br /><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endblock</span> <span style="color: #007020">%}</span><br /></pre></div><br />There are two items of note, here.  The first is that this template builds on top of a <em>base.html</em> template which contains my sites layout and definitions for blocks.  The second, is that one of those blocks--head--is inside my page's head element so that I can reference arbitrary javascript files (or CSS if I needed to) in only the templates that need them. It may be a minor note, but including your javascript libraries ONLY when you need them might save you some load-time and bandwidth.<br /><br />Now, what does the stuff in the <em>my_ajax_function.js</em> look like?  When a Django form gets rendered, every form element automatically gets an <em>id</em> attribute whose value is the name of the field, prefixed by "id_".  So, our type and color Select widgets would have attributes id="id_type" and id="id_color", respectively.<br /><br />So what is it that our Javascript needs to do?<ol><li>When an auto type is selected (determined by the <em>onchange</em> event, grab the value of that type (<em>$('id_type').getValue()</em>)</li><li>Construct the XMLHttpRequest with the appropriate POST data (the type of Auto chosen--accomplished using the $H shortcut to create a <a href="http://prototypejs.org/api/hash">Hash</a>)</li><li>Send that back to the webserver (at the appropriate URL, which we've set as <em>/auto/ajax_color_request/</em>)</li><li>Listen for a response from the server, </li><li>And if that response contains any text (hopefully a list of available colors), update the select element with that text</li></ol><br /><br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">function</span> get_vehicle_color(){<br />    <span style="color: #007020; font-weight: bold">new</span> <span style="color: #666666">A</span>jax.<span style="color: #666666">R</span>equest(<span style="color: #4070a0">&#39;/auto/ajax_color_request/&#39;</span><span style="color: #666666">,</span> { <br />    method<span style="color: #666666">:</span> <span style="color: #4070a0">&#39;post&#39;</span><span style="color: #666666">,</span><br />    parameters<span style="color: #666666">:</span> $H({<span style="color: #4070a0">&#39;type&#39;</span><span style="color: #666666">:</span>$(<span style="color: #4070a0">&#39;id_type&#39;</span>).getValue()})<span style="color: #666666">,</span><br />    onSuccess<span style="color: #666666">:</span> <span style="color: #007020; font-weight: bold">function</span>(transport) {<br />        <span style="color: #007020; font-weight: bold">var</span> e <span style="color: #666666">=</span> $(<span style="color: #4070a0">&#39;id_color&#39;</span>)<br />        <span style="color: #007020; font-weight: bold">if</span>(transport.responseText)<br />            e.update(transport.responseText)<br />    }<br />    }); <span style="color: #60a0b0; font-style: italic">// end new Ajax.Request</span><br /><span style="color: #60a0b0; font-style: italic"></span>}<br /></pre></div><br />So now we've got a model and a form (outfitted with some nifty Ajax code, no less), how would we set up a view and a URLconf?  Well, the URLconf works the same as in any other app, so we just have to set an entry that maps to the view that handles the Ajax request.  If the name of this app is <em>auto</em>, and it lives in a project called <em>mysite</em>, our URLconf might look like the following:<br /><div class="highlight" ><pre>urlpatterns <span style="color: #666666">=</span> patterns(<span style="color: #4070a0">&#39;mysite.auto.views&#39;</span>,<br />    (<span style="color: #4070a0">r&#39;^ajax_color_request/$&#39;</span>, <span style="color: #4070a0">&#39;ajax_color_request&#39;</span>),<br />    <span style="color: #60a0b0; font-style: italic"># ... everything else...</span><br />)<br /></pre></div><br />And it would map our URL (www.example.com/auto/ajax_color_request/) to a view named <em>ajax_color_request</em>.<br /><br />Now for the view. Since our Ajax request is sending its data via post, we can pull it from request.POST (which is a dictionary-like object), and then retrieve all the colors associated with a particular type of Auto.<br /><br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">ajax_color_request</span>(request):<br />    <span style="color: #60a0b0; font-style: italic"># Expect an auto &#39;type&#39; to be passed in via Ajax and POST</span><br />    <span style="color: #007020; font-weight: bold">if</span> request<span style="color: #666666">.</span>is_ajax() <span style="color: #007020; font-weight: bold">and</span> request<span style="color: #666666">.</span>method <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;POST</span><br />        auto_type <span style="color: #666666">=</span> Auto<span style="color: #666666">.</span>objects<span style="color: #666666">.</span>filter(<span style="color: #007020">type</span><span style="color: #666666">=</span>request<span style="color: #666666">.</span>POST<span style="color: #666666">.</span>get(<span style="color: #4070a0">&#39;type&#39;</span>, <span style="color: #4070a0">&#39;&#39;</span>))<br />        colors <span style="color: #666666">=</span> auto_type<span style="color: #666666">.</span>colors<span style="color: #666666">.</span>all() <span style="color: #60a0b0; font-style: italic"># get all the colors for this type of auto.</span><br />    <span style="color: #007020; font-weight: bold">return</span> render_to_response(<span style="color: #4070a0">&#39;auto/ajax_color_request.html&#39;</span>, <span style="color: #007020">locals</span>())<br /></pre></div><br />Now, all we have to do is send that data back to the client as a snippet of HTML which will get written to the appropriate select element. I've chosen to do this in a very simple template:<br /><div class="highlight" ><pre><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">for</span> <span style="color: #bb60d5">c</span> <span style="color: #007020; font-weight: bold">in</span> <span style="color: #bb60d5">colors</span> <span style="color: #007020">%}</span><br />    <span style="color: #062873; font-weight: bold">&lt;option</span> <span style="color: #4070a0">value=&quot;</span><span style="color: #007020">{{</span> <span style="color: #bb60d5">c.color</span> <span style="color: #007020">}}</span><span style="color: #4070a0">&quot;</span><span style="color: #062873; font-weight: bold">&gt;</span><span style="color: #007020">{{</span> <span style="color: #bb60d5">c.color</span><span style="color: #666666">|</span><span style="color: #06287e">title</span> <span style="color: #007020">}}</span><span style="color: #062873; font-weight: bold">&lt;/option&gt;</span><br /><span style="color: #007020">{%</span> <span style="color: #007020; font-weight: bold">endfor</span> <span style="color: #007020">%}</span><br /></pre></div><br /><br />And there you have it.  A simple bit of Ajax in a Django app.<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4123748873183487963-641240897788708420?l=bradmontgomery.blogspot.com' alt='' /></div>
+I often employ Ajax in HTML forms in order to update the list of options in select elements. For example, suppose a form consists of two select elements, and the options in the second depends on the values selected in the first. A simple example of this might be an Automobile Rental website that lets you choose the type of vehicle as well as the color. Not all vehicles come in the same color, though, so you might have a form that looks similar to the following:  
+  
+
+```
+<select name="auto" id="auto" onchange="get\_vehicle\_colors();">  
+<option value="">-- select a vehicle type --</option>  
+<option value="car">Car</option>  
+<option value="truck">Truck</option>  
+<option value="motorcycle">Motorcycle</option>  
+</select>  
+  
+<select name="color" id="color">  
+<option value="">-- choose a vehicle first--</option>  
+</select>  
+
+```
+  
+In this example, you would choose the type of automobile you wanted, then employ Ajax to set the appropriate color values for the *color* element.  
+  
+A Django app that provides this sort of functionality, might have a Model resembling the following (omitting various methods and Meta classes):  
+
+```
+class Color(models.Model):  
+    color = models.CharField(max_length=256)  
+  
+class Auto(models.Model):  
+    type = models.CharField('auto type', max_length=256)  
+    colors = models.ManyToManyField(Color)   
+
+```
+  
+Likewise, a form (similar to the one above) could be built with:  
+
+```
+from django import forms  
+from models import Color, Auto  
+  
+class AutoForm(forms.Form):  
+    TYPE_CHOICES = [('', '-- choose a type --'), ] + [(t.type, t.type) for t in Auto.objects.all()]  
+    COLOR_CHOICES = [(c.color, c.color) for c in Color.objects.all()]  
+    COLOR_CHOICES.insert(0, ('', '-- choose a vehicle type first --'))  
+      
+    type = forms.ChoiceField(choices=TYPE_CHOICES, widget=forms.Select(attrs={'onchange':'get\_vehicle\_color();'}))  
+    color = forms.ChoiceField(choices=COLOR_CHOICES)  
+
+```
+  
+Notice the use of the *widget* paramter on the Form's *type* field. Django Forms only render the most basic HTML, so in order to set an *onchange* attribute for a select element, we have to specify that attribute in *attrs*, which is a dictionary of element attribute name/value pairs. More information about customizing Form widgets can be found in Django's [widget reference](http://docs.djangoproject.com/en/dev/ref/forms/widgets/#ref-forms-widgets).  
+  
+Another thing to note is the COLOR\_CHOICES attribute. A ChoiceField will validate that any user-submitted content is conteint in its provided *choices*. So, the COLOR\_CHOICES must contain all valid colors for an Auto. However, we make sure the first choice is a default value that will later get updated by our AJAX request.  
+  
+For the most part, this form would be used as in any other Django app, but since we're adding in a little Ajax, I include my javascript libraries (in this example, [Prototype](http://prototypejs.org/)) in the same template as the form. So, my template code looks something like this:  
+
+```
+{% extends "base.html" %}  
+{% block head %}  
+<script type="text/javascript" src="/site\_media/prototype.js"></script>  
+<script type="text/javascript" src="/site\_media/my\_ajax\_function.js"></script>  
+{% endblock %}  
+  
+{% block content %}  
+    {% if form\_was\_valid %}  
+        {# ... show whatever... #}  
+    {% else %}  
+        <form action="/auto/reserve/" method="POST">  
+        <ul>  
+        {{ form.as\_ul}}  
+        <li><label for="submit">&nbsp;</label>  
+        <input type="submit" id="submit" name="submit" value="Submit"/></li>  
+        </ul>  
+        </form>  
+    {% endif %}  
+{% endblock %}  
+
+```
+  
+There are two items of note, here. The first is that this template builds on top of a *base.html* template which contains my sites layout and definitions for blocks. The second, is that one of those blocks--head--is inside my page's head element so that I can reference arbitrary javascript files (or CSS if I needed to) in only the templates that need them. It may be a minor note, but including your javascript libraries ONLY when you need them might save you some load-time and bandwidth.  
+  
+Now, what does the stuff in the *my\_ajax\_function.js* look like? When a Django form gets rendered, every form element automatically gets an *id* attribute whose value is the name of the field, prefixed by "id\_". So, our type and color Select widgets would have attributes id="id\_type" and id="id\_color", respectively.  
+  
+So what is it that our Javascript needs to do?1. When an auto type is selected (determined by the *onchange* event, grab the value of that type (*$('id\_type').getValue()*)
+2. Construct the XMLHttpRequest with the appropriate POST data (the type of Auto chosen--accomplished using the $H shortcut to create a [Hash](http://prototypejs.org/api/hash))
+3. Send that back to the webserver (at the appropriate URL, which we've set as */auto/ajax\_color\_request/*)
+4. Listen for a response from the server,
+5. And if that response contains any text (hopefully a list of available colors), update the select element with that text
+
+  
+  
+
+```
+function get_vehicle_color(){  
+    new Ajax.Request('/auto/ajax\_color\_request/', {   
+    method: 'post',  
+    parameters: $H({'type':$('id\_type').getValue()}),  
+    onSuccess: function(transport) {  
+        var e = $('id\_color')  
+        if(transport.responseText)  
+            e.update(transport.responseText)  
+    }  
+    }); // end new Ajax.Request  
+}  
+
+```
+  
+So now we've got a model and a form (outfitted with some nifty Ajax code, no less), how would we set up a view and a URLconf? Well, the URLconf works the same as in any other app, so we just have to set an entry that maps to the view that handles the Ajax request. If the name of this app is *auto*, and it lives in a project called *mysite*, our URLconf might look like the following:  
+
+```
+urlpatterns = patterns('mysite.auto.views',  
+    (r'^ajax\_color\_request/$', 'ajax\_color\_request'),  
+    # ... everything else...  
+)  
+
+```
+  
+And it would map our URL (www.example.com/auto/ajax\_color\_request/) to a view named *ajax\_color\_request*.  
+  
+Now for the view. Since our Ajax request is sending its data via post, we can pull it from request.POST (which is a dictionary-like object), and then retrieve all the colors associated with a particular type of Auto.  
+  
+
+```
+def ajax\_color\_request(request):  
+    # Expect an auto 'type' to be passed in via Ajax and POST  
+    if request.is_ajax() and request.method == 'POST  
+        auto_type = Auto.objects.filter(type=request.POST.get('type', ''))  
+        colors = auto_type.colors.all() # get all the colors for this type of auto.  
+    return render_to_response('auto/ajax\_color\_request.html', locals())  
+
+```
+  
+Now, all we have to do is send that data back to the client as a snippet of HTML which will get written to the appropriate select element. I've chosen to do this in a very simple template:  
+
+```
+{% for c in colors %}  
+    <option value="{{ c.color }}">{{ c.color|title }}</option>  
+{% endfor %}  
+
+```
+  
+  
+And there you have it. A simple bit of Ajax in a Django app.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-641240897788708420?l=bradmontgomery.blogspot.com)

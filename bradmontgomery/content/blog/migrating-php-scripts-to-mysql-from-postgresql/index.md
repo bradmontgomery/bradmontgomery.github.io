@@ -8,16 +8,20 @@ tags:
 - php
 - postgresql
 slug: migrating-php-scripts-to-mysql-from-postgresql
-description: <p>I've recently had...
-markup: html
+description: ''
+markup: md
 url: /blog/migrating-php-scripts-to-mysql-from-postgresql/
 aliases:
 - /blog/2007/01/05/migrating-php-scripts-to-mysql-from-postgresql/
 
 ---
 
-<p>I've recently had to work on a project where I needed toconvert some very basic <a href="http://php.net" _mce_href="http://php.net">PHP</a> code thataccessed a <a href="http://www.postgresql.org/" _mce_href="http://www.postgresql.org/">postgresql</a>database so that it would work with <a href="http://mysql.com/" _mce_href="http://mysql.com/">mysql</a>. For the most part, this has beenfairly simple thanks to <a href="http://freshmeat.net/projects/rpl/" _mce_href="http://freshmeat.net/projects/rpl/">rpl</a>. Many of PHP'sdatabase functions have very similar names, so I simply use rpl toconvert the existing code. Here's a simple bashscript that I put together to convert some of my postgresqlfunctions to mysql:</p>
-<pre class="bash"><code>
+I've recently had to work on a project where I needed toconvert some very basic [PHP](http://php.net) code thataccessed a [postgresql](http://www.postgresql.org/)database so that it would work with [mysql](http://mysql.com/). For the most part, this has beenfairly simple thanks to [rpl](http://freshmeat.net/projects/rpl/). Many of PHP'sdatabase functions have very similar names, so I simply use rpl toconvert the existing code. Here's a simple bashscript that I put together to convert some of my postgresqlfunctions to mysql:
+
+
+
+```
+
 #!/bin/bash
 if [ ! -n "$1" ]
 then
@@ -38,42 +42,24 @@ rpl -R -x'.php' 'pg_close' 'mysq_close' $X
 rpl -R -x'.php' 'pg_num_rows' 'mysq_num_rows' $X
 rpl -R -x'.php' 'pg_numrows' 'mysq_num_rows' $X
 rpl -R -x'.php' 'pg_last_error' 'mysql_error' $X
-</code></pre>
-<p>Just in case your curious about converting from postgresql or
+
+```
+
+Just in case your curious about converting from postgresql or
 mysql to sqlite, I've compiled the following table 
-of analogous functions from <a href="http://php.net" _mce_href="http://php.net">php.net</a>:</p><table class="mceItemTable">
-<thead>
-<tr><th>PostgreSQL</th><th>MySQL</th><th>SQLite</th></tr>
-</thead>
-<tbody>
-<tr>
-<td>pg_connect</td>
-<td>mysql_connect</td>
-<td>sqlite_open // open or create database</td>
-</tr>
-<tr>
-<td>pg_query</td>
-<td>mysql_query</td>
-<td>sqlite_query</td>
-</tr>
-<tr>
-<td>pg_fetch_row</td>
-<td>mysql_fetch_row</td>
-<td rowspan="2">sqlite_fetch_array (ordinal and associative)</td>
-</tr>
-<tr>
-<td>pg_fetch_assoc</td>
-<td>mysql_fetch_assoc</td>
-</tr>
-<tr>
-<td>pg_close</td>
-<td>mysql_close</td>
-<td>sqlite_close</td>
-</tr>
-<tr>
-<td>pg_num_rows or pg_numrows</td>
-<td>mysql_num_rows</td>
-<td>sqlite_num_rows</td>
-</tr>
-</tbody>
-</table><p><br mce_bogus="1"></p>
+of analogous functions from [php.net](http://php.net):
+
+
+
+| PostgreSQL | MySQL | SQLite |
+| --- | --- | --- |
+| pg\_connect | mysql\_connect | sqlite\_open // open or create database |
+| pg\_query | mysql\_query | sqlite\_query |
+| pg\_fetch\_row | mysql\_fetch\_row | sqlite\_fetch\_array (ordinal and associative) |
+| pg\_fetch\_assoc | mysql\_fetch\_assoc |
+| pg\_close | mysql\_close | sqlite\_close |
+| pg\_num\_rows or pg\_numrows | mysql\_num\_rows | sqlite\_num\_rows |
+
+  
+
+

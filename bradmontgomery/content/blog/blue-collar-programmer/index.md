@@ -9,7 +9,7 @@ tags:
 - technology
 - wired
 slug: blue-collar-programmer
-description: There's a recent [Wi...
+description: ''
 markup: md
 url: /blog/blue-collar-programmer/
 aliases:
@@ -51,17 +51,17 @@ and couplings. Imagine having to buy a new set of tools every single time you
 went to work on a different building. Imagine needing to be able to connect your
 electrical grid to your plubming infrastructure (in a sense, I think this
 already happening, but hang on, I'm trying to be facetious here). What do you
-do when your client says, **"we don't have electricity on the south side of the
+do when your client says, \*\*"we don't have electricity on the south side of the
 building, but I know water conducts electricity, so just connect the water main
-to the power grid, then install an outlet in every faucet"**?
+to the power grid, then install an outlet in every faucet"\*\*?
 
 As a programmer, at some point in your career, you're going to get this request.
 In the tech industry, we already have a niche whose focus is to make the square
-peg fit in the round hole. It's called [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load).
+peg fit in the round hole. It's called [ETL](https://en.wikipedia.org/wiki/Extract,\_transform,\_load).
 
-So what's the point of my blog post here... In our effort to find _the next big
-job for everyone in the US_, let's not diminish the amount of time and effort
-that it takes to become a programmer. It *is* a skill, and it's one that most
+So what's the point of my blog post here... In our effort to find \_the next big
+job for everyone in the US\_, let's not diminish the amount of time and effort
+that it takes to become a programmer. It \*is\* a skill, and it's one that most
 people could learn. But it's also incredibly challenging and frustrating at the
 same time. And much like a plumber or electrician, being clever, creative, and
 having the ability to think through a project from beginng-to-end is going to

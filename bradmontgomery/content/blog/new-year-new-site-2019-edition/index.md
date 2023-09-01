@@ -8,7 +8,7 @@ tags:
 - meta
 - opensource
 slug: new-year-new-site-2019-edition
-description: So, it's a new year ...
+description: ''
 markup: md
 url: /blog/new-year-new-site-2019-edition/
 aliases:

@@ -10,16 +10,17 @@ tags:
 - tutorial
 - zip
 slug: webucator-zip-map-and-lambda
-description: <p>Recently, the fol...
-markup: html
+description: ''
+markup: md
 url: /blog/webucator-zip-map-and-lambda/
 aliases:
 - /blog/2015/08/30/webucator-zip-map-and-lambda/
 
 ---
 
-<p>Recently, the folks from Webucator, who have a <a href="https://www.webucator.com/programming/python.cfm">series of python tutorials</a> got in touch with me about one of my blog posts: <a href="https://bradmontgomery.net/blog/pythons-zip-map-and-lambda/">Python's zip, map, and lambda</a>. They wanted to turn that article into a tutorial video.</p>
+Recently, the folks from Webucator, who have a [series of python tutorials](https://www.webucator.com/programming/python.cfm) got in touch with me about one of my blog posts: [Python's zip, map, and lambda](https://bradmontgomery.net/blog/pythons-zip-map-and-lambda/). They wanted to turn that article into a tutorial video.
 
-<iframe width="640" height="360" src="https://www.youtube.com/embed/4yeFn8T3sTg" frameborder="0" allowfullscreen></iframe>
 
-<p>I thought that sounded like a pretty cool idea, so if you're into video tutorials, give this a view. And check out some of their other tutorials as well.</p>
+
+I thought that sounded like a pretty cool idea, so if you're into video tutorials, give this a view. And check out some of their other tutorials as well.
+

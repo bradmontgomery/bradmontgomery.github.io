@@ -7,7 +7,7 @@ tags:
 - chatgpt
 - fun
 slug: chatgpt-choosing-javascript-framework
-description: '**Prompt**: Explain ...'
+description: ''
 markup: md
 url: /blog/chatgpt-choosing-javascript-framework/
 aliases:
@@ -15,7 +15,7 @@ aliases:
 
 ---
 
-**Prompt**: Explain how to select a javascript framework in the style of edgar allen poe
+\*\*Prompt\*\*: Explain how to select a javascript framework in the style of edgar allen poe
 
 ----
 

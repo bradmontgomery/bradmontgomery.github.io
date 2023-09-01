@@ -8,70 +8,87 @@ tags:
 - postgresql
 - python
 slug: nice-arrayfield-widgets-choices-and-chosenjs
-description: <p>One of the really...
-markup: html
+description: ''
+markup: md
 url: /blog/nice-arrayfield-widgets-choices-and-chosenjs/
 aliases:
 - /blog/2015/04/25/nice-arrayfield-widgets-choices-and-chosenjs/
 
 ---
 
-<p>One of the really cool new features in Django 1.8 is the <a href="https://docs.djangoproject.com/en/1.8/releases/1.8/#new-postgresql-specific-functionality">support for Postgres-specific fields</a>. I'm very excited to be able to use
-things like PostgreSQL arrays or hstore without 3rd-party add-ons.</p>
+One of the really cool new features in Django 1.8 is the [support for Postgres-specific fields](https://docs.djangoproject.com/en/1.8/releases/1.8/#new-postgresql-specific-functionality). I'm very excited to be able to use
+things like PostgreSQL arrays or hstore without 3rd-party add-ons.
 
-<p>Unfortnately, the default form inputs for <code>ArrayField</code>s are less
-than stellar. So, in this post I want to explore a few things:</p>
 
-<ul>
-<li>a Model who's <code>ArrayField</code> only accepts items from a
-set of predefined choices</li>
-<li>a ModelForm that makes use of <a href="http://harvesthq.github.io/chosen/">chosen.js</a> (which I still really like!)</li>
-</ul>
+Unfortnately, the default form inputs for `ArrayField`s are less
+than stellar. So, in this post I want to explore a few things:
 
-<p>Let's start with a simple model: the quintessential <code>Post</code>. This
+
+* a Model who's `ArrayField` only accepts items from a
+set of predefined choices
+* a ModelForm that makes use of [chosen.js](http://harvesthq.github.io/chosen/) (which I still really like!)
+
+
+Let's start with a simple model: the quintessential `Post`. This
 time, however, it also accepts a set of labels (or tags). Let's start with the
-set of acceptable labels (this example is short):</p>
+set of acceptable labels (this example is short):
 
-<pre><code class="python">LABEL_CHOICES = (
+
+
+```
+LABEL_CHOICES = (
     ('django', 'Django'),
     ('python', 'Python'),
-)</code></pre>
+)
+```
 
-<p>And now our model. Note that the <code>ArrayField</code>'s first argument is
-a <code>CharField</code> (that's the <a href="https://docs.djangoproject.com/en/1.8/ref/contrib/postgres/fields/#arrayfield">base_field</a>), and that is where
-we define the choices that are allowed as input.</p>
+And now our model. Note that the `ArrayField`'s first argument is
+a `CharField` (that's the [base\_field](https://docs.djangoproject.com/en/1.8/ref/contrib/postgres/fields/#arrayfield)), and that is where
+we define the choices that are allowed as input.
 
-<pre><code class="python">class Post(models.Model):
+
+
+```
+class Post(models.Model):
     title = models.CharField(max_length=128)
     content = models.TextField()
     labels = ArrayField(
         models.CharField(max_length=32, blank=True, choices=LABEL_CHOICES),
         default=list,
         blank=True,
-    )</code></pre>
+    )
+```
 
-<p>Note that labels are optional, and that the default is an empty list (or no
-labels). Now, we'd typically define a <code>ModelForm</code> as follows:</p>
+Note that labels are optional, and that the default is an empty list (or no
+labels). Now, we'd typically define a `ModelForm` as follows:
 
-<pre><code class="python">class PostForm(forms.ModelForm):
+
+
+```
+class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content', 'labels']</code></pre>
+        fields = ['title', 'content', 'labels']
+```
 
-<p>While this <em>will</em> work, there are a couple of fairly significant
-problems with it:</p>
+While this *will* work, there are a couple of fairly significant
+problems with it:
 
-<ol>
-<li>By default, the <code>labels</code> field gets rendered as a simple text input, e.g. <code>&lt;input id="id_labels" name="labels" type="text"&gt;</code>.</li>
-<li>You don't get any sort of selection for the choices, and...</li>
-<li>You must enter choices as a comma-separated string (with NO spaces!); if you get one wrong, the form validators will throw an Exception.</li>
-</ol>
 
-<p>So, while it technically works, it's really not very friendly at all. Let's make it better.</p>
+1. By default, the `labels` field gets rendered as a simple text input, e.g. `<input id="id_labels" name="labels" type="text">`.
+2. You don't get any sort of selection for the choices, and...
+3. You must enter choices as a comma-separated string (with NO spaces!); if you get one wrong, the form validators will throw an Exception.
 
-<p>First, django's <code>ModelForm</code> gives us a nice hook for specifying a widget for any fields via a <code>widgets</code> attribute within the form's inner Meta class. We'll use this technique to customize our form's output, but first let's build a custom Widget.</p>
 
-<pre><code class="python">class ArrayFieldSelectMultiple(forms.SelectMultiple):
+So, while it technically works, it's really not very friendly at all. Let's make it better.
+
+
+First, django's `ModelForm` gives us a nice hook for specifying a widget for any fields via a `widgets` attribute within the form's inner Meta class. We'll use this technique to customize our form's output, but first let's build a custom Widget.
+
+
+
+```
+class ArrayFieldSelectMultiple(forms.SelectMultiple):
     """This is a Form Widget for use with a Postgres ArrayField. It implements
     a multi-select interface that can be given a set of `choices`.
 
@@ -96,30 +113,37 @@ problems with it:</p>
             # SelectMultiple superclass, but the SimpleArrayField expects to
             # get a delimited string, so we're doing a little extra work.
             return self.delimiter.join(data.getlist(name))
-        return data.get(name, None)</code></pre>
+        return data.get(name, None)
+```
+
+This widget implements a `<select type="multiple">` widget
+for our labels, and it's options will consist of the items from our `LABEL_CHOICES`. Pay attention to the comments in the widget, because there are a
+few gotchas in there.
 
 
-<p>This widget implements a <code>&lt;select type="multiple"&gt;</code> widget
-for our labels, and it's options will consist of the items from our <code>LABEL_CHOICES</code>. Pay attention to the comments in the widget, because there are a
-few gotchas in there.</p>
+Now, to incorporate this widget into our `PostForm`. Note that we
+also specify a css class of "chosen" using the `attrs` keyword argument. In addition, we specify an inner `Media` class, so our form knows
+how to load the javascript and css assets for chosen.js (and jquery).
 
 
-<p>Now, to incorporate this widget into our <code>PostForm</code>. Note that we
-also specify a css class of "chosen" using the <code>attrs</code> keyword argument. In addition, we specify an inner <code>Media</code> class, so our form knows
-how to load the javascript and css assets for chosen.js (and jquery).</p>
+This assumes you've got jquery and chosen installed as part of your project's
+static files. I typically have them organized in a similar fashion:
 
-<p>This assumes you've got jquery and chosen installed as part of your project's
-static files. I typically have them organized in a similar fashion:</p>
 
-<pre>static/
+
+```
+static/
     js/
         jquery.min.js
     chosen/
         chosen.min.css
         chosen.jquery.min.js
-        ...</pre>
+        ...
+```
 
-<pre><code class="python">class PostForm(forms.ModelForm):
+
+```
+class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'content', 'labels']
@@ -132,18 +156,26 @@ static files. I typically have them organized in a similar fashion:</p>
         css = {
             "all": ("chosen/chosen.min.css", )
         }
-        js = ("js/jquery.min.js", "chosen/chosen.jquery.min.js")</code></pre>
+        js = ("js/jquery.min.js", "chosen/chosen.jquery.min.js")
+```
 
-<p>And that's it! When this form is rendered, the <code>labels</code> widget
-will look something like: </p>
+And that's it! When this form is rendered, the `labels` widget
+will look something like: 
 
-<pre><code class="html">&lt;select multiple="multiple" class="chosen" id="id_labels" name="labels"&gt;
-&lt;option value="django"&gt;Django&lt;/option&gt;
-&lt;option value="python"&gt;Python&lt;/option&gt;
-&lt;/select&gt;</code></pre>
 
-<p>Just don't forget to render the form's media in your template with, <code>{{ form.media }}</code>.
 
-<p>If you've got jquery &amp; chosen.js installed correctly, you should get a
+```
+<select multiple="multiple" class="chosen" id="id_labels" name="labels">
+<option value="django">Django</option>
+<option value="python">Python</option>
+</select>
+```
+
+Just don't forget to render the form's media in your template with, `{{ form.media }}`.
+
+If you've got jquery & chosen.js installed correctly, you should get a
 multi-select widget with pre-defined options that's very usable, with results
-stored in a PostgreSQL array field.</p>
+stored in a PostgreSQL array field.
+
+
+

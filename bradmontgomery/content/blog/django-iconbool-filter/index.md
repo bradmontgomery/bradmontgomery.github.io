@@ -7,52 +7,66 @@ tags:
 - filter
 - python
 slug: django-iconbool-filter
-description: <p>Django's template...
-markup: html
+description: ''
+markup: md
 url: /blog/django-iconbool-filter/
 aliases:
 - /blog/2015/08/26/django-iconbool-filter/
 
 ---
 
-<p>Django's template laguage includes a lot of really useful
-<a href="https://docs.djangoproject.com/en/1.8/ref/templates/builtins/">
-built-in tags and filters</a>, but sometimes you just need to
-<a href="https://docs.djangoproject.com/en/1.8/howto/custom-template-tags/">
-build your own</a>. There are many reasons why you might want to do this, but
+Django's template laguage includes a lot of really useful
+[built-in tags and filters](https://docs.djangoproject.com/en/1.8/ref/templates/builtins/), but sometimes you just need to
+[build your own](https://docs.djangoproject.com/en/1.8/howto/custom-template-tags/). There are many reasons why you might want to do this, but
 I'm lazy, and I like to build filters and tags that let me take shortcuts
-in the template.</p>
-
-<p>Here's one example of a simple filter that let's me be lazy: an <em>iconbool</em> filter.</p>
-
-<h2>Motivation</h2>
-
-<p>I really like <a href="https://fortawesome.github.io/Font-Awesome/icons/">Font-Awesome</a>, and any time I need to represent a boolean value, I like to use an icon. Here's one such example:</p>
+in the template.
 
 
-<pre><code class="html">User has Widget?
+Here's one example of a simple filter that let's me be lazy: an *iconbool* filter.
+
+
+Motivation
+----------
+
+
+I really like [Font-Awesome](https://fortawesome.github.io/Font-Awesome/icons/), and any time I need to represent a boolean value, I like to use an icon. Here's one such example:
+
+
+
+```
+User has Widget?
 {% if user.has_widget %}
-  &lt;i class="fa fa-check"&gt;&lt;/i&gt; Yes
+  <i class="fa fa-check"></i> Yes
 {% else %}
-  &lt;i class="fa fa-ban"&gt;&lt;/i&gt; No
-{% endif %}</code></pre>
+  <i class="fa fa-ban"></i> No
+{% endif %}
+```
 
-<p>Now, that's not a lot of code, but if you're doing a lot of this type of
+Now, that's not a lot of code, but if you're doing a lot of this type of
 markup, it can get tedious really quick (imagine building a grid of this kind of
-content)!</p>
+content)!
 
 
-<p>Wouldn't it be so much nicer to write this, instead? (Yes, it would!)</p>
-<pre><code class="html">User has Widget? {{ user.has_widget|iconbool }}</code></pre>
-
-<h2>Build your custom filter</h2>
-
-<p>We can accomplish the above with a simple, custom django filter. Let's call it
-<code>iconbool</code>. It's going to be a simple function that returns a very
-simple string of markup based on some input.</p>
+Wouldn't it be so much nicer to write this, instead? (Yes, it would!)
 
 
-<pre><code class="python">from django import template
+
+```
+User has Widget? {{ user.has_widget|iconbool }}
+```
+
+Build your custom filter
+------------------------
+
+
+We can accomplish the above with a simple, custom django filter. Let's call it
+`iconbool`. It's going to be a simple function that returns a very
+simple string of markup based on some input.
+
+
+
+```
+from django import template
 from django.utils.safestring import mark_safe
 
 register = template.Library()
@@ -69,15 +83,17 @@ def iconbool(value):
 
     """
     if bool(value):
-        result = '&lt;i class="fa fa-check"&gt;&lt;/i&gt; Yes'
+        result = '<i class="fa fa-check"></i> Yes'
     else:
-        result = '&lt;i class="fa fa-ban"&gt;&lt;/i&gt; No'
-    return mark_safe(result)</code></pre>
+        result = '<i class="fa fa-ban"></i> No'
+    return mark_safe(result)
+```
+
+That's it! Put this in your app's `templatetags` directory
+(for example: `myapp/templatetags/myapp_filters.py`), and remember to
+load the template library in your templates (e.g. `{% load myapp_filters %}`).
 
 
-<p>That's it! Put this in your app's <code>templatetags</code> directory
-(for example: <code>myapp/templatetags/myapp_filters.py</code>), and remember to
-load the template library in your templates (e.g. <code>{% load myapp_filters %}</code>).</p>
+And remember, being lazy is good! Don't forget that django template filters
+can save you lots of work.
 
-<p>And remember, being lazy is good! Don't forget that django template filters
-can save you lots of work.</p>

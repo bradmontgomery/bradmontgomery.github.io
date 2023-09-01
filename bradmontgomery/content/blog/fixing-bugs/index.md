@@ -6,12 +6,13 @@ tags:
 - fun
 - programming
 slug: fixing-bugs
-description: <p><img src="http://...
-markup: html
+description: ''
+markup: md
 url: /blog/fixing-bugs/
 aliases:
 - /blog/2012/09/25/fixing-bugs/
 
 ---
 
-<p><img src="http://www.foib.us/im/fixing-bugs.png" _mce_src="http://www.foib.us/im/fixing-bugs.png" alt="every. single. time."></p>
+![every. single. time.](http://www.foib.us/im/fixing-bugs.png)
+

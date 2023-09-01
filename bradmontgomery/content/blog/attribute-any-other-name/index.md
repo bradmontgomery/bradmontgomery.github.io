@@ -10,96 +10,135 @@ tags:
 - properties
 - python
 slug: attribute-any-other-name
-description: <p>Let's explore som...
-markup: html
+description: ''
+markup: md
 url: /blog/attribute-any-other-name/
 aliases:
 - /blog/2013/09/12/attribute-any-other-name/
 
 ---
 
-<p>Let's explore some python attributes, shall we? (note: this is python 2.7.x)</p>
+Let's explore some python attributes, shall we? (note: this is python 2.7.x)
 
-<h2 name="attributes">Attributes</h2>
-<p>Let's consider a simple class, <code>N</code>, with a single attribute,
-<code>numbers</code> containing values 0 - 9.</p>
 
-<pre class="python"><code>class N(object):
-    numbers = range(10)  # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+Attributes
+----------
 
-<p>We can create an instance of this class, then perform some operations on
-the attribute (like accessing or setting its values).</p>
 
-<pre class="python"><code>&gt;&gt;&gt; n = N()
+Let's consider a simple class, `N`, with a single attribute,
+`numbers` containing values 0 - 9.
 
-&gt;&gt;&gt; n.numbers  # get the value of the attribute
+
+
+```
+class N(object):
+    numbers = range(10)  # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+We can create an instance of this class, then perform some operations on
+the attribute (like accessing or setting its values).
+
+
+
+```
+>>> n = N()
+
+>>> n.numbers  # get the value of the attribute
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-&gt;&gt;&gt; n.numbers = range(10, 20)  # Change the value of the attribute
+>>> n.numbers = range(10, 20)  # Change the value of the attribute
 [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-</code></pre>
 
-<p>Simple enough, right? This is usually what you expect with attributes on
+```
+
+Simple enough, right? This is usually what you expect with attributes on
 a python class. Just for the sake of completeness, let's look at another way
-to create an attribute on a class:</p>
+to create an attribute on a class:
 
-<pre class="python"><code>class N(object):
+
+
+```
+class N(object):
     def __init__(self, *args, **kwargs):
-        self.numbers = range(10)</code></pre>
+        self.numbers = range(10)
+```
 
-<p>This is analagous to our first example. The <code>__init__</code> method is
-called when we instantiate (or create an object from) the <code>N</code>
-class. We can still access and change the <code>numbers</code> attribute.</p>
-
-<p>In either case, you can list the attributes of the <code>n</code> object,
-and you should see a list containing <code>'numbers'</code>:</p>
-
-<pre class="python"><code>&gt;&gt;&gt; dir(n)
-['__class__', '__delattr__', '__dict__', ..., 'numbers']</code></pre>
+This is analagous to our first example. The `__init__` method is
+called when we instantiate (or create an object from) the `N`
+class. We can still access and change the `numbers` attribute.
 
 
-<h2 name="properties">Properties</h2>
-<p>In the examples above, the <code>numbers</code> attribute is simply a
+In either case, you can list the attributes of the `n` object,
+and you should see a list containing `'numbers'`:
+
+
+
+```
+>>> dir(n)
+['__class__', '__delattr__', '__dict__', ..., 'numbers']
+```
+
+Properties
+----------
+
+
+In the examples above, the `numbers` attribute is simply a
 variable referencing some value. Python also allows you to create a
-<em>property</em> (<a href="http://goo.gl/iP3o6">one of python's built-in
-functions</a>). It's essentially a method that behaves as if it were an
-attribute. Think of it as an attribute who's value is <em>calculated</em> every
-time it's accessed.</p>
+*property* ([one of python's built-in
+functions](http://goo.gl/iP3o6)). It's essentially a method that behaves as if it were an
+attribute. Think of it as an attribute who's value is *calculated* every
+time it's accessed.
 
-<p>What if we wanted an <code>even_numbers</code> attribute?</p>
 
-<pre class="python"><code>class N(object):
+What if we wanted an `even_numbers` attribute?
+
+
+
+```
+class N(object):
     numbers = range(10)  # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
     @property
     def even_numbers(self):
-        return [num for num in self.numbers if num % 2 == 0]</code></pre>
+        return [num for num in self.numbers if num % 2 == 0]
+```
 
-<p>The <code>@property</code> decorator converts our <code>even_numbers</code>
-method into a property. We can now access it like so:</p>
+The `@property` decorator converts our `even_numbers`
+method into a property. We can now access it like so:
 
-<pre class="python"><code>&gt;&gt;&gt; n = N()
-&gt;&gt;&gt; n.numbers  # get the value of the attribute
+
+
+```
+>>> n = N()
+>>> n.numbers  # get the value of the attribute
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-&gt;&gt;&gt; n.even_numbers
+>>> n.even_numbers
 [0, 2, 4, 6, 8]
-</code></pre>
 
-<p>Pretty cool! But what happens when we try to set the value of
-<code>even_numbers</code>?</p>
+```
 
-<pre class="python"><code>&gt;&gt;&gt; n.even_numbers = range(10, 20)
+Pretty cool! But what happens when we try to set the value of
+`even_numbers`?
+
+
+
+```
+>>> n.even_numbers = range(10, 20)
 ---------------------------------------------------------------------------
 Traceback (most recent call last)
-----&gt; 1 n.even_numbers = range(10, 20)
+----> 1 n.even_numbers = range(10, 20)
 
 AttributeError: can't set attribute
-</code></pre>
 
-<p>We've got to define a property's <code>setter</code> if we want to do this.</p>
+```
 
-<pre class="python"><code>class N(object):
+We've got to define a property's `setter` if we want to do this.
+
+
+
+```
+class N(object):
     numbers = range(10)
 
     @property
@@ -111,131 +150,185 @@ AttributeError: can't set attribute
         # Just assign the input values to the ``numbers`` attribute.
         # You *could* do something more interesting here if you wanted.
         self.numbers = values
-</code></pre>
 
-<p>We can now set the value of our <code>even_numbers</code> property.</p>
-<pre class="python"><code>&gt;&gt;&gt; n.even_numbers = range(10, 20)
+```
 
-&gt;&gt;&gt; n.even_numbers
+We can now set the value of our `even_numbers` property.
+
+
+
+```
+>>> n.even_numbers = range(10, 20)
+
+>>> n.even_numbers
 [10, 12, 14, 16, 18]
 
-&gt;&gt;&gt; n.numbers
-[10, 11, 12, 13, 14, 15, 16, 17, 18, 19]</code></pre>
+>>> n.numbers
+[10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+```
 
-<p>You can read more about properties at Official Python Doc's section on
-<a href="http://docs.python.org/2/library/functions.html#property">built-in functions</a>.</p>
+You can read more about properties at Official Python Doc's section on
+[built-in functions](http://docs.python.org/2/library/functions.html#property).
 
 
-<h2 name="__getattr__">__getattr__</h2>
+\_\_getattr\_\_
+---------------
 
-<p>Python has a number of <em>magic methods</em> (aka <em>dunder methods</em>), and
-<code>__getattr__</code> is one that defines the behavior of accessing
-<em>non-existing</em> attributes.</p>
 
-<p>Yes, you can access attributes that <em>don't exist</em>!</p>
+Python has a number of *magic methods* (aka *dunder methods*), and
+`__getattr__` is one that defines the behavior of accessing
+*non-existing* attributes.
 
-<p>If you're interested in more about python's magic methods, see the excellent
-<a href="http://www.rafekettler.com/magicmethods.html#access">A Guide to
-Python's Magic Methods</a>.</p>
 
-<p>Let's implement an <code>odd_numbers</code> attribute using
-<code>__getattr__</code>. (This is probably a bad idea, but it illustrates the
-point).</p>
+Yes, you can access attributes that *don't exist*!
 
-<p>Add the following method to our <code>N</code> class:</p>
 
-<pre class="python"><code>    def __getattr__(self, name):
+If you're interested in more about python's magic methods, see the excellent
+[A Guide to
+Python's Magic Methods](http://www.rafekettler.com/magicmethods.html#access).
+
+
+Let's implement an `odd_numbers` attribute using
+`__getattr__`. (This is probably a bad idea, but it illustrates the
+point).
+
+
+Add the following method to our `N` class:
+
+
+
+```
+    def __getattr__(self, name):
         if name == "odd_numbers":
-            return [num for num in self.numbers if num % 2 != 0]</code></pre>
+            return [num for num in self.numbers if num % 2 != 0]
+```
 
-<p>Let's try it out:</p>
-<pre class="python"><code>&gt;&gt;&gt; n = N()
+Let's try it out:
 
-&gt;&gt;&gt; n.numbers
+
+
+```
+>>> n = N()
+
+>>> n.numbers
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-&gt;&gt;&gt; n.even_numbers
+>>> n.even_numbers
 [0, 2, 4, 6, 8]
 
-&gt;&gt;&gt; n.odd_numbers
-[1, 3, 5, 7, 9]</code></pre>
+>>> n.odd_numbers
+[1, 3, 5, 7, 9]
+```
 
-<p>Pretty cool! However, there are a couple of caveats.</p>
+Pretty cool! However, there are a couple of caveats.
 
-<pre class="python"><code>&gt;&gt;&gt; dir(n)
-['__class__', '__delattr__', ..., 'even_numbers', 'numbers']</code></pre>
 
-<p>Notice anything missing? That's right. There's no <code>'odd_numbers'</code>
-attribute available. So much for <em>self-documenting code</em>!</p>
 
-<p>What about this?</p>
+```
+>>> dir(n)
+['__class__', '__delattr__', ..., 'even_numbers', 'numbers']
+```
 
-<pre class="python"><code>&gt;&gt;&gt; n.whoopsies
+Notice anything missing? That's right. There's no `'odd_numbers'`
+attribute available. So much for *self-documenting code*!
 
-&gt;&gt;&gt; type(n.whoopsies)
+
+What about this?
+
+
+
+```
+>>> n.whoopsies
+
+>>> type(n.whoopsies)
 NoneType
-</code></pre>
 
-<p>Aren't we supposed to get an <code>AttributeError</code> if we access
-an attribute that doesn't exist!? Yes. We are.</p>
+```
 
-<p>Be careful implementing your own <code>__getattr__</code> method. Make sure
+Aren't we supposed to get an `AttributeError` if we access
+an attribute that doesn't exist!? Yes. We are.
+
+
+Be careful implementing your own `__getattr__` method. Make sure
 it does what you want, but be sure to raise an appropriate exception if you
-don't want non-existing attributes to silently return <code>None</code>.</p>
+don't want non-existing attributes to silently return `None`.
 
-<p>Here's an example:</p>
 
-<pre class="python"><code>    def __getattr__(self, name):
+Here's an example:
+
+
+
+```
+    def __getattr__(self, name):
         if name == "odd_numbers":
             return [num for num in self.numbers if num % 2 != 0]
 
         # Raise an AttributeError, for all other attribute names.
-        raise AttributeError("'N' object has no attribute '{0}'".format(name))</code></pre>
+        raise AttributeError("'N' object has no attribute '{0}'".format(name))
+```
 
-<p>So, now we'd get:</p>
+So, now we'd get:
 
-<pre class="python"><code>&gt;&gt;&gt; n.whoopsies
+
+
+```
+>>> n.whoopsies
 ---------------------------------------------------------------------------
 Traceback (most recent call last)
-AttributeError: 'N' object has no attribute 'asdf'</code></pre>
+AttributeError: 'N' object has no attribute 'asdf'
+```
 
-<p>Now, you might also be thinking, "how would I assign a value to <code>odd_numbers</code>?"
-Well, there <em>is</em> a <code>__setattr__</code> method, but be careful!
-<strong>Here be dragons</strong>!</p>
+Now, you might also be thinking, "how would I assign a value to `odd_numbers`?"
+Well, there *is* a `__setattr__` method, but be careful!
+**Here be dragons**!
 
-<p>Unless you already know what you're doing and you have a good reason, it's
-probably not a good idea to start changing the behavior of <code>__setattr__</code>.</p>
 
-<p>If you really need to customize the behavior of assignment, you probably want
-to use a <em>descriptor</em>.</p>
+Unless you already know what you're doing and you have a good reason, it's
+probably not a good idea to start changing the behavior of `__setattr__`.
 
-<h2 name="descriptors">Descriptors</h2>
 
-<p>A descriptor is a class that defines behavior for getting and setting an
-attribute.</p>
+If you really need to customize the behavior of assignment, you probably want
+to use a *descriptor*.
 
-<p>Let's keep building on our <code>N</code> class. What if we only wanted to
+
+Descriptors
+-----------
+
+
+A descriptor is a class that defines behavior for getting and setting an
+attribute.
+
+
+Let's keep building on our `N` class. What if we only wanted to
 access numbers that were primes? What if we wanted to be able to easily
-store prime numbers in the <code>numbers</code> attribute?</p>
+store prime numbers in the `numbers` attribute?
 
-<p>First of all, lets write a little function to determine if a number is prime.
-This is not the most efficient way to do it, but it's simple and concise:</p>
 
-<pre class="python"><code>def is_prime(number):
+First of all, lets write a little function to determine if a number is prime.
+This is not the most efficient way to do it, but it's simple and concise:
+
+
+
+```
+def is_prime(number):
     """Determine if a number is prime. Shamelessly adapted from:
     http://stackoverflow.com/a/4117879/182778
 
     Returns True or False
     """
-    return number > 1 and all(number % i for i in xrange(2, number))</code></pre>
+    return number > 1 and all(number % i for i in xrange(2, number))
+```
 
-<p>Now, create a class called <code>PrimeNumbers</code>. An instance of this
-class will eventually be attached to our <code>N</code> class.
-We add a <code>__get__</code> method that defines the behavior we want when
-we access a value, and we define a <code>__set__</code> method that defines
-the behavior we want when we set a value.</p>
+Now, create a class called `PrimeNumbers`. An instance of this
+class will eventually be attached to our `N` class.
+We add a `__get__` method that defines the behavior we want when
+we access a value, and we define a `__set__` method that defines
+the behavior we want when we set a value.
 
-<pre class="python"><code>class PrimeNumbers(object):
+
+
+```
+class PrimeNumbers(object):
     """This class implements a descriptor (ie. a property or attribute) that
     will only store Prime Numbers. The class on which it is attached must have
     a ``numbers`` attribute."""
@@ -261,54 +354,78 @@ the behavior we want when we set a value.</p>
         """Set the value of ``instance.numbers``, but *only* store primes.
         ``values`` is just a list of numbers.
         """
-        instance.numbers = self.filter_primes(values)</code></pre>
+        instance.numbers = self.filter_primes(values)
+```
 
-<p>Now, we need to update our <code>N</code> class so it contains a
-<code>prime_numbers</code> attribute:</p>
+Now, we need to update our `N` class so it contains a
+`prime_numbers` attribute:
 
-<pre class="python"><code>class N(object):
+
+
+```
+class N(object):
     numbers = range(10)  # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
     prime_numbers = PrimeNumbers()
 
-    # ... </code></pre>
+    # ... 
+```
 
-<p>Now, lets play around with this.</p>
+Now, lets play around with this.
 
-<pre class="python"><code>&gt;&gt;&gt; n = N()
 
-&gt;&gt;&gt; n.numbers
+
+```
+>>> n = N()
+
+>>> n.numbers
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-&gt;&gt;&gt; n.prime_numbers
-[2, 3, 5, 7]</code></pre>
+>>> n.prime_numbers
+[2, 3, 5, 7]
+```
 
-<p>Great! Our <code>PrimeNumbers.__get__</code> method removes all non-prime
-numbers from the list. Let's try setting some values:</p>
+Great! Our `PrimeNumbers.__get__` method removes all non-prime
+numbers from the list. Let's try setting some values:
 
-<pre class="python"><code>&gt;&gt;&gt; n.prime_numbers = range(0,30)
 
-&gt;&gt;&gt; n.prime_numbers
+
+```
+>>> n.prime_numbers = range(0,30)
+
+>>> n.prime_numbers
 [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
 
-&gt;&gt;&gt; n.numbers
-[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]</code></pre>
+>>> n.numbers
+[2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+```
 
-<p>Interesting! Our <code>PrimeNumbers.__set__</code> also removes all non-prime
-numbers before storing the result in <code>n.numbers</code>!</p>
+Interesting! Our `PrimeNumbers.__set__` also removes all non-prime
+numbers before storing the result in `n.numbers`!
 
-<p>Note that our <code>even_numbers</code> method still works as expected:</p>
-<pre class="python"><code>&gt;&gt;&gt; n.even_numbers
-[2]</code></pre>
 
-<p>Descriptors are powerful, and give you the tools to build re-usable properties
+Note that our `even_numbers` method still works as expected:
+
+
+
+```
+>>> n.even_numbers
+[2]
+```
+
+Descriptors are powerful, and give you the tools to build re-usable properties
 for your classes. For even more on Descriptors, see the
-<a href="http://docs.python.org/2/howto/descriptor.html">Descriptor HowTo Guide</a>
-and the excellent <a href="http://nbviewer.ipython.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb">Python Descriptors Demystified</a>.</p>
+[Descriptor HowTo Guide](http://docs.python.org/2/howto/descriptor.html)
+and the excellent [Python Descriptors Demystified](http://nbviewer.ipython.org/urls/gist.github.com/ChrisBeaumont/5758381/raw/descriptor_writeup.ipynb).
 
-<h2>Wrapping Up</h2>
-<p>Well, that's it for now. I hope you've enjoyed this short tour of python
-<em>attributes</em>. If you want to see all the code at once, you can grab the
-full example from <a href="https://gist.github.com/bradmontgomery/6432860">
-https://gist.github.com/bradmontgomery/6432860</a>.</p>
 
-<p>Thanks for reading!</p>
+Wrapping Up
+-----------
+
+
+Well, that's it for now. I hope you've enjoyed this short tour of python
+*attributes*. If you want to see all the code at once, you can grab the
+full example from <https://gist.github.com/bradmontgomery/6432860>.
+
+
+Thanks for reading!
+

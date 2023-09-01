@@ -10,25 +10,29 @@ tags:
 - filter
 - postgresql
 slug: django-admin-filters-arrayfields
-description: <p>I've written befo...
-markup: html
+description: ''
+markup: md
 url: /blog/django-admin-filters-arrayfields/
 aliases:
 - /blog/2015/09/30/django-admin-filters-arrayfields/
 
 ---
 
-<p>I've written before about
-<a href="/blog/nice-arrayfield-widgets-choices-and-chosenjs/">the cool
-ArrayField support in Django</a>, and this is another such post. In this one,
+I've written before about
+[the cool
+ArrayField support in Django](/blog/nice-arrayfield-widgets-choices-and-chosenjs/), and this is another such post. In this one,
 we'll take a look and see how to turn your model's ArrayField values into
-filters in the admin.</p>
+filters in the admin.
 
-<p>To start out, let's assume we have a model that contains a simple title
-(a <code>CharField</code>) and some keywords (an <code>ArrayField</code>).
-It might look something like this:</p>
 
-<pre><code class="python">from django.db import models
+To start out, let's assume we have a model that contains a simple title
+(a `CharField`) and some keywords (an `ArrayField`).
+It might look something like this:
+
+
+
+```
+from django.db import models
 
 class Item(models.Model):
     title = models.CharField(max_length=128)
@@ -36,58 +40,68 @@ class Item(models.Model):
         models.CharField(max_length=32, blank=True),
         default=list,
         blank=True,
-    )</code></pre>
+    )
+```
 
-<p>This model, <code>Item</code>, allows an optional list if keywords (chars)
-giving you a default of an empty list. Now, you <em>could</em> connect it to
+This model, `Item`, allows an optional list if keywords (chars)
+giving you a default of an empty list. Now, you *could* connect it to
 django's admin app with the following bit of code. This would list all of the
 item titles in the list view, and you'd also get a filter on the right-hand
-side, presumably containing the values of your <code>keywords</code> field.</p>
+side, presumably containing the values of your `keywords` field.
 
 
-<pre><code class="python">from django.contrib import admin
+
+```
+from django.contrib import admin
 
 class ItemAdmin(admin.ModelAdmin):
     list_display = ('title', )
     list_filter = ('keywords', )
 
-admin.site.register(models.Item, ItemAdmin)</code></pre>
+admin.site.register(models.Item, ItemAdmin)
+```
 
-<p>
+
 However, if you write this, you'll soon notice something strange. The admin
-treats each <code>Item</code>'s list of a keywords as a single option for the
-list filter! That means you get filter options like <code>['foo', 'bar']</code> and <code>['foo', 'bar', 'bingo']</code>. Yuck!
-</p>
+treats each `Item`'s list of a keywords as a single option for the
+list filter! That means you get filter options like `['foo', 'bar']` and `['foo', 'bar', 'bingo']`. Yuck!
 
-<figure>
-  <img src="//i.imgur.com/LePgVfd.png"
-       alt="these are not the list filters you're looking for..."/>
-  <figcaption>This is probably not what you had in mind.</figcaption>
-</figure>
 
-<p>What we really need to do, is to assemble a unique set of <em>all possible
-values</em> for the entire collection of <code>Item</code>s, then build a custom
+
+
+![these are not the list filters you're looking for...](//i.imgur.com/LePgVfd.png)
+This is probably not what you had in mind.
+
+What we really need to do, is to assemble a unique set of *all possible
+values* for the entire collection of `Item`s, then build a custom
 admin filter. The custom admin filter is possible by creating a subclass of
-<code>SimpleListFilter</code>, and you can read all about that in the
-<a href="https://docs.djangoproject.com/en/1.8/ref/contrib/admin/#django.contrib.admin.ModelAdmin.list_filter">ModelAdmin.list_filter</a> docs.</p>
-
-<p>But first, let's get a unique set of all possible keywords:</p>
+`SimpleListFilter`, and you can read all about that in the
+[ModelAdmin.list\_filter](https://docs.djangoproject.com/en/1.8/ref/contrib/admin/#django.contrib.admin.ModelAdmin.list_filter) docs.
 
 
-<pre style="clear: right;"><code class="python"># query and sort all keywords belonging to Items
+But first, let's get a unique set of all possible keywords:
+
+
+
+```
+# query and sort all keywords belonging to Items
 keywords = Item.objects.values_list("keywords", flat=True)
 
 # Flatten the nested list of results, and eliminate any empty lists
 keywords = [kw for sublist in keywords for kw in sublist if kw]
 
 # Get rid of duplicates and sort them (in alphabetical order)
-keywords = sorted(set(keywords))</code></pre>
+keywords = sorted(set(keywords))
+```
 
-<p>Now, we need to build our custom filter. We'll call it an
-<code>ArrayFieldListFilter</code>. The django admin docs have an example of this,
-and it's worth reading their <a href="https://docs.djangoproject.com/en/1.8/ref/contrib/admin/#django.contrib.admin.ModelAdmin.list_filter">example code</a> as well (search for the <code>SimpleListFilter</code> on that page).</p>
+Now, we need to build our custom filter. We'll call it an
+`ArrayFieldListFilter`. The django admin docs have an example of this,
+and it's worth reading their [example code](https://docs.djangoproject.com/en/1.8/ref/contrib/admin/#django.contrib.admin.ModelAdmin.list_filter) as well (search for the `SimpleListFilter` on that page).
 
-<pre><code class="python"># I'll often add this to admin.py...
+
+
+```
+# I'll often add this to admin.py...
 class ArrayFieldListFilter(admin.SimpleListFilter):
     """This is a list filter based on the values
     from a model's `keywords` ArrayField. """
@@ -114,34 +128,40 @@ class ArrayFieldListFilter(admin.SimpleListFilter):
         if lookup_value:
             # the __contains lookup expects a list, so...
             queryset = queryset.filter(keywords__contains=[lookup_value])
-        return queryset</code></pre>
+        return queryset
+```
 
-
-<p>Now, we need to add this class as an option to our model admin subclass. To
-do that, we'll change <code>list_filter = ('keywords', )</code> to
-<code>list_filter = (ArrayFieldListFilter, )</code>. Your <code>ItemAdmin</code>
+Now, we need to add this class as an option to our model admin subclass. To
+do that, we'll change `list_filter = ('keywords', )` to
+`list_filter = (ArrayFieldListFilter, )`. Your `ItemAdmin`
 class should now be:
-</p>
 
-<pre><code class="python">from django.contrib import admin
+
+
+
+```
+from django.contrib import admin
 
 class ItemAdmin(admin.ModelAdmin):
     list_display = ('title', )
     list_filter = (ArrayFieldListFilter, )
 
-admin.site.register(models.Item, ItemAdmin)</code></pre>
+admin.site.register(models.Item, ItemAdmin)
+```
 
-<p>
-And there you have it. A list of all of your <code>Item</code>'s keywords,
+
+And there you have it. A list of all of your `Item`'s keywords,
 available to your for filtering your objects in the admin. Keep in mind that
 this list is built dynamically (like most admin filters). If you use this code
 and don't see any filter options, don't fret! You need to add some keywords to
-your existing items, first. Edit an <code>Item</code> then come back to the list
-view, and then you should see your keywords.</p>
+your existing items, first. Edit an `Item` then come back to the list
+view, and then you should see your keywords.
 
-<figure>
-  <img src="//i.imgur.com/1NGOchj.png" alt="Working filters!"/>
-  <figcaption>There! Doesn't that make more sense?</figcaption>
-</figure>
 
-<p>Hope this helps!</p>
+
+![Working filters!](//i.imgur.com/1NGOchj.png)
+There! Doesn't that make more sense?
+
+Hope this helps!
+
+

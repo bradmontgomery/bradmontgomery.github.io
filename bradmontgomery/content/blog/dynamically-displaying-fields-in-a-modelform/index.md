@@ -7,12 +7,58 @@ tags:
 - django
 - web
 slug: dynamically-displaying-fields-in-a-modelform
-description: '<b>The Problem</b>: ...'
-markup: html
+description: ''
+markup: md
 url: /blog/dynamically-displaying-fields-in-a-modelform/
 aliases:
 - /blog/2009/04/21/dynamically-displaying-fields-in-a-modelform/
 
 ---
 
-<b>The Problem</b>: I want to dynamically include some fields in a ModelForm based on some external criteria.  Sometimes I want the fields displayed, sometimes I don't.  <br /><br />I'm going to try to explain this scenario through a (albeit contrived) example.  I have a Model that looks like the following:<br /><br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Suff</span>(models<span style="color: #666666">.</span>Model):<br />    foo <span style="color: #666666">=</span> models<span style="color: #666666">.</span><span style="color: #007020">CharField</span>(max_length<span style="color: #666666">=</span><span style="color: #40a070">255</span>)<br />    bar <span style="color: #666666">=</span> models<span style="color: #666666">.</span><span style="color: #007020">BooleanField</span>(default<span style="color: #666666">=</span><span style="color: #007020">False</span>, blank<span style="color: #666666">=</span><span style="color: #007020">True</span>)<br /><br />    <span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">is_foo_bar</span>(<span style="color: #007020">self</span>):<br />        <span style="color: #4070a0; font-style: italic">&#39;&#39;&#39; is this model&#39;s foo attribute set to &#39;bar&#39; &#39;&#39;&#39;</span><br />        <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020">self</span><span style="color: #666666">.</span>foo <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;bar&#39;</span><br /></pre></div><br /><br />Normally, if I needed a Form for this Model, I would subclass a ModelForm like the following:<br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">StuffForm</span>(models<span style="color: #666666">.</span>ModelForm):<br />    <span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Meta</span>:<br />        model <span style="color: #666666">=</span> Stuff<br />        fields <span style="color: #666666">=</span> (<span style="color: #4070a0">&#39;foo&#39;</span>, <span style="color: #4070a0">&#39;bar&#39;</span>)<br /></pre></div><br /><br />However, if I do NOT want the 'bar' field to be displayed by default I would need to remove it from the ModelForms list of fields (or use something like <em>exclude = ('bar', )</em> ).  But, if this form is created with an instance of Stuff whose <em>foo</em> attribute contains the string <em>bar</em>, I would like for the Form's 'bar' field to be displayed.<br /><br />I originally tried to accomplish this task by overridding StuffForm's __init__ method, and adding a new BooleanField when the desired circumstances arose...   However, I stumpled across Ross Poulton's <a href="http://www.rossp.org/blog/2008/dec/15/modelforms/">Dynamic ModelForms in Django</a>, and then I realized it would be much easier to <b>prevent a ModelForm's Field from being displayed</b> than it would be to dynamically create one.<br /><br />In order to accomplish this, the StuffForms's __init__ method would look something like the following:<br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">__init__</span>(<span style="color: #007020">self</span>, <span style="color: #666666">*</span>args, <span style="color: #666666">**</span>kwargs):<br />    <span style="color: #007020">super</span>(StuffForm, <span style="color: #007020">self</span>)<span style="color: #666666">.</span>__init__(<span style="color: #666666">*</span>args, <span style="color: #666666">**</span>kwargs)<br />    <br />    <span style="color: #60a0b0; font-style: italic"># If this form is created without an instance, OR</span><br />    <span style="color: #60a0b0; font-style: italic"># If the instance&#39;s foo field is != &#39;bar&#39;</span><br />    <span style="color: #007020; font-weight: bold">if</span> <span style="color: #007020; font-weight: bold">not</span> kwargs<span style="color: #666666">.</span>has_key(<span style="color: #4070a0">&#39;instance&#39;</span>) <span style="color: #007020; font-weight: bold">or</span> (kwargs<span style="color: #666666">.</span>has_key(<span style="color: #4070a0">&#39;instance&#39;</span>) <span style="color: #007020; font-weight: bold">and</span> \<br />        <span style="color: #007020; font-weight: bold">not</span> kwargs[<span style="color: #4070a0">&#39;instance&#39;</span>]<span style="color: #666666">.</span>is_foo_bar()):<br />        <span style="color: #60a0b0; font-style: italic"># Remove this field from the form.</span><br />        <span style="color: #007020; font-weight: bold">del</span> <span style="color: #007020">self</span><span style="color: #666666">.</span>fields[<span style="color: #4070a0">&#39;bar&#39;</span>]<br /></pre></div>Done.  I get all the benefits of a ModelForm, and the <em>bar</em> field is not displayed unless it should be.<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4123748873183487963-7486424570660550130?l=bradmontgomery.blogspot.com' alt='' /></div>
+**The Problem**: I want to dynamically include some fields in a ModelForm based on some external criteria. Sometimes I want the fields displayed, sometimes I don't.   
+  
+I'm going to try to explain this scenario through a (albeit contrived) example. I have a Model that looks like the following:  
+  
+
+```
+class Suff(models.Model):  
+    foo = models.CharField(max_length=255)  
+    bar = models.BooleanField(default=False, blank=True)  
+  
+    def is\_foo\_bar(self):  
+        ''' is this model's foo attribute set to 'bar' '''  
+        return self.foo == 'bar'  
+
+```
+  
+  
+Normally, if I needed a Form for this Model, I would subclass a ModelForm like the following:  
+
+```
+class StuffForm(models.ModelForm):  
+    class Meta:  
+        model = Stuff  
+        fields = ('foo', 'bar')  
+
+```
+  
+  
+However, if I do NOT want the 'bar' field to be displayed by default I would need to remove it from the ModelForms list of fields (or use something like *exclude = ('bar', )* ). But, if this form is created with an instance of Stuff whose *foo* attribute contains the string *bar*, I would like for the Form's 'bar' field to be displayed.  
+  
+I originally tried to accomplish this task by overridding StuffForm's \_\_init\_\_ method, and adding a new BooleanField when the desired circumstances arose... However, I stumpled across Ross Poulton's [Dynamic ModelForms in Django](http://www.rossp.org/blog/2008/dec/15/modelforms/), and then I realized it would be much easier to **prevent a ModelForm's Field from being displayed** than it would be to dynamically create one.  
+  
+In order to accomplish this, the StuffForms's \_\_init\_\_ method would look something like the following:  
+
+```
+def \_\_init\_\_(self, \*args, \*\*kwargs):  
+    super(StuffForm, self).__init__(\*args, \*\*kwargs)  
+      
+    # If this form is created without an instance, OR  
+    # If the instance's foo field is != 'bar'  
+    if not kwargs.has_key('instance') or (kwargs.has_key('instance') and \  
+        not kwargs['instance'].is_foo_bar()):  
+        # Remove this field from the form.  
+        del self.fields['bar']  
+
+```
+Done. I get all the benefits of a ModelForm, and the *bar* field is not displayed unless it should be.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7486424570660550130?l=bradmontgomery.blogspot.com)

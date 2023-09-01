@@ -7,12 +7,72 @@ tags:
 - django
 - web
 slug: a-custom-form-for-djangos-automatic-admin
-description: A huge selling-point...
-markup: html
+description: ''
+markup: md
 url: /blog/a-custom-form-for-djangos-automatic-admin/
 aliases:
 - /blog/2009/01/14/a-custom-form-for-djangos-automatic-admin/
 
 ---
 
-A huge selling-point for Django (at least for developers) is its <a href="http://docs.djangoproject.com/en/dev/ref/contrib/admin/#ref-contrib-admin">Automatic Admin</a>.  However, the ease at which the Admin can be set up, might make one second-guess an attempt to customize what is provided by default.  Of course, the default admin site may not be without its drawbacks...<br /><br />Many of the django Apps that I have built, tap into Django's <a href="http://docs.djangoproject.com/en/dev/topics/auth/#topics-auth">User Authentication System</a>. Simply put, when I build a model, it has a Foreign Key to django's User Class.<br /><br />Here's an example Model:<br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">django.contrib.auth.models</span> <span style="color: #007020; font-weight: bold">import</span> User<br /><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">django.db</span> <span style="color: #007020; font-weight: bold">import</span> models<br /><br /><span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Book</span>(models<span style="color: #666666">.</span>Model):<br />    author <span style="color: #666666">=</span> models<span style="color: #666666">.</span><span style="color: #007020">ForeignKey</span>(User)<br />    title <span style="color: #666666">=</span> models<span style="color: #666666">.</span><span style="color: #007020">CharField</span>()</pre></div><br /><br />The problem here is that when I create or edit a Book object using the Automatic Admin, the author field is represented by a select element, whose options contain ALL User objects... listed by <b>username</b>! Wouldn't it be nice if we could have that listed as "<em>firstname lastname</em>" or even as "<em>lastname, firstname"</em>?  You can! And here's how:<br /><br />First of all, Django's admin makes extensive use of <a href="http://docs.djangoproject.com/en/dev/topics/forms/modelforms/#topics-forms-modelforms">ModelForms</a>, and fields with a Foreign Key relationship are represented by a <a href="http://docs.djangoproject.com/en/dev/ref/forms/fields/#modelchoicefield">ModelChoiceField</a>. So, all we need to do is extend the ModelChoiceField so that we have something that can be used on any Form that represents a Model with a Foreign Key to a User object.  The <em>label_from_instance</em> method accepts an object (in this case, a User object), and returns a string that will be used between &lt;option&gt; elements.  In the example below, I've chosen to format that as "<em>firstname lastname</em> (<em>username</em>)".<br /><br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">django.forms</span> <span style="color: #007020; font-weight: bold">import</span> ModelChoiceField<br /><br /><span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">UserModelChoiceField</span>(ModelChoiceField):<br />    <span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">label_from_instance</span>(<span style="color: #007020">self</span>, obj):<br />        <span style="color: #60a0b0; font-style: italic"># Return a string of the format: &quot;firstname lastname (username)&quot;</span><br />        <span style="color: #007020; font-weight: bold">return</span> <span style="color: #4070a0">&quot;</span><span style="color: #70a0d0; font-style: italic">%s</span><span style="color: #4070a0"> (</span><span style="color: #70a0d0; font-style: italic">%s</span><span style="color: #4070a0">)&quot;</span><span style="color: #666666">%</span>(obj<span style="color: #666666">.</span>get_full_name(), obj<span style="color: #666666">.</span>username)</pre></div><br /><br />Now, create a ModelForm for your Model, which specifies the new Field to be used for the author.  Note that we need to pass it a queryset of Users.  Below, I've named this ModelForm, <b>BookAdminForm</b> since I'm only going to use this form for the admin pages.  <br /><br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">django.forms</span> <span style="color: #007020; font-weight: bold">import</span> ModelForm<br /><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">django.contrib.auth.models</span> <span style="color: #007020; font-weight: bold">import</span> User<br /><br /><span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">BookAdminForm</span>(ModelForm):<br />    author <span style="color: #666666">=</span> UserModelChoiceField(User<span style="color: #666666">.</span>objects<span style="color: #666666">.</span>all()<span style="color: #666666">.</span>order_by(<span style="color: #4070a0">&#39;first_name&#39;</span>))<br />    <span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">Meta</span>:<br />        model <span style="color: #666666">=</span> Book</pre></div><br /><br />Now we set up the ModelAmin for the Book Model.  In it, we can specify the form that is used by Django's automatic admin (Note that this <a href="http://docs.djangoproject.com/en/dev/ref/contrib/admin/#form">MUST be a ModelForm</a>!).  Your admin would look something similar to the following:<br /><br /><div class="highlight" ><pre><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">django.contrib</span> <span style="color: #007020; font-weight: bold">import</span> admin<br /><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">forms</span> <span style="color: #007020; font-weight: bold">import</span> BookAdminForm<br /><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">models</span> <span style="color: #007020; font-weight: bold">import</span> Book<br /><br /><span style="color: #007020; font-weight: bold">class</span> <span style="color: #0e84b5; font-weight: bold">BookAdmin</span>(admin<span style="color: #666666">.</span>ModelAdmin):<br />    form <span style="color: #666666">=</span> BookAdminForm<br /><br />admin<span style="color: #666666">.</span>site<span style="color: #666666">.</span>register(Book, BookAdmin)</pre></div><br /><br />Now, when you use the Automatic admin to add or edit existing Book entries, the drop-down list of Author names will be a bit more user-friendly.<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4123748873183487963-6279726457602327300?l=bradmontgomery.blogspot.com' alt='' /></div>
+A huge selling-point for Django (at least for developers) is its [Automatic Admin](http://docs.djangoproject.com/en/dev/ref/contrib/admin/#ref-contrib-admin). However, the ease at which the Admin can be set up, might make one second-guess an attempt to customize what is provided by default. Of course, the default admin site may not be without its drawbacks...  
+  
+Many of the django Apps that I have built, tap into Django's [User Authentication System](http://docs.djangoproject.com/en/dev/topics/auth/#topics-auth). Simply put, when I build a model, it has a Foreign Key to django's User Class.  
+  
+Here's an example Model:  
+
+```
+from django.contrib.auth.models import User  
+from django.db import models  
+  
+class Book(models.Model):  
+    author = models.ForeignKey(User)  
+    title = models.CharField()
+```
+  
+  
+The problem here is that when I create or edit a Book object using the Automatic Admin, the author field is represented by a select element, whose options contain ALL User objects... listed by **username**! Wouldn't it be nice if we could have that listed as "*firstname lastname*" or even as "*lastname, firstname"*? You can! And here's how:  
+  
+First of all, Django's admin makes extensive use of [ModelForms](http://docs.djangoproject.com/en/dev/topics/forms/modelforms/#topics-forms-modelforms), and fields with a Foreign Key relationship are represented by a [ModelChoiceField](http://docs.djangoproject.com/en/dev/ref/forms/fields/#modelchoicefield). So, all we need to do is extend the ModelChoiceField so that we have something that can be used on any Form that represents a Model with a Foreign Key to a User object. The *label\_from\_instance* method accepts an object (in this case, a User object), and returns a string that will be used between <option> elements. In the example below, I've chosen to format that as "*firstname lastname* (*username*)".  
+  
+
+```
+from django.forms import ModelChoiceField  
+  
+class UserModelChoiceField(ModelChoiceField):  
+    def label\_from\_instance(self, obj):  
+        # Return a string of the format: "firstname lastname (username)"  
+        return "%s (%s)"%(obj.get_full_name(), obj.username)
+```
+  
+  
+Now, create a ModelForm for your Model, which specifies the new Field to be used for the author. Note that we need to pass it a queryset of Users. Below, I've named this ModelForm, **BookAdminForm** since I'm only going to use this form for the admin pages.   
+  
+
+```
+from django.forms import ModelForm  
+from django.contrib.auth.models import User  
+  
+class BookAdminForm(ModelForm):  
+    author = UserModelChoiceField(User.objects.all().order_by('first\_name'))  
+    class Meta:  
+        model = Book
+```
+  
+  
+Now we set up the ModelAmin for the Book Model. In it, we can specify the form that is used by Django's automatic admin (Note that this [MUST be a ModelForm](http://docs.djangoproject.com/en/dev/ref/contrib/admin/#form)!). Your admin would look something similar to the following:  
+  
+
+```
+from django.contrib import admin  
+from forms import BookAdminForm  
+from models import Book  
+  
+class BookAdmin(admin.ModelAdmin):  
+    form = BookAdminForm  
+  
+admin.site.register(Book, BookAdmin)
+```
+  
+  
+Now, when you use the Automatic admin to add or edit existing Book entries, the drop-down list of Author names will be a bit more user-friendly.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-6279726457602327300?l=bradmontgomery.blogspot.com)

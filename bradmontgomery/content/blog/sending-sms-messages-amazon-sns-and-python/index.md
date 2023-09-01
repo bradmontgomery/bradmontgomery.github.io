@@ -9,7 +9,7 @@ tags:
 - sns
 - texting
 slug: sending-sms-messages-amazon-sns-and-python
-description: There are many servi...
+description: ''
 markup: md
 url: /blog/sending-sms-messages-amazon-sns-and-python/
 aliases:
@@ -35,7 +35,7 @@ to sign up for an AWS account and get some api keys.
 The second part of this is [boto3](https://aws.amazon.com/sdk-for-python/),
 amazon's python sdk.
 
-    pip install boto3
+ pip install boto3
 
 Boto's [quickstart guide](https://boto3.readthedocs.io/en/latest/guide/quickstart.html) should help, and it also includes some info on getting boto configured.
 
@@ -45,21 +45,21 @@ Boto's [quickstart guide](https://boto3.readthedocs.io/en/latest/guide/quickstar
 At the bare minimum, you can just send a message directly to a single phone
 number. Here's the code:
 
-    import boto3
+ import boto3
 
-    # Create an SNS client
-    client = boto3.client(
-        "sns",
-        aws_access_key_id="YOUR ACCES KEY",
-        aws_secret_access_key="YOUR SECRET KEY",
-        region_name="us-east-1"
-    )
+ # Create an SNS client
+ client = boto3.client(
+ "sns",
+ aws\_access\_key\_id="YOUR ACCES KEY",
+ aws\_secret\_access\_key="YOUR SECRET KEY",
+ region\_name="us-east-1"
+ )
 
-    # Send your sms message.
-    client.publish(
-        PhoneNumber="+12223334444",
-        Message="Hello World!"
-    )
+ # Send your sms message.
+ client.publish(
+ PhoneNumber="+12223334444",
+ Message="Hello World!"
+ )
 
 Note the formate of the phone number. It's got to be in something called
 [E.164 format](https://en.wikipedia.org/wiki/E.164). For US phone numbers,
@@ -72,42 +72,42 @@ when something happens), then congrats! You're done.
 ## Step 3: Do actual Pub-Sub
 
 If you need to send messages to multiple recipients, it's worthwhile to read
-though Amazon's docs on [sending to multiple phone numbers](http://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-topic.html).
+though Amazon's docs on [sending to multiple phone numbers](http://docs.aws.amazon.com/sns/latest/dg/sms\_publish-to-topic.html).
 
-The SNS service implements the [Publish-Subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) pattern, and you can use it to send messages to a _topic_. Here are the steps to make this work:
+The SNS service implements the [Publish-Subscribe](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe\_pattern) pattern, and you can use it to send messages to a \_topic\_. Here are the steps to make this work:
 
 1. Create a named topic. This is just a commuication channel to which you can
-   _subscribe_ phone numbers.
+ \_subscribe\_ phone numbers.
 2. Subscibe your recipients to the topic.
 3. Publish a message on the topic.
 
 The python code looks something like this:
 
 
-    import boto3
+ import boto3
 
-    # Create an SNS client
-    client = boto3.client(
-        "sns",
-        aws_access_key_id="YOUR ACCES KEY",
-        aws_secret_access_key="YOUR SECRET KEY",
-        region_name=us-east-1
-    )
+ # Create an SNS client
+ client = boto3.client(
+ "sns",
+ aws\_access\_key\_id="YOUR ACCES KEY",
+ aws\_secret\_access\_key="YOUR SECRET KEY",
+ region\_name=us-east-1
+ )
 
-    # Create the topic if it doesn't exist (this is idempotent)
-    topic = client.create_topic(Name="notifications")
-    topic_arn = topic['TopicArn']  # get its Amazon Resource Name
+ # Create the topic if it doesn't exist (this is idempotent)
+ topic = client.create\_topic(Name="notifications")
+ topic\_arn = topic['TopicArn'] # get its Amazon Resource Name
 
-    # Add SMS Subscribers
-    for number in some_list_of_contacts:
-        client.subscribe(
-            TopicArn=topic_arn,
-            Protocol='sms',
-            Endpoint=number  # <-- number who'll receive an SMS message.
-        )
+ # Add SMS Subscribers
+ for number in some\_list\_of\_contacts:
+ client.subscribe(
+ TopicArn=topic\_arn,
+ Protocol='sms',
+ Endpoint=number # <-- number who'll receive an SMS message.
+ )
 
-    # Publish a message.
-    client.publish(Message="Good news everyone!", TopicArn=topic_arn)
+ # Publish a message.
+ client.publish(Message="Good news everyone!", TopicArn=topic\_arn)
 
 All your susbscibers should recieve an SMS message once you've
 published it on the topic. In addition, you should be able to monitor SNS

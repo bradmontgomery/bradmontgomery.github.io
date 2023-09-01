@@ -7,12 +7,71 @@ tags:
 - OS
 - X
 slug: compiling-warzone-2100-on-mac-os-x
-description: I recently ran acros...
-markup: html
+description: ''
+markup: md
 url: /blog/compiling-warzone-2100-on-mac-os-x/
 aliases:
 - /blog/2007/06/16/compiling-warzone-2100-on-mac-os-x/
 
 ---
 
-I recently ran across <a href="http://wz2100.net/">The Warzone 2100 Resurrection Project</a>, and I thought to myself,"cool, I wonder if there's an OS X version..."  So, I hit their <a href="http://wz2100.net/downloads.html">downloads</a> page only to find the message: "(The MacOSX diskimage will follow soon)"<br /><br />So I thought, "oh well, I'll just grab the source code and compile it!"  After about two hours of digging, I finally got it compiled, and here's how!  (NOTE: I've got quite a bit of Unix stuff installed via <a href="http://finkproject.org/">fink</a>, so your mileage may vary)<br /><br /><ol><li>Here's the list of stuff I had to get/install/compile before I could even start on Warzone 2100:  <b>cmake (to compile physfs)</b>, <b>physfs</b>, <b>a newer bison</b>, and <b>SDL_net</b></li><br /><li>First I grab <a href="http://cmake.org">cmake 2.4.6</a>.  Luckily, they have a <a href="http://cmake.org/HTML/Download.html">universal .dmg for Tiger</a>.</li><br /><li>Next, I grab the source code for <a href="http://icculus.org/physfs/">physfs-1.1.1</a> from their <a href="http://icculus.org/physfs/downloads/">download page</a>.  At first I tried compiling the "Unix Way", but that didn't work, so I used cmake to generate an Xcode project (pretty cool!). From a terminal window, I cd into the physfs directory and type:<br /><pre>cmake -G Xcode .</pre><br />Then, after compiling physfs with Xcode, I copied the libraries to my /usr/local directories. Again from a Terminal:<br /><pre>sudo cp libphysfs.* /usr/local/lib<br />sudo cp physfs.h /usr/local/include</pre></li><br /><li>Next, I open up <a href="http://finkcommander.sourceforge.net/">fink commander</a> and grab the newest version of bison from fink</li><br /><li>Now I need <a href="http://www.libsdl.org/projects/SDL_net/">SDL_net</a>.  While the project offers a <a href="http://www.libsdl.org/projects/SDL_net/release/SDL_net-1.2.6.dmg">Mac OS X Framework</a> and SDL_net is available through fink... I grabbed the source anyway.  It compiled just fine the Unix way:<pre><br />./configure<br />make<br />sudo make install</pre><br />This put all the libraries in /usr/local/lib and /usr/local/include</li><br /><li>Finally, time to compile Warzone2100, so I grabbed the <a href="http://wz2100.net/downloads.html">source code</a>, which contains a handy-dandy file called COMPILE.  I suggest you read it.  To start of, I opened a terminal and cd'd into the warzone2100-2.0.6 directory and typed the following command:<pre>./autogen.sh</pre><br />Then, I typed the following to configure it using my fink libraries and headers:<br /><pre>./configure --prefix=/Applications/Warzone2100-2.0.6 LDFLAGS=-L/sw/lib CPPFLAGS=-I/sw/include</pre> <br />This will also put the final binary in my /Applications Directory. So, the last to steps are to compile, and install:<pre>make<br />sudo make install</pre>This did the trick for me.</li><br /><li>Now that I got Warzone2100 compiled, I can open a terminal and type the following:<br /><pre>/Applications/Warzone2100/bin/warzone2100 --fullscreen</pre><br />And this "should" lauch the application!<br /></ol>Enjoy!<div class="blogger-post-footer"><img width='1' height='1' src='https://blogger.googleusercontent.com/tracker/4123748873183487963-2431218985315684152?l=bradmontgomery.blogspot.com' alt='' /></div>
+I recently ran across [The Warzone 2100 Resurrection Project](http://wz2100.net/), and I thought to myself,"cool, I wonder if there's an OS X version..." So, I hit their [downloads](http://wz2100.net/downloads.html) page only to find the message: "(The MacOSX diskimage will follow soon)"  
+  
+So I thought, "oh well, I'll just grab the source code and compile it!" After about two hours of digging, I finally got it compiled, and here's how! (NOTE: I've got quite a bit of Unix stuff installed via [fink](http://finkproject.org/), so your mileage may vary)  
+  
+1. Here's the list of stuff I had to get/install/compile before I could even start on Warzone 2100: **cmake (to compile physfs)**, **physfs**, **a newer bison**, and **SDL\_net**
+  
+3. First I grab [cmake 2.4.6](http://cmake.org). Luckily, they have a [universal .dmg for Tiger](http://cmake.org/HTML/Download.html).
+  
+5. Next, I grab the source code for [physfs-1.1.1](http://icculus.org/physfs/) from their [download page](http://icculus.org/physfs/downloads/). At first I tried compiling the "Unix Way", but that didn't work, so I used cmake to generate an Xcode project (pretty cool!). From a terminal window, I cd into the physfs directory and type:  
+
+```
+cmake -G Xcode .
+```
+  
+Then, after compiling physfs with Xcode, I copied the libraries to my /usr/local directories. Again from a Terminal:  
+
+```
+sudo cp libphysfs.* /usr/local/lib  
+sudo cp physfs.h /usr/local/include
+```
+  
+7. Next, I open up [fink commander](http://finkcommander.sourceforge.net/) and grab the newest version of bison from fink
+  
+9. Now I need [SDL\_net](http://www.libsdl.org/projects/SDL_net/). While the project offers a [Mac OS X Framework](http://www.libsdl.org/projects/SDL_net/release/SDL_net-1.2.6.dmg) and SDL\_net is available through fink... I grabbed the source anyway. It compiled just fine the Unix way:
+```
+  
+./configure  
+make  
+sudo make install
+```
+  
+This put all the libraries in /usr/local/lib and /usr/local/include
+  
+11. Finally, time to compile Warzone2100, so I grabbed the [source code](http://wz2100.net/downloads.html), which contains a handy-dandy file called COMPILE. I suggest you read it. To start of, I opened a terminal and cd'd into the warzone2100-2.0.6 directory and typed the following command:
+```
+./autogen.sh
+```
+  
+Then, I typed the following to configure it using my fink libraries and headers:  
+
+```
+./configure --prefix=/Applications/Warzone2100-2.0.6 LDFLAGS=-L/sw/lib CPPFLAGS=-I/sw/include
+```
+   
+This will also put the final binary in my /Applications Directory. So, the last to steps are to compile, and install:
+```
+make  
+sudo make install
+```
+This did the trick for me.
+  
+13. Now that I got Warzone2100 compiled, I can open a terminal and type the following:  
+
+```
+/Applications/Warzone2100/bin/warzone2100 --fullscreen
+```
+  
+And this "should" lauch the application!
+
+Enjoy!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2431218985315684152?l=bradmontgomery.blogspot.com)

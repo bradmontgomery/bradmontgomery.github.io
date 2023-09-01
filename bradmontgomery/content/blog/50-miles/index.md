@@ -7,7 +7,7 @@ tags:
 - running
 - ultra
 slug: 50-miles
-description: <p class="lead">Satu...
+description: ''
 markup: md
 url: /blog/50-miles/
 aliases:
@@ -15,9 +15,11 @@ aliases:
 
 ---
 
-<p class="lead">Saturday, March 5, 2016. I woke up around 4:30am, and we drove out into the middle of nowhere in southern Mississippi. We arrived around 5:30am, and people were already lining up for the 6:00am start. It was 40°F, but the high for the day was supposed to hit the low-mid 70's. This was the Mississippi Trails 50.</p>
+Saturday, March 5, 2016. I woke up around 4:30am, and we drove out into the middle of nowhere in southern Mississippi. We arrived around 5:30am, and people were already lining up for the 6:00am start. It was 40°F, but the high for the day was supposed to hit the low-mid 70's. This was the Mississippi Trails 50.
 
-I'd run my first 50k in mid-January, but this was my first attempt at a 50-miler&mdash;a staple of the ultra-marathon trail run.
+
+
+I'd run my first 50k in mid-January, but this was my first attempt at a 50-miler—a staple of the ultra-marathon trail run.
 
 ## The Race
 
@@ -25,22 +27,22 @@ As far as trail runs go, the [MS50](http://ms50.com/) is fairly easy terrain. It
 
 However, there is water, and there is mud. I think there were 4 creek crossings, and while they weren't huge creeks, they were large enough that you have to wade through them. Which means your feet are going to get wet. On either side of those creeks are large mucky, slippery, muddy patches that seemed to disappear and then suddenly reappear another half-mile past the creek. I'm no stranger to muddy trails, but in this case, I could've done without.
 
-The MS50 is a series of loops around a 12-mile trail and a 6-mile trail. The 50-mile course ran for 3 of the 12-mile loops and 2 of the 6-mile loops (yes that's 48 miles total. I'm still calling it 50). There were aid stations every 4-6 miles packed full of great treats: chips, cheeze-its, goldfish, brownies, peanut butter and jelly, M&amp;Ms, Coke as well as water and [Heed](http://www.hammernutrition.com/products/heed-sports-drink.he.html). Every aid station was run by enthusiastic volunteers who made the day a great one. Many many kudos to those folks. I don't think I could have survived without them.
+The MS50 is a series of loops around a 12-mile trail and a 6-mile trail. The 50-mile course ran for 3 of the 12-mile loops and 2 of the 6-mile loops (yes that's 48 miles total. I'm still calling it 50). There were aid stations every 4-6 miles packed full of great treats: chips, cheeze-its, goldfish, brownies, peanut butter and jelly, M&Ms, Coke as well as water and [Heed](http://www.hammernutrition.com/products/heed-sports-drink.he.html). Every aid station was run by enthusiastic volunteers who made the day a great one. Many many kudos to those folks. I don't think I could have survived without them.
 
 It's really hard to convey what running this race was like, but I vaguely remember some of my thoughts along the way:
 
-- **Loop one (12 miles)**: man I feel good! This forest is beautiful, look at all these pine trees. Wow that water was cold, but man I'm energized. I've got to get another one of those brownies!
-- **Loop two (12 miles)**: alright, 12 done. My legs are feeling good pretty good, I'm not too tired. That PB&J was delicious. I can do this. Why oh why didn't I ditch this top after the first loop, it's freaking hot.
-- **Loop three (12 miles)**: Ugh. I have to run this loop again. Man I hope Von doesn't run off and leave me. Where the f*3k did these hills come from. (at mile 32) Woah, in 2 more miles I'll have run further than I've ever run before; I'm actually going to do this. (at mile 34) Hell yeah! I guess I've got my second wind, I'm feeling good again!
-- **Loop four (6 miles)**: Oh man, there's something wrong with my toe. I can't believe my IT band isn't killing me. Ugh, I can't possibly eat another brownie and those chips look awful.
-- **Loop five (6 miles)**: uh, I wonder if I'll still make the cutoff if I walk this whole thing. My toe stopped hurting, I hope that's not a bad sign. Just jog for another mile. I still have Gu, have I really only had 2 this whole race? Oh man, I recognize this trail, we're only a mile from the end, let's do this!
+- \*\*Loop one (12 miles)\*\*: man I feel good! This forest is beautiful, look at all these pine trees. Wow that water was cold, but man I'm energized. I've got to get another one of those brownies!
+- \*\*Loop two (12 miles)\*\*: alright, 12 done. My legs are feeling good pretty good, I'm not too tired. That PB&J was delicious. I can do this. Why oh why didn't I ditch this top after the first loop, it's freaking hot.
+- \*\*Loop three (12 miles)\*\*: Ugh. I have to run this loop again. Man I hope Von doesn't run off and leave me. Where the f\*3k did these hills come from. (at mile 32) Woah, in 2 more miles I'll have run further than I've ever run before; I'm actually going to do this. (at mile 34) Hell yeah! I guess I've got my second wind, I'm feeling good again!
+- \*\*Loop four (6 miles)\*\*: Oh man, there's something wrong with my toe. I can't believe my IT band isn't killing me. Ugh, I can't possibly eat another brownie and those chips look awful.
+- \*\*Loop five (6 miles)\*\*: uh, I wonder if I'll still make the cutoff if I walk this whole thing. My toe stopped hurting, I hope that's not a bad sign. Just jog for another mile. I still have Gu, have I really only had 2 this whole race? Oh man, I recognize this trail, we're only a mile from the end, let's do this!
 
 I just can't imagine doing an event like this without friends, and I was lucky enough to accompany [Brian](https://twitter.com/thirstyrunner), [Von](https://twitter.com/vonralls), and [Lynn](https://twitter.com/steelerrunner) on this journey. We all started the race together, and Von and I paced each other for the first 34 miles. Brian has been my training partner for so long, and were it not for him I would never have even considered doing anything like this. Thanks bud.
 
-<figure>
-  <img src="//i.imgur.com/AoLQxIc.jpg" alt="Loop two after four hours, fourty minutes">
-  <figcaption>Von and I wrapping up the second loop</figcaption>
-</figure>
+
+![Loop two after four hours, fourty minutes](//i.imgur.com/AoLQxIc.jpg)
+Von and I wrapping up the second loop
+
 
 
 As a general rule, I think trail runners are a pretty friendly lot, and I ended up running the last 12 miles with a guy named Brandon. I'm pretty sure he was faster than me, but he seemed to like the company. Twelve miles & a conversation feels shorter than 12 alone. Wherever you are, thanks, man.
@@ -63,10 +65,10 @@ Like most sports, trail-running has it's share of accessories and products. I ge
 - Fitbit Charge HR
 - My Bolle sport glasses with Rx / Transitions lenses.
 
-<figure>
-  <img src="//i.imgur.com/QHFXN6Z.jpg" alt="My gear for the Mississippi Trails 50-miler">
-  <figcaption>Most of my gear for the first two loops of the race. I shed the long-sleeves later, and the CEP knee strap is not pictured.</figcaption>
-</figure>
+
+![My gear for the Mississippi Trails 50-miler](//i.imgur.com/QHFXN6Z.jpg)
+Most of my gear for the first two loops of the race. I shed the long-sleeves later, and the CEP knee strap is not pictured.
+
 
 ## Training and diet
 
@@ -97,7 +99,6 @@ If you'd told me this time last year that I would have finished a 50-miler, I pr
 
 It's pretty amazing what you can accomplish with consistent training, a good diet, and amazing friends. See you on the trails.
 
-<figure>
-  <img src="//i.imgur.com/RTgPWFj.jpg" alt="10 hours 9 minutes later">
-  <figcaption>Crossing the finish line.</figcaption>
-</figure>
+
+![10 hours 9 minutes later](//i.imgur.com/RTgPWFj.jpg)
+Crossing the finish line.
