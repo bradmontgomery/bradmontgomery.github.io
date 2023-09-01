@@ -2,32 +2,33 @@ baseURL = "http://bradmontgomery.github.io/"
 languageCode = "en-us"
 title = "Brad Montgomery"
 theme = 'PaperMod'
+enableInlineShortcodes = false
 
 [menu]
 [[menu.main]]
-    identifier = "blog"
-    name = "Blog"
-    pre = "<i class='fa fa-heart'></i>"
-    url = "/blog/"
-    weight = -1
+identifier = "blog"
+name = "Blog"
+pre = "<i class='fa fa-heart'></i>"
+url = "/blog/"
+weight = -1
 
 [[menu.main]]
-    identifier = "about"
-    name = "About"
-    pre = "<i class='fa fa-heart'></i>"
-    url = "/pages/about/"
-    weight = 1
+identifier = "about"
+name = "About"
+pre = "<i class='fa fa-heart'></i>"
+url = "/pages/about/"
+weight = 1
 
 [[menu.main]]
-    identifier = "services"
-    name = "Services"
-    pre = "<i class='fa fa-heart'></i>"
-    url = "/pages/services/"
-    weight = 2
+identifier = "services"
+name = "Services"
+pre = "<i class='fa fa-heart'></i>"
+url = "/pages/services/"
+weight = 2
 
 [[menu.main]]
-    identifier = "contact"
-    name = "Contact"
-    pre = "<i class='fa fa-heart'></i>"
-    url = "/pages/contact/"
-    weight = 3
+identifier = "contact"
+name = "Contact"
+pre = "<i class='fa fa-heart'></i>"
+url = "/pages/contact/"
+weight = 3
