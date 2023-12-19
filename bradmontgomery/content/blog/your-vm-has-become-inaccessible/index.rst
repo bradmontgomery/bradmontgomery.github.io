@@ -58,7 +58,7 @@ VM is hosed, vagrant will offer the following complaint:
  VirtualBox and clear out your inaccessible virtual machines or find a way
  to fix them.
 
-And if you run ``vagrant status``, you'll see something like this::
+And if you run ``vagrant status``\, you'll see something like this::
 
  Current machine states:
 
