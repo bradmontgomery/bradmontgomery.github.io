@@ -16,11 +16,12 @@
         <a href="/blog/">Blog</a>
         {#<a href="/archive/">Archive</a>#}
         {#<a href="/tags/">Tags</a>#}
-        <a href="/tags/">About</a>
+        <a href="/about/">About</a>
         <a href="/services/">Services</a>
         <a href="/contact/">Contact</a>
       </nav>
       <h1>{{ title }}</h1>
+      {% block extra_header %}{% endblock %}
     </header>
     <main>
     {% block body %}{% endblock %}

@@ -127,6 +127,34 @@ def build_static(output):
     shutil.copytree(Path("static"), static_output, dirs_exist_ok=True)
 
 
+def build_index(env, output: str, index: list, top: int = 20):
+    """Build an index page with the _latest_ `top` (20) articles."""
+    # Each item's keys include: url, title, date, description.
+    index = sorted(index, key=lambda d: d["date"], reverse=True)[:top]
+
+    context = {
+        "title": "Brad Montgomery",
+        "subtitle": "Latest posts...",
+        "posts": index,
+    }
+    template = env.get_template("index.html")
+    content = template.render(**context)
+    with open(Path(output) / "index.html", "w") as f:
+        f.write(content)
+        logger.info("Wrote index.html")
+
+
+
+# TODO: how to build a linked TAGS index?
+def build_tags():
+    pass
+
+
+# TODO: how to build a linked ARCHIVES index?
+def build_archives():
+    pass
+
+
 
 # -------------------------------------------------------------
 # CLI Commands.
@@ -149,6 +177,17 @@ def server(output, addr, port):
     logger.info("Listeng on %s:%S in %s...", addr, port, output)
     httpd.serve_forever()
 
+
+@cli.command()
+@click.option("-t", "--title", help="Article title")
+@click.option("--tags", help="Article title")
+def new(title, tags):
+    # TODO: create a new post
+    # TODO: fill in title, date, tags, etc.
+    # TODO: construct md template and front-matter.
+    raise NotImplementedError("Haven't gotten to this yet")
+
+
 @cli.command()
 @click.option("--content", default="content", help="Content directory")
 @click.option("--templates", default="templates", help="Template directory")
@@ -159,17 +198,27 @@ def build(content, templates, output):
     # set up the jinja environment
     env = Environment(loader=PackageLoader("site"), autoescape=select_autoescape())
 
+    # List of context dicts for the index, blog list, and archive.
+    index = []
+
     # get list of files, urls
     for file in find_markdown_files(content):
         context = get_template_context(file)
         template = env.get_template(get_template_name(file, content))
-        content = template.render(**context)
+        html_content = template.render(**context)
 
         # Get output dir that we need to write to.
         for path in get_output_paths(output, context, file):
             with open(path, "w") as f:
-                f.write(content)
+                f.write(html_content)
                 logger.info("Wrote: %s", path)
+
+        # If a blog post, put it in the index.
+        if file.strip(content).startswith("/blog"):
+            index.append(context)
+
+    # Build the index(es)
+    build_index(env, output, index)
 
     # Build static files output
     build_static(output)
@@ -178,16 +227,6 @@ def build(content, templates, output):
     logger.info("Completed in %s seconds", elapsed)
 
 
-# TODO: move static to the correct place
-# TODO: add style / Nav to templates.
-
-# TODO: how to build an index?
-# TODO: how to build a linked TAGS index?
-# TODO: how to build a linked ARCHIVES index?
-
-# TODO: command to create a post
-# TODO: fill in title, date, tags, etc.
-# TODO: construct md template and front-matter.
 
 if __name__ == "__main__":
     cli()
