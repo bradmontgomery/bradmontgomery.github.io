@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>My PYTHONPATH bit me.</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>My PYTHONPATH bit me.</h1>
+      
+  <div>Published on 2009-06-30T14:23:00+00:00</div>
+  
+    <div>
+    
+      <mark>Python</mark> &nbsp;
+    
+      <mark>django</mark> &nbsp;
+    
+      <mark>web</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I'd just finished the first version of a new django app (<em>myapp</em>), and so I pushed it out to my development server. All the new code was in place, so I ran <em>python manage.py syncdb</em>. The result?</p>
+<pre><code>  
+Traceback (most recent call last):  
+  File &quot;manage.py&quot;, line 11, in &lt;module&gt;  
+    execute_manager(settings)  
+  File &quot;/usr/local/lib/python2.6/site-packages/django/core/management/__init__.py&quot;, line 340, in execute_manager  
+      
+  File &quot;/usr/local/lib/python2.6/site-packages/django/core/management/__init__.py&quot;, line 295, in execute  
+      
+  File &quot;/usr/local/lib/python2.6/site-packages/django/core/management/base.py&quot;, line 192, in run_from_argv  
+  File &quot;/usr/local/lib/python2.6/site-packages/django/core/management/base.py&quot;, line 210, in execute  
+  File &quot;/usr/local/lib/python2.6/site-packages/django/utils/translation/__init__.py&quot;, line 73, in activate  
+      
+  File &quot;/usr/local/lib/python2.6/site-packages/django/utils/translation/__init__.py&quot;, line 43, in delayed_loader  
+      
+  File &quot;/usr/local/lib/python2.6/site-packages/django/utils/translation/trans_real.py&quot;, line 209, in activate  
+  File &quot;/usr/local/lib/python2.6/site-packages/django/utils/translation/trans_real.py&quot;, line 198, in translation  
+  File &quot;/usr/local/lib/python2.6/site-packages/django/utils/translation/trans_real.py&quot;, line 181, in _fetch  
+AttributeError: 'module' object has no attribute 'myapp'  
+
+</code></pre>
+<p><strong>What!?</strong> I had all the correct files in place, and <em>myapp</em> was listed in my settings' INSTALLED_APPS. I was confused. As it turns out, my PYTHONPATH pointed to my production code (which is actually on the same system, configured for a separate virtual host). So no, it couldn't find my new app because my path said to look in my production code.... :(</p>
+<p>So, I just temporarily reset my PYTHONPATH, ran my <em>python manage.py syncdb</em>, and I'm rolling for now...<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-3810087032644746773?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

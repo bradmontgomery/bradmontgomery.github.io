@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Net::HTTPServerException: 412 &#34;Precondition Failed&#34;</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Net::HTTPServerException: 412 &#34;Precondition Failed&#34;</h1>
+      
+  <div>Published on 2012-02-05T20:15:19+00:00</div>
+  
+    <div>
+    
+      <mark>chef</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>So, I've been working with <a href="http://www.opscode.com/chef/">Chef</a> quite a bit, lately. Every once in a while, I'll bootstrap a new node and it fails with this:</p>
+<pre><code>Net::HTTPServerException: 412 &quot;Precondition Failed&quot;
+</code></pre>
+<p>Every single time this has happened to me, I've had stop and scratch my head. <em>Why can't I remember what causes this!?</em> Well, in my case it's usually a misspelled cookbook or recipe name. For example, I might have a <code>role</code> that looks something like this:</p>
+<pre><code>name &quot;sample-server&quot;
+description &quot;sample apache server&quot;
+run_list &quot;role[apache::default]&quot;
+
+</code></pre>
+<p>Can you spot the problem? The opscode cookbook for apache is named <strong>apache2</strong>!</p>
+<pre><code>name &quot;sample-server&quot;
+description &quot;sample apache server&quot;
+run_list &quot;role[apache2::default]&quot;
+
+</code></pre>
+<p>So, one complaint that I have about chef is that <code>Net::HTTPServerException: 412 &quot;Precondition Failed&quot;</code> should probably say something like <code>Net::HTTPServerException: 412 &quot;Couldn't find cookbook 'apache'&quot;</code>. Oh well... <em>C'est la vie</em></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

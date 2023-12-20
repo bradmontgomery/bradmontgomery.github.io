@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>How to convert HTML to PDF using Python.</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>How to convert HTML to PDF using Python.</h1>
+      
+  <div>Published on 2008-12-17T19:37:00+00:00</div>
+  
+    <div>
+    
+      <mark>PDF</mark> &nbsp;
+    
+      <mark>Python</mark> &nbsp;
+    
+      <mark>web</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I'm building web-based, data-driven apps using <a href="http://www.djangoproject.com/">Django</a>. Eventually (or unfortunately), I will need to generate some reports that are printer-friendly. Logically, <a href="http://en.wikipedia.org/wiki/Portable_Document_Format">PDF</a> is the format for such files... so how am I going to convert my xHTML and CSS to a nice-looking PDF document?</p>
+<p>The <a href="http://www.djangobook.com/">Django Book</a> has a whole chapter dedicated to <a href="http://www.djangobook.com/en/1.0/chapter11/">Generating Non-HTML Content</a>. They seem to to be fond of <a href="http://www.reportlab.org/rl_toolkit.html">ReportLab ToolKit</a>. The caveat here, though, is that you need to know a bit about the internals of a PDF document. If you're familiar with this, the ReportLab toolkit seems to be the way to go! It has many features, and it seems to be a powerful PDF-generating tool.</p>
+<p>Unfortunately, I know nothing about PDF internals, but I do know quite a bit about HTML and CSS. That's why <a href="http://www.xhtml2pdf.com/">xhtml2pdf.com</a> caught my attention. If it delivers on it's promises, it parses HTML and CSS and generates PDFs (imagine that)! There's also a handy Activestate recipe using it: <a href="http://code.activestate.com/recipes/572160/">Recipe 572160: HTML/CSS to PDF converter</a>.</p>
+<p>I'm definately going to check this (HTML2PDF.org) out... so expect an update on this!</p>
+<p>Any other suggestions?</p>
+<p>UPDATE: <a href="http://www.xhtml2pdf.com/">xhtml2pdf</a> works well. There's also a great<br />
+<a href="http://www.20seven.org/journal/2008/11/pdf-generation-with-pisa-in-django.html">post by Greg Newman</a> outlining how it's used in django.<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-7973631231608601676?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

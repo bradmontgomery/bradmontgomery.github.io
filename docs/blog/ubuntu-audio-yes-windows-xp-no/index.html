@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Ubuntu Audio, YES! Windows XP, NO.</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Ubuntu Audio, YES! Windows XP, NO.</h1>
+      
+  <div>Published on 2009-12-13T14:57:00+00:00</div>
+  
+    <div>
+    
+      <mark>Hardware</mark> &nbsp;
+    
+      <mark>Linux</mark> &nbsp;
+    
+      <mark>Ubuntu</mark> &nbsp;
+    
+      <mark>audio</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I run a dual-boot Ubuntu64<a href="#one">[1]</a> and Windows XP system. The windows partition really exists for a <a href="http://en.wikipedia.org/wiki/Unreal_Tournament_2004">single purpose</a>, and I occasionally just reboot the machine, choose the XP partition from the Grub menu, and all is well.</p>
+<p>However, a few weeks ago, I upgraded Ubuntu, but when I rebooted the machine and chose the XP partition, I noticed the sound<a href="#two">[2]</a> stopped working. What!? The audio worked fine in ubuntu!</p>
+<p>The Secret: <strong>I had to <em>completely power down the machine</em> before booting into Windows.</strong> Then, audio works just fine.</p>
+<p>Unfortunately, I didn't discover this until I'd re-installed the windows drivers (which didn't work), reformatted/reinstalled windows and all drivers (which only worked because I powered down in the process), <a href="http://www.howtogeek.com/howto/ubuntu/reinstall-ubuntu-grub-bootloader-after-windows-wipes-it-out/">fixed my grub boot loader</a>, and incorrectly assumed the problem was fixed until I booted back into Ubuntu and back into Windows only to find that the problem remained.</p>
+<p>Sheesh. So, if this has happened to you, I'm sure you've found the myriad article on how to get sound working in Linux... which for me, has always worked just fine.</p>
+<p>[1] Output of <strong>uname -a</strong>:</p>
+<pre><code>Linux homeserver 2.6.31-16-generic #53-Ubuntu SMP Tue Dec 8 04:02:15 UTC 2009 x86_64 GNU/Linux
+</code></pre>
+<p>[2] A Soundblaster Audigy LS. Output of <strong>lspci</strong>:</p>
+<pre><code>02:02.0 Multimedia audio controller: Creative Labs CA0106 Soundblaster
+</code></pre>
+<p><img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-8164638269643552852?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

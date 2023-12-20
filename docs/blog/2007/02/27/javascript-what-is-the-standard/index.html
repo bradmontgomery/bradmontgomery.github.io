@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Javascript: What is the standard?</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Javascript: What is the standard?</h1>
+      
+  <div>Published on 2007-02-27T21:06:00+00:00</div>
+  
+    <div>
+    
+      <mark>Javascript</mark> &nbsp;
+    
+      <mark>Programming</mark> &nbsp;
+    
+      <mark>web</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I've recently been writing a little javascript, and I needed to chage the value of some text inside an html/xhtml element. It seems there are several ways to do this, but evey browser may or may not support the same method for doing it (big surprise, here) I'm not sure what is considered the &quot;standard&quot; way. Here's a little script that I use to help me decide which browsers support which methods for altering text within an html/xhtml element:</p>
+<pre><code>  
+&lt;html&gt;  
+&lt;head&gt;&lt;title&gt;blah&lt;/title&gt;  
+&lt;script language=&quot;JavaScript&quot;&gt;  
+&lt;!-- Hide code from older browsers  
+function loader() {  
+  pp = document.getElementsByTagName(&quot;p&quot;)  
+  pp[0].innerText = &quot;.innerText DOES work!&quot;  
+  pp[1].style.content = &quot;.style.content DOES work!&quot;  
+  pp[2].innerhtml    = &quot;.innerhtml DOES work!&quot;  
+  pp[3].childNodes[0].nodeValue = &quot;.childNodes[0].nodeValue DOES work!&quot;  
+}  
+// End hiding--&gt;  
+&lt;/script&gt;  
+&lt;/head&gt;  
+  
+&lt;body onload=&quot;loader()&quot;&gt;  
+&lt;h1&gt;Changing text with javascript&lt;/h1&gt;  
+&lt;p&gt; .innerText DOES NOT work.&lt;/p&gt;  
+  
+&lt;p&gt; .style.content DOES NOT work.&lt;/p&gt;  
+&lt;p&gt; .innerhtml DOES NOT work.&lt;/p&gt;  
+&lt;p&gt; .childNodes[0].nodeValue DOES NOT work.&lt;/p&gt;  
+&lt;/body&gt;  
+  
+&lt;/html&gt;
+</code></pre>
+<p>(Thanks to the users of [codingforums.com](http://www.codingforums.com/showthread.php?t=34717<br />), especially Roy Gardiner, whose code from which this script was adapted.)<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-7998488112426396151?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

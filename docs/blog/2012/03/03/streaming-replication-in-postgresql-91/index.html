@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Streaming Replication in PostgreSQL 9.1</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Streaming Replication in PostgreSQL 9.1</h1>
+      
+  <div>Published on 2012-03-03T15:29:24+00:00</div>
+  
+    <div>
+    
+      <mark>database</mark> &nbsp;
+    
+      <mark>postgresql</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>Not long ago, I set up <em>synchronous</em>, streaming replication in PostgreSQL 9.1 in order to build a <em>Hot Standby</em> system. This is the story of that journey.</p>
+<p>This post is mostly based on the <a href="http://wiki.postgresql.org/wiki/Binary_Replication_Tutorial#5_Minutes_to_Simple_Replication">5-minute simple replication</a> tutorial from the PostgreSQL wiki, but with a few modifications and clarifications. There's also lots of good information in the <a href="http://wiki.postgresql.org/wiki/Streaming_Replication">Streaming Replication wiki</a> from the PostgreSQL wiki.</p>
+<p>For the remainder of this post, assume that you have a Master at 111.111.111.111 (host named <code>db0</code>) and a Standby at 222.222.222.222 (host named <code>db1</code>).</p>
+<h2>Configure the Master</h2>
+<p>In <code>postgresql.conf</code>, you need to set the following:</p>
+<pre><code>listen_address = '*'
+wal_level = hot_standby
+max_wal_senders = 3
+</code></pre>
+<p>There is one caveat of running a hot standby system: if the standby crashes, the master will continue to wait for a response on every transaction. This is a Bad Thing. You should adequately monitor this so you know when it happens!</p>
+<p>Now, in <code>pg_hba.conf</code>, you need to add this:</p>
+<pre><code>host replication all 222.222.222.222/32 trust
+</code></pre>
+<p>This gives your standby server permissions to connect to the master.</p>
+<h2>Configure the Standby</h2>
+<p>Now, on the standby machine, edit <code>postgresql.conf</code> so that it includes:</p>
+<pre><code>hot_standby = on
+</code></pre>
+<p>Then, add a <code>recovery.conf</code> file. This ususally goes in PostgreSQL's data directory, which defaults to <code>/var/lib/postgresql/9.1/main</code> on Ubuntu. This file should contain:</p>
+<pre><code>standby_mode = 'on'
+primary_conninfo = 'host=111.111.111.111 application_name=db1'
+</code></pre>
+<h2>Data Transfer</h2>
+<p>Just to make sure the appropriate processes are running, verify that there's a <code>sender</code> process that will run on the master and a <code>receiver</code> process that will run on the standby. You can check for those with <code>ps -ef | grep sender</code> and <code>ps -ef | grep receiver</code>, respectively.</p>
+<p>At this point, we've got to make sure the Standby contains an exact copy of the data from the Master. Shut down the PostgreSQL service on the master and standby (e.g. with a command such as <code>invoke-rc.d postgresql stop</code>). Then copy data files from the master to the standby. You must exclude any config files if you've put any there (we haven't in this tutorial) as well as the <code>pg_xlog</code> directory.:</p>
+<pre><code>rsync -av --exclude pg_xlog
+    /var/lib/postgresql/9.1/main
+    222.222.222.222:/var/lib/postgresql/9.1/main
+</code></pre>
+<p>Then, start the standby and the master (<code>invoke-rc.d postgresql start</code> on both systems).</p>
+<h2>Verify</h2>
+<p>Now it's time to test this setup. Log into the master (<code>ssh root@111.111.111.111</code>) and create a sample database:</p>
+<pre><code>$ su postgres
+$ createdb sampledb
+</code></pre>
+<p>Now, access the postgresql command prompt:</p>
+<pre><code>$ psql -d sampledb
+</code></pre>
+<p>Create a simple table and populate it with some data:</p>
+<pre><code>CREATE table samples (
+    id integer  PRIMARY KEY,
+    name varchar(25),
+    stuff text
+);
+
+INSERT into samples values (1, 'foo', 'lots of foo');
+INSERT into samples values (2, 'bar', 'lots of bar');
+INSERT into samples values (3, 'baz', 'lots of baz');
+INSERT into samples values (4, 'bin', 'lots of bin');
+</code></pre>
+<p>Now, in another shell, log into your standby (<code>ssh root@222.222.222.222</code>), and fire up the <code>psql</code> prompt:</p>
+<pre><code>$ su postgres
+$ psql -d sampledb
+
+</code></pre>
+<p>Look at a list of the tables:</p>
+<pre><code>sampledb=# \d
+          List of relations
+ Schema |  Name   | Type  |  Owner
+--------+---------+-------+----------
+ public | samples | table | postgres
+(1 row)
+
+</code></pre>
+<p>Then query the <code>samples</code> table:</p>
+<pre><code>sampledb=# select * from samples;
+ id | name |    stuff
+----+------+-------------
+  1 | foo  | lots of foo
+  2 | bar  | lots of bar
+  3 | baz  | lots of baz
+  4 | bin  | lots of bin
+(4 rows)
+
+</code></pre>
+<p>Now, try to insert some more data:</p>
+<pre><code>sampledb=# insert into samples values (5, 'asdf', 'more asdf');
+ERROR:  cannot execute INSERT in a read-only transaction
+
+</code></pre>
+<p>Whoops! The standby server gives you <em>Read-Only</em> access to the data.</p>
+<h2>Checking the WAL Status</h2>
+<p>On the master, you can run the following command to see the current WAL write location:</p>
+<pre><code>SELECT pg_current_xlog_location();
+
+</code></pre>
+<p>Then on the standby, you can run:</p>
+<pre><code>SELECT pg_last_xlog_receive_location();
+
+</code></pre>
+<p>and:</p>
+<pre><code>SELECT pg_last_xlog_replay_location();
+
+</code></pre>
+<p>If you get the same values, then replication is up-to-date... otherwise there is some lag. We haven't set up synchronous replication, yet, so in a production environment (with a lot of data getting written to the database) it's possible the Standby would lag behind the master. If you <em>need</em> both systems to always be idendical, you can flip on <em>synchronous replication</em>.</p>
+<h1>Synchronous Replication</h1>
+<p>Enabling Synchronous Replaction just takes a couple of additional steps. Keep in mind though, that this <em>should only be done when there's little latency between the master and the standby</em>! That's because each query on the master will wait for a responce from the standby, which has to go over the network. I would only configure synchronous replication if both the master and standby are connected over a local (preferably private) network.</p>
+<p>Ok, to make it happen, add the following to <code>postgresql.conf</code> on the Master:</p>
+<pre><code>synchronous_standby_names = 'db1'
+</code></pre>
+<p>Where the value here is a comma-separated list of your standby servers. You can have more than one, but only the first one will be used. If for some reason the first one dies, the second will become the standby.</p>
+<p>Restart postgresql, then check out the status of your data synchronization (still on the master):</p>
+<pre><code>$ su posgresql
+$ psql
+
+</code></pre>
+<p>Then run:</p>
+<pre><code>SELECT usename, application_name, client_addr, client_hostname, sync_state FROM pg_stat_replication;
+</code></pre>
+<p>You should see something like this:</p>
+<pre><code>usename   | application_name |  client_addr    | client_hostname | sync_state
+----------+------------------+-----------------+-----------------+------------
+ postgres | db1              | 222.222.222.222 |                 | sync
+
+</code></pre>
+<p>Now, just for fun, go back and insert a bunch of data in your master, then query on your standby machine. You should see the same results on both machines!</p>
+<h1>What Next?</h1>
+<p>Now that you've got this set up, it's probably not a bad idea to read more about what's going on. The official PostgreSQL Docs make a good reference:</p>
+<ul>
+<li><a href="http://www.postgresql.org/docs/9.1/interactive/runtime-config-wal.html">18.5. Write Ahead Log</a></li>
+<li><a href="http://www.postgresql.org/docs/9.1/interactive/runtime-config-replication.html">18.6. Replication</a></li>
+<li><a href="http://www.postgresql.org/docs/9.1/interactive/high-availability.html">25. High Availability, Load Balancing, and Replication</a></li>
+<li>Basically the whole <a href="http://www.postgresql.org/docs/9.1/interactive/admin.html">Server Administration Section</a>.</li>
+</ul>
+<p>Enjoy!</p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

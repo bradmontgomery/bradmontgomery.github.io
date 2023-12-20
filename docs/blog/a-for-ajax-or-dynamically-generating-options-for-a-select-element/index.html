@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>A for AJAX - OR - Dynamically generating options for a select element.</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>A for AJAX - OR - Dynamically generating options for a select element.</h1>
+      
+  <div>Published on 2009-07-14T11:42:00+00:00</div>
+  
+    <div>
+    
+      <mark>Javascript</mark> &nbsp;
+    
+      <mark>Prototype</mark> &nbsp;
+    
+      <mark>ajax</mark> &nbsp;
+    
+      <mark>web</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I don't do a lot of AJAXy web development, but when I do, I usually make use of <a href="http://prototypejs.org/">Prototype</a>. I've recently created a form containing a <em><select></em> element whose *<option>*s are dynamically generated via an AJAX request. The problem however, is that a <em><strong>selected</strong> option</em> was already in the form. So before the AJAX request, my HTML looked something like this:</p>
+<pre><code>&lt;select name=&quot;s&quot; id=&quot;s&quot;&gt;  
+&lt;option value=&quot;val1&quot;&gt;Value 1&lt;/option&gt;  
+&lt;option value=&quot;val2&quot; selected=&quot;selected&quot;&gt;Value 2&lt;/option&gt;  
+&lt;option value=&quot;val3&quot;&gt;Value 3&lt;/option&gt;  
+&lt;/select&gt;
+</code></pre>
+<p>We can then use <a href="http://prototypejs.org/api/ajax/request">Ajax.Request</a> method to dynamically add items into this list. (Note here that <em>http://example.com/dynamic/options/</em> would be a server-side script giving us our dynamically generated <em><option></em> tags.)</p>
+<pre><code>new Ajax.Request('http://example.com/dynamic/options/', {  
+    method: 'post',  
+    onSuccess: function(transport) {  
+        if (transport.responseText)  
+            Element.insert($('s'), transport.responseText);  
+    }  
+}); 
+</code></pre>
+<p>Our resulting HTML might look something like the following:</p>
+<pre><code>&lt;select name=&quot;s&quot; id=&quot;s&quot;&gt;  
+&lt;option value=&quot;val1&quot;&gt;Value 1&lt;/option&gt;  
+&lt;option value=&quot;val2&quot; selected=&quot;selected&quot;&gt;Value 2&lt;/option&gt;  
+&lt;option value=&quot;val3&quot;&gt;Value 3&lt;/option&gt;  
+&lt;option value=&quot;val4&quot;&gt;Value 4&lt;/option&gt;  
+&lt;option value=&quot;val5&quot;&gt;Value 5&lt;/option&gt;  
+&lt;option value=&quot;val6&quot;&gt;Value 6&lt;/option&gt;  
+&lt;/select&gt;
+</code></pre>
+<p>One problem that arises, is that once the above <em><option>s</em> are inserted into the original <em><select></em> element, the originally selected option is no longer selected. (In my experiments using Firefox 3.5 on OS X, the last item — in this case, <em>Value 6</em>— becomes selected).</p>
+<p>That's not so bad, though, because a little more code will just set the correct <option> as selected. The following code looks at all the options until it finds one with the attribute: <em>selected=&quot;selected&quot;</em>, and then ... selects it!</p>
+<pre><code>var selected_index = 0;  
+while (!$('s').down(selected_index).defaultSelected) {  
+    selected_index += 1;  
+}                 
+$('s').selectedIndex = selected_index;
+</code></pre>
+<p><strong>However...</strong> one must be careful where one puts this code! You <strong>must</strong> take into account that the Ajax Request is <strong>asynchronous</strong> (that's the <em>A</em> in AJAX)!</p>
+<p>Here's what NOT to do:</p>
+<pre><code>function append_options() {  
+    // Request the dynamically generated options  
+    new Ajax.Request('http://example.com/dynamic/options/', {  
+        method: 'post',  
+        onSuccess: function(transport) {  
+            if (transport.responseText)  
+                Element.insert($('s'), transport.responseText);  
+        }     
+    });   
+    // Make sure the correct on is selected. var selected\_index = 0;  
+    while (!$('s').down(selected_index).defaultSelected) {  
+        selected_index += 1;  
+    }  
+    $('s').selectedIndex = selected_index;  
+}  
+document.observe('dom:loaded', function() {  
+    append_options();  
+});
+</code></pre>
+<p>The Ajax request is sent, but the portion of the code that selects the option containing selected=&quot;selected&quot; may get run <strong>before</strong> there is a response to that Request. Therefore, the selected option gets set, then the dynamically generated options get inserted. This is not what we want!</p>
+<p>The proper way to do this is to use the <em>onComplete</em> callback in Ajax.Request. This will ensure that the code to select the appropriate option is run <strong>after</strong> the Request is completed.</p>
+<pre><code>function append_options() {  
+    // Request the dynamically generated options  
+    new Ajax.Request('http://example.com/dynamic/options/', {  
+        method: 'post',  
+        onSuccess: function(transport) {  
+            if (transport.responseText)  
+                Element.insert($('s'), transport.responseText);  
+        },    
+        onComplete: function(transport) {  
+            // Make sure the correct on is selected.  
+            var selected_index = 0;  
+            while (!$('s').down(selected_index).defaultSelected) {  
+                selected_index += 1;  
+            }  
+            $('s').selectedIndex = selected_index;  
+        }  
+    });   
+}  
+document.observe('dom:loaded', function() {  
+    append_options();  
+});
+</code></pre>
+<p>This is fairly basic AJAX behavior, but for those of us who don't live, breathe, eat, and sleep AJAX, this is an easy mistake to make.</p>
+<p>So the moral of this story? Know your tools! It's always good to *Know what's going on!*™<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-5043486322654878551?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Sending SMS messages with Amazon SNS and Python</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Sending SMS messages with Amazon SNS and Python</h1>
+      
+  <div>Published on 2017-02-01T22:46:52.151549+00:00</div>
+  
+    <div>
+    
+      <mark>aws</mark> &nbsp;
+    
+      <mark>python</mark> &nbsp;
+    
+      <mark>sms</mark> &nbsp;
+    
+      <mark>sns</mark> &nbsp;
+    
+      <mark>texting</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>There are many services out there that will let you programmatically send
+SMS messages. One of the more popular is <a href="https://www.twilio.com">Twilio</a>,
+and they have a great API and a python client that's easy to use. There's
+an interesting <a href="https://www.quora.com/How-do-I-send-text-messages-from-a-python-script-to-a-mobile-number-if-possible-with-a-free-gateway">quora thread</a>
+with several other suggestions as well.</p>
+<p>Another option is to use Amazon's <a href="https://aws.amazon.com/sns/">Simple Notification Service</a> (SNS), which also supports sending SMS messages. I recently
+incorporated this into a project, and thought I'd share.</p>
+<h2>Step 1: API key + boto3</h2>
+<p>If you're already using AWS, you've probably jumped through these hoops. I'm
+not going to walk you through them, but just realize you need to figure out how
+to sign up for an AWS account and get some api keys.</p>
+<p>The second part of this is <a href="https://aws.amazon.com/sdk-for-python/">boto3</a>,
+amazon's python sdk.</p>
+<p>pip install boto3</p>
+<p>Boto's <a href="https://boto3.readthedocs.io/en/latest/guide/quickstart.html">quickstart guide</a> should help, and it also includes some info on getting boto configured.</p>
+<h2>Step 2: Send your message</h2>
+<p>At the bare minimum, you can just send a message directly to a single phone
+number. Here's the code:</p>
+<p>import boto3</p>
+<h1>Create an SNS client</h1>
+<p>client = boto3.client(
+&quot;sns&quot;,
+aws_access_key_id=&quot;YOUR ACCES KEY&quot;,
+aws_secret_access_key=&quot;YOUR SECRET KEY&quot;,
+region_name=&quot;us-east-1&quot;
+)</p>
+<h1>Send your sms message.</h1>
+<p>client.publish(
+PhoneNumber=&quot;+12223334444&quot;,
+Message=&quot;Hello World!&quot;
+)</p>
+<p>Note the formate of the phone number. It's got to be in something called
+<a href="https://en.wikipedia.org/wiki/E.164">E.164 format</a>. For US phone numbers,
+this includes the <code>+1</code> country code, then the area code + the rest of the phone
+number without any additional formatting.</p>
+<p>If you just need to send a message every once in a while (e.g. to notifiy yourself
+when something happens), then congrats! You're done.</p>
+<h2>Step 3: Do actual Pub-Sub</h2>
+<p>If you need to send messages to multiple recipients, it's worthwhile to read
+though Amazon's docs on <a href="http://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-topic.html">sending to multiple phone numbers</a>.</p>
+<p>The SNS service implements the <a href="https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern">Publish-Subscribe</a> pattern, and you can use it to send messages to a _topic_. Here are the steps to make this work:</p>
+<ol>
+<li>Create a named topic. This is just a commuication channel to which you can
+_subscribe_ phone numbers.</li>
+<li>Subscibe your recipients to the topic.</li>
+<li>Publish a message on the topic.</li>
+</ol>
+<p>The python code looks something like this:</p>
+<p>import boto3</p>
+<h1>Create an SNS client</h1>
+<p>client = boto3.client(
+&quot;sns&quot;,
+aws_access_key_id=&quot;YOUR ACCES KEY&quot;,
+aws_secret_access_key=&quot;YOUR SECRET KEY&quot;,
+region_name=us-east-1
+)</p>
+<h1>Create the topic if it doesn't exist (this is idempotent)</h1>
+<p>topic = client.create_topic(Name=&quot;notifications&quot;)
+topic_arn = topic['TopicArn'] # get its Amazon Resource Name</p>
+<h1>Add SMS Subscribers</h1>
+<p>for number in some_list_of_contacts:
+client.subscribe(
+TopicArn=topic_arn,
+Protocol='sms',
+Endpoint=number # &lt;-- number who'll receive an SMS message.
+)</p>
+<h1>Publish a message.</h1>
+<p>client.publish(Message=&quot;Good news everyone!&quot;, TopicArn=topic_arn)</p>
+<p>All your susbscibers should recieve an SMS message once you've
+published it on the topic. In addition, you should be able to monitor SNS
+usage on the <a href="https://console.aws.amazon.com/">AWS console</a>, which will tell
+you how many messages are sent (as well as how many sms mesages fail). If you
+plan to use SNS for any commercial usage, you'll also want to read up on
+<a href="https://aws.amazon.com/sns/pricing/">SNS Pricing</a>.</p>
+<p>That's it! Hope this article has helped. Let me know in the comments below :)</p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

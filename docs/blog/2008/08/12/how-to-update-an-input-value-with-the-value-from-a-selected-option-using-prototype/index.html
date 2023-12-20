@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>How to update an input value with the value from a selected option using Prototype</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>How to update an input value with the value from a selected option using Prototype</h1>
+      
+  <div>Published on 2008-08-12T10:32:00+00:00</div>
+  
+    <div>
+    
+      <mark>Javascript</mark> &nbsp;
+    
+      <mark>Programming</mark> &nbsp;
+    
+      <mark>web</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>Today, I needed to set the value of an HTML input element based on the value of a option in a select element. This is fairly easy to do with <a href="http://www.prototypejs.org/api/element/writeAttribute">Prototype's writeAttribute</a>. Here's an example:</p>
+<p>A simple javascript function to do the work:</p>
+<pre><code>function populate_input(){  
+    var field = $('tf\_select').getValue();   
+    $('tf').writeAttribute('value', field);  
+}  
+
+</code></pre>
+<p>A simple HTML snippet to see it in action:</p>
+<pre><code>&lt;div&gt;  
+&lt;p&gt;&lt;select id=&quot;tf\_select&quot; name=&quot;tf\_select&quot; onchange=&quot;populate\_input();&quot;&gt;  
+&lt;option value=&quot;&quot;&gt;- choose one -&lt;/option&gt;  
+&lt;option value=&quot;v1&quot;&gt;value 1&lt;/option&gt;  
+&lt;option value=&quot;v2&quot;&gt;value 2&lt;/option&gt;  
+&lt;/select&gt;&lt;br/&gt;&lt;input type=&quot;test&quot; id=&quot;tf&quot; name=&quot;tf&quot; value=&quot;&quot;/&gt;&lt;/p&gt;  
+&lt;/div&gt;  
+
+</code></pre>
+<p>And yes... I know the title of this post is almost longer than the post itself!<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-1905114992701722468?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>PyGraphviz on OS X (SL) with virtualenv</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>PyGraphviz on OS X (SL) with virtualenv</h1>
+      
+  <div>Published on 2010-07-14T22:14:00+00:00</div>
+  
+    <div>
+    
+      <mark>Mac</mark> &nbsp;
+    
+      <mark>OS</mark> &nbsp;
+    
+      <mark>Python</mark> &nbsp;
+    
+      <mark>X</mark> &nbsp;
+    
+      <mark>graphviz</mark> &nbsp;
+    
+      <mark>virtualenv</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>There's this cool project called <a href="http://github.com/django-extensions/">django-extensions</a> that (among other things) adds a lot of commands to django's <code>manage.py</code> offerings. One of which is <code>./manage.py graph_models [appname]</code> which will generate a nice graph displaying the relationships among all of your Models. This comand needs pyGraphViz, though, and I was a little disappointed when i discovered I couldn't install pyGraphViz with <code>pip install pygraphviz</code>. (ok, a lot disappointed).</p>
+<p>I eventually got this working, and here's how:</p>
+<ul>
+<li>
+<p>First, install the development snapshot of GraphViz: <a href="http://graphviz.org/Download_macos.php">http://graphviz.org/Download_macos.php</a> (I used graphviz-2.27.20100713.0445.pkg)</p>
+</li>
+<li>
+<p>Next, download the pygraphviz source code from <a href="http://networkx.lanl.gov/pygraphviz/download.html">http://networkx.lanl.gov/pygraphviz/download.html</a>. (Again, I got pygraphviz-0.99.1/ )</p>
+</li>
+<li>
+<p>Here's the fun part. You need to edit pygraphviz's setup.py file (located at pygraphviz-0.99.1/setup.py for me). Find the following two lines of code:</p>
+</li>
+</ul>
+<pre><code>  
+library_path=None  
+include_path=None
+</code></pre>
+<p>And change them to</p>
+<pre><code>  
+library_path='/usr/local/lib/graphviz/'  
+include_path='/usr/local/include/graphviz/'
+</code></pre>
+<p>You also might want to verify that the above directories exist.</p>
+<ul>
+<li>
+<p>Now, active your virtualenv (workon &lt;whatever_your_virtualenv_is_named&gt;)</p>
+</li>
+<li>
+<p>Finally, just run <code>python setup.py install</code></p>
+</li>
+</ul>
+<p>That's it! This installed pygraphviz in my activated virtualenv, and I can now use <code>./manage.py graph_models</code> to my heart's desire.</p>
+<p>I should mention that I'm using <a href="http://pypi.python.org/pypi/distribute">distribute</a> (and it may be safe to assume that if you're using virtualenv, you're probably also using distribute).<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-671214602676980877?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

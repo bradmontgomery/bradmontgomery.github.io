@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Chosen.js in the Django admin</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Chosen.js in the Django admin</h1>
+      
+  <div>Published on 2011-12-13T16:00:48+00:00</div>
+  
+    <div>
+    
+      <mark>chosenjs</mark> &nbsp;
+    
+      <mark>django</mark> &nbsp;
+    
+      <mark>javascript</mark> &nbsp;
+    
+      <mark>jquery</mark> &nbsp;
+    
+      <mark>python</mark> &nbsp;
+    
+      <mark>web</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p><strong>Update Nov 23, 2013</strong>: I've written a little app (<a href="https://github.com/bradmontgomery/django-chosenadmin">django-chosenadmin</a>) that'll automatically add this to every app.</p>
+<p>Quite some time ago, I ran across the <a href="http://harvesthq.github.com/chosen/">chosen.js</a>
+plugin for jQuery and Prototype (I'm using the jQuery flavor). My first thought upon seeing
+this was, &quot;<em>This would rock in Django's admin app.</em>&quot; Yet for some reason, I didn't make that
+happen.</p>
+<p>Until recently.</p>
+<p>I maintain a project where about 10 people use the admin app extensively. They manage several apps that
+have foreign keys to django's <code>User</code> model. This works well enough, but there are a few thousand
+user accounts. That makes the default <code>&lt;select&gt;</code> elements fairly unwieldy, and the
+<code>&lt;select multiple&gt;</code> widgets are just horrendous!</p>
+<p>Fortunately, the <code>chosen.js</code> plugin is fairly straighforward to install for the
+admin. You'll first need to grab a copy of <code>chosen.js</code> and (if you want to use them) the default CSS and sprite files.
+I just grabbed the most current version from <a href="https://github.com/harvesthq/chosen">github</a>.</p>
+<ul>
+<li><code>chosen.js</code>:
+<a href="https://github.com/harvesthq/chosen/blob/master/chosen/chosen.jquery.min.js">https://github.com/harvesthq/chosen/blob/master/chosen/chosen.jquery.min.js</a></li>
+<li><code>chosen.css</code>:
+<a href="https://github.com/harvesthq/chosen/blob/master/chosen/chosen.css">https://github.com/harvesthq/chosen/blob/master/chosen/chosen.css</a></li>
+<li><code>chosen-sprite.png</code>:
+<a href="https://github.com/harvesthq/chosen/blob/master/chosen/chosen-sprite.png">https://github.com/harvesthq/chosen/blob/master/chosen/chosen-sprite.png</a></li>
+</ul>
+<p>My static files are organized as follows. Note that I put chosen's CSS &amp; sprite
+files in a subdirectory named <code>chosen</code>:</p>
+<pre><code>project_directory/
+    static/
+        css/
+            chosen/
+                chosen.css
+                chosen-sprite.png
+        js/
+            chosen.js
+    
+
+</code></pre>
+<p>Now, you can override the admin app's
+<a href="https://github.com/django/django/blob/master/django/contrib/admin/templates/admin/change_form.html">change_form.html</a>
+template (be sure to get a copy for <em>your</em> version of django. You can do this by putting your
+own copy of the template in your project's templates directory (see your <code>TEMPLATE_DIRS</code> setting).
+For me, that looks like this:</p>
+<pre><code>project_directory/
+    templates/
+        admin/
+            change_form.html
+
+</code></pre>
+<p>In that template, there's an <code>extrahead</code> block. At the bottom of that block, you need to include a
+link to the plugin and the css file. Since this is a jQuery plugin, you'll also need to include a link to jQuery.
+(<em>Even though django's admin comes bundled with jQuery, it's namespaced, so to use a 3rd-party plugin, you need
+your own copy of the library. See
+<a href="https://docs.djangoproject.com/en/dev/ref/contrib/admin/#modeladmin-media-definitions">this note</a></em>)</p>
+<pre><code>&lt;script 
+    src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js&quot; 
+    type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;script 
+    src=&quot;{{ STATIC_URL }}js/chosen.jquery.min.js&quot; 
+    type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;{{ STATIC_URL }}css/chosen/chosen.css&quot;/&gt;
+
+</code></pre>
+<p>Now, you can apply the chosen plugin to all <code>&lt;select&gt;</code> elements!</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+$(document).ready(function() {
+    $('select').chosen();
+});
+&lt;/script&gt;
+
+</code></pre>
+<p>However, this has one unfortunate side effect. Django's admin app contains a custom multi-select widget,
+that normally looks like this:</p>
+<p><img src="http://files.bradmontgomery.net/images/django-admin-multi-select.png" alt="django admin custom multi-select" /></p>
+<p>The chosen plugin dutifully mangles the custom widget, which is probably not what you want:</p>
+<p><img src="http://files.bradmontgomery.net/images/django-admin-broken-multi-select.png" alt="django admin custom multi-select" /></p>
+<p>The admin app's custom widget includes javascript that gets loaded after the page loads. Luckily, it includes a <code>filtered</code>
+class on the elements to which it is applied. So, we need the <code>chosen</code> plugin to load <em>after</em> the admin app's javascript
+has run.</p>
+<p>The only what I got that to work was to use <code>setTimeout</code>. This is definitely a hack, and I'd love to see a more elegant
+solution... but it works. So, the previous code to initialize the chosen plugin would be replaced with the following:</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+setTimeout(function() {
+    $('select').not('.filtered').chosen();
+}, 1000);
+&lt;/script&gt;
+
+</code></pre>
+<p>Now the plugin gets loaded about 1 second after the page is finished loading, so you get <em>both</em> the admin app's
+custom multi-select widget and the <code>chosen.js</code> plugin. There's a visible delay before the plugin gets loaded,
+but you could tweak the second argument to minimize this somewhat. For my needs, the benefits of the more usable interface
+for <code>&lt;select&gt;</code> elements outweigh the cost of loading the plugin.</p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

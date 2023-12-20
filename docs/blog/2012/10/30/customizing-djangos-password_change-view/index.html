@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Customizing Django&#39;s password_change view</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Customizing Django&#39;s password_change view</h1>
+      
+  <div>Published on 2012-10-30T21:30:49+00:00</div>
+  
+    <div>
+    
+      <mark>django</mark> &nbsp;
+    
+      <mark>programming</mark> &nbsp;
+    
+      <mark>python</mark> &nbsp;
+    
+      <mark>web</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>If you have a site where users have the traditional
+<em>username</em>/<em>password</em> combination, you've got to provide some
+way to let users <strong>change</strong> their password. Luckily, this is
+fairly easy to do with Django. The <code>auth</code> app comes with a
+<a href="http://goo.gl/sMDqI">password_change</a> view that does what you'd
+probably expect.</p>
+<p>It's also fairly easy to set up. You add a line similar to the following
+to your root URLConf:</p>
+<pre><code>url(r'^accounts/', include('django.contrib.auth.urls')),
+</code></pre>
+<p>You also have to set up some additional templates (e.g. <code>registration/password_change_form.html</code>),
+but once you've done that, users can change their password using a form that
+looks something like this:</p>
+<p>Old password:</p>
+<p>New password:</p>
+<p>New password confirmation:</p>
+<p>Easy! Until...</p>
+<h2>What if I can't remember my old password?</h2>
+<p>Or worse, yet, what if your users don't have a usable password? If you're
+using something like the excellent <a href="http://django-social-auth.readthedocs.org/">django-social-auth</a>, which lets users log in using OAuth or OpenID (i.e. via
+Facebook, Twitter, Google, or some other source) you may run into this case.</p>
+<p>So, how can I omit the <em>Old Password</em> requirement in the change
+password form? We're in luck. The <code>password_change</code> view accepts a
+<code>password_change_form</code> parameter that allows you to specify what form
+is used. The <code>auth</code> app also contains a form that doesn't require
+entering the Old password (it's used in the admin app!). It's called,
+<code>AdminPasswordChangeForm</code>. So, all we have to do is update our
+root URLConf yet again:</p>
+<pre><code>from django.contrib.auth.forms import AdminPasswordChangeForm
+
+ulrpatterns = patterns('', 
+    
+    # ...
+    
+    url(r'^accounts/password_change/$',  # hijack password_change's url
+        'django.contrib.auth.views.password_change',
+        {'password_change_form': AdminPasswordChangeForm},
+        name=&quot;password_change&quot;),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
+</code></pre>
+<p>Remember that the <a href="http://goo.gl/A2pLz">url function</a> allows you
+to specify keword parameters for views, and that's exactly what we've done with
+this: <code>{'password_change_form': AdminPasswordChangeForm}</code>. That
+customizes the form that gets used in the <code>password_change</code> view.</p>
+<p>Now, when our users try to change their password, the form looks something
+like this:</p>
+<p>New password:</p>
+<p>New password confirmation:</p>
+<p>Disclaimer: This <em>does</em> remove one additional step that a potential
+attacker would need to overcome in order to steal an account. So, make sure you
+understand why you'd implement this before you do so.</p>
+<p>Cheers!</p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

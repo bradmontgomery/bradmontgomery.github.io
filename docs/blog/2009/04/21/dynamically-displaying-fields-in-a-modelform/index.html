@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Dynamically Displaying Fields in a ModelForm</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Dynamically Displaying Fields in a ModelForm</h1>
+      
+  <div>Published on 2009-04-21T13:31:00+00:00</div>
+  
+    <div>
+    
+      <mark>Programming</mark> &nbsp;
+    
+      <mark>django</mark> &nbsp;
+    
+      <mark>web</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p><strong>The Problem</strong>: I want to dynamically include some fields in a ModelForm based on some external criteria. Sometimes I want the fields displayed, sometimes I don't.</p>
+<p>I'm going to try to explain this scenario through a (albeit contrived) example. I have a Model that looks like the following:</p>
+<pre><code>class Suff(models.Model):  
+    foo = models.CharField(max_length=255)  
+    bar = models.BooleanField(default=False, blank=True)  
+  
+    def is\_foo\_bar(self):  
+        ''' is this model's foo attribute set to 'bar' '''  
+        return self.foo == 'bar'  
+
+</code></pre>
+<p>Normally, if I needed a Form for this Model, I would subclass a ModelForm like the following:</p>
+<pre><code>class StuffForm(models.ModelForm):  
+    class Meta:  
+        model = Stuff  
+        fields = ('foo', 'bar')  
+
+</code></pre>
+<p>However, if I do NOT want the 'bar' field to be displayed by default I would need to remove it from the ModelForms list of fields (or use something like <em>exclude = ('bar', )</em> ). But, if this form is created with an instance of Stuff whose <em>foo</em> attribute contains the string <em>bar</em>, I would like for the Form's 'bar' field to be displayed.</p>
+<p>I originally tried to accomplish this task by overridding StuffForm's __init__ method, and adding a new BooleanField when the desired circumstances arose... However, I stumpled across Ross Poulton's <a href="http://www.rossp.org/blog/2008/dec/15/modelforms/">Dynamic ModelForms in Django</a>, and then I realized it would be much easier to <strong>prevent a ModelForm's Field from being displayed</strong> than it would be to dynamically create one.</p>
+<p>In order to accomplish this, the StuffForms's __init__ method would look something like the following:</p>
+<pre><code>def \_\_init\_\_(self, \*args, \*\*kwargs):  
+    super(StuffForm, self).__init__(\*args, \*\*kwargs)  
+      
+    # If this form is created without an instance, OR  
+    # If the instance's foo field is != 'bar'  
+    if not kwargs.has_key('instance') or (kwargs.has_key('instance') and \  
+        not kwargs['instance'].is_foo_bar()):  
+        # Remove this field from the form.  
+        del self.fields['bar']  
+
+</code></pre>
+<p>Done. I get all the benefits of a ModelForm, and the <em>bar</em> field is not displayed unless it should be.<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-7486424570660550130?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

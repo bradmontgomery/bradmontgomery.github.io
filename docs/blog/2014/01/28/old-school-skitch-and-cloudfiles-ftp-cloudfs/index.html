@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Old-school Skitch and CloudFiles with ftp-cloudfs</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Old-school Skitch and CloudFiles with ftp-cloudfs</h1>
+      
+  <div>Published on 2014-01-28T14:55:24.172398+00:00</div>
+  
+    <div>
+    
+      <mark>cloudfiles</mark> &nbsp;
+    
+      <mark>ftpcloudfs</mark> &nbsp;
+    
+      <mark>python</mark> &nbsp;
+    
+      <mark>rackspace</mark> &nbsp;
+    
+      <mark>skitch</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I'm an unabashed fan of Skitch . The old one (pre-Evernote acquisition). A lot of folks have written about how to acquire this and how they use it. Until recently, I just used the built-in <em>SFTP</em> support to upload files to a Rackspace CloudServer .</p>
+<p>Lately however, I've been trying to limit the amount of stuff I have on servers that I have to maintain. One way I've been doing that is to push everything that looks like a <em>static website</em> into CloudFiles .</p>
+<p>So the question is, &quot;<strong>How do I make the old Skitch work with CloudFiles?</strong>&quot; It's a little bit of work, but not too terribly bad. Here's how I made it happen. It's a little python-centric (which is OK by me, because I'm a python developer).</p>
+<ol>
+<li>Create a virtualenv . We're going to install an open-source python library. I named my virtualenv, ftp-cloudfs.</li>
+<li>Run pip install ftp-cloudfs.</li>
+<li>Now, you can run the following command: ftpcloudfs -a https://auth.api.rackspacecloud.com/v1.0</li>
+</ol>
+<p>This will run a local FTP server which will transparently push files up to CloudFiles. Now you need to configure Skitch (screenshot) .</p>
+<ol>
+<li>Access Skitch's Preferences</li>
+<li>Click on the Share tab.</li>
+<li>Add an FTP Account Type.</li>
+<li>Your Server should be 127.0.0.1</li>
+<li>The port is 2021 (the default for ftp-cloudfs, though you can change this)</li>
+<li>Use your Rackspace username.</li>
+<li>Your password should be your rackspace cloud API Key (find or create this in your Account Settings .</li>
+<li>The Directory will be the name of your CloudFiles container, and plus any subdirectory structure that you have. For example, I have a container named static, and I want my uploaded files to appear to be in an uploads directory. So, Skitch's Directory setting should be static/uploads.</li>
+<li>Finally, add your CloudFiles Container's target domain as Skitch's Base URL. I'm assuming that you created a container to use as a <em>Static Website</em>. This look something like <em>http://some-really-long-hash.something.rackcdn.com/uploads</em></li>
+</ol>
+<p>If you've done everything correctly so far, you should be able to Skitch and upload to CloudFiles. Keep in mind, though, that you'll have to make sure the ftpcloudfs command (from above) is running every time you want to upload an image. There are ways to do this automatically (see this SO question ), but I've just left the command running in a Terminal window.</p>
+<p>Be sure to take a look at ftpcloudfs --help to see what else is available in this nifty app. Enjoy!</p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

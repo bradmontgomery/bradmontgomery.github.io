@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Using (and Abusing) the iPhone</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Using (and Abusing) the iPhone</h1>
+      
+  <div>Published on 2007-07-04T20:47:00+00:00</div>
+  
+    <div>
+    
+      <mark>iPhone</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>OK... so for part 2 of my iPhone saga:<br />
+We went to visit some family today, and of course I took my iPhone. For the most part, I've really tested out the camera today. I'm no guru, but I'm very happy with how quickly the iPhone takes pictures. Since my girls are now 4 and 2, this is a very important feature!! I've also got an HP Photosmart M527, and my non-scientific opinion is that the iPhone takes photos about as twice as fast as my HP. (Of course, it's a 2-megapixel camera vs. a 6-megapixel camera)</p>
+<p>Just to give you an idea, here's a picture of my youngest daughter: <a href="http://bradmontgomery.net/files/iPhone/iphone_photo.jpg"><img src="http://bradmontgomery.net/files/iPhone/iphone_photo_thumb.png" alt="" /></a></p>
+<p>I convinced my wife (OK, so she offered :)) to drive home from out festivities today, so I could play with the iPhone in the car. While in town, I had no problems browsing the web or checking my email using the EDGE connection. However, once we got out of town, there were several locations where I had no network connection (this is rural NE Arkansas...)</p>
+<p>Another thing that I've noticed is that there are a <strong>LOT</strong> of unsecured wireless networks... but that's for another blog!</p>
+<p><strong>As for typing on the iPhone</strong>, I'm fairly impressed with it's ability to suggest and correct misspelled words. Now, I don't really think that I have large fingers, but I very frequently misspelled words using the iPhone. However, the iPhone &quot;guessed&quot; what I wanted about 80% of the time! Things like &quot;sxgppl&quot; were correctly identified as &quot;school&quot; (As as side note, I'd guesstimate that I touch type somewhere around 60wpm with 90% accuracy, if anyone cares)So, when typing on the iPhone, I found myself just ignoring what I typed in hopes that the phone could figure it out. Overall, I'm impressed.</p>
+<p>Now that I'm home, the geek in me is dieing to portscan this thing! So here goes! First a basic portmap with nmap:</p>
+<pre><code>  
+nmap 192.168.0.11  
+  
+Starting Nmap 4.20 ( http://insecure.org ) at 2007-07-04 19:41 CDT  
+All 1697 scanned ports on 192.168.0.11 are closed  
+
+</code></pre>
+<p>Interesting enough... let's see what OS nmap thinks is running on this thing:</p>
+<pre><code>  
+sudo nmap -O 192.168.0.11  
+  
+Starting Nmap 4.20 ( http://insecure.org ) at 2007-07-04 19:43 CDT  
+Warning:  OS detection for 192.168.0.11 will be MUCH less reliable because we did not find at least 1 open and 1 closed TCP port  
+All 1697 scanned ports on 192.168.0.11 are closed  
+MAC Address: 00:1B:63:E1:ED:D8 (Unknown)  
+Device type: general purpose  
+Running: Apple Mac OS X 10.3.X|10.4.X|10.5.X, FreeBSD 4.x  
+OS details: Applie Mac OS X 10.3.9 - 10.4.7, Apple Mac OS X 10.4.8 (Tiger), OS X Server 10.5 (Leopard) pre-release build 9A284, FreeBSD 4.10-RELEASE (x86)  
+Network Distance: 1 hop  
+  
+OS detection performed. Please report any incorrect results at http://insecure.org/nmap/submit/ .  
+Nmap finished: 1 IP address (1 host up) scanned in 16.991 seconds
+</code></pre>
+<p>So, while I'm not really a security professional, and I know these are very basic scans, it seems like there's no blatantly obvious security gaps in the iPhone (through its wifi connection anyway). If anybody has any more advanced nmap scans they'd like to see performed, just let me know.<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-5470121664639771675?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

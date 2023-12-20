@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Recursively deleting files (based on regex)</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Recursively deleting files (based on regex)</h1>
+      
+  <div>Published on 2008-09-09T06:20:00+00:00</div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>While we're on the topic... (the topic being recursively doing stuff to files), I often want to delete all the files in a hierachy of directories that match a regular expression (or regex).</p>
+<p>The typical scenario for this is, &quot;I want to delete all of my compiled python files.&quot;</p>
+<p>Here's how I do it:</p>
+<pre><code>find ./ -type f -name &quot;*.pyc&quot; -exec rm {} \;
+</code></pre>
+<p><em>find ./ -type f -name &quot;*.pyc&quot;</em> should find all files ending in .pyc under the <em>current directory</em>. Once they've been found, the <em>-exec rm {} ;</em> will remove them.<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-6785752564543884991?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

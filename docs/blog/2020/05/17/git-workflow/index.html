@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Git workflow</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Git workflow</h1>
+      
+  <div>Published on 2020-05-17T23:28:36.891528+00:00</div>
+  
+    <div>
+    
+      <mark>git</mark> &nbsp;
+    
+      <mark>process</mark> &nbsp;
+    
+      <mark>workflow</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>It's 2020. People and teams are still using and adopting git. As new teams
+are created, at some point, someone asks, &quot;what's a good git workflow for us?&quot;</p>
+<p>Here's a workflow that has served me well over the past few years working in small
+teams.</p>
+<h2>Assumptions</h2>
+<ol>
+<li>You're using <a href="https://git-scm.com/">git</a>.</li>
+<li>You have an authoritative git repo somewhere (e.g. github, bitbucket, gitlab, etc),
+and that repo is named <code>origin</code> (this is the default name of remotes in git).</li>
+<li><code>master</code> is golden; i.e. that's where the production code is deployed from,
+or the branch from which the release build happens.</li>
+<li>You and everyone on your team can clone the repo.</li>
+</ol>
+<h2>Starting some work</h2>
+<p>You're about to start some new work, i.e. a new feature, a bug fix, etc.</p>
+<ol>
+<li><code>git checkout master</code>: Make sure you're on the master branch.</li>
+<li><code>git pull origin master</code>: Make sure you have the latest version of the code
+on your system.</li>
+<li><code>git checkout -b WHATEVER</code>: Create a new branch for your work. I'm not a
+stickler for branch names, but it *should* be a unique name, otherwise you'll
+accidentally end up putting your commits in someone else's work.</li>
+<li>Do the work.</li>
+<li><code>git push origin WHATEVER</code>: Push your work up to the repo.</li>
+<li>At this point, use your shared repo's systems to create a Pull/Merge request
+or whatever it's called that lets others on your team compare your code
+with that in master. This allows you to get feedback early.</li>
+</ol>
+<p>Continue this process every day until your feature is complete or your bug is
+fixed. Typically, however, these branches are more-or-less ephemeral. They only
+live for the duration of the feature or bugfix.</p>
+<p>**Pro-tip**: If you get new commits when you pull from master, then <a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing">rebase</a>
+your commits onto master **IF AND ONLY IF** nobody has pulled your commits down
+from your branch. THIS is important.</p>
+<p>Rebasing is dangerous, but it makes all of your work look like it happend AFTER
+the last commit in master: <code>git checkout WHATEVER</code>, then <code>git rebase master</code>.</p>
+<p>Repeat.</p>
+<h2>Merging work</h2>
+<p>At some point, you finish the bugfix or feature addition, and then you need to
+get it adding into the project. You want to *merge your commits into master*.</p>
+<ol>
+<li>Get your stuff code-reviewed. Have someone else on your team look over your
+stuff and get approval / or a <code>:thumbsup:</code>. There's a lot on the internet
+about code review, but I'm a big fan of doing it so someone else on the team
+knows what happens, and just to sanity check what's going on. Kudos if you
+did this several times during development.</li>
+<li>Set up something in your online repo to run your tests for you. (you've got
+tests right?) Don't merge until the tests pass.</li>
+<li>Once approved, use your online repo's tools to Merge the code. (if you've
+been rebasing every step of the way, this should almost always merge cleanly).</li>
+<li>Delete the feature / bugfix branch. (Now is a good time to go learn about l
+<a href="https://git-scm.com/docs/git-prune"><code>git prune</code></a>).</li>
+</ol>
+<h2>Gettin fancy with feature branches.</h2>
+<p>At some point, you may want to have some work that's not part of master, but
+that you can build or deploy for people to use. This is a &quot;feature branch&quot;,
+and the workflow is exactly the same as above... except you merge into the
+feature branch instead of master.</p>
+<p>Ideally... you'll eventually merge this feature into master. Here are some
+examples:</p>
+<ol>
+<li>We use a <code>staging</code> branch for things we want to let people try out before
+it goes out to all customers.</li>
+<li>You may use a <code>version2</code> branch for a big re-work of something, and you're
+not quite ready to merge that into the same branch as your production code.</li>
+</ol>
+<p>Etc, etc.</p>
+<p>Long-lived feature branches are fine, and the above workflow can work with them
+quite well. Just communicate with your team about the feature branch.</p>
+<h2>Conclusion</h2>
+<p>This is essentially a simple git workflow. Google &quot;git workflow&quot; for a hundred
+variations on this, but this process has worked well for me.</p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Shrinking Images with Python</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Shrinking Images with Python</h1>
+      
+  <div>Published on 2008-02-15T18:26:00+00:00</div>
+  
+    <div>
+    
+      <mark>Python</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>My wife had a very large image, and she needed some smaller versions of it. Well, I thought I'd just fire up <a href="http://gimp.org">The GIMP</a> and create a few shrunken versions, but by the time The GIMP loaded on my G4 Mac mini, I'd almost finished writing the python coded needed to do the task for me!</p>
+<p>Writing code is good!</p>
+<pre><code>import Image  
+from sys import argv  
+  
+def shrink(filename):  
+    im = Image.open(filename)  
+    w,h = im.size  
+      
+    # Create images that are 10%, 20%....90% of the original  
+    sizes = [0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9]  
+      
+    for s in sizes:  
+        nw = int(w*s)  
+        nh = int(h*s)  
+        n = im.resize((nw, nh))  
+        f = &quot;%s_x_%s_%s&quot;%(nw,nh,filename)  
+        print &quot;Saving %s&quot;%(f)  
+        n.save(f)  
+          
+if __name__ == &quot;__main__&quot;:  
+      
+    if len(argv) == 2:  
+        shrink(argv[1])  
+    else:  
+        print &quot;USAGE: python shrink.py &quot;
+</code></pre>
+<p>Download this code: <a href="http://bradmontgomery.net/files/shrink.zip">http://bradmontgomery.net/files/shrink.zip</a><img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-222154634554447484?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>PostgreSQL 9.1.2 via homebrew on OS X 10.7.2</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>PostgreSQL 9.1.2 via homebrew on OS X 10.7.2</h1>
+      
+  <div>Published on 2011-12-22T06:20:39+00:00</div>
+  
+    <div>
+    
+      <mark>django</mark> &nbsp;
+    
+      <mark>homebrew</mark> &nbsp;
+    
+      <mark>osx</mark> &nbsp;
+    
+      <mark>postgresql</mark> &nbsp;
+    
+      <mark>python</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I just picked up a snazzy new Macbook Air, and I'm working on setting up my development
+environment(s). For the most part this has been fairly easy. I pull in my repos from
+<a href="https://github.com/bradmontgomery">github</a> and <a href="https://bitbucket.org/bkmontgomery">bitbucket</a>,
+and I use <a href="http://pypi.python.org/pypi/virtualenv">virtualenv</a> and <a href="http://www.pip-installer.org/">pip</a>
+to organize all my python packages (mostly installing from
+<a href="http://www.pip-installer.org/en/latest/requirements.html">requirements files</a>). Most of the other
+command-line tools get intalled with <a href="http://mxcl.github.com/homebrew/">homebrew</a>, and this time around I
+decided to install PostgreSQL with homebrew.</p>
+<p>I didn't keep track of all the steps I followed, but I'm pretty sure I just kept all the defaults
+while installing. I set up a new database cluster with <code>initdb</code> and then I created a
+local user (no password) and set up a database for one of my Django apps. But then I got this
+error when running syncdb:</p>
+<pre><code>OperationalError: could not connect to server: Permission denied
+    Is the server running locally and accepting
+    connections on Unix domain socket &quot;/var/pgsql_socket/.s.PGSQL.5432&quot;?
+
+</code></pre>
+<p>That's odd. I did some digging and didn't really find much info that seem relevant
+(though there is this ticket: <a href="https://trac.macports.org/ticket/30125">https://trac.macports.org/ticket/30125</a>).
+However, when I explicitly specified a <code>HOST</code> value in my django settings, things just started working.</p>
+<pre><code>DATABASES = { 
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'somedb',  
+        'USER': 'someuser', 
+        'PASSWORD': '', 
+        'HOST': 'localhost',
+        'PORT': '', 
+    }   
+}
+
+</code></pre>
+<p>I'm not quite sure what's going on here, or if this is a bug in PostgreSQL. Other than that little
+snag, everything seems to be working swell.</p>
+<p>Apparently reinstalling <code>psycopg2</code> also fixes this problem:</p>
+<pre><code>pip install -U psycopg2
+</code></pre>
+<p>Thanks to <a href="https://twitter.com/lukeman">@lukeman</a> for the tip, and to <a href="https://twitter.com/dstufft">@dstufft</a> who helped him!</p>
+<p>:)</p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

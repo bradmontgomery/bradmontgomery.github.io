@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Safari is Cooler than you Think!</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Safari is Cooler than you Think!</h1>
+      
+  <div>Published on 2008-09-04T15:12:00+00:00</div>
+  
+    <div>
+    
+      <mark>Apps</mark> &nbsp;
+    
+      <mark>OS</mark> &nbsp;
+    
+      <mark>Safari</mark> &nbsp;
+    
+      <mark>X</mark> &nbsp;
+    
+      <mark>web</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>When you really start digging into Mac OS X, it's fairly mind-boggling how much <em>extra stuff</em> it has that your average user never sees. I recently encountered a problem on my MacBook Pro, where the <a href="http://discussions.apple.com/thread.jspa?messageID=7760823%EF%BF%BD">Optical Audio was overriding my internal speakers</a>, which prevented me from hearing any audio (without using headphones). Unfortunately, there's no easy-to-access preference pane to enable or disable various audio devices. This led me on a search for command-line utilities to manage system preferences.</p>
+<p>(hang on, I'll get to Safari in a second...)</p>
+<p>Eventually I ran into Amit Singh's list of <a href="http://www.kernelthread.com/mac/osx/tools.html">OS X Hacking tools</a>, where I stumbled upon the <strong><a href="http://developer.apple.com/documentation/Darwin/Reference/ManPages/man1/defaults.1.html">defaults</a></strong> command. <strong>defaults</strong> is the magic &quot;change any setting for Mac OS X on the command line&quot; tool that you (by you, I mean me) never knew about!</p>
+<p>So, what does this have to do with Safari? Well, after looking for more information on how to use <strong>defaults</strong>, I stumbled upon Mac OS X Tips' <a href="http://www.macosxtips.co.uk/index_files/terminal-commands-for-hidden-mac-os-x-settings.html">Top 15 Terminal Commands for Hidden Mac OS X Settings</a>, one of which really caught my attention:</p>
+<pre><code>defaults write com.apple.safari IncludeDebugMenu 1
+</code></pre>
+<p>This enables a &quot;Debug&quot; Menu (&quot;Develop&quot; menu on Safari 3). The Developer menu allows you to:</p>
+<ul>
+<li>Change Safari's user-agent, so you can masquerade as IE, Firefox, Opera, earlier versions of Safari, or even the iPhone version of Safari</li>
+<li>View a Web Inspector - allows you to view scripts, css files, and other information associated with a Web page...</li>
+<li>View a network timeline - showing the time it took to download each component linked in a web-page...</li>
+<li>Disable stuff - like javascript, css, java, caches...</li>
+</ul>
+<p>It's not quite the <a href="https://addons.mozilla.org/en-US/firefox/addon/60">Web Developer plugin</a> for Firefox, but it does give you additional control over Safari.</p>
+<p>And the Network timeline looks pretty darn cool!</p>
+<p>ps: i never did find a way to disable the optical audio...guess i got side-tracked.</p>
+<p><strong>[Update: 10/05/2008]</strong> I just realized there's an easier way to enable this in the Advanced Preferences Tab... just enable the &quot;Show Develop menu in menu bar&quot; option! (as in the screenshot below)</p>
+<p><img src="http://bradmontgomery.net/images/Safari_Advanced.png" alt="Show Develop menu in menu bar" /></p>
+<p>I guess it pays to pay attention to your app's options!<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-7935637856182059427?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

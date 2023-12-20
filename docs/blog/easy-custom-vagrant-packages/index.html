@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Easy Custom Vagrant Packages</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Easy Custom Vagrant Packages</h1>
+      
+  <div>Published on 2012-04-16T18:44:44+00:00</div>
+  
+    <div>
+    
+      <mark>chef</mark> &nbsp;
+    
+      <mark>linux</mark> &nbsp;
+    
+      <mark>vagrant</mark> &nbsp;
+    
+      <mark>virtualbox</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I've been using Vagrant quite a bit lately, and one of the nice things you can do with it is to define your own package. This makes it easy to share your VMs with others. It's also nice to have the same stuff installed on every VM that you create! So, here's how you create a package.</p>
+<p>To do this, you'll need to Install VirtualBox and Vagrant. (At the time of writing, I'm using <a href="https://www.virtualbox.org/wiki/Download_Old_Builds">VirtualBox 4.0.16</a> and <a href="http://vagrantup.com/">Vagrant 1.0.2</a>)</p>
+<p>Once you have those installed, we can get started. I'm using Ubuntu Lucid (10.04, 64-bit), but you could pick your own linux flavor. Look over the list at <a href="http://vagrantbox.es/">http://vagrantbox.es/</a>. First, set up a default box:</p>
+<pre><code>$ vagrant box add lucid64 http://files.vagrantup.com/lucid64.box
+
+</code></pre>
+<p>That may take a while to download the image. Once it complets, you can see a list of your boxes:</p>
+<pre><code>$ vagrant box list
+
+</code></pre>
+<p>You should see one named lucid64 (unless you picked a differenc flavor). Now, intialize a Vagrant configuration:</p>
+<pre><code>$ vagrant init
+
+</code></pre>
+<p>Check out the created Vagrant file. I've stripped mine down to the following:</p>
+<pre><code># -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant::Config.run do |config|
+  config.vm.box = &quot;lucid64&quot;
+  config.vm.network :hostonly, &quot;192.168.111.111&quot;
+end
+
+</code></pre>
+<p>Make sure the IP address for your VM doesn't conflict with any other networks on which your host machine may be connected.</p>
+<p>Create a virtual machine based on the default lucid64 box:</p>
+<pre><code>$ vagrant up
+
+</code></pre>
+<p>It'll take a just a little bit of time for the VM to boot, and you'll probably see something like this:</p>
+<pre><code>$ vagrant up
+[default] VM already created. Booting if it's not already running...
+[default] Clearing any previously set forwarded ports...
+[default] Forwarding ports...
+[default] -- 22 =&gt; 2222 (adapter 1)
+[default] Creating shared folders metadata...
+[default] Clearing any previously set network interfaces...
+[default] Preparing network interfaces based on configuration...
+[default] Booting VM...
+[default] Waiting for VM to boot. This can take a few minutes.
+[default] VM booted and ready for use!
+[default] Configuring and enabling network interfaces...
+[default] Mounting shared folders...
+[default] -- v-root: /vagrant
+
+</code></pre>
+<p>So, now we want to log into the VM and update it. Run each of the following commands:</p>
+<pre><code>$ vagrant ssh
+$ sudo apt-get update
+$ sudo apt-get upgrade -y
+$ exit
+
+</code></pre>
+<p>Now, run the following commands to reload vagrant (rebooting the VM) and install the Virtual Box Guest Additions:</p>
+<pre><code>$ vagrant reload
+$ vagrant ssh
+$ sudo apt-get install build-essential module-assistant linux-headers-$(uname -r) dkms -y
+$ wget -c http://download.virtualbox.org/virtualbox/4.0.16/VBoxGuestAdditions_4.0.16.iso
+$ sudo mount VBoxGuestAdditions_4.0.16.iso -o loop /mnt
+$ sudo sh /mnt/VBoxLinuxAdditions.run --nox11
+$ exit
+
+</code></pre>
+<p>Reload the VM just to make sure all the new kernal modules are used:</p>
+<pre><code>$ vagrant reload
+
+</code></pre>
+<p>At this point, you could install any other softward that you want available on all of your virtual machines. For example, I installed curl, git, htop, nmap, and I installed and configured Chef so all of my VMs can easily connect to our Chef server and register themselves. So, install your favorite tools:</p>
+<pre><code>$ sudo aptitude install curl git-core htop nmap -y
+
+</code></pre>
+<p>Now, create a package that you can use as a base box or distribute to others:</p>
+<pre><code>$ vagrant package
+
+</code></pre>
+<p>You should now have a package.box file, which you can use as a base box for future VMs. To use this as your base box, run:</p>
+<pre><code>$ vagrant box add base package.box
+
+</code></pre>
+<p>Now, when you run vagrant up, your VM will be created from the box you just created!</p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

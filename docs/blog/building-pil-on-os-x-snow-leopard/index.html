@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Building PIL on OS X: Snow Leopard</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Building PIL on OS X: Snow Leopard</h1>
+      
+  <div>Published on 2010-02-25T15:40:00+00:00</div>
+  
+    <div>
+    
+      <mark>Mac</mark> &nbsp;
+    
+      <mark>OS</mark> &nbsp;
+    
+      <mark>PIL</mark> &nbsp;
+    
+      <mark>Python</mark> &nbsp;
+    
+      <mark>X</mark> &nbsp;
+    
+      <mark>homebrew</mark> &nbsp;
+    
+      <mark>virtualenv</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>There are <a href="http://jetfar.com/libjpeg-and-python-imaging-pil-on-snow-leopard/">several</a> <a href="http://stackoverflow.com/questions/1438270/installing-python-imaging-library-pil-on-snow-leopard-with-updated-python-2-6-2">places</a> <a href="http://proteus-tech.com/blog/cwt/install-pil-in-snow-leopard/">online</a> that discuss problems installing PIL on Mac OS X Snow Leopard</p>
+<p>This is how I got it to work.</p>
+<ol start="2">
+<li>Install lib jpeg using <a href="http://github.com/mxcl/homebrew">homebrew</a> (which is super-aweseome!)</li>
+</ol>
+<pre><code>brew intall jpeg
+</code></pre>
+<p>.This installs the library into</p>
+<pre><code>/usr/local/Cellar/jpeg/7
+</code></pre>
+<ol start="4">
+<li>
+<p>Install <a href="http://www.freetype.org/">libfreetype</a> the old-fashioned way (./configure, make, sudo make install). I used <em>freetype-2.1.10.pre-20050511</em>.</p>
+</li>
+<li>
+<p>Download, unpack PIL (I used <a href="http://effbot.org/downloads/Imaging-1.1.6.tar.gz">Imaging-1.1.6</a>). I had to make the following changes to setup.py</p>
+</li>
+</ol>
+<pre><code>FREETYPE_ROOT = &quot;/usr/local&quot;  
+JPEG_ROOT = (&quot;/usr/local/Cellar/jpeg/7/lib&quot;, &quot;/usr/local/Cellar/jpeg/7/include&quot;)
+</code></pre>
+<ol start="8">
+<li>Then, build PIL:</li>
+</ol>
+<pre><code>python setup.py build_ext -i
+</code></pre>
+<ol start="10">
+<li>If the build works without any errors, you can run the tests:</li>
+</ol>
+<pre><code>python selftest.py
+</code></pre>
+<p>which should yield the following: <strong>57 tests passed.</strong></p>
+<ol start="12">
+<li>(optional) I like to use virtualenv, so I activate that:</li>
+</ol>
+<pre><code>workon myproject
+</code></pre>
+<ol start="14">
+<li>Install PIL:</li>
+</ol>
+<pre><code>python setup.py install
+</code></pre>
+<p>At this point, code like the following works for me:</p>
+<pre><code>import Image  
+im = Image.open(&quot;/path/to/pretty/picture.jpg&quot;)  
+im.show()
+</code></pre>
+<p><img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-3675678730344892934?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

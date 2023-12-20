@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Sticky Groups</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Sticky Groups</h1>
+      
+  <div>Published on 2009-11-24T12:07:00+00:00</div>
+  
+    <div>
+    
+      <mark>Linux</mark> &nbsp;
+    
+      <mark>web</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I often deploy web projects in a directory that's not <em>owned</em> by the user under which my webserver runs. Therefor, I often have to change permissions so the webserver can read from or write to certain files. So, for this example, let's assume I'm logged in to my linux box as <em>brad</em>, and I'm using apache which runs under the user <em>www-data</em>.<br />
+To give apache access to my public_html directory, I'd change ownership for the directory and all of its contents:</p>
+<pre><code>chown -R brad:www-data public_html
+</code></pre>
+<p>I may also need to allow apache to write to a certain directory:</p>
+<pre><code>chmod g+w public_html/somedir
+</code></pre>
+<p>Now, if I modify any files in <em>public_html</em>, I don't want to have to change the group permissions (that is, apache's permissions), so lets make the group ownership <strong>sticky</strong>:</p>
+<pre><code>chmod g+s public_html
+</code></pre>
+<p>Now, any new files that I add beneath the <em>public_html</em> directory will be part of the <em>www-data</em> group.<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-7915480253587113591?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

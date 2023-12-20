@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>PyOpenGL on OS X</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>PyOpenGL on OS X</h1>
+      
+  <div>Published on 2007-10-16T20:17:00+00:00</div>
+  
+    <div>
+    
+      <mark>OS</mark> &nbsp;
+    
+      <mark>OpenGL</mark> &nbsp;
+    
+      <mark>Python</mark> &nbsp;
+    
+      <mark>X</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p><strong>Update: July 7, 2010:</strong> For the past year or so I've been using <a href="http://pypi.python.org/pypi/virtualenv">virtualenv</a>, <a href="http://www.doughellmann.com/projects/virtualenvwrapper/">virtualenvwrapper</a>, and <a href="http://pip.openplans.org/">pip</a> to manage and install python packages, and I highly encourage everyone to use these tools! It may take a bit to learn how to use these tools, but once you do, the rewards are great! (especially when using 3rd party python libraries on Mac OS X).</p>
+<p>To install PyOpenGL using the aforementioned tools, you'd simply do the following.</p>
+<ul>
+<li>Create a virtual environment for your OpenGL installation. I'm naming it &quot;gl&quot;:</li>
+</ul>
+<pre><code>mkvirtualenv gl
+</code></pre>
+<ul>
+<li>Then use pip to install PyOpenGL:</li>
+</ul>
+<pre><code>pip install pyopengl
+</code></pre>
+<p>That's all there is to it! I grabbed the demo apps from <a href="http://pypi.python.org/pypi/PyOpenGL-Demo">http://pypi.python.org/pypi/PyOpenGL-Demo</a>, and verified that the gears.py script works, so this should get you started.</p>
+<p>I'm leaving the old post below, but again, check out virtualenv and pip. You'll be happy that you did!</p>
+<hr />
+<p>I actually got this working quite a while ago, but for some reason I've gotten busy and never documented it. In fact, installing PyOpenGL was almost so easy it's not even worth mentioning... Except... it was so easy, so it's worth mentioning!</p>
+<p>Here are the steps to install PyOpenGL on Mac OS X (10.4.10):</p>
+<ol start="2">
+<li>
+<p>You'll need to get setuptools, and the easiest way to do that is with <a href="http://peak.telecommunity.com/DevCenter/EasyInstall">EasyInstall</a> (see <a href="http://peak.telecommunity.com/DevCenter/EasyInstall">http://peak.telecommunity.com/DevCenter/EasyInstall</a>). You'll download the <strong>ez_setup.py</strong> file, and just run: <strong>python ez_setup.py</strong>.</p>
+</li>
+<li>
+<p>Download PyOpenGL from their <a href="http://sourceforge.net/project/showfiles.php?group_id=5988">download page</a>. (Side Note: I also grabbed the OpenGLContext). Now, once you untar/unzip it, you should have a PyOpenGL/ directory. Just open a Terminal, cd into that directory, and run <strong>python setup.py build</strong>. Once that is finished, run <strong>python setup.py install</strong></p>
+</li>
+<li>
+<p>Now, do the same for OpenGLContext...</p>
+</li>
+</ol>
+<p><img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-4096316648311915512?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

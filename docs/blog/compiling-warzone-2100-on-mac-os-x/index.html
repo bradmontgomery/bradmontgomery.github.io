@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Compiling Warzone 2100 on Mac OS X</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Compiling Warzone 2100 on Mac OS X</h1>
+      
+  <div>Published on 2007-06-16T20:53:00+00:00</div>
+  
+    <div>
+    
+      <mark>Games</mark> &nbsp;
+    
+      <mark>OS</mark> &nbsp;
+    
+      <mark>X</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I recently ran across <a href="http://wz2100.net/">The Warzone 2100 Resurrection Project</a>, and I thought to myself,&quot;cool, I wonder if there's an OS X version...&quot; So, I hit their <a href="http://wz2100.net/downloads.html">downloads</a> page only to find the message: &quot;(The MacOSX diskimage will follow soon)&quot;</p>
+<p>So I thought, &quot;oh well, I'll just grab the source code and compile it!&quot; After about two hours of digging, I finally got it compiled, and here's how! (NOTE: I've got quite a bit of Unix stuff installed via <a href="http://finkproject.org/">fink</a>, so your mileage may vary)</p>
+<ol>
+<li>
+<p>Here's the list of stuff I had to get/install/compile before I could even start on Warzone 2100: <strong>cmake (to compile physfs)</strong>, <strong>physfs</strong>, <strong>a newer bison</strong>, and <strong>SDL_net</strong></p>
+</li>
+<li>
+<p>First I grab <a href="http://cmake.org">cmake 2.4.6</a>. Luckily, they have a <a href="http://cmake.org/HTML/Download.html">universal .dmg for Tiger</a>.</p>
+</li>
+<li>
+<p>Next, I grab the source code for <a href="http://icculus.org/physfs/">physfs-1.1.1</a> from their <a href="http://icculus.org/physfs/downloads/">download page</a>. At first I tried compiling the &quot;Unix Way&quot;, but that didn't work, so I used cmake to generate an Xcode project (pretty cool!). From a terminal window, I cd into the physfs directory and type:</p>
+</li>
+</ol>
+<pre><code>cmake -G Xcode .
+</code></pre>
+<p>Then, after compiling physfs with Xcode, I copied the libraries to my /usr/local directories. Again from a Terminal:</p>
+<pre><code>sudo cp libphysfs.* /usr/local/lib  
+sudo cp physfs.h /usr/local/include
+</code></pre>
+<ol start="7">
+<li>
+<p>Next, I open up <a href="http://finkcommander.sourceforge.net/">fink commander</a> and grab the newest version of bison from fink</p>
+</li>
+<li>
+<p>Now I need <a href="http://www.libsdl.org/projects/SDL_net/">SDL_net</a>. While the project offers a <a href="http://www.libsdl.org/projects/SDL_net/release/SDL_net-1.2.6.dmg">Mac OS X Framework</a> and SDL_net is available through fink... I grabbed the source anyway. It compiled just fine the Unix way:</p>
+</li>
+</ol>
+<pre><code>  
+./configure  
+make  
+sudo make install
+</code></pre>
+<p>This put all the libraries in /usr/local/lib and /usr/local/include</p>
+<ol start="11">
+<li>Finally, time to compile Warzone2100, so I grabbed the <a href="http://wz2100.net/downloads.html">source code</a>, which contains a handy-dandy file called COMPILE. I suggest you read it. To start of, I opened a terminal and cd'd into the warzone2100-2.0.6 directory and typed the following command:</li>
+</ol>
+<pre><code>./autogen.sh
+</code></pre>
+<p>Then, I typed the following to configure it using my fink libraries and headers:</p>
+<pre><code>./configure --prefix=/Applications/Warzone2100-2.0.6 LDFLAGS=-L/sw/lib CPPFLAGS=-I/sw/include
+</code></pre>
+<p>This will also put the final binary in my /Applications Directory. So, the last to steps are to compile, and install:</p>
+<pre><code>make  
+sudo make install
+</code></pre>
+<p>This did the trick for me.</p>
+<ol start="13">
+<li>Now that I got Warzone2100 compiled, I can open a terminal and type the following:</li>
+</ol>
+<pre><code>/Applications/Warzone2100/bin/warzone2100 --fullscreen
+</code></pre>
+<p>And this &quot;should&quot; lauch the application!</p>
+<p>Enjoy!<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-2431218985315684152?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

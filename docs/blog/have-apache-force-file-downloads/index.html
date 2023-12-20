@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Have Apache Force File Downloads</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Have Apache Force File Downloads</h1>
+      
+  <div>Published on 2009-05-01T14:27:00+00:00</div>
+  
+    <div>
+    
+      <mark>apache</mark> &nbsp;
+    
+      <mark>django</mark> &nbsp;
+    
+      <mark>web</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I have a Django app that lets users upload files. Any kind of file. It's nice that Apache will let me force file downloads based on the files extension.</p>
+<pre><code>&lt;LocationMatch &quot;\.(gz|tar|pdf|docx|doc|xls|xlsx|bz2|zip)$&quot;&gt;  
+    SetHandler None  
+    Header set Content-Disposition attachment  
+&lt;/LocationMatch&gt;  
+
+</code></pre>
+<p>So, in my HTML/templates: all I have to do is this:</p>
+<pre><code>&lt;a href=&quot;SomFile.docx&quot;&gt;Some File&lt;/a&gt;  
+
+</code></pre>
+<p><img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-9046149690255549987?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

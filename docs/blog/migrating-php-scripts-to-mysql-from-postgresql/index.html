@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Migrating PHP scripts to MySQL from PostgreSQL</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Migrating PHP scripts to MySQL from PostgreSQL</h1>
+      
+  <div>Published on 2007-01-05T21:13:00+00:00</div>
+  
+    <div>
+    
+      <mark>Programming</mark> &nbsp;
+    
+      <mark>mysql</mark> &nbsp;
+    
+      <mark>php</mark> &nbsp;
+    
+      <mark>postgresql</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I've recently had to work on a project where I needed toconvert some very basic <a href="http://php.net">PHP</a> code thataccessed a <a href="http://www.postgresql.org/">postgresql</a>database so that it would work with <a href="http://mysql.com/">mysql</a>. For the most part, this has beenfairly simple thanks to <a href="http://freshmeat.net/projects/rpl/">rpl</a>. Many of PHP'sdatabase functions have very similar names, so I simply use rpl toconvert the existing code. Here's a simple bashscript that I put together to convert some of my postgresqlfunctions to mysql:</p>
+<pre><code>
+#!/bin/bash
+if [ ! -n &quot;$1&quot; ]
+then
+   echo &quot;Usage: `basename $0` &quot;
+  exit 1;
+fi
+
+X=$1
+
+echo &quot;---- Relacing pg_ with mysql_ in $X&quot;
+
+rpl -R -x'.php' 'pg_pconnect' 'mysql_pconnect' $X
+rpl -R -x'.php' 'pg_connect' 'mysql_connect' $X
+rpl -R -x'.php' 'pg_query' 'mysql_query' $X
+rpl -R -x'.php' 'pg_fetch_row' 'mysq_fetch_row' $X
+rpl -R -x'.php' 'pg_fetch_assoc' 'mysq_fetch_assoc' $X
+rpl -R -x'.php' 'pg_close' 'mysq_close' $X
+rpl -R -x'.php' 'pg_num_rows' 'mysq_num_rows' $X
+rpl -R -x'.php' 'pg_numrows' 'mysq_num_rows' $X
+rpl -R -x'.php' 'pg_last_error' 'mysql_error' $X
+
+</code></pre>
+<p>Just in case your curious about converting from postgresql or
+mysql to sqlite, I've compiled the following table
+of analogous functions from <a href="http://php.net">php.net</a>:</p>
+<table>
+<thead>
+<tr>
+<th>PostgreSQL</th>
+<th>MySQL</th>
+<th>SQLite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pg_connect</td>
+<td>mysql_connect</td>
+<td>sqlite_open // open or create database</td>
+</tr>
+<tr>
+<td>pg_query</td>
+<td>mysql_query</td>
+<td>sqlite_query</td>
+</tr>
+<tr>
+<td>pg_fetch_row</td>
+<td>mysql_fetch_row</td>
+<td>sqlite_fetch_array (ordinal and associative)</td>
+</tr>
+<tr>
+<td>pg_fetch_assoc</td>
+<td>mysql_fetch_assoc</td>
+<td></td>
+</tr>
+<tr>
+<td>pg_close</td>
+<td>mysql_close</td>
+<td>sqlite_close</td>
+</tr>
+<tr>
+<td>pg_num_rows or pg_numrows</td>
+<td>mysql_num_rows</td>
+<td>sqlite_num_rows</td>
+</tr>
+</tbody>
+</table>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Resize the iTunes Window</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Resize the iTunes Window</h1>
+      
+  <div>Published on 2010-01-14T09:47:00+00:00</div>
+  
+    <div>
+    
+      <mark>Mac</mark> &nbsp;
+    
+      <mark>Programming</mark> &nbsp;
+    
+      <mark>applescript</mark> &nbsp;
+    
+      <mark>iTunes</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<p>My Macbook Pro is my main machine. At the office, I connect it to a 20&quot; Cinema display. At home, I connect it to a 24&quot; Samsung Monitory (Model 2494SW Glossy Black, which I really like, btw.)</p>
+<p>There's a down-side to all this, though. I mostly just notice it with iTunes. When I'm working on the laptop without an external monitor, my iTunes window is larger than my screen :( Unfortunately, clicking the Maximize button doesn't do what I want (which is to make the window fit in the screen. So here's a little Applescript to to fix it:</p>
+<pre><code>tell application &quot;iTunes&quot;  
+ set the bounds of the first window to {50, 50, 1024, 640}  
+end tell
+</code></pre>
+<p>The arguments are the distance from the top and left of the screen (both 50), the width of the iTunes window (1024) followed by its height (640).</p>
+<p>I just saved this in a file called <em>resize_itunes.scpt</em> and put it in my <em>Documents/Applescripts/</em> folder. I'm a big fan of <a href="http://www.blacktree.com/projects/quicksilver.html">Quicksilver</a>, so when I need to resize my iTunes window, I just activate Quicksilver (Ctrl+Spacebar), type in &quot;resize&quot; (which finds the applescript file), and then hit &quot;enter&quot; to run the script. Easy.<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-8179727769750930704?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

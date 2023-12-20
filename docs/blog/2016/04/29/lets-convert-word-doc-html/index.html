@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Let&#39;s convert a Word Doc to HTML</title>
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Let&#39;s convert a Word Doc to HTML</h1>
+      
+  <div>Published on 2016-04-29T16:04:11.732863+00:00</div>
+  
+    <div>
+    
+      <mark>html</mark> &nbsp;
+    
+      <mark>pandoc</mark> &nbsp;
+    
+      <mark>python</mark> &nbsp;
+    
+      <mark>word</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<h2>tl;dr</h2>
+<p>I wrote a python script to convert Word documents to mostly-clean html. Get it at <a href="https://github.com/bradmontgomery/word2html">https://github.com/bradmontgomery/word2html</a>.</p>
+<h2>Ah, Microsoft Word...</h2>
+<p>That glorious business-class software used all-around the world. It's perfect for those long, legal documents consisting of nothing but headers, paragraphs, and bulleted lists. All of which we an easily convert into simple HTML, right. Right?</p>
+<p>File &gt; Save As &gt; Web Page (.htm). Easy as... No wait, was that supposed to be File &gt; Save As &gt; Web Page, Filtered (.htm)?</p>
+<p>O.M.G. What is all this <code>MsoTitle</code> crap. Why are there so many inline styles for simple black &amp; white text. Why are all of my bulleted lists paragraph tags!? Why oh why are we 20-years into having a world wide web, and the world's foremost business document software can't even generate a simple html page.</p>
+<h2>Never fear there's hope.</h2>
+<p>Disclaimer: this is a quick and dirty hack. Check out my <a href="https://github.com/bradmontgomery/word2html">word2html</a> script. With the magic of python, <a href="http://pandoc.org/">pandoc</a>, and <a href="http://countergram.com/open-source/pytidylib/">pytidylib</a>/<a href="http://countergram.com/open-source/pytidylib/">html tidy</a>, doing this conversion isn't soooo bad.</p>
+<p>The gist of the code looks something like this:</p>
+<p>import pypandoc
+from tidylib import tidy_document</p>
+<p>output = pypandoc.convert(your_filename, 'html')
+output, errors = tidy_document(output)
+with open(output_file, 'w') as f:
+f.write(output)</p>
+<p>Grab the repo, install the requirements, and run the command:</p>
+<p>python convert.py MyGloriousDoc.docx</p>
+<p>Happy converting your word docs to html. Long live the web!</p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>
