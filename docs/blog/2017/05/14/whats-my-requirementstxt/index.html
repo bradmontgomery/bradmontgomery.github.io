@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>What&#39;s in my requirements.txt</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>What&#39;s in my requirements.txt</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>It's Sunday, and tomorrow is our scheduled <a href="http://www.mempy.org/">monthly python meetup in Memphis</a>, and it's one of those month's where I've been busy and I haven't done a good job of finding a speaker. So, that mean's I've got to pull something together at the last minute. While racking my brain for a quick-and-easy topic, I thought, &quot;I wonder what python packages I'm using most?&quot;</p>
+<p>So, I ran this nifty monstrosity of a command, and here's the results. I also tweeted it out:</p>
+<blockquote>
+<p>find . -name &quot;requirements*txt&quot; -exec cat {} ; | awk -F &quot;==&quot; '{ print $1 }' | sort | uniq -c | sort -rn | head -n 20</p>
+<p>— Brad Montgomery (@bkmontgomery) <a href="https://twitter.com/bkmontgomery/status/863777050594869248">May 14, 2017</a></p>
+</blockquote>
+<pre><code>$ find . -name &quot;requirements*txt&quot; -exec cat {} \; | awk -F &quot;==&quot; '{ print $1 }' | \
+ sort | uniq -c | sort -rn | head -n 20
+  23 ipython
+  17 Django
+  15 psycopg2
+  11 requests
+  11 pytz
+  11 gunicorn
+   9 ipdb
+   9 django-extensions
+   9 django-debug-toolbar
+   8 six
+   8 python-dateutil
+   8 Pygments
+   8 Jinja2
+   7 tablib
+   7 pandas
+   7 docker-py
+   7 Pillow
+   7 MarkupSafe
+   7 Flask
+   7
+</code></pre>
+<p>It's really not that surprising, since I do a lot of work with Django, and I use a fair number of the same dependencies everywhere. If course, this is only for projects that I still have in my home directly, which is a fair representation of the last couple year's worth of work.</p>
+<p>Let's break that command down a little, though:</p>
+<h2>find</h2>
+<p>I'll admit that I always forget how find works. Luckily <a href="https://www.ibm.com/developerworks/aix/library/au-unix-find.html">this developerworks article is really good</a>. I should probably book mark that.</p>
+<p>I wanted to find all my <code>requirements.txt</code> files, even those that I may have named <code>requirements\_dev.txt</code> or <code>requirements\_prod.txt</code>. Usually all my projects _just_ have a <code>requirements.txt</code>. This command will cat any matchign files.</p>
+<p>find . -name &quot;requirements*txt&quot; -exec cat {} ;</p>
+<h2>awk</h2>
+<p>I then pipe that result into awk. I'm 99% sure most of my requirements files pin versions exectly, so the following awk command will take something like <code>Django==1.9.1</code> and keep the <code>Django</code> part.</p>
+<p>awk -F &quot;==&quot; '{ print $1 }'</p>
+<h2>sort &amp; uniq</h2>
+<p>Then, sort the results, use <code>uniq -c</code> to count them, then sort again numerically (<code>-n</code>) in reverse order (<code>-r</code>):</p>
+<p>sort | uniq -c | sort -rn</p>
+<h2>head</h2>
+<p>... and keep the top 20 results.</p>
+<p>head -n</p>
+<p>Apparently I also just have blank line in many of my requirements file. ¯\_(ツ)_/¯</p>
+<p>Anyway, hope you've enjoyed this little snippet. Run it on your projects and see what you get!</p>
+<hr />
+<p>**Update:** <a href="https://twitter.com/jackdied">@jackdied</a> says you should use tail!</p>
+<blockquote>
+<p><a href="https://twitter.com/bkmontgomery">@bkmontgomery</a> Drop the reverse on the sort and use tail!</p>
+<p>— Jack Diederich (@jackdied) <a href="https://twitter.com/jackdied/status/863781949520961537">May 14, 2017</a></p>
+</blockquote>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

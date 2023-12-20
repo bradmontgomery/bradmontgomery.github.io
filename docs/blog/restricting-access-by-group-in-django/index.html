@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Restricting Access by Group in Django</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Restricting Access by Group in Django</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>Django's <a href="http://docs.djangoproject.com/en/1.0/topics/auth/">authentication</a>
+system provides built-in support for Groups. When developing an app, you may
+want to prevent users in a particular group from accessing part of your app.</p>
+<p>For example, if you were building a tool to be used by <em>Faculty</em>
+and <em>Students</em>, it's quite possible that there would be parts of the
+app you wouldn't want <em>Students</em> to access (like the part that allows a
+User to change grades!). Luckily, there's a decorator called
+<em><a href="http://docs.djangoproject.com/en/1.0/topics/auth/#limiting-access-to-logged-in-users-that-pass-a-test">user_passes_test</a></em>
+that allows you to easily perform this sort of thing. Let's see an example:</p>
+<pre><code>from django.contrib.auth.decorators import login_required, user_passes_test  
+  
+@login\_required  
+@user\_passes\_test(lambda u: u.groups.filter(name='Student').count() == 0, login_url='/myapp/denied/')  
+def some\_view(request):  
+  
+    # Do whatever this view should do  
+
+</code></pre>
+<p>The view above (which lacks any content) actually uses two decorators.
+The first <em>login_required</em> simply requires that a user be logged in.
+The second, <em>user_passes_test</em>, requires a function as the first argument.
+This function must accept a User object and return True or False.
+If True, the User can view the page. If False, the user cannot view the page.</p>
+<p>We define this function using a python
+<a href="http://docs.python.org/reference/expressions.html#lambdas">Lambda Expression</a>.
+It simply uses the ORM to check if a User is in the <em>Student</em> group.
+In this example, <strong>u</strong> would be an instance of django.contrib.auth.models.User.</p>
+<pre><code>lambda u: u.groups.filter(name='Student').count() == 0  
+
+</code></pre>
+<p>Additionally, you can specify the keyword argument <em>login_url</em> to the
+<em>user_passes_test</em> decorator. Normally, if the user failed the test this
+would redirect them to a login page. However, in our case, they're already
+logged in (because of the <em>login_required</em> decorator), so this just acts
+as a redirect page. In this example, it would redirect to a url that we've
+specified which might contain an Access Denied message (<em>with giant red
+blinking letters</em>!)</p>
+<p>Just kidding.</p>
+<p>UPDATE: There is one slight caveat to this solution so far... it breaks if
+your user is not already logged in. In fact, this will result in</p>
+<p><strong>AttributeError</strong>:<code>'NoneType' object has no attribute '_meta'</code></p>
+<p>So, to account for that, we need to put the logic that tests for
+Student-group membership into its own function. The result would look
+something like the following:</p>
+<pre><code>def not\_in\_student\_group(user):  
+    if user:  
+        return user.groups.filter(name='Student').count() == 0  
+    return False
+</code></pre>
+<p>This makes sure the user object exists before trying the test, and if not,
+we assume the test fails (by returning False). Now, our decorator will look
+something like this:</p>
+<pre><code>@login\_required  
+@user\_passes\_test(not_in_student_group, login_url='/advising/denied/')  
+def some\_view(request):  
+    # ...  
+
+</code></pre>
+<p><img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-1124320250064783173?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

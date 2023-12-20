@@ -1,0 +1,10 @@
+black
+isort
+flake8
+rich
+click
+rich-click
+Jinja2
+markdown-it-py
+linkify-it-py
+mdit-py-plugins

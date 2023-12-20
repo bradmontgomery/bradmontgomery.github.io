@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>A case for values_list</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>A case for values_list</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>Here's the Scenario: I have a model (lets call it Contact) with two Foreign Keys, one of which is related to User in Django's contrib.auth app. I need to build a form that lets me select an existing object, and a new user.</p>
+<pre><code>class ContactType(Model):  
+    name = CharField(max_length=128)  
+  
+class Contact(Model):  
+    user = ForeignKey(User)  
+    contact_type = ForeignKey(ContactType)  
+    # possibly more fields...
+</code></pre>
+<p>I need to select from existing models, so my first thought might be to build a form that uses two <code>[ModelChoiceField](http://docs.djangoproject.com/en/1.2/ref/forms/fields/#django.forms.ModelChoiceField)</code>'s. I also want to modify the way that my form displays each choice, so I <em>could</em> extend ModelChoiceField by overriding the <code>label_from_instance</code> method:</p>
+<pre><code>class UserModelChoiceField(ModelChoiceField):  
+    def label\_from\_instance(self, obj):  
+        return &quot;%s (%s)&quot;%(obj.get_full_name(), obj.username)  
+  
+class ContactModelChoiceField(ModelChoiceField):  
+    def label\_from\_instance(self, obj):  
+        return '%s (%s)' % (obj.type, obj.user.get_full_name())  
+  
+class CopyContactForm(forms.Form):  
+    contact = ContactModelChoiceField(Contact.objects.all())  
+    new_user = UserModelChoiceField(User.objects.all().order_by('first\_name', 'last\_name', 'username')) 
+</code></pre>
+<p>This actually provides a solution to my original problem, but it's not very efficient. Notice that both the <code>UserModelChoiceField</code> and the <code>ContactModelChoiceField</code> call methods on each object with the latter accessing a foreign key. In an app with 600 Users and 600 Contacts, this form would generate around 1200 queries!</p>
+<p>There's actually a very efficient way to generate the same sort of form using <code>[values\_list](http://docs.djangoproject.com/en/dev/topics/db/optimization/#use-queryset-values-and-values-list)</code>, especially, when you realize that the form really just needs to contain something like the following:</p>
+<pre><code>&lt;select&gt;  
+&lt;option value=&quot;1&quot;&gt;John Doe&lt;/option&gt;  
+&lt;option value=&quot;2&quot;&gt;Jane Doe&lt;/option&gt;  
+  
+&lt;/select&gt;
+</code></pre>
+<p>So a more efficient solution to my problem looks something like the code below, which yields two queries.</p>
+<pre><code>class CopyContactForm(forms.Form):  
+    contact = forms.ChoiceField(choices=[(c[0], '%s (%s %s)'%(c[1],c[2],c[3])) \  
+        for c in Contact.objects.values_list('id', 'type\_\_name', 'user\_\_first\_name', 'user\_\_last\_name')])  
+    new_user = forms.ChoiceField(choices=[(u[0], '%s %s (%s)'%(u[1],u[2],u[3])) \  
+        for u in User.objects.values_list('id', 'first\_name', 'last\_name', 'username')])  
+
+</code></pre>
+<p><img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-3619337419322141293?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>My Development Environment</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>My Development Environment</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>Every once in a while, I like to step back and take a look at the tools that I
+use. I don't change my development environment very often, but I do periodically
+pull in a new tool here and there. Sometimes they <em>fit</em> into my workflow, and
+sometimes they don't.</p>
+<p>As far as I know, I've never written my thoughts down when doing this, but
+in an attempt to keep in line with my Write more. Share more. goal from the beginning of the year,
+this seems like a good time to start.</p>
+<h2>The Editor</h2>
+<p>I use MacVim, and I feel fairly
+proficient, though I'm certainly not a power user. I keep a fairly light-weight
+set of addons.</p>
+<ol>
+<li>I still use pathogen. It works for me.
+I don't fool around with git submodules; I just put .vim/bundle in my .gitignore.</li>
+<li>I use nerdtree and nerdcommenter</li>
+<li>syntastic keeps me out of trouble.</li>
+<li>vim-flake8 helps keep my python looking A-OK.</li>
+<li>Too keep things aesthetically pleasing (perhaps more important that you might
+think!), I use set t_Co=256 and colorscheme desert256 with
+Anonymous Pro,
+set guifont=Anonymous\ Pro:h16.</li>
+</ol>
+<h2>Development</h2>
+<p>Most of my time is spent writing Python, and building Django apps. So of course,
+I'm using Django and a whole host of open-source things, but a little lower down
+the stack, here's what a typical day might look like:</p>
+<ul>
+<li>I use vagrant to fire up <strong>two</strong> virtual machines
+(backed by VirtualBox) running Ubuntu. Currently 12.04 for my most purposes,
+but my personal projects are running on both 13.10 and 14.04.</li>
+<li>VM #1 is your typicall <em>all-in-one</em> box running PostgreSQL and nginx which
+proxies to django's development server (<em>side note: It took me far too long
+to do this, but letting nginx serve your static media instead of django's
+development server is really awesome</em>)</li>
+<li>VM #2 is really just a secondary database box. Do you use multiple databases
+in production? If so, then you do during development, too, right? This box
+also runs an instance of memcached (which I
+sometimes enable during development) and Elasticsearch
+(when I need it).</li>
+<li>All of this runs on my scrappy little 2011 Macbook Air (still running 10.8) with
+4Gb of ram, where I do all my editing and my git stuff.</li>
+<li>I use both Chrome and Firefox for front-end work, along with jQuery, and a
+host of plugins and other small tools like underscore.js and
+moment.js.</li>
+</ul>
+<h2>Miscellany</h2>
+<p>I still read the Django Docs online, and
+I google for a lot of things, which lands me at stackoverflow
+fairly regularly, though no so much that I noticed the recent downtime (my friends
+in irc told me about it first).</p>
+<p>Google Hangouts keeps me connected with the rest of the team, and though things like
+Slack and HipChat seem to
+be all the rage, our team is small enough that Hangouts just work.</p>
+<p>Honorable mentions go to Trello and Github
+just because both sites are a huge part of my daily development workflow.</p>
+<h2>Wrapping Up</h2>
+<p>That's pretty much it. It's not at all fancy, and in fact, I tend to like
+simple tools, but I'm always open to trying things to make me more productive
+(You know, the old <em>work smarter not harder</em> mantra).</p>
+<p>Do you see a gaping hole in what I'm doing? Am I missing something blatently
+obvious? Let me know in the comments! :)</p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

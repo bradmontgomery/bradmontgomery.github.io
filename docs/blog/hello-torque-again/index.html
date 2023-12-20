@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Hello Torque, again.</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Hello Torque, again.</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>Well, I've just begun to dig into the <a href="http://www.garagegames.com/products/torque/tge/">Torque Game Engine</a> again, but this time, I'm building it on a Linux box. Once I downloaded the Linux source, it took me a while to figure out how to get it compiled. TGE's configuration is a little different than the typical &quot;./configure and make&quot; process.</p>
+<p>First of all, I tried to make sure I had all of the development tools necessary to build TGE, including <strong>nasm</strong>, <strong>libogg</strong>, <strong>libvorbis</strong>, and <strong>libtheora</strong> along with any -dev versions of many packages. Then, once you unzip the source you need to issue the following command to set up your configuration:</p>
+<pre><code>make -f mk/configure.mk
+</code></pre>
+<p>This will display the current build configuration and it will tell you if it's valid or not. To get a valid configuration on my system, I used the following configuration:</p>
+<pre><code>make -f m/configure.mk OS=LINUX COMPILER=GCC4 BUILD=DEBUG \  
+DIR.OBJ=/home/brad/TorqueGameEngineSDK-Linux-1-5-0/build
+</code></pre>
+<p>Notice that I had to use an absolute path for the (optional) object Directory. At first, I just used &quot;DIR.OBJ=build&quot;, which resulted in some compiler errors. Anyway, this placed all the object files in a directory called &quot;build.GCC4.DEBUG&quot;</p>
+<p>The next change I had to make was in an actual source file. Apparently, GCC didn't like some things... I'm not going to post any details, but I did eventually get it working, so <a href="http://bradmontgomery.net/show.php?page=contact">contact me</a> if you're interested.</p>
+<p>Good Luck!<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-6044072354529285854?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

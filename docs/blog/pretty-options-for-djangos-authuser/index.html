@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Pretty options for Django&#39;s auth.User</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Pretty options for Django&#39;s auth.User</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>Several of my Django Apps have Foreign Key relationships to django.contrib.auth.model.User. In Django's admin app, these show up a select elements displaying the username attribute. For some people, that may be OK, but for most of the people with which I work, it's not. We want to see <em>prettier</em> options, i.e. each User's full name as the options in that select element.</p>
+<p>So, here's how it works. We override the ModelChoiceField (for ForeignKeys) and the ModelMultipleChoiceField (for ManyToMany Fields):</p>
+<pre><code>from django.forms import ModelChoiceField, ModelMultipleChoiceField  
+  
+class UserModelChoiceField(ModelChoiceField):  
+    '''   
+ A ModelChoiceField to represent User   
+ select boxes in the Auto Admin   
+ '''  
+    def label\_from\_instance(self, obj):  
+        return &quot;%s (%s)&quot;%(obj.get_full_name(), obj.username)  
+  
+class UserModelMultipleChoiceField(ModelMultipleChoiceField):  
+    '''   
+ Similar to UserModelChoiceField, provide a nicer-looking   
+ list of user names for ManyToMany Relations...  
+ '''  
+    def label\_from\_instance(self, obj):  
+        return &quot;%s (%s)&quot;%(obj.get_full_name(), obj.username)  
+
+</code></pre>
+<p>Then, to customize the admin, you need to create a custome ModelForm for your Model. So, if I had a Model that looked like this:</p>
+<pre><code>class MyModel(models.Model):  
+    user = models.ForeignKey(User)  
+
+</code></pre>
+<p>You'd need to create the following ModelForm:</p>
+<pre><code>class MyModelAdminForm(forms.ModelForm):  
+    user = UserModelChoiceField(User.objects.all().order_by('first\_name', 'last\_name', 'username'))  
+  
+    class Meta:  
+        model = MyModel  
+
+</code></pre>
+<p>Now, when you create a ModelAdmin class for the MyModel, you specify the above form:</p>
+<pre><code>from models import MyModel  
+from forms import MyModelAdminForm  
+  
+class MyModelAdmin(admin.ModelAdmin):  
+    form = MyModelAdminForm  
+admin.site.register(MyModel, MyModelAdmin)  
+
+</code></pre>
+<p>At this point, the choices for User objects in the admin should contain the user's full name and their username in parenthesis.<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-2524432454961244471?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

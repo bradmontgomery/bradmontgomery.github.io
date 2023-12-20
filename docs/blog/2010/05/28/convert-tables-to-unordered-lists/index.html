@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Convert Tables to Unordered Lists</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Convert Tables to Unordered Lists</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>If you've ever had the pleasure of working with old HTML content, you've surely seen some <table>'s where they don't belong. Lately, that's the sort of thing I've been dealing with on a regular basis, and for some reason, I often see a list of information in a table.</p>
+<p>Wouldn't it be nice if there were an easy way to turn these tables into unordered lists? Thanks to <a href="http://www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a>, this is really not that difficult.</p>
+<p>Here's the code:</p>
+<pre><code>from BeautifulSoup import BeautifulSoup, Tag   
+  
+def table2ul(content, flatten_rows=False):  
+    &quot;&quot;&quot;   
+ Convert a &lt;table&gt; into a &lt;ul&gt;.  
+ Each cell, &lt;td&gt;, gets converted into a list item &lt;li&gt; unless  
+ the flatten\_rows paramter is given. In this case, all content from   
+ a table row, &lt;tr&gt;, gets converted into a list item.  
+ &quot;&quot;&quot;  
+    soup = BeautifulSoup(content, convertEntities=BeautifulSoup.HTML_ENTITIES, smartQuotesTo=&quot;html&quot;)  
+  
+    for table in soup.findAll('table'):  
+        ul = Tag(soup, 'ul')  
+  
+        if flatten_rows:  
+            for row in table.findAll('tr'):  
+                li = Tag(soup, 'li')  
+                for cell in row.findAll('td'):  
+                    li.contents.extend(cell.contents)  
+                ul.append(li)  
+        else:  
+            for cell in table.findAll('td'):  
+                li = Tag(soup, 'li')  
+                li.contents = cell.contents  
+                ul.append(li)  
+        table.replaceWith(ul)  
+  
+    return soup.prettify()
+</code></pre>
+<p>Now, suppose we had the following HTML snippet:</p>
+<pre><code>&lt;h1&gt;Some heading&lt;/h1&gt;  
+&lt;p&gt;Some paragraph with stuff in it&lt;/p&gt;  
+&lt;table&gt;  
+&lt;tr&gt;&lt;td&gt; row 1, &lt;strong&gt;col1&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;row 1, col2&lt;/td&gt;&lt;/tr&gt;  
+&lt;tr&gt;&lt;td&gt; row 2, col1&lt;/td&gt;&lt;td&gt;&lt;em&gt;&lt;a href=&quot;http://google.com&quot;&gt;row 2&lt;/a&gt;&lt;/em&gt;, col2&lt;/td&gt;&lt;/tr&gt;  
+&lt;/table&gt;  
+  
+&lt;h2&gt;A second heading&lt;/h2&gt;  
+&lt;p&gt;more peee&lt;/p&gt;
+</code></pre>
+<p>Passing this in to <strong>table2ul</strong> would convert each cell into a list item, <li>.</p>
+<pre><code>&gt;&gt;&gt; table2ul(content)
+</code></pre>
+<pre><code>&lt;h1&gt;  
+ Some heading  
+&lt;/h1&gt;  
+&lt;p&gt;  
+ Some paragraph with stuff in it  
+&lt;/p&gt;  
+&lt;ul&gt;  
+ &lt;li&gt;  
+  row 1,  
+  &lt;strong&gt;  
+   col1  
+  &lt;/strong&gt;  
+ &lt;/li&gt;  
+ &lt;li&gt;  
+  row 1, col2  
+ &lt;/li&gt;  
+ &lt;li&gt;  
+  row 2, col1  
+ &lt;/li&gt;  
+ &lt;li&gt;  
+  &lt;em&gt;  
+   &lt;a href=&quot;http://google.com&quot;&gt;  
+    row 2  
+   &lt;/a&gt;  
+  &lt;/em&gt;  
+  , col2  
+ &lt;/li&gt;  
+&lt;/ul&gt;  
+&lt;h2&gt;  
+ A second heading  
+&lt;/h2&gt;  
+&lt;p&gt;  
+ more peee  
+&lt;/p&gt;
+</code></pre>
+<p>But what if we don't want each <td> converted into an &lt;li%gt&gt;? What if we want all the content from entire row in an <li>? In that case, just set the optional <strong>flatten_rows</strong> parameter:</p>
+<pre><code>&gt;&gt;&gt; table2ul(content, flatten_rows=True)
+</code></pre>
+<pre><code>&lt;h1&gt;  
+ Some heading  
+&lt;/h1&gt;  
+&lt;p&gt;  
+ Some paragraph with stuff in it  
+&lt;/p&gt;  
+&lt;ul&gt;  
+ &lt;li&gt;  
+  row 1,  
+  &lt;strong&gt;  
+   col1  
+  &lt;/strong&gt;  row 1, col2  
+ &lt;/li&gt;  
+ &lt;li&gt;  
+  row 2, col1  
+  &lt;em&gt;  
+   &lt;a href=&quot;http://google.com&quot;&gt;  
+    row 2  
+   &lt;/a&gt;  
+  &lt;/em&gt;  
+  , col2  
+ &lt;/li&gt;  
+&lt;/ul&gt;  
+&lt;h2&gt;  
+ A second heading  
+&lt;/h2&gt;  
+&lt;p&gt;  
+ more peee  
+&lt;/p&gt;
+</code></pre>
+<p>This has been somewhat useful for me. Hope it's useful for you!<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-2232988455138779924?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

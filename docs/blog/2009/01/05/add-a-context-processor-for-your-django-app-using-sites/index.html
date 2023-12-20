@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Add a Context Processor for your Django app using Sites</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Add a Context Processor for your Django app using Sites</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I've recently refactored a significant number of my Django Apps so that they include the &quot;<a href="http://docs.djangoproject.com/en/dev/ref/contrib/sites/#ref-contrib-sites">sites</a>&quot; framework. Essentially, this allows me to use the same code (and database) for multiple sites.</p>
+<p>For Example, if I was was building a CMS (and I am!), I might have a model that defines a &quot;page&quot;:</p>
+<pre><code>from django.db import models
+from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
+
+class Page(models.Model):
+    title = models.CharField('title', max_length=255)
+    content = models.TextField()
+    author = models.ForeignKey(User)
+    sites = models.ManyToManyField(Site,
+                  help_text=&quot;This page will be displayed on the selected Sites&quot;)
+</code></pre>
+<p>Note that the Page class has a <a href="http://docs.djangoproject.com/en/dev/ref/models/fields/#manytomanyfield">ManyToManyField</a> relation ship to a Django Site, which allows a page to be associated with one or more Sites. The neat thing about this, is that when I publish content on a Page, it can be published to one or more sites!</p>
+<p>While working with this, I discovered I often wanted to write template code that <em>knew</em> which which Site it was associated. For example, I might have a base template containing a block inside html head elements so templates that inherit it can include external javascript or CSS files. For example, <em>base.html</em> might include the following:</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;
+    {% block title %}{% endblock %}
+&lt;/title&gt;
+    {% block head %} {% endblock %}
+&lt;/head&gt;
+</code></pre>
+<p>Then, in any template that inherits from base.html, I could do something like the following:</p>
+<pre><code>
+{% extends &quot;base.html&quot; %}
+{% block head %}
+    {% ifequal current_site.domain &quot;www.whatever.com&quot; %}
+        &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/media/whatever.css&quot; /&gt;
+    {% endifequal %}
+{% endblock %}
+
+</code></pre>
+<p>There trick here, though, is &quot;How is my template going to know what site is being requested?&quot;</p>
+<p>I <em>could</em> put something like the following in <strong>every</strong> view I write...</p>
+<pre><code>current_site = Site.objects.get_current()
+</code></pre>
+<p>BUT, that's a lot of extra stuff to type. Especially if you have a lot of views.</p>
+<p>The clever thing to do, would be to write code so that a Site object containing the currently requested site is automatically added to the current <a href="http://docs.djangoproject.com/en/dev/ref/templates/api/#basics">Context</a>. We can do that by writing our own <strong>Context Processor</strong>!</p>
+<p>And that's just what I did! The following code is fairly simple. It just retrieves the current Site from given request object (using Site.objects.get_current()), then returns a dictionary mapping the current site to the variable name <strong>current_site</strong>.</p>
+<pre><code>from django.conf import settings
+from django.contrib.sites.models import Site
+
+def current_site(request):
+'''
+A context processor to add the &quot;current site&quot; to the current Context
+'''
+    try:
+        current_site = Site.objects.get_current()
+        return {
+            'current_site': current_site,
+        }
+    except Site.DoesNotExist:
+        # always return a dict, no matter what!
+        return {'current_site':''} # an empty string
+</code></pre>
+<p>For this to work, we've got to add the function above to the list of TEMPLATE_CONTEXT_PROCESSORS in our project settings file. My project directory is called &quot;mysite&quot;, so I created a folder called &quot;context_processors&quot;, and in it, I created a file called &quot;current_site.py&quot;. That file contains the function <em>current_site</em> defined above.</p>
+<p>To get my new context processor working, I've got to edit mysite/settings.py, which now looks something like the following:</p>
+<pre><code>TEMPLATE_CONTEXT_PROCESSORS = (
+    &quot;mysite.context_processors.current_site.current_site&quot;,
+    &quot;django.core.context_processors.auth&quot;,
+    &quot;django.core.context_processors.debug&quot;,
+    &quot;django.core.context_processors.i18n&quot;,
+    &quot;django.core.context_processors.media&quot;,
+)
+
+</code></pre>
+<p>Voila! Now, while writing template code, I can always access the <em>current_site</em> variable!<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-4532705687996021665?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

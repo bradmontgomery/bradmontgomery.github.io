@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Add JSON syntax highlighting in Vim on OS X</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Add JSON syntax highlighting in Vim on OS X</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>This is how I got Vim to do syntax highlighting for JSON files (Max OS X - Snow Leopard)</p>
+<ol>
+<li>Download the syntax file from <a href="http://www.vim.org/scripts/script.php?script_id=1945">http://www.vim.org/scripts/script.php?script_id=1945</a>. (I got <strong>json.vim</strong> version 0.4)</li>
+<li>If it doesn't already exist, create a <strong>.vim/ftplugin</strong> in your home directory.</li>
+<li>Put <strong>json.vim</strong> into <strong>.vim/ftplugin</strong></li>
+<li>Add the following lines in your <strong>.vimrc</strong> file (mine is located at ~/.vimrc)</li>
+</ol>
+<pre><code>au BufRead,BufNewFile *.json set filetype=json  
+au! Syntax json source /Users/brad/.vim/ftplugin/json.vim
+</code></pre>
+<p>Note that you'll have to change the path to your json.vim file so that it works on your computer.
+5. Now, got edit a .json file!</p>
+<p><img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-7146046294850823266?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

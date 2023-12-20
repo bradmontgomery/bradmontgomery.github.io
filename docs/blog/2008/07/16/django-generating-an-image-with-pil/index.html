@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Django: Generating an Image with PIL</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Django: Generating an Image with PIL</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I've been reading through the <a href="http://www.djangobook.com/">Django Book</a>, and in <a href="http://www.djangobook.com/en/1.0/chapter11/">chapter 11</a> they talk about generating non-HTML content (such as PDF files, Images, RSS/Atom Feeds). They mention using <a href="http://www.pythonware.com/products/pil/">PIL</a> to generate images, but they don't give an example. So, I thought I'd post a simple example View that generates an image.</p>
+<pre><code>def pil\_image(request):  
+    ''' A View that Returns a PNG Image generated using PIL'''  
+  
+    import Image, ImageDraw   
+  
+    size = (100,50)             # size of the image to create  
+    im = Image.new('RGB', size) # create the image  
+    draw = ImageDraw.Draw(im)   # create a drawing object that is  
+                                # used to draw on the new image  
+    red = (255,0,0)    # color of our text  
+    text_pos = (10,10) # top-left position of our text  
+    text = &quot;Hello World!&quot; # text to draw  
+    # Now, we'll do the drawing:   
+    draw.text(text_pos, text, fill=red)  
+      
+    del draw # I'm done drawing so I don't need this anymore  
+      
+    # We need an HttpResponse object with the correct mimetype  
+    response = HttpResponse(mimetype=&quot;image/png&quot;)  
+    # now, we tell the image to save as a PNG to the   
+    # provided file-like object  
+    im.save(response, 'PNG')  
+  
+    return response # and we're done!  
+
+</code></pre>
+<p>This example just draws simple text, but the drawing code could be replaced by something more elaborate such as code that opens and scales existing images.</p>
+<p>A note of concern: The Image object (im) <strong>MUST</strong> be saved as a PNG for this to work. Luckily, the Image.save method expects a file-like object as its first parameter, so we can use django's HttpResponse object here. Also, the example above doesn't make use of any particular Font for the drawing, so if you do want to draw text, you'll want to take a look at PIL's <a href="http://www.pythonware.com/library/pil/handbook/imagedraw.htm">ImageDraw Documentation</a>.</p>
+<p>(on a side note: the html for the code above was generated using <a href="http://dpaste.com">dpaste</a>, which rocks!)<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-9092702185978828760?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

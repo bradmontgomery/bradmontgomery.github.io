@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Push Your SSH Public keys using Fabric</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Push Your SSH Public keys using Fabric</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>This came across my twitter radar today from <em><a href="http://twitter.com/bitprophet/">@bitprophet</a></em> (aka: Jeff Forcier), who just happens to be the new maintainer for <a href="http://www.nongnu.org/fab/">Fabric</a>:</p>
+<pre><code>def push\_key():  
+    keyfile = '/tmp/%s.pub' % env.user  
+    run('mkdir -p ~/.ssh &amp;&amp; chmod 700 ~/.ssh')  
+    put('~/.ssh/id\_rsa.pub', keyfile)  
+    run('cat %s &gt;&gt; ~/.ssh/authorized\_keys' % keyfile)  
+    run('rm %s' % keyfile)  
+
+</code></pre>
+<p>Everything you need to push your public key to an external server using Fabric.<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-1296451718188870554?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>wifit - an iwconfig tool</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>wifit - an iwconfig tool</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I've recently installed <a href="http://www.mepis.org/">Mepis Linux</a> on a couple of laptops (a Compaq Presario 2195US and a Dell Latitude D610, both of which use <a href="http://ndiswrapper.sourceforge.net/">NdisWrapper</a> for wifi drivers).I'm fairly mobile, so I needed a way to quickly change my wireless settings. I wrote this simple bash script to let me do that, and I thought I'd just share it.</p>
+<pre><code>  
+#!/bin/bash  
+  
+## wifit - the wifi tool  
+## This is a script that accepts a wifi-enabled interface,   
+## essid, and an optional ascii key for a wifi network connection  
+  
+if [ $# -lt 2 ] || [ $# -gt 3 ] ; then   
+ echo &quot;wifit - the wifi tool&quot;  
+ echo &quot;-------------------------------------------------&quot;  
+ echo &quot;Usage: wifit   [Optional: ]&quot;  
+ echo &quot; Example: wifit wlan0 somenet &quot;  
+ echo &quot; Example: wifit wlan0 somenet mypassword &quot;  
+ echo &quot;-------------------------------------------------&quot;  
+else  
+ echo &quot;Setting up wifi connection for &quot;  
+ echo &quot;Interface $1, ESSID: $2...&quot;  
+  
+ iwconfig $1 essid $2  
+ iwlist $1 scan  
+ iwconfig $1 mode Managed  
+ if [ -n $3 ] ; then  
+ iwconfig $1 key restricted s:$3  
+ else  
+ iwconfig $1 key open  
+ iwconfig ap any  
+ fi  
+ iwconfig commit  
+ dhclient  
+fi
+</code></pre>
+<p>To use this, just copy and paste the code above into a file named wifit (or wifit.sh, or whatever you want). You'll then need to make that file executable using chmod:</p>
+<pre><code>chmod a+x wifit.sh
+</code></pre>
+<p>Then, simply call the script (possibly using sudo) passing it any arguments you need:</p>
+<pre><code>sudo ./wifit wlan0 somenetwork
+</code></pre>
+<p>Alternatively, you could place this file in your /usr/local/bin or /usr/bin directories so that it would be included in your PATH. If you find this useful, or if you decide to add to is, feel free to <a href="http://bradmontgomery.net/show.php?page=contact">Contact Me</a>!</p>
+<p>Enjoy.<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-2958546588737408191?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

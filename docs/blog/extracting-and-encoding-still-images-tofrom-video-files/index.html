@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Extracting and Encoding Still images to/from Video files</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Extracting and Encoding Still images to/from Video files</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p><a href="http://ffmpeg.mplayerhq.hu">ffmpeg</a> is a cool tool.</p>
+<p>While it's got many many features and uses, I mostly use it to extract frames (or still images) from a video and create a video out of frames. While <a href="http://ffmpeg.mplayerhq.hu/faq.html#SEC14">instructions on how to do this</a> are posted on their list of FAQs, it's probably worth posting again.</p>
+<p>To extract all frames from a video file named &quot;video.mpg&quot;:</p>
+<pre><code>ffmpeg -i video.mpg frame%d.jpg
+</code></pre>
+<p>This will produce a series of JPEG image files named file1.jpg, file2.jpg... file10.jpg, file11.jpg... etc.</p>
+<p>I often like to have a zero prepended to the number associated with a frame. For exaple, if I knew there were 500 frames in the entire video, I would like to have the first frame named &quot;file001.jpg&quot; instead of &quot;file1.jpg&quot;. This can be achieved by specifying the number of digits to use in the output file name (such as 3 in the example below):</p>
+<pre><code>ffmpeg -i video.mpg frame%3d.jpg
+</code></pre>
+<p>Now, to create a video named &quot;movie.mpg&quot; from a series of images named something like &quot;frameX.jpg&quot; (where X is the frame number), you could do something like this:</p>
+<pre><code>ffmpeg -f image2 -i frame%d.jpg movie.mpg
+</code></pre>
+<p>The caveat here is that the input frames MUST be numbered as if they were extracted from the video. So, if you had zero-padded filenames (as in the case where we used &quot;frame%3d.jpg&quot; to extract images), you'd have to account for that when encoding those images back into a movie.</p>
+<p>For example:</p>
+<pre><code>ffmpeg -f image2 -i frame%3d.jpg movie.mpg
+</code></pre>
+<p>A Note on image formats: In the example above where we created a video file from a set of still images, the &quot;-f image2&quot; option to ffmpeg specifies a video format. Available formats can be displayed using the command</p>
+<pre><code>ffmpeg -formats
+</code></pre>
+<p>Note that this is not the same as a <a href="http://en.wikipedia.org/wiki/Container_format_(digital)">container format</a> (such as .mpg, .avi, .mov... etc). If this sounds a little confusing, you may want to read up on <a href="http://en.wikipedia.org/wiki/Digital_video#Encoding">digital video encoding</a>.<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-8162317062922827536?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

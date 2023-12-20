@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>OpenCV on Mac OS X</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>OpenCV on Mac OS X</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I finally got arount to compiling <a href="http://opencvlibrary.sourceforge.net/">OpenCV</a> on my G4 Mac mini. While there is a lot of good information online as to how to do this, there were a few final steps that took me a while to either figure out or find. Apparently using OpenCV on OS X is still a new thing...</p>
+<p>First of all, follow the directions here at the <a href="http://opencvlibrary.sourceforge.net/Mac_OS_X_OpenCV_Port">Mac OS X OpenCV Port Wiki</a>. (Note the two different configure options for Fink and MacPorts/DarwinPorts)<br />
+Then, after typing &quot;sudo make install&quot;, the include files should be in <strong>/usr/local/include/opencv</strong>, while the dynamic libraries should be in <strong>/usr/local/lib</strong>.</p>
+<p>So, the last thing to do is let your shell know about the libraries, and pkgconfig. Since I use bash, I added this to my .bashrc file.</p>
+<pre><code>export LD_LIBRARY_PATH=/usr/local/lib  
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+</code></pre>
+<p>And so... things seem to work.</p>
+<p>Many thanks go to those who've done a lot of work to get OpenCV on OS X!<br />
+<a href="http://opencvlibrary.sourceforge.net/MarkAsbach">http://opencvlibrary.sourceforge.net/MarkAsbach</a><br />
+<a href="http://www.christophseibert.de/weblog/en/it/computer-vision/tools/opencv-mac.html">http://www.christophseibert.de/weblog/en/it/computer-vision/tools/opencv-mac.html</a><br />
+<a href="http://lestang.org/article45.html">http://lestang.org/article45.html</a><img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-3997551314779282905?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

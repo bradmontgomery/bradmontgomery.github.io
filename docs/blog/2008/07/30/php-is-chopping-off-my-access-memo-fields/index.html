@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>PHP is chopping off my Access Memo Fields</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>PHP is chopping off my Access Memo Fields</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>I've got a few simple web forms that use PHP to read and write to an Access database (running on IIS), and I just spent the last few hours frantically trying to figure out why some of my Memo fields were being truncated around 4000 characters.</p>
+<p>I know Memo fields &quot;should&quot; be able to contain up to 65536 characters, and I could verify this by inserting data directly into the database. However, when querying the database through PHP (using odbc), I could only retrieve 4000 characters.</p>
+<p>The culprit? A tiny little setting called odbc.defaultlrl! (lrl = long read length). This can be changed in php.ini, or you can use ini_set to modify this setting directly in your php script:</p>
+<pre><code>&lt;?php  
+ini_set('odbc.defaultlrl', 65536);  
+?&gt;  
+
+</code></pre>
+<p>I found this info on the discussion for the <a href="http://us3.php.net/manual/en/function.odbc-longreadlen.php">odbc_longreadlen</a> function.<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-6208247461343887893?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

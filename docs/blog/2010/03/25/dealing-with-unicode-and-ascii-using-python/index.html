@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Dealing with Unicode and ASCII using Python</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Dealing with Unicode and ASCII using Python</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>Dealing with Character Encodings is (sometimes) hard. It's especially confusing for those who've never done it before. Converting text from unicode to ascii can be tricky.</p>
+<p>A lot of times, I'll import some data from a text file, and I just want to convert everything to ASCII and ignore anything that's not ascii (like MS Word's smart quotes). Luckily, this is fairly easy:</p>
+<pre><code>mystring = mystring.decode('ascii', 'ignore')
+</code></pre>
+<p>There's tons of great Python resources (and code!) for all your character encoding needs. In no particular order, here are a few I've found:</p>
+<ul>
+<li><a href="http://www.pyzine.com/Issue008/Section_Articles/article_Encodings.html">A Crash Course in Character Encoding</a></li>
+<li><a href="http://diveintopython.org/xml_processing/unicode.html">Dive Into Python's Chapter on Unicode</a></li>
+<li><a href="http://www.crummy.com/software/BeautifulSoup/">Beautiful Soup</a> gives you [Unicode, Dammit](http://www.crummy.com/software/BeautifulSoup/documentation.html#Beautiful Soup Gives You Unicode, Dammit) and there's the companion: <a href="http://www.crummy.com/cgi-bin/msm/map.cgi/ASCII,+Dammit">ASCII, Dammit</a></li>
+<li>There's also <a href="http://effbot.python-hosting.com/file/stuff/sandbox/text/unaccent.py">unaccent.py</a>, which seems to convert various unicode characters to their ascii equivalent.</li>
+</ul>
+<p>There's probably more, but most of these have helped me get the job done.</p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

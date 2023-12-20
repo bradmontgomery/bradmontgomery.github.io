@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Public Keys don&#39;t like write access!</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Public Keys don&#39;t like write access!</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>The first part of my <a href="http://bradmontgomery.blogspot.com/2007/01/automatic-backups-with-cron-tar-and-ssh.html">Automatic Backups with cron, tar, and SSH</a> details how to set up remote login (sans passwords) using RSA public key.</p>
+<p>Apparently this doesn't work if your home directory allows groups or others write access. So if used <em>ssh-keygen -t rsa</em> to generate a public key which you added to a remote host (under <em>.ssh/authorized_keys</em>), but ssh is still prompting you for a password, try setting your home directory's permissions to something like 0755 (or remove write permissions from other and groups)!<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-5225263534188052703?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>

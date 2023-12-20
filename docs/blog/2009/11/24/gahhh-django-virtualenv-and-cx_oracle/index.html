@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Gahhh!! Django, virtualenv, and cx_Oracle</title>
+    
+    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+  </head>
+  <body>
+    <header>
+      <h1>Gahhh!! Django, virtualenv, and cx_Oracle</h1>
+    </header>
+    <main>
+    
+  <section>
+  
+<p>UPDATE: Thanks in advance to the comments from <a href="http://blog.dscpl.com.au/">Graham Dumpleton</a> whose comments below pointed me in the right direction!</p>
+<p>This was~~is~~ a plea for help.</p>
+<p>I've got django installed and configured with apache and virtualenv. I also have one particular app (named <strong>myapp</strong>) that queries an Oracle database directly (django is configured to use MySQL). All of the apps work, <strong>except</strong> for anything thatbrequires the <strong>myapp</strong> app... which includes the admin!</p>
+<p>Requesting any view that uses cx_Oracle results in a cryptic error simiar to:</p>
+<p><strong>ViewDoesNotExist at /some/url/</strong><br />
+<em>Could not import myproject.myapp.views. Error was: libclntsh.so.10.1: cannot open shared object file: No such file or directory</em></p>
+<p>The full traceback follows:</p>
+<pre><code>Environment:  
+  
+Request Method: GET  
+Request URL: http://mydomain.com/myapp/foo/  
+Django Version: 1.1.1  
+Python Version: 2.6.2  
+Installed Applications:  
+['django.contrib.auth',  
+ 'django.contrib.contenttypes',  
+ 'django.contrib.sessions',  
+ 'django.contrib.sites',  
+ 'django.contrib.admin',  
+ 'django.contrib.admindocs',  
+ 'django.contrib.flatpages',  
+ 'django_extensions',  
+ 'myproject.userprofile',  
+ **'myproject.myapp',**  
+  
+ ... *snip*...  
+  
+ 'myproject.utils']  
+Installed Middleware:  
+('django.middleware.gzip.GZipMiddleware',  
+ 'django.middleware.common.CommonMiddleware',  
+ 'django.contrib.sessions.middleware.SessionMiddleware',  
+ 'django.contrib.auth.middleware.AuthenticationMiddleware',  
+ 'django.middleware.doc.XViewMiddleware')  
+  
+  
+Traceback:  
+File &quot;/home/django/.virtualenvs/myproject/lib/python2.6/site-packages/django/core/handlers/base.py&quot; in get_response  
+  83.                     request.path_info)  
+File &quot;/home/django/.virtualenvs/myproject/lib/python2.6/site-packages/django/core/urlresolvers.py&quot; in resolve  
+  218.                     sub_match = pattern.resolve(new_path)  
+File &quot;/home/django/.virtualenvs/myproject/lib/python2.6/site-packages/django/core/urlresolvers.py&quot; in resolve  
+  218.                     sub_match = pattern.resolve(new_path)  
+File &quot;/home/django/.virtualenvs/myproject/lib/python2.6/site-packages/django/core/urlresolvers.py&quot; in resolve  
+  125.             return self.callback, args, kwargs  
+File &quot;/home/django/.virtualenvs/myproject/lib/python2.6/site-packages/django/core/urlresolvers.py&quot; in _get_callback  
+  134.             raise ViewDoesNotExist, &quot;Could not import %s. Error was: %s&quot; % (mod_name, str(e))  
+  
+Exception Type: ViewDoesNotExist at /myapp/foo/  
+Exception Value: Could not import myproject.myapp.views. Error was: libclntsh.so.10.1: cannot open shared object file: No such file or directory
+</code></pre>
+<p>The strange thing is that tests using cx_Oracle run correctly (as does code typed into the interpreter via ./manage.py shell), so cx_Oracle is installed correctly in the virtualenv. Orignally, I thought that apache was somehow misconfigured. The problem, however, is that Apache just doesn't know where to find the shared libraries for cx_Oracle's C extension modules. On my system (Ubuntu), shared libraries are located in /usr/lib and /usr/local/lib .</p>
+<p>When building cx_Oracle, you must include an environment variable for ORACLE_HOME and update the LD_LIBRARY_PATH so that it also includes ORACLE_HOME. While logged in as the <em>django</em> user, I updated .bashrc so that it includes the following:</p>
+<pre><code>export ORACLE\_HOME=/home/django/oracle/instantclient_10_2  
+export LD\_LIBRARY\_PATH=$ORACLE\_HOME:$LD_LIBRARY_PATH  
+
+</code></pre>
+<p>For me, all of the cx_Oracle shared libraries are located in <strong>/home/django/oracle/instantclient_10_2</strong>. So, (with my virtualenv activated) I built, installed, and tested cx_Oracle, and everything worked fine, because my user environment was set up so that these shared libraries are available.</p>
+<p>To make these available to Apache, I created <strong>hard</strong> links to all of the shared libraries from /usr/local/lib, and then ran ldconfig. Note that ldconfig ignores symbolic links!</p>
+<pre><code>cd /usr/local/lib  
+sudo ln /home/django/oracle/instantclient_10_2/libclntsh.so.10.1  
+# also creating links to all other libs  
+sudo ldconfig  
+
+</code></pre>
+<p>After restarting Apache, my django apps worked as expected. For the curious, my wsgi script and apache config follows.</p>
+<p><strong>My .wsgi script</strong></p>
+<pre><code>import sys  
+import site  
+import os  
+  
+vepath = '/home/django/.virtualenvs/myproject/lib/python2.6/site-packages'  
+prev_sys_path = list(sys.path)  
+  
+# add the site-packages of our virtualenv as a site dir  
+site.addsitedir(vepath)  
+  
+# add the app's directory to the PYTHONPATH  
+sys.path.append('/home/django/django\_projects/myproject\_root/myproject/')  
+sys.path.append('/home/django/django\_projects/myproject\_root/')  
+os.environ['PYTHON\_EGG\_CACHE'] = '/home/django/.python-eggs'  
+  
+new_sys_path = [p for p in sys.path if p not in prev_sys_path]  
+for item in new_sys_path:   
+    sys.path.remove(item)  
+sys.path[:0] = new_sys_path  
+  
+from django.core.handlers.wsgi import WSGIHandler  
+os.environ['DJANGO\_SETTINGS\_MODULE'] = 'myproject.settings'  
+application = WSGIHandler()  
+
+</code></pre>
+<p><strong>The Pertinent part of the Apache Config, located within a VirtualHost Directive:</strong></p>
+<pre><code>Alias /media/ /var/www/media/  
+Alias /site\_media/ /var/www/static/  
+  
+# Run WSGI in Daemon Mode:  
+WSGIDaemonProcess myproject user=www-data group=www-data threads=25  
+WSGIProcessGroup myproject  
+WSGIScriptAlias / /home/django/django\_projects/myproject\_root/apache\_mod\_wsgi\_conf/myproject.wsgi  
+
+</code></pre>
+<p>NOTE: Graham Dumpleton suggests four options to get around the original problem (and I paraphrase):</p>
+<ol>
+<li>
+<p><em>Rebuild cx_Oracle setting the LD_RUN_PATH</em> - I tried this, but was unnsuccessful.</p>
+</li>
+<li>
+<p><em>Put the shared libraries in /usr/lib</em> - I hard linked to the libraries from /usr/local/lib. This is the solution that worked.</p>
+</li>
+<li>
+<p><em>Modify /etc/ld.conf so that it includes the path to the shared libraries</em> - I considered adding a file to /etc/ld.so.conf.d/ which would have included the path to my ORACLE_HOME directory. However, the above options worked, so I went with that instead.</p>
+</li>
+<li>
+<p><em>Edit /etc/apache/envvars so that it includes the appropriate environment variables</em> - I also tried this approach, including the same environment variables that I added to my .bashrc, but this also did not work</p>
+</li>
+</ol>
+<p>Hope this helps someone else!<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-6881096023935249692?l=bradmontgomery.blogspot.com" alt="" /></p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>
