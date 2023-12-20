@@ -16,17 +16,17 @@ There are some opinions.
 import http.server
 import logging
 import shutil
+from collections import defaultdict
 from glob import glob
+from itertools import chain
 from pathlib import Path
 from time import time
-from itertools import chain
 
 import ez_yaml
 import rich_click as click
 from jinja2 import Environment, PackageLoader, select_autoescape
 from markdown_it import MarkdownIt
 from mdit_py_plugins.front_matter import front_matter_plugin
-
 
 logging.basicConfig(format="%(asctime)s %(levelname)s %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -158,7 +158,7 @@ def build_index(env, output: str, index: list, top: int = 20):
 
 
 # TODO: how to build a linked ARCHIVES index?
-def build_archives(env, output:str, index: list):
+def build_archives(env, output: str, index: list):
     pass
 
 
@@ -166,11 +166,11 @@ def build_tags(env, output: str, index: list):
     """Site indexing based on tags"""
 
     # /blog/tags/ -> list of all tags.
-    tags = sorted(set(chain(*[post.get('tags') for post in index])))
+    tags = sorted(set(chain(*[post.get("tags") for post in index])))
     context = {
         "title": "Brad Montgomery",
         "subtitle": "Tags",
-        "tags": [(tag, f"/blog/{tag}/") for tag in tags],
+        "tags": [(tag, f"/blog/tags/{tag}/") for tag in tags],
     }
     template = env.get_template("tags.html")
     content = template.render(**context)
@@ -180,21 +180,42 @@ def build_tags(env, output: str, index: list):
         f.write(content)
         logger.info("Wrote blog/tags/index.html")
 
+    # /blog/tag/<tagname>/ -> articles with a tag.
+    by_tags = defaultdict(list)
+    for post in index:
+        for tag in post.get("tags"):
+            by_tags[tag].append(post)
 
-    # /blog/tag/<tagname> -> articles with a tag.
-
+    for tag, posts in by_tags.items():
+        context = {
+            "title": "Brad Montgomery",
+            "subtitle": f"Tagged {tag}",
+            "posts": posts,
+        }
+        template = env.get_template("index.html")
+        content = template.render(**context)
+        path = Path(output) / Path(f"blog/tags/{tag}")
+        path.mkdir(parents=True, exist_ok=True)
+        path = path / Path("index.html")
+        with open(path, "w") as f:
+            f.write(content)
+            logger.info("Wrote tags to %s", path)
 
 
 # -------------------------------------------------------------
 # CLI Commands.
 # -------------------------------------------------------------
 
+
 @click.group()
 def cli():
     pass
 
+
 @cli.command()
-@click.option("--output", default="docs", help="Output directory from which files are served")
+@click.option(
+    "--output", default="docs", help="Output directory from which files are served"
+)
 @click.option("--addr", default="")
 @click.option("--port", default=8000)
 def server(output, addr, port):
@@ -255,7 +276,6 @@ def build(content, templates, output):
 
     elapsed = round(time() - start, 2)
     logger.info("Completed in %s seconds", elapsed)
-
 
 
 if __name__ == "__main__":
