@@ -19,6 +19,7 @@ import shutil
 from glob import glob
 from pathlib import Path
 from time import time
+from itertools import chain
 
 import ez_yaml
 import rich_click as click
@@ -156,15 +157,31 @@ def build_index(env, output: str, index: list, top: int = 20):
         logger.info("Wrote blog/index.html")
 
 
-
-# TODO: how to build a linked TAGS index?
-def build_tags():
-    pass
-
-
 # TODO: how to build a linked ARCHIVES index?
-def build_archives():
+def build_archives(env, output:str, index: list):
     pass
+
+
+def build_tags(env, output: str, index: list):
+    """Site indexing based on tags"""
+
+    # /blog/tags/ -> list of all tags.
+    tags = sorted(set(chain(*[post.get('tags') for post in index])))
+    context = {
+        "title": "Brad Montgomery",
+        "subtitle": "Tags",
+        "tags": [(tag, f"/blog/{tag}/") for tag in tags],
+    }
+    template = env.get_template("tags.html")
+    content = template.render(**context)
+    path = Path(output) / Path("blog/tags/")
+    path.mkdir(parents=True, exist_ok=True)
+    with open(path / Path("index.html"), "w") as f:
+        f.write(content)
+        logger.info("Wrote blog/tags/index.html")
+
+
+    # /blog/tag/<tagname> -> articles with a tag.
 
 
 
@@ -186,7 +203,7 @@ def server(output, addr, port):
             super().__init__(request, client_address, server, directory=output)
 
     httpd = http.server.HTTPServer((addr, port), Handler)
-    logger.info("Listeng on %s:%S in %s...", addr, port, output)
+    logger.info("Listeng on %s:%s in %s...", addr, port, output)
     httpd.serve_forever()
 
 
@@ -229,8 +246,9 @@ def build(content, templates, output):
         if file.strip(content).startswith("/blog"):
             index.append(context)
 
-    # Build the index(es)
+    # Build the index(es), tags list
     build_index(env, output, index)
+    build_tags(env, output, index)
 
     # Build static files output
     build_static(output)
