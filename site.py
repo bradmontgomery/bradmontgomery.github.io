@@ -130,18 +130,30 @@ def build_static(output):
 def build_index(env, output: str, index: list, top: int = 20):
     """Build an index page with the _latest_ `top` (20) articles."""
     # Each item's keys include: url, title, date, description.
-    index = sorted(index, key=lambda d: d["date"], reverse=True)[:top]
+    index = sorted(index, key=lambda d: d["date"], reverse=True)
 
     context = {
         "title": "Brad Montgomery",
         "subtitle": "Latest posts...",
-        "posts": index,
+        "posts": index[:top],
     }
     template = env.get_template("index.html")
     content = template.render(**context)
     with open(Path(output) / "index.html", "w") as f:
         f.write(content)
         logger.info("Wrote index.html")
+
+    # Now do the same thing for /blog/index.html, but list everythign.
+    context = {
+        "title": "Brad Montgomery",
+        "subtitle": "Brad's Blog. All of it.",
+        "posts": index,
+    }
+    template = env.get_template("index.html")
+    content = template.render(**context)
+    with open(Path(output) / "blog/index.html", "w") as f:
+        f.write(content)
+        logger.info("Wrote blog/index.html")
 
 
 
