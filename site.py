@@ -15,17 +15,19 @@ There are some opinions.
 """
 import http.server
 import logging
+import shutil
 from glob import glob
 from pathlib import Path
 from time import time
 
 import ez_yaml
 import rich_click as click
-from clog import clog
 from jinja2 import Environment, PackageLoader, select_autoescape
 from markdown_it import MarkdownIt
 from mdit_py_plugins.front_matter import front_matter_plugin
 
+
+logging.basicConfig(format="%(asctime)s %(levelname)s %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
@@ -108,11 +110,23 @@ def get_output_paths(output_dir: str, context: dict, file: str) -> str:
     results = []
     for url in urls:
         path = Path(output_dir) / Path(url)
-        clog(path, title="creating output paths", color="magenta")
         path.mkdir(parents=True, exist_ok=True)
         path = path / Path("index.html")
         results.append(str(path))
     return results
+
+
+def build_static(output):
+    """This just copies a few static files to the right place.
+
+    Assumes: static files are in <project_root>/static/, and that
+        output files go to <output>/static/
+    """
+    static_output = Path(output) / Path("static")
+    logger.info("Building Static output in: %s", static_output)
+    shutil.copytree(Path("static"), static_output, dirs_exist_ok=True)
+
+
 
 # -------------------------------------------------------------
 # CLI Commands.
@@ -157,15 +171,19 @@ def build(content, templates, output):
                 f.write(content)
                 logger.info("Wrote: %s", path)
 
+    # Build static files output
+    build_static(output)
+
     elapsed = round(time() - start, 2)
     logger.info("Completed in %s seconds", elapsed)
 
 
 # TODO: move static to the correct place
 # TODO: add style / Nav to templates.
-# TODO: how to build an index?
 
-# TODO: web server?
+# TODO: how to build an index?
+# TODO: how to build a linked TAGS index?
+# TODO: how to build a linked ARCHIVES index?
 
 # TODO: command to create a post
 # TODO: fill in title, date, tags, etc.

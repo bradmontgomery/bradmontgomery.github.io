@@ -7,10 +7,19 @@
     {% if description %}
       <meta name="description" content="{{ description }}" />
     {% endif %}
-    <link rel="stylesheet" href="static/simple.css-2.2.1/simple.min.css">
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
   </head>
   <body>
     <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        {#<a href="/archive/">Archive</a>#}
+        {#<a href="/tags/">Tags</a>#}
+        <a href="/tags/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
       <h1>{{ title }}</h1>
     </header>
     <main>
