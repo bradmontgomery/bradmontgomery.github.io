@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Welp, I built a static site generator</title>
+    
+      <meta name="description" content="Hello new website." />
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <style type="text/css">
+    h1,h2,h3 { font-family: 'Rubik Doodle Shadow', serif;}
+    h4,h5,h6 {font-family: 'Abril Fatface', serif}
+    code,pre { font-family: 'Anonymous Pro', monospace;}
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Welp, I built a static site generator</h1>
+      
+  <div>Published on 2023-12-27 22:37:02.626926+00:00</div>
+  
+    <div>
+    
+      <mark>python</mark> &nbsp;
+    
+      <mark>web</mark> &nbsp;
+    
+      <mark>tools</mark> &nbsp;
+    
+      <mark>software</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main>
+    
+  <section>
+  
+<h2>New Website?</h2>
+<p>I've been meaning to shift my personal site to a static site for quite a while. I fully indented to use something like
+<a href="https://gohugo.io/">hugo</a> or even <a href="https://getpelican.com/">Pelican</a> which I formerly used to manage the
+<a href="https://mempy.org">mempy.org</a> website. Earlier this year, I archived my
+<a href="https://github.com/bradmontgomery/django-blargg">django-blargg</a> repo, and so with a little extra time around the
+holidays I decided to finally make this happen.</p>
+<p>I really wanted to use Hugo. I've used it before, it's got a great feature-set and tons of support. BUT! I had a few
+requirements for my new site:</p>
+<ol>
+<li><a href="https://www.w3.org/Provider/Style/URI">Cool URIs don't change</a>. I really really though I could do this with hugo,
+and I 100% beleive it's possible, but I just pounded my head against this forever. Eventually I ditched hugo because
+of this requirement (and the fact that I had some markdown + some rst + some html content).</li>
+<li>I really want to just use markdown. Most of my content was already there, and with a little extra throw-away code I
+mostly converted everythign to markdown.</li>
+<li>I really don't want to think too hard. I write so infrequently hugo's giant feature-set was just a bit much.</li>
+</ol>
+<p><em>I know python. I know jinja. I know how I want to organize my content.</em></p>
+<h2>New Wheel.</h2>
+<p><strong>Well crap</strong>. <a href="https://github.com/bradmontgomery/bradmontgomery.github.io/pull/1">I've reinvented a static site generator</a>.
+Right now, the feature set is pretty small (just want I wanted). Features include:</p>
+<ul>
+<li>Two commands for managing content:
+<ul>
+<li><code>python site.py new</code> to generate a template for new articles</li>
+<li><code>python site.py build</code> to build the site.</li>
+</ul>
+</li>
+<li>support for <a href="https://commonmark.org/">CommonMark</a> thanks to <a href="https://github.com/executablebooks/markdown-it-py">markdown-it-py</a></li>
+<li>Easy (for me) template customization thanks to <a href="https://jinja.palletsprojects.com/en/3.1.x/">jinja</a></li>
+<li>A very simple UI -- because I didn't want to think about this righ now, but it'll probably change. Thanks <a href="https://github.com/kevquirk/simple.css">kevquirk/simple.css</a></li>
+</ul>
+<p>If you're interested, take a look at the single python module here: <a href="https://github.com/bradmontgomery/bradmontgomery.github.io/blob/main/site.py">https://github.com/bradmontgomery/bradmontgomery.github.io/blob/main/site.py</a>.</p>
+<p>This isn't really indented to be shipped, but if there's interest I could turn it into a library. I probably should. Maybe. We'll see.</p>
+
+  </section>
+
+    </main>
+    <footer>
+      All content copyright &copy; Brad Montgomery.
+    </footer>
+  </body>
+</html>
