@@ -16,6 +16,7 @@ There are some opinions.
 import http.server
 import logging
 import shutil
+import string
 from collections import defaultdict
 from glob import glob
 from itertools import chain
@@ -31,6 +32,15 @@ from mdit_py_plugins.front_matter import front_matter_plugin
 
 logging.basicConfig(format="%(asctime)s %(levelname)s %(message)s", level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
+def to_slug(value):
+    def _slugify(s):
+        for c in s.lower().replace(" ", "-"):
+            if c in string.ascii_lowercase + "-":
+                yield c
+
+    return "".join(list(_slugify(value)))
 
 
 def find_markdown_files(parent: str) -> list:
@@ -142,11 +152,12 @@ def render(env, path, template, context):
     - context: Dictionary of context variables to use when rendering.
 
     """
+    filename = "index.html" if template.endswith("html") else "index.md"
     template = env.get_template(template)
     content = template.render(**context)
     path = Path(path)
     path.mkdir(parents=True, exist_ok=True)
-    path = path / Path("index.html")
+    path = path / Path(filename)
     with open(path, "w") as f:
         f.write(content)
         logger.info("Wrote %s", path)
@@ -170,8 +181,6 @@ def build_index(env, output: str, index: list, top: int = 20):
         "subtitle": "Brad's Blog. All of it.",
         "posts": index,
     }
-    template = env.get_template("index.html")
-    content = template.render(**context)
     render(env, Path(output) / Path("blog"), "index.html", context)
 
 
@@ -196,7 +205,6 @@ def build_date_archives(env, output: str, index: list):
             "subtitle": "",
             "posts": posts,
         }
-        template = env.get_template("index.html")
         render(env, f"{output}/{path}", "index.html", context)
 
 
@@ -255,10 +263,36 @@ def server(output, addr, port):
 @click.option("-t", "--title", help="Article title")
 @click.option("--tags", help="Article title")
 def new(title, tags):
-    # TODO: create a new post
-    # TODO: fill in title, date, tags, etc.
-    # TODO: construct md template and front-matter.
-    raise NotImplementedError("Haven't gotten to this yet")
+    # set up the jinja environment
+    env = Environment(loader=PackageLoader("site"), autoescape=select_autoescape())
+
+    # Prompt for content setup...
+    prompts = [
+        ("date", "Date (default is now): "),
+        ("title", "Title: "),
+        ("tags", "Tags: "),
+        ("description", "Description: "),
+        ("draft", "Draft (false): "),
+    ]
+    context = {}
+    for key, prompt in prompts:
+        context[key] = input(prompt)
+        if key == "title":
+            context["slug"] = to_slug(context[key])
+        elif key == "date":
+            context[key] = (
+                arrow.utcnow().datetime if not context[key] else arrow.get(context[key]).datetime
+            )
+        elif key == "draft":
+            context[key] = True if context[key] == "true" else False
+        elif key == "tags":
+            context[key] = [t.strip() for t in context[key].lower().split(",")]
+
+    context["url"] = f"/blog/{context['slug']}/"
+    datestring = context["date"].strftime("%Y/%M/%d")
+    context["alias"] = f"/blog/{datestring}/{context['slug']}/"
+
+    render(env, f"content/blog/{context['slug']}", "content.md", context)
 
 
 @cli.command()
