@@ -22,6 +22,7 @@ from itertools import chain
 from pathlib import Path
 from time import time
 
+import arrow
 import ez_yaml
 import rich_click as click
 from jinja2 import Environment, PackageLoader, select_autoescape
@@ -62,7 +63,13 @@ def parse_front_matter(tokens: list) -> dict:
     # Assume we have one front-matter object.
     t = tokens[0]
     fm = dict(ez_yaml.to_object(t.content))
-    # TODO: parse any Timestamp dates into datetime.datetime objects?
+
+    try:
+        # Parse dates from yaml TimeStamp into a datetime objects.
+        dt = arrow.get(fm["date"]).to("utc").datetime
+        fm["date"] = dt
+    except Exception as err:
+        logger.error("Failed to convert %s: %s", fm["date"], str(err))
     return fm
 
 
@@ -157,9 +164,36 @@ def build_index(env, output: str, index: list, top: int = 20):
         logger.info("Wrote blog/index.html")
 
 
-# TODO: how to build a linked ARCHIVES index?
-def build_archives(env, output: str, index: list):
-    pass
+def build_date_archives(env, output: str, index: list):
+    """Site indexing by year, month, day."""
+    # Organize content by year/month/day
+    articles = defaultdict(list)  # path: [article, ...]
+    for post in index:
+        pub_year = post["date"].strftime("%Y")
+        pub_month = post["date"].strftime("%Y/%m")
+        pub_day = post["date"].strftime("%Y/%m/%d")
+        year_path = f"blog/{pub_year}"
+        month_path = f"blog/{pub_month}"
+        day_path = f"blog/{pub_day}"
+        articles[year_path].append(post)
+        articles[month_path].append(post)
+        articles[day_path].append(post)
+
+    for path, posts in articles.items():
+        context = {
+            "title": "Archive",
+            "subtitle": "",
+            "posts": posts,
+        }
+        template = env.get_template("index.html")
+
+        content = template.render(**context)
+        path = Path(output) / Path(path)
+        path.mkdir(parents=True, exist_ok=True)
+        path = path / Path("index.html")
+        with open(path, "w") as f:
+            f.write(content)
+            logger.info("Wrote archive page to %s", path)
 
 
 def build_tags(env, output: str, index: list):
@@ -267,9 +301,10 @@ def build(content, templates, output):
         if file.strip(content).startswith("/blog"):
             index.append(context)
 
-    # Build the index(es), tags list
+    # Build the index(es), tags list, and archives
     build_index(env, output, index)
     build_tags(env, output, index)
+    build_date_archives(env, output, index)
 
     # Build static files output
     build_static(output)
