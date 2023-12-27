@@ -82,9 +82,7 @@ def get_template_context(filename):
     return context
 
 
-def get_template_name(
-    filename: str, content_dir: str, default: str = "page.html"
-) -> str:
+def get_template_name(filename: str, content_dir: str, default: str = "page.html") -> str:
     """Figure out which .html template to use to render the given filename.
 
     This is typically a mapping of parent dir -> template name, e.g.:
@@ -135,6 +133,25 @@ def build_static(output):
     shutil.copytree(Path("static"), static_output, dirs_exist_ok=True)
 
 
+def render(env, path, template, context):
+    """Render a jinja template using the given path & context.
+
+    - env: The jinja environment.
+    - path: The path (excluding filename) to which content should be written.
+    - template: The template to use (e.g. index.html)
+    - context: Dictionary of context variables to use when rendering.
+
+    """
+    template = env.get_template(template)
+    content = template.render(**context)
+    path = Path(path)
+    path.mkdir(parents=True, exist_ok=True)
+    path = path / Path("index.html")
+    with open(path, "w") as f:
+        f.write(content)
+        logger.info("Wrote %s", path)
+
+
 def build_index(env, output: str, index: list, top: int = 20):
     """Build an index page with the _latest_ `top` (20) articles."""
     # Each item's keys include: url, title, date, description.
@@ -145,11 +162,7 @@ def build_index(env, output: str, index: list, top: int = 20):
         "subtitle": "Latest posts...",
         "posts": index[:top],
     }
-    template = env.get_template("index.html")
-    content = template.render(**context)
-    with open(Path(output) / "index.html", "w") as f:
-        f.write(content)
-        logger.info("Wrote index.html")
+    render(env, Path(output), "index.html", context)
 
     # Now do the same thing for /blog/index.html, but list everythign.
     context = {
@@ -159,9 +172,7 @@ def build_index(env, output: str, index: list, top: int = 20):
     }
     template = env.get_template("index.html")
     content = template.render(**context)
-    with open(Path(output) / "blog/index.html", "w") as f:
-        f.write(content)
-        logger.info("Wrote blog/index.html")
+    render(env, Path(output) / Path("blog"), "index.html", context)
 
 
 def build_date_archives(env, output: str, index: list):
@@ -186,14 +197,7 @@ def build_date_archives(env, output: str, index: list):
             "posts": posts,
         }
         template = env.get_template("index.html")
-
-        content = template.render(**context)
-        path = Path(output) / Path(path)
-        path.mkdir(parents=True, exist_ok=True)
-        path = path / Path("index.html")
-        with open(path, "w") as f:
-            f.write(content)
-            logger.info("Wrote archive page to %s", path)
+        render(env, f"{output}/{path}", "index.html", context)
 
 
 def build_tags(env, output: str, index: list):
@@ -206,13 +210,7 @@ def build_tags(env, output: str, index: list):
         "subtitle": "Tags",
         "tags": [(tag, f"/blog/tags/{tag}/") for tag in tags],
     }
-    template = env.get_template("tags.html")
-    content = template.render(**context)
-    path = Path(output) / Path("blog/tags/")
-    path.mkdir(parents=True, exist_ok=True)
-    with open(path / Path("index.html"), "w") as f:
-        f.write(content)
-        logger.info("Wrote blog/tags/index.html")
+    render(env, f"{output}/blog/tags/", "tags.html", context)
 
     # /blog/tag/<tagname>/ -> articles with a tag.
     by_tags = defaultdict(list)
@@ -226,14 +224,7 @@ def build_tags(env, output: str, index: list):
             "subtitle": f"Tagged {tag}",
             "posts": posts,
         }
-        template = env.get_template("index.html")
-        content = template.render(**context)
-        path = Path(output) / Path(f"blog/tags/{tag}")
-        path.mkdir(parents=True, exist_ok=True)
-        path = path / Path("index.html")
-        with open(path, "w") as f:
-            f.write(content)
-            logger.info("Wrote tags to %s", path)
+        render(env, f"{output}/blog/tags/{tag}", "index.html", context)
 
 
 # -------------------------------------------------------------
@@ -247,9 +238,7 @@ def cli():
 
 
 @cli.command()
-@click.option(
-    "--output", default="docs", help="Output directory from which files are served"
-)
+@click.option("--output", default="docs", help="Output directory from which files are served")
 @click.option("--addr", default="")
 @click.option("--port", default=8000)
 def server(output, addr, port):
