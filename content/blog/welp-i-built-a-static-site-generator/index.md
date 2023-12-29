@@ -18,7 +18,7 @@ aliases:
 
 ## New Website?
 
-I've been meaning to shift my personal site to a static site for quite a while. I fully indented to use something like
+I've been meaning to shift my personal site to a static site for quite a while. I fully intended to use something like
 [hugo](https://gohugo.io/) or even [Pelican](https://getpelican.com/) which I formerly used to manage the
 [mempy.org](https://mempy.org) website. Earlier this year, I archived my
 [django-blargg](https://github.com/bradmontgomery/django-blargg) repo, and so with a little extra time around the
