@@ -9,3 +9,4 @@ Jinja2
 markdown-it-py
 linkify-it-py
 mdit-py-plugins
+ez_yaml
