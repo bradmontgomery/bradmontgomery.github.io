@@ -15,8 +15,10 @@ There are some opinions.
 """
 import http.server
 import logging
+import re
 import shutil
 import string
+import unicodedata
 from collections import defaultdict
 from glob import glob
 from itertools import chain
@@ -92,7 +94,9 @@ def get_template_context(filename):
     return context
 
 
-def get_template_name(filename: str, content_dir: str, default: str = "page.html") -> str:
+def get_template_name(
+    filename: str, content_dir: str, default: str = "page.html"
+) -> str:
     """Figure out which .html template to use to render the given filename.
 
     This is typically a mapping of parent dir -> template name, e.g.:
@@ -208,11 +212,22 @@ def build_date_archives(env, output: str, index: list):
         render(env, f"{output}/{path}", "index.html", context)
 
 
+def normalize_tag(value: str) -> str:
+    """Borroed from Django's slugify function, this normalizes tags into
+    a URL-save, and directory-save string."""
+    value = (
+        unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode("ascii")
+    )
+    value = re.sub(r"[^\w\s-]", "", value.lower())
+    return re.sub(r"[-\s]+", "-", value).strip("-_")
+
+
 def build_tags(env, output: str, index: list):
     """Site indexing based on tags"""
 
     # /blog/tags/ -> list of all tags.
     tags = sorted(set(chain(*[post.get("tags") for post in index])))
+    tags = [normalize_tag(tag) for tag in tags]
     context = {
         "title": "Brad Montgomery",
         "subtitle": "Tags",
@@ -224,6 +239,7 @@ def build_tags(env, output: str, index: list):
     by_tags = defaultdict(list)
     for post in index:
         for tag in post.get("tags"):
+            tag = normalize_tag(tag)
             by_tags[tag].append(post)
 
     for tag, posts in by_tags.items():
@@ -246,7 +262,9 @@ def cli():
 
 
 @cli.command()
-@click.option("--output", default="docs", help="Output directory from which files are served")
+@click.option(
+    "--output", default="docs", help="Output directory from which files are served"
+)
 @click.option("--addr", default="")
 @click.option("--port", default=8000)
 def server(output, addr, port):
@@ -260,9 +278,7 @@ def server(output, addr, port):
 
 
 @cli.command()
-@click.option("-t", "--title", help="Article title")
-@click.option("--tags", help="Article title")
-def new(title, tags):
+def new():
     # set up the jinja environment
     env = Environment(loader=PackageLoader("site"), autoescape=select_autoescape())
 
@@ -270,7 +286,7 @@ def new(title, tags):
     prompts = [
         ("date", "Date (default is now): "),
         ("title", "Title: "),
-        ("tags", "Tags: "),
+        ("tags", "Tags (comma-separated): "),
         ("description", "Description: "),
         ("draft", "Draft (false): "),
     ]
@@ -281,17 +297,18 @@ def new(title, tags):
             context["slug"] = to_slug(context[key])
         elif key == "date":
             context[key] = (
-                arrow.utcnow().datetime if not context[key] else arrow.get(context[key]).datetime
+                arrow.utcnow().datetime
+                if not context[key]
+                else arrow.get(context[key]).datetime
             )
         elif key == "draft":
             context[key] = True if context[key] == "true" else False
         elif key == "tags":
-            context[key] = [t.strip() for t in context[key].lower().split(",")]
+            context[key] = [normalize_tag(tag) for tag in context[key].split(",")]
 
     context["url"] = f"/blog/{context['slug']}/"
     datestring = context["date"].strftime("%Y/%M/%d")
     context["alias"] = f"/blog/{datestring}/{context['slug']}/"
-
     render(env, f"content/blog/{context['slug']}", "content.md", context)
 
 
