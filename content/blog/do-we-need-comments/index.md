@@ -3,7 +3,11 @@ date: '2024-03-18 16:48:33.469324+00:00'
 title: Do we need comments?
 draft: false
 tags:
-- web blog community humanity spam
+- web
+- blog
+- community
+- humanity 
+- spam
 slug: do-we-need-comments
 description: 'Does this site need comments?'
 markup: md
