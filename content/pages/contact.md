@@ -1,15 +1,13 @@
 ---
 title: "Contact"
-date: 2022-12-03T19:31:49-06:00
+date: 2024-03-18T16:56:00-00:00
 draft: false
 ---
 
 ## Get In Touch
 
-**Tweet at me, email me, or (if you must) call**
-
 There are a number of ways to get in touch with me. Here are the best:
 
-- The quickest way to get in touch with me is to mention me or DM me on twitter ([@bkmontgomery](https://twitter.com/bkmontgomery))
-- You can also [send me an email](mailto: brad @ bradmontgomery . net?subject=contact page).
-- If you're a _phone person_, you can call my google voice number: (901) 730-6835. Do leave a message, though
+- You can also [send me an email](mailto:brad@bradmontgomery.net?subject=Hello from bradmontgomery.net).
+- If you're a _phone person_, you can call (or text) my google voice number: (901) 730-6835. Do leave a message, though. 
+- I'm active on the Memphis [`#memtech` slack](https://memphistechnology.org/blog/2015/05/19/join-memtech-on-slack-chat/), so you can always find me there.
