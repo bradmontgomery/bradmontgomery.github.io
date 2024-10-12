@@ -9,9 +9,9 @@ tags:
 slug: lingo-day-
 description: 'My experience with the Lingo CGM: Day 1'
 markup: md
-url: /blog/lingo-day-/
+url: /blog/lingo-day-one/
 aliases:
-- /blog/2024/06/11/lingo-day-/
+- /blog/2024/06/11/lingo-day-one/
 
 ---
 
