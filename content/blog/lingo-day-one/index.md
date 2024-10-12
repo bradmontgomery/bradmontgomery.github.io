@@ -1,6 +1,6 @@
 ---
 date: '2024-10-12 01:50:00.0+00:00'
-title: Lingo: Day One
+title: Lingo Day One
 draft: false
 tags:
 - food
@@ -21,7 +21,7 @@ I _installed_ (attached?) the Lingo CGM last night before going to bed. These ar
 
 ### Installation
 
-If you've seen ads for any of the GCM's, you've probably seen how easy it is to use one of these things. It comes
+If you've seen ads for any of the CGM's, you've probably seen how easy it is to use one of these things. It comes
 with an applicator and the process is basically:
 
 1. unscrew the applicator lid
