@@ -13,4 +13,4 @@ aliases:
 
 ---
 
-Avast ye! As it be a day 'fer celebrat'n pirates, ye should be learn'n to [speak like one](http://loadingreadyrun.com/showmovie.php?x=480&y=360&url=talklikepirate.mov), and then [drink like one](http://en.wikipedia.org/wiki/Grog). So says I, [Calico Sam Kidd](http://bradmontgomery.net/show.php?page=pirate)![](https://blogger.googleusercontent.com/tracker/4123748873183487963-1508770273742788044?l=bradmontgomery.blogspot.com)
+Avast ye! As it be a day 'fer celebrat'n pirates, ye should be learn'n to [speak like one](http://loadingreadyrun.com/showmovie.php?x=480&y=360&url=talklikepirate.mov), and then [drink like one](http://en.wikipedia.org/wiki/Grog). So says I, [Calico Sam Kidd](http://bradmontgomery.net/show.php?page=pirate)

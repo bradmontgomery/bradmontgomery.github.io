@@ -31,4 +31,4 @@ And so... things seem to work.
 Many thanks go to those who've done a lot of work to get OpenCV on OS X!  
 <http://opencvlibrary.sourceforge.net/MarkAsbach>  
 <http://www.christophseibert.de/weblog/en/it/computer-vision/tools/opencv-mac.html>  
-<http://lestang.org/article45.html>![](https://blogger.googleusercontent.com/tracker/4123748873183487963-3997551314779282905?l=bradmontgomery.blogspot.com)
+<http://lestang.org/article45.html>

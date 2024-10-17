@@ -68,4 +68,3 @@ import Image
 im = Image.open("/path/to/pretty/picture.jpg")  
 im.show()
 ```
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-3675678730344892934?l=bradmontgomery.blogspot.com)

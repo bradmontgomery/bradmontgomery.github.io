@@ -28,4 +28,4 @@ def push\_key():
 ```
   
   
-Everything you need to push your public key to an external server using Fabric.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-1296451718188870554?l=bradmontgomery.blogspot.com)
+Everything you need to push your public key to an external server using Fabric.

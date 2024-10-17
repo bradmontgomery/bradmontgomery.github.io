@@ -74,4 +74,4 @@ This did the trick for me.
   
 And this "should" lauch the application!
 
-Enjoy!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2431218985315684152?l=bradmontgomery.blogspot.com)
+Enjoy!

@@ -86,4 +86,4 @@ def search(request):
 ```
   
   
-Needless to say, Q objects are quite powerful!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-102694916469535041?l=bradmontgomery.blogspot.com)
+Needless to say, Q objects are quite powerful!

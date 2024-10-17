@@ -18,4 +18,4 @@ I begrudgingly turned on the [Genius Sidebar in iTunes 8](http://www.apple.com/i
   
 Maybe this is just a bug... or maybe iTunes is confuzed because my album is "Weezer (Blue Album)"... who knows.  
   
-[![I like Weezer](http://bradmontgomery.net/images/wezzer_albums.png)](http://bradmontgomery.net/images/wezzer_albums.png)![](https://blogger.googleusercontent.com/tracker/4123748873183487963-9033636319984044555?l=bradmontgomery.blogspot.com)
+[![I like Weezer](http://bradmontgomery.net/images/wezzer_albums.png)](http://bradmontgomery.net/images/wezzer_albums.png)

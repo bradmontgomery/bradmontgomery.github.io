@@ -45,4 +45,4 @@ au BufNewFile,BufRead ~/django_projects/de_concierge/apache_configs/* setf apach
   
 You'd have to add variants of this for each separate project, but this works well for me.   
   
-There's several other ways you can modify this, and the solution that I used comes from [this thread on the vim\_mac mailing list](http://groups.google.com/group/vim_mac/browse_thread/thread/26c3a097e6e69c5f). (There's also a lot of good info in *:help new-filetype* ).![](https://blogger.googleusercontent.com/tracker/4123748873183487963-5589084931666424010?l=bradmontgomery.blogspot.com)
+There's several other ways you can modify this, and the solution that I used comes from [this thread on the vim\_mac mailing list](http://groups.google.com/group/vim_mac/browse_thread/thread/26c3a097e6e69c5f). (There's also a lot of good info in *:help new-filetype* ).

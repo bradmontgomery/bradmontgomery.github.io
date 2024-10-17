@@ -45,4 +45,4 @@ if __name__ == "__main__":
 ```
   
   
-Download this code: <http://bradmontgomery.net/files/shrink.zip>![](https://blogger.googleusercontent.com/tracker/4123748873183487963-222154634554447484?l=bradmontgomery.blogspot.com)
+Download this code: <http://bradmontgomery.net/files/shrink.zip>

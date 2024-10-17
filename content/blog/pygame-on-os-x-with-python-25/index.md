@@ -57,4 +57,4 @@ This prevents any conflicts when linking against libraries installed by fink (wh
   
 **So what's next?** Notice there's no mention of PyOpenGL above, so any Pygame applications that use PyOpenGL won't work Until you [Install PyOpenGL](http://bradmontgomery.blogspot.com/2007/10/pyopengl-on-os-x.html)  
   
-**Download this Pygame Package:** <http://bradmontgomery.net/files/pygame-1.7.1release-py2.5.1-macosx10.4.dmg>![](https://blogger.googleusercontent.com/tracker/4123748873183487963-543717478932761428?l=bradmontgomery.blogspot.com)
+**Download this Pygame Package:** <http://bradmontgomery.net/files/pygame-1.7.1release-py2.5.1-macosx10.4.dmg>

@@ -13,4 +13,4 @@ aliases:
 
 ---
 
-Spare me your [pleonasms](http://dictionary.reference.com/wordoftheday/archive/2006/05/31.html), and I shall strive to do the same! :)![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2889606214690540648?l=bradmontgomery.blogspot.com)
+Spare me your [pleonasms](http://dictionary.reference.com/wordoftheday/archive/2006/05/31.html), and I shall strive to do the same! :)

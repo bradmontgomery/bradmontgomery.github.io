@@ -152,4 +152,4 @@ But what if we don't want each <td> converted into an <li%gt>? What if we want a
 ```
   
   
-This has been somewhat useful for me. Hope it's useful for you!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2232988455138779924?l=bradmontgomery.blogspot.com)
+This has been somewhat useful for me. Hope it's useful for you!

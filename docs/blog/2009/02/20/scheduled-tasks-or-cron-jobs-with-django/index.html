@@ -135,7 +135,7 @@ python/path/to/django/project/directory/mysite/cron.py
 </code></pre>
 <p>That's it. This has been working for me, but there is at least one major pitfall: All of your app's cron tasks get run at the same time. This works well if your apps need to do something once a day (which has been my requirement), but this probably won't work well if you have some apps that need to run tasks at differing times.</p>
 <p>There are also other solutions to this (none of which I've tried). There's a snippet at <a href="http://www.djangosnippets.org/snippets/1126/">http://www.djangosnippets.org/snippets/1126/</a> which looks interesting. Then there's the <a href="http://code.google.com/p/django-cron/">django-cron</a> app which seems to be fairly flexible in how it works, and it doesn't require cron (so this is a plus if you cant set a crontab or if you're on Windows!)</p>
-<p>Thanks in advance for any feedback... suggestions are always welcome!<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-7714347806734835776?l=bradmontgomery.blogspot.com" alt="" /></p>
+<p>Thanks in advance for any feedback... suggestions are always welcome!</p>
 
   </section>
 

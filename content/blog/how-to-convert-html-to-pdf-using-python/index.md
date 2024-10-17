@@ -26,4 +26,4 @@ I'm definately going to check this (HTML2PDF.org) out... so expect an update on 
 Any other suggestions?  
   
 UPDATE: [xhtml2pdf](http://www.xhtml2pdf.com/) works well. There's also a great  
-[post by Greg Newman](http://www.20seven.org/journal/2008/11/pdf-generation-with-pisa-in-django.html) outlining how it's used in django.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7973631231608601676?l=bradmontgomery.blogspot.com)
+[post by Greg Newman](http://www.20seven.org/journal/2008/11/pdf-generation-with-pisa-in-django.html) outlining how it's used in django.

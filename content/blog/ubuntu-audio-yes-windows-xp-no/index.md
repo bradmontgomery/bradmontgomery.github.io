@@ -34,4 +34,3 @@ Linux homeserver 2.6.31-16-generic #53-Ubuntu SMP Tue Dec 8 04:02:15 UTC 2009 x8
 ```
 02:02.0 Multimedia audio controller: Creative Labs CA0106 Soundblaster
 ```
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-8164638269643552852?l=bradmontgomery.blogspot.com)

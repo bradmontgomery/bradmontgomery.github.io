@@ -37,4 +37,3 @@ I'm not a graphic designer by any means, but I know I can do better than what I'
 
 Wish me luck, and feel free to point out any tools I might find interesting.
 
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2770750782513065143?l=bradmontgomery.blogspot.com)

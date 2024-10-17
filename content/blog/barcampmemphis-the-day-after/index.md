@@ -37,4 +37,4 @@ There were many great sessions available throughout the day, but I want to list 
 
   
   
-Relive the action as it happened, thanks to Zannel: <http://www.zannel.com/bkmontgomery>![](https://blogger.googleusercontent.com/tracker/4123748873183487963-1728884132620608387?l=bradmontgomery.blogspot.com)
+Relive the action as it happened, thanks to Zannel: <http://www.zannel.com/bkmontgomery>

@@ -57,4 +57,4 @@ Once my iPhone was registered, it seamlessly sync'd my iCal calendars, my photos
 So, my initial reaction to being an iPhone owner: "COOL!"  
 And it is... very cool, though a little pricey.  
   
-As I explore my iPhone's new features and learn all of its quirks, I'll post my thoughts on this cool new gadget.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-4930395376239823836?l=bradmontgomery.blogspot.com)
+As I explore my iPhone's new features and learn all of its quirks, I'll post my thoughts on this cool new gadget.

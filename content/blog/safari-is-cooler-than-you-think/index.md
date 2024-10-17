@@ -49,4 +49,4 @@ ps: i never did find a way to disable the optical audio...guess i got side-track
   
 ![Show Develop menu in menu bar](http://bradmontgomery.net/images/Safari_Advanced.png)  
   
-I guess it pays to pay attention to your app's options!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7935637856182059427?l=bradmontgomery.blogspot.com)
+I guess it pays to pay attention to your app's options!

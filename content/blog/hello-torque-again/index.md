@@ -32,4 +32,4 @@ Notice that I had to use an absolute path for the (optional) object Directory. A
   
 The next change I had to make was in an actual source file. Apparently, GCC didn't like some things... I'm not going to post any details, but I did eventually get it working, so [contact me](http://bradmontgomery.net/show.php?page=contact) if you're interested.  
   
-Good Luck!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-6044072354529285854?l=bradmontgomery.blogspot.com)
+Good Luck!

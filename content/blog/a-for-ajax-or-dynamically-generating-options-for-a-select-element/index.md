@@ -124,4 +124,4 @@ document.observe('dom:loaded', function() {
   
 This is fairly basic AJAX behavior, but for those of us who don't live, breathe, eat, and sleep AJAX, this is an easy mistake to make.  
   
-So the moral of this story? Know your tools! It's always good to *Know what's going on!*™![](https://blogger.googleusercontent.com/tracker/4123748873183487963-5043486322654878551?l=bradmontgomery.blogspot.com)
+So the moral of this story? Know your tools! It's always good to *Know what's going on!*™

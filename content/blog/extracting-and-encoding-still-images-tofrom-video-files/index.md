@@ -44,4 +44,4 @@ A Note on image formats: In the example above where we created a video file from
 ```
 ffmpeg -formats
 ```
- Note that this is not the same as a [container format](http://en.wikipedia.org/wiki/Container_format_(digital)) (such as .mpg, .avi, .mov... etc). If this sounds a little confusing, you may want to read up on [digital video encoding](http://en.wikipedia.org/wiki/Digital_video#Encoding).![](https://blogger.googleusercontent.com/tracker/4123748873183487963-8162317062922827536?l=bradmontgomery.blogspot.com)
+ Note that this is not the same as a [container format](http://en.wikipedia.org/wiki/Container_format_(digital)) (such as .mpg, .avi, .mov... etc). If this sounds a little confusing, you may want to read up on [digital video encoding](http://en.wikipedia.org/wiki/Digital_video#Encoding).

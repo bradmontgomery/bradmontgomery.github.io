@@ -24,4 +24,3 @@ As I try to debug a strange problem in a Django view, I notice a stray comma aft
 >>>   
 
 ```
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-5282351448916778629?l=bradmontgomery.blogspot.com)

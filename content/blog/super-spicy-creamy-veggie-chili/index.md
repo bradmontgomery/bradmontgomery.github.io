@@ -29,4 +29,4 @@ a hearty dash of chili powder.
   
 Rinse the beans, and put them in a pan with the RO\*TEL and the eggplant. Place on Medium heat until the eggplant starts to soften, then add the cheese and the sour cream. Once everything is all melted, it's ready to eat!   
   
-It's good with corn chips or crackers, and another dollop of sour cream doesn't hurt either. Enjoy!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-8252996560888481758?l=bradmontgomery.blogspot.com)
+It's good with corn chips or crackers, and another dollop of sour cream doesn't hurt either. Enjoy!

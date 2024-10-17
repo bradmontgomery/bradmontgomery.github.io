@@ -29,4 +29,4 @@ So, the part you've been waiting for... Download the Code, try it out, and leave
   
 [![Creative Commons License](http://i.creativecommons.org/l/by/3.0/us/80x15.png)](http://creativecommons.org/licenses/by/3.0/us/)  
 migrate\_web.py by [Brad Montgomery](http://bradmontgomery.net/) is licensed under a [Creative Commons Attribution 3.0 United States License](http://creativecommons.org/licenses/by/3.0/us/).  
-Based on a work at [bradmontgomery.net](http://bradmontgomery.net/files/migrate_web.py).![](https://blogger.googleusercontent.com/tracker/4123748873183487963-4651340280840269055?l=bradmontgomery.blogspot.com)
+Based on a work at [bradmontgomery.net](http://bradmontgomery.net/files/migrate_web.py).

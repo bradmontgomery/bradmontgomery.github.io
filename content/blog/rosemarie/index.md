@@ -14,4 +14,4 @@ aliases:
 
 ---
 
-Well, Summer's almost here! So, if you're feeling the need to whip yourself back into shape, [I know just the person](http://rosemarie.name)! :-)![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2597369653692414837?l=bradmontgomery.blogspot.com)
+Well, Summer's almost here! So, if you're feeling the need to whip yourself back into shape, [I know just the person](http://rosemarie.name)! :-)

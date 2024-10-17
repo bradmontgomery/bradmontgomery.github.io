@@ -22,4 +22,4 @@ Now, I've only been using Django for about 5 months, but I'm pretty sure I could
   
 The Example? Why not a wiki... It's simple. (blog examples have been overdone)  
   
-So there it is... Anyone interested in **0-to-wiki in 30 minutes**?![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7042306767709574258?l=bradmontgomery.blogspot.com)
+So there it is... Anyone interested in **0-to-wiki in 30 minutes**?

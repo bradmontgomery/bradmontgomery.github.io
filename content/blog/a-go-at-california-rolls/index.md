@@ -35,4 +35,4 @@ Boil 1 and 3/4 cups of water and salt. Once the water has come to a boil, add th
   
 Once rice has finished, mix in the rice vinegar, and let cool for 10 minutes. Spread a thin layer of rice on the Nori, and top the rice with a small amount of carrots, cucumber, and crab, then roll tightly. Slice into thin pieces!  
   
-Enjoy with wasabi, soy sauce and pickled ginger!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-1071652847642456889?l=bradmontgomery.blogspot.com)
+Enjoy with wasabi, soy sauce and pickled ginger!

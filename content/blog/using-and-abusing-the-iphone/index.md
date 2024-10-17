@@ -55,4 +55,4 @@ Nmap finished: 1 IP address (1 host up) scanned in 16.991 seconds
 ```
   
   
-So, while I'm not really a security professional, and I know these are very basic scans, it seems like there's no blatantly obvious security gaps in the iPhone (through its wifi connection anyway). If anybody has any more advanced nmap scans they'd like to see performed, just let me know.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-5470121664639771675?l=bradmontgomery.blogspot.com)
+So, while I'm not really a security professional, and I know these are very basic scans, it seems like there's no blatantly obvious security gaps in the iPhone (through its wifi connection anyway). If anybody has any more advanced nmap scans they'd like to see performed, just let me know.

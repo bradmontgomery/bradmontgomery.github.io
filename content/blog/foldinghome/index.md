@@ -16,4 +16,4 @@ aliases:
   
 I've recently started running [Folding@Home](http://folding.stanford.edu/). This project (out of Stanford) has been around for a number of years, and apparently they're still going strong! They simulate the way that proteins fold (or assemble themselves t) in order to investigate diseases that occur when the proteins don't fold correctly. Check out their link for more info.  
   
-Anyways, I've got these computers, so why not do something good with them while I'm not using them! Here are my [Stats](http://fah-web.stanford.edu/cgi-bin/main.py?qtype=userpage&username=bradmontgomery)!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-8540889042235705913?l=bradmontgomery.blogspot.com)
+Anyways, I've got these computers, so why not do something good with them while I'm not using them! Here are my [Stats](http://fah-web.stanford.edu/cgi-bin/main.py?qtype=userpage&username=bradmontgomery)!

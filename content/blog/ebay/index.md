@@ -19,4 +19,4 @@ One item was listed as something like: **Super Fast Dell Laptop - like new!**. T
 Processor: Super Fast 233MHz Pentium II with MMX! \*Really Fast\*  
 Memory: 128MB of RAM \*plenty of room for multiple tasks!I felt like I was back in 1996 :)  
   
-The strange part, is that most of the sellers with ads like these had really good feedback scores. It makes me wonder if the people that are shopping for computers on ebay already know what they're looking for (yes, I know what I can and cannot do with a 233Mhz P2)... or how many people decide to get one of those (like new!) computers on ebay.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-458228639285652565?l=bradmontgomery.blogspot.com)
+The strange part, is that most of the sellers with ads like these had really good feedback scores. It makes me wonder if the people that are shopping for computers on ebay already know what they're looking for (yes, I know what I can and cannot do with a 233Mhz P2)... or how many people decide to get one of those (like new!) computers on ebay.

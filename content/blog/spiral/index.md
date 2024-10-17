@@ -16,4 +16,4 @@ aliases:
 
 ---
 
-I've recently grabbed the latest version of [Inkscape](http://www.inkscape.org/), (which resulted in the [Spiral](http://bradmontgomery.net/images/Spiral.png)) and I just have to say, "WOW". I'd played with the software about a year ago (maybe more), and it's amazing how far it's come. Works perfectly on Windows and Mac OS X ([with X11](http://bradmontgomery.net/show.php?page=project_osxX11)). If you like to use your computer to draw, [download Inkscape](http://www.inkscape.org/download.php) now!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-505742650180080643?l=bradmontgomery.blogspot.com)
+I've recently grabbed the latest version of [Inkscape](http://www.inkscape.org/), (which resulted in the [Spiral](http://bradmontgomery.net/images/Spiral.png)) and I just have to say, "WOW". I'd played with the software about a year ago (maybe more), and it's amazing how far it's come. Works perfectly on Windows and Mac OS X ([with X11](http://bradmontgomery.net/show.php?page=project_osxX11)). If you like to use your computer to draw, [download Inkscape](http://www.inkscape.org/download.php) now!

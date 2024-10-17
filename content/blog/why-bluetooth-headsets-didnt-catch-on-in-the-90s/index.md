@@ -14,4 +14,4 @@ aliases:
 
 ---
 
-![Why bluetooth headsets did not catch on in the 90s](http://bradmontgomery.net/images/1990s_bluetooth.png)![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2125746792493164819?l=bradmontgomery.blogspot.com)
+![Why bluetooth headsets did not catch on in the 90s](http://bradmontgomery.net/images/1990s_bluetooth.png)

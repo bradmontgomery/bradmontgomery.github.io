@@ -111,4 +111,4 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 ```
 
 
-Voila! Now, while writing template code, I can always access the *current_site* variable!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-4532705687996021665?l=bradmontgomery.blogspot.com)
+Voila! Now, while writing template code, I can always access the *current_site* variable!

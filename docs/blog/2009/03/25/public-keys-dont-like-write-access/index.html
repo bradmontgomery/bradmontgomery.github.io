@@ -44,7 +44,7 @@
   <section>
   
 <p>The first part of my <a href="http://bradmontgomery.blogspot.com/2007/01/automatic-backups-with-cron-tar-and-ssh.html">Automatic Backups with cron, tar, and SSH</a> details how to set up remote login (sans passwords) using RSA public key.</p>
-<p>Apparently this doesn't work if your home directory allows groups or others write access. So if used <em>ssh-keygen -t rsa</em> to generate a public key which you added to a remote host (under <em>.ssh/authorized_keys</em>), but ssh is still prompting you for a password, try setting your home directory's permissions to something like 0755 (or remove write permissions from other and groups)!<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-5225263534188052703?l=bradmontgomery.blogspot.com" alt="" /></p>
+<p>Apparently this doesn't work if your home directory allows groups or others write access. So if used <em>ssh-keygen -t rsa</em> to generate a public key which you added to a remote host (under <em>.ssh/authorized_keys</em>), but ssh is still prompting you for a password, try setting your home directory's permissions to something like 0755 (or remove write permissions from other and groups)!</p>
 
   </section>
 

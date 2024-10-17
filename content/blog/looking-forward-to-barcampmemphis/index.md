@@ -30,4 +30,4 @@ If you're unfamiliar with the concept of a BarCamp, check out [BarCamp.org](http
 
   
   
-BarCampMemphis looks to be exciting and informative!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-3648293666927933971?l=bradmontgomery.blogspot.com)
+BarCampMemphis looks to be exciting and informative!

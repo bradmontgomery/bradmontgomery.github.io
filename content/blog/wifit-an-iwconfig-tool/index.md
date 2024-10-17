@@ -61,4 +61,4 @@ sudo ./wifit wlan0 somenetwork
   
 Alternatively, you could place this file in your /usr/local/bin or /usr/bin directories so that it would be included in your PATH. If you find this useful, or if you decide to add to is, feel free to [Contact Me](http://bradmontgomery.net/show.php?page=contact)!  
   
-Enjoy.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2958546588737408191?l=bradmontgomery.blogspot.com)
+Enjoy.

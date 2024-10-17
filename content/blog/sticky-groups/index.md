@@ -31,4 +31,4 @@ Now, if I modify any files in *public\_html*, I don't want to have to change the
 chmod g+s public_html
 ```
   
-Now, any new files that I add beneath the *public\_html* directory will be part of the *www-data* group.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7915480253587113591?l=bradmontgomery.blogspot.com)
+Now, any new files that I add beneath the *public\_html* directory will be part of the *www-data* group.

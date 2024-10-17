@@ -22,4 +22,4 @@ So, in such a short time since the iPhone's release, how have so many applicatio
 > Its goal is simply to turn ordinary standards-based HTML into a polished, usable interface that meets the high standards set by Apple's own native iPhone apps.
 
   
-So, there you have it. [Try it out!](http://code.google.com/p/iui/source) I certainly will!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-324645953644061889?l=bradmontgomery.blogspot.com)
+So, there you have it. [Try it out!](http://code.google.com/p/iui/source) I certainly will!

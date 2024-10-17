@@ -36,4 +36,4 @@ I've already started working through symfony's excellent tutorials, and there ar
 
   
   
-I've still got a soft spot in my heart for Python, and eventually, I'd like to let it into my Web Development world. I've read good things about both [TurboGears](http://turbogears.org/) and [Django](http://www.djangoproject.com/). Interestingly enough, Django comes bundled with its own (lightweight) web server (for testing purposes), so it's a great candidate for anyone wanting a framework with little overhead... It will probably be my overall number 2 choice.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-8785207291593859662?l=bradmontgomery.blogspot.com)
+I've still got a soft spot in my heart for Python, and eventually, I'd like to let it into my Web Development world. I've read good things about both [TurboGears](http://turbogears.org/) and [Django](http://www.djangoproject.com/). Interestingly enough, Django comes bundled with its own (lightweight) web server (for testing purposes), so it's a great candidate for anyone wanting a framework with little overhead... It will probably be my overall number 2 choice.

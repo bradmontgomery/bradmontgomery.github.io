@@ -15,4 +15,4 @@ aliases:
 
 ---
 
-...the title says it all. For just less than $90 USD, I've now recovered all of my priceless data for which I did not have the foresight (or time, or means, or whatever) to back up. If you're a Mac user, and you ever have a drive that stops working (or a [problem like mine](http://discussions.apple.com/thread.jspa?threadID=701837&tstart=0)), head over to <http://www.alsoft.com/DiskWarrior/> and purchase a copy.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-5076121252094904753?l=bradmontgomery.blogspot.com)
+...the title says it all. For just less than $90 USD, I've now recovered all of my priceless data for which I did not have the foresight (or time, or means, or whatever) to back up. If you're a Mac user, and you ever have a drive that stops working (or a [problem like mine](http://discussions.apple.com/thread.jspa?threadID=701837&tstart=0)), head over to <http://www.alsoft.com/DiskWarrior/> and purchase a copy.

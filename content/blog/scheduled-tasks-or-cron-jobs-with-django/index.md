@@ -123,4 +123,4 @@ That's it. This has been working for me, but there is at least one major pitfall
   
 There are also other solutions to this (none of which I've tried). There's a snippet at <http://www.djangosnippets.org/snippets/1126/> which looks interesting. Then there's the [django-cron](http://code.google.com/p/django-cron/) app which seems to be fairly flexible in how it works, and it doesn't require cron (so this is a plus if you cant set a crontab or if you're on Windows!)  
   
-Thanks in advance for any feedback... suggestions are always welcome!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7714347806734835776?l=bradmontgomery.blogspot.com)
+Thanks in advance for any feedback... suggestions are always welcome!

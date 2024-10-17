@@ -16,4 +16,4 @@ There's been a lot of hoop-la about the steep price-drop of the iPhone, and a lo
   
 Well, I (actually, my wife) willingly paid the initial price, and I've been absolutely happy with my iPhone! I also grabbed my $100 credit. All I had to do was hit [Apple's website](http://apple.com) and type in my phone number, and my iPhone's serial number.  
   
-$100 is $100! Woot!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7952795941748667225?l=bradmontgomery.blogspot.com)
+$100 is $100! Woot!

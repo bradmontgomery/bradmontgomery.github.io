@@ -43,4 +43,4 @@ AttributeError: 'module' object has no attribute 'myapp'
   
 **What!?** I had all the correct files in place, and *myapp* was listed in my settings' INSTALLED\_APPS. I was confused. As it turns out, my PYTHONPATH pointed to my production code (which is actually on the same system, configured for a separate virtual host). So no, it couldn't find my new app because my path said to look in my production code.... :(  
   
-So, I just temporarily reset my PYTHONPATH, ran my *python manage.py syncdb*, and I'm rolling for now...![](https://blogger.googleusercontent.com/tracker/4123748873183487963-3810087032644746773?l=bradmontgomery.blogspot.com)
+So, I just temporarily reset my PYTHONPATH, ran my *python manage.py syncdb*, and I'm rolling for now...

@@ -15,4 +15,4 @@ aliases:
 ---
 
 [![](http://foureyedmonsters.com/video_podcast/images/neutrality.jpg)](http://foureyedmonsters.com/neutrality/)  
-[Save the Internet](http://www.savetheinternet.com/) | [Rock the Vote](http://rockthevote.com/)![](https://blogger.googleusercontent.com/tracker/4123748873183487963-1674615880198012537?l=bradmontgomery.blogspot.com)
+[Save the Internet](http://www.savetheinternet.com/) | [Rock the Vote](http://rockthevote.com/)

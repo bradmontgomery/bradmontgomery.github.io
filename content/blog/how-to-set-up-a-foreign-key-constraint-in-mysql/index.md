@@ -145,4 +145,3 @@ Query OK, 1 row affected (0.01 sec)
   
 When you delete the author's books first, the author no longer has any dependencies. You can therefore delete the author.
 
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-4345063366065028230?l=bradmontgomery.blogspot.com)

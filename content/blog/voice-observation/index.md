@@ -27,4 +27,4 @@ Me: Ahhh!
   
 Menu: Welcome to... \*click\*  
   
-Yeah, I hung up the phone. Well... actually I just hit 0, which normally bypasses the automated system and sends you right to an operator. Unfortunately, their offices were closed. I guess I'll just call tomorrow and try to see why my insurance was cancelled.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-5502284268658795751?l=bradmontgomery.blogspot.com)
+Yeah, I hung up the phone. Well... actually I just hit 0, which normally bypasses the automated system and sends you right to an operator. Unfortunately, their offices were closed. I guess I'll just call tomorrow and try to see why my insurance was cancelled.
