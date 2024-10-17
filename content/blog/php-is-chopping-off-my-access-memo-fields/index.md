@@ -25,4 +25,4 @@ ini_set('odbc.defaultlrl', 65536);
 
 ```
   
-I found this info on the discussion for the [odbc\_longreadlen](http://us3.php.net/manual/en/function.odbc-longreadlen.php) function.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-6208247461343887893?l=bradmontgomery.blogspot.com)
+I found this info on the discussion for the [odbc\_longreadlen](http://us3.php.net/manual/en/function.odbc-longreadlen.php) function.

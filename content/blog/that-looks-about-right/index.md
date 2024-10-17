@@ -32,4 +32,4 @@ aliases:
 ```
   
   
-via [b-list.org](http://www.b-list.org/weblog/2008/apr/10/meme/)![](https://blogger.googleusercontent.com/tracker/4123748873183487963-140923247933426192?l=bradmontgomery.blogspot.com)
+via [b-list.org](http://www.b-list.org/weblog/2008/apr/10/meme/)

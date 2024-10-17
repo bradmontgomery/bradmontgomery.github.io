@@ -61,4 +61,4 @@ def \_\_init\_\_(self, \*args, \*\*kwargs):
         del self.fields['bar']  
 
 ```
-Done. I get all the benefits of a ModelForm, and the *bar* field is not displayed unless it should be.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7486424570660550130?l=bradmontgomery.blogspot.com)
+Done. I get all the benefits of a ModelForm, and the *bar* field is not displayed unless it should be.

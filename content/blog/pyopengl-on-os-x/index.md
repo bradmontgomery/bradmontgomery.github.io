@@ -49,4 +49,3 @@ Here are the steps to install PyOpenGL on Mac OS X (10.4.10):
 6. Now, do the same for OpenGLContext...
   
 
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-4096316648311915512?l=bradmontgomery.blogspot.com)

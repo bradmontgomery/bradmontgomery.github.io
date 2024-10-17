@@ -42,4 +42,4 @@ A simple HTML snippet to see it in action:
 ```
   
   
-And yes... I know the title of this post is almost longer than the post itself!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-1905114992701722468?l=bradmontgomery.blogspot.com)
+And yes... I know the title of this post is almost longer than the post itself!

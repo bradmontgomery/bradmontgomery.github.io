@@ -25,4 +25,3 @@ Note that you'll have to change the path to your json.vim file so that it works 
 5. Now, got edit a .json file!
   
 
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7146046294850823266?l=bradmontgomery.blogspot.com)

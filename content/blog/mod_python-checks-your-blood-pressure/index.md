@@ -71,4 +71,4 @@ config.status: creating dist/setup.py
 config.status: creating dist/Makefile  
   
   
-Thank you for caring for my health, mod\_python.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-3395389466546588268?l=bradmontgomery.blogspot.com)
+Thank you for caring for my health, mod\_python.

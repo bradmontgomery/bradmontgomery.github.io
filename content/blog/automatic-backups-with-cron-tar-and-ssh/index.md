@@ -109,4 +109,4 @@ chmod u+x filename
 Resources:  
 [debian-administration.org](http://www.debian-administration.org/articles/152)  
 [Wikipedia](http://en.wikipedia.org/wiki/Cron)  
-[linuxproblem.org](http://www.linuxproblem.org/art_9.html)![](https://blogger.googleusercontent.com/tracker/4123748873183487963-5549773385995764114?l=bradmontgomery.blogspot.com)
+[linuxproblem.org](http://www.linuxproblem.org/art_9.html)

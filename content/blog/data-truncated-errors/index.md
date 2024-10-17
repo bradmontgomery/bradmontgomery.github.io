@@ -68,4 +68,4 @@ alter table myapp_mymodel modify file varchar(255);
   
 OR, use shorter filenames!  
   
-Good Luck!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-3946931358470469763?l=bradmontgomery.blogspot.com)
+Good Luck!

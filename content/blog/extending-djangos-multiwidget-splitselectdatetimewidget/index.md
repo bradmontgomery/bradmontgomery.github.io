@@ -55,4 +55,3 @@ The output of a form using the SplitSelectDateTimeWidget looks something similar
   
 ![SplitSelectDateTimeWidget](http://files.bradmontgomery.net/images/datetimeselect.png "SplitSelectDateTimeWidget")
 
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-8329154980397267028?l=bradmontgomery.blogspot.com)

@@ -17,4 +17,4 @@ I've just run across [Wordle](http://www.wordle.net), a nifty app that generates
   
 [![](http://www.wordle.net/thumb/wrdl/307886/brad%27s_blog)](http://www.wordle.net/gallery/wrdl/307886/brad%27s_blog "Wordle: brad's blog")  
   
-It's quite interesting what sort of things stand out in this... I just happened to notice that everyone want great web!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-3677292020264588556?l=bradmontgomery.blogspot.com)
+It's quite interesting what sort of things stand out in this... I just happened to notice that everyone want great web!

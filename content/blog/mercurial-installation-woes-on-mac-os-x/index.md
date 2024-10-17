@@ -28,4 +28,4 @@ I just renamed the file: /Library/Frameworks/Python.framework/Versions/Current/b
   
 This does not seem like a good way to upgrade. :(  
   
-*this is all relevant to Mac OS X 10.5.8*![](https://blogger.googleusercontent.com/tracker/4123748873183487963-3322153686297622685?l=bradmontgomery.blogspot.com)
+*this is all relevant to Mac OS X 10.5.8*

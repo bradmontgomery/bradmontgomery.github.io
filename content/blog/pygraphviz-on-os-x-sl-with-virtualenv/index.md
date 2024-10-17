@@ -51,4 +51,4 @@ You also might want to verify that the above directories exist.
   
 That's it! This installed pygraphviz in my activated virtualenv, and I can now use `./manage.py graph_models` to my heart's desire.  
   
-I should mention that I'm using [distribute](http://pypi.python.org/pypi/distribute) (and it may be safe to assume that if you're using virtualenv, you're probably also using distribute).![](https://blogger.googleusercontent.com/tracker/4123748873183487963-671214602676980877?l=bradmontgomery.blogspot.com)
+I should mention that I'm using [distribute](http://pypi.python.org/pypi/distribute) (and it may be safe to assume that if you're using virtualenv, you're probably also using distribute).

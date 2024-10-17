@@ -31,4 +31,3 @@ So, in my HTML/templates: all I have to do is this:
 <a href="SomFile.docx">Some File</a>  
 
 ```
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-9046149690255549987?l=bradmontgomery.blogspot.com)

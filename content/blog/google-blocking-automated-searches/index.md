@@ -23,4 +23,4 @@ Luckily I could type in a [captcha](http://en.wikipedia.org/wiki/Captcha) and co
   
 So what happens if I don't have a Google account? I suddenly can't use their search engine?  
   
-So this got me thinking... Is the state of malware so bad that we'll eventually have to validate our identity before using a search engine?![](https://blogger.googleusercontent.com/tracker/4123748873183487963-1740503720891335819?l=bradmontgomery.blogspot.com)
+So this got me thinking... Is the state of malware so bad that we'll eventually have to validate our identity before using a search engine?

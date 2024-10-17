@@ -156,4 +156,4 @@ NOTE: Graham Dumpleton suggests four options to get around the original problem 
 
   
   
-Hope this helps someone else!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-6881096023935249692?l=bradmontgomery.blogspot.com)
+Hope this helps someone else!

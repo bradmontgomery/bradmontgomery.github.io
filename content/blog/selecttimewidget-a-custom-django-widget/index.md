@@ -156,4 +156,3 @@ And the test.html Template:
 {% endblock %}  
 
 ```
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-5947824555473713916?l=bradmontgomery.blogspot.com)

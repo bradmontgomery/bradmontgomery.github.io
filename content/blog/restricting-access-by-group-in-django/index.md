@@ -104,4 +104,3 @@ def some\_view(request):
     # ...  
 
 ```
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-1124320250064783173?l=bradmontgomery.blogspot.com)

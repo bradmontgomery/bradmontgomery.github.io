@@ -27,4 +27,4 @@ Here's what I learned: **Bread Flour != All Purpose Flour** (for the non-program
   
 Fortunately, there are [several](http://www.ehow.com/how_2316531_make-bread-flour.html) [articles](http://www.nestle.com/NutritionHealthAndWellness/Cooking/AskGilla/CookingTips/Bread+flour.htm) online that expound on the [differences between bread flour and all-purpose flour](http://www.ochef.com/97.htm).  
   
-The secret is *wheat gluten* (or *gluten additive*). Essentially, you must add 1tsp to each cup of all-purpose flour to create bread flour. Unfortunately, this is not something I keep. So part 2 will have to wait until I go shopping...![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7762217279198189179?l=bradmontgomery.blogspot.com)
+The secret is *wheat gluten* (or *gluten additive*). Essentially, you must add 1tsp to each cup of all-purpose flour to create bread flour. Unfortunately, this is not something I keep. So part 2 will have to wait until I go shopping...

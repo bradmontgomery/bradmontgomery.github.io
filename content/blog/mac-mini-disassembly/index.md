@@ -19,4 +19,4 @@ I've been a mac user since my wife bought me a Min in 2005. During that time I'v
   
 Though I only upgraded the RAM, I was interested in discovering how difficult it would be to upgrade the Hard drive as well. To do this, you have to first remove the combo drive (which is attached to a daughter board along with the hard drive).   
  Once this has been done, you need to remove the air vents and the processor's cooling fan in order to get to the screws that hold the drive in place. While doing this, I noticed that the power switch's wire was taped to the vent, so I just cut this (The TAPE, not the WIRE!). Once all of the screws that held the air vents to the motherboard were removed, I found it fairly easy to just lift the hard drive and it's daughterboard out of the motherboard.  
-In doing this, I was fairly amazed at how small the Mac mini really is... I guess you have to see it to believe it!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7591638465624679365?l=bradmontgomery.blogspot.com)
+In doing this, I was fairly amazed at how small the Mac mini really is... I guess you have to see it to believe it!

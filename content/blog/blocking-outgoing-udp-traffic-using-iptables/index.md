@@ -41,4 +41,3 @@ Now, let’s just hope that keeps me covered until I can find a little more adva
 * The manpage! (man iptables)
   
 
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7802155410853194174?l=bradmontgomery.blogspot.com)

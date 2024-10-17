@@ -29,4 +29,4 @@ end tell
   
 The arguments are the distance from the top and left of the screen (both 50), the width of the iTunes window (1024) followed by its height (640).   
   
-I just saved this in a file called *resize\_itunes.scpt* and put it in my *Documents/Applescripts/* folder. I'm a big fan of [Quicksilver](http://www.blacktree.com/projects/quicksilver.html), so when I need to resize my iTunes window, I just activate Quicksilver (Ctrl+Spacebar), type in "resize" (which finds the applescript file), and then hit "enter" to run the script. Easy.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-8179727769750930704?l=bradmontgomery.blogspot.com)
+I just saved this in a file called *resize\_itunes.scpt* and put it in my *Documents/Applescripts/* folder. I'm a big fan of [Quicksilver](http://www.blacktree.com/projects/quicksilver.html), so when I need to resize my iTunes window, I just activate Quicksilver (Ctrl+Spacebar), type in "resize" (which finds the applescript file), and then hit "enter" to run the script. Easy.

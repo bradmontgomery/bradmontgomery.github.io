@@ -18,4 +18,4 @@ I guess I'm still a relatively new Mac User, but I consider myself fairly techni
   
 ![I can see my cursor in the Dock!](http://bradmontgomery.net/images/dock_mirror.png)Imagine my surprise when, while working tonight, I discovered that the Dock in Leopard is a Mirror! Yes, I'd noticed the reflection of the Icons, but tonight, I actually saw my cursor (in Terminal) moving as I typed... that caught my attention! At first I though, "well that's just amazing!" I had to wonder just how much work went into making that happen. Then, I discovered that [some people don't like this](http://forums.macnn.com/90/mac-os-x/352053/annoying-dock-mirror-removal-in-leopard/)!  
   
-Oh well. To each his own...![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2356803099596722527?l=bradmontgomery.blogspot.com)
+Oh well. To each his own...

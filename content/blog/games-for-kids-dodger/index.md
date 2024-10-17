@@ -20,4 +20,4 @@ I've always thought it would be fun to build video games, and when my daughters 
   
 Since my oldest daughter (who is now 5) has recently discovered [GCompris](http://gcompris.net/), I thought I'd give the game-writing another chance. This has resulted in [dodger](http://bradmontgomery.net/show.php?page=project_kidgames), which is also my first attempt at using [pyglet](http://pyglet.org/). I know it can't compete with GCompris, but hopefully my daughter will like it.   
   
-I've released it under a [CC](http://creativecommons.org/) license, so feel free to grab a copy, play it, use it, learn from it or whatever... Enjoy.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2733020526160702993?l=bradmontgomery.blogspot.com)
+I've released it under a [CC](http://creativecommons.org/) license, so feel free to grab a copy, play it, use it, learn from it or whatever... Enjoy.

@@ -19,4 +19,4 @@ Occasionally, I run across some project that's implementing an idea that I've ha
   
 I created an account, and though it was a little slow for my wife's laptop, YouOS is really a very impressive project. Now, all the world needs is a very small OS that runs on every hardware platform (for connectivity/etc), and a very fast standards-compliant browser that runs on top of that (maybe the guys at [dillo](http://www.dillo.org/) should reevaluate their roadmap); AND NOTHING ELSE!  
   
-You know, I just had one other thought: Maybe this is the GUI necessary for widespread use of [Plan9](http://cm.bell-labs.com/plan9/).![](https://blogger.googleusercontent.com/tracker/4123748873183487963-6423307410317106736?l=bradmontgomery.blogspot.com)
+You know, I just had one other thought: Maybe this is the GUI necessary for widespread use of [Plan9](http://cm.bell-labs.com/plan9/).

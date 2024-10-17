@@ -30,4 +30,4 @@ In addition to the traditional ways to kill a process, this tutorial lists some 
 * Alt+SysRq+B - Reboots
 
   
-(Note to self, and any other developers: When using a language without built-in garbage collection, don't forget to free up memory when you're done!)![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2326695535330074466?l=bradmontgomery.blogspot.com)
+(Note to self, and any other developers: When using a language without built-in garbage collection, don't forget to free up memory when you're done!)

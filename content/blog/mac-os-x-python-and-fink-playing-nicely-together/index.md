@@ -29,4 +29,4 @@ PYTHONPATH="${PYTHONPATH}:/sw/lib/python2.5/site-packages"
 export PYTHONPATH
 ```
   
-Now, when I run the python interpreter, I can import packages that were installed the Mac way, or through Fink. Hopefully, this won't give me any problems.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-1289332286105916934?l=bradmontgomery.blogspot.com)
+Now, when I run the python interpreter, I can import packages that were installed the Mac way, or through Fink. Hopefully, this won't give me any problems.

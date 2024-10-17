@@ -75,4 +75,4 @@ admin.site.register(Book, BookAdmin)
 ```
   
   
-Now, when you use the Automatic admin to add or edit existing Book entries, the drop-down list of Author names will be a bit more user-friendly.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-6279726457602327300?l=bradmontgomery.blogspot.com)
+Now, when you use the Automatic admin to add or edit existing Book entries, the drop-down list of Author names will be a bit more user-friendly.

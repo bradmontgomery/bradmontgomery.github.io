@@ -37,4 +37,4 @@ a project together.
 Disclaimer: I'm a relative noob to pygame (~10 months), and I've been  
 using pygame for research projects in Augmented Reality (not  
 necessarily games) for both visual and non-visual (sound-only)  
-applications.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-6224135340274907494?l=bradmontgomery.blogspot.com)
+applications.

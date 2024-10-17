@@ -46,4 +46,4 @@ function loader() {
 </html>
 ```
   
-(Thanks to the users of [codingforums.com](http://www.codingforums.com/showthread.php?t=34717<br />), especially Roy Gardiner, whose code from which this script was adapted.)![](https://blogger.googleusercontent.com/tracker/4123748873183487963-7998488112426396151?l=bradmontgomery.blogspot.com)
+(Thanks to the users of [codingforums.com](http://www.codingforums.com/showthread.php?t=34717<br />), especially Roy Gardiner, whose code from which this script was adapted.)

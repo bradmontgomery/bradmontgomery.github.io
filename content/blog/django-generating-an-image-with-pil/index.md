@@ -48,4 +48,4 @@ This example just draws simple text, but the drawing code could be replaced by s
   
 A note of concern: The Image object (im) **MUST** be saved as a PNG for this to work. Luckily, the Image.save method expects a file-like object as its first parameter, so we can use django's HttpResponse object here. Also, the example above doesn't make use of any particular Font for the drawing, so if you do want to draw text, you'll want to take a look at PIL's [ImageDraw Documentation](http://www.pythonware.com/library/pil/handbook/imagedraw.htm).  
   
-(on a side note: the html for the code above was generated using [dpaste](http://dpaste.com), which rocks!)![](https://blogger.googleusercontent.com/tracker/4123748873183487963-9092702185978828760?l=bradmontgomery.blogspot.com)
+(on a side note: the html for the code above was generated using [dpaste](http://dpaste.com), which rocks!)

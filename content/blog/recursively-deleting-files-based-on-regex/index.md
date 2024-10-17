@@ -20,4 +20,4 @@ Here's how I do it:
 ```
 find ./ -type f -name "*.pyc" -exec rm {} \;
 ```
-*find ./ -type f -name "\*.pyc"* should find all files ending in .pyc under the *current directory*. Once they've been found, the *-exec rm {} \;* will remove them.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-6785752564543884991?l=bradmontgomery.blogspot.com)
+*find ./ -type f -name "\*.pyc"* should find all files ending in .pyc under the *current directory*. Once they've been found, the *-exec rm {} \;* will remove them.

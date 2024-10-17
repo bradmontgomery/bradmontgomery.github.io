@@ -70,4 +70,3 @@ class CopyContactForm(forms.Form):
         for u in User.objects.values_list('id', 'first\_name', 'last\_name', 'username')])  
 
 ```
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-3619337419322141293?l=bradmontgomery.blogspot.com)

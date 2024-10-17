@@ -29,4 +29,4 @@ find . -type f -print0 | xargs -0 rename 's/.php$/.php5/g'
 ```
   
   
-Awesomeness.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-4179556125303523868?l=bradmontgomery.blogspot.com)
+Awesomeness.

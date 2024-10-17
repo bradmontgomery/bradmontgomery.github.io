@@ -23,4 +23,3 @@ I've been complaining (inwardly) about my iPhone's earbuds since I first tried t
   
 
 
-![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2694001442361173820?l=bradmontgomery.blogspot.com)

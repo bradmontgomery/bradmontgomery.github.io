@@ -19,4 +19,4 @@ For all of you that subscribe to the feed (what, like 0), you might have noticed
   
 So, back to those CMS's... they all use PHP+MySQL, which is a good combination, but they're WAY more than I need! (Disregard the postgresql comment). Is there a CMS/Blog system that's easy to install, has a simple back-end, and is geared to an individual? Is anybody using [SQLite](http://www.sqlite.org/) to run their blog?  
   
-Maybe I should clean up my code and open it up. Any takers?![](https://blogger.googleusercontent.com/tracker/4123748873183487963-1802614619464063852?l=bradmontgomery.blogspot.com)
+Maybe I should clean up my code and open it up. Any takers?

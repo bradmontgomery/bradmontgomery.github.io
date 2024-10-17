@@ -32,4 +32,4 @@ Just to name a few:
 
   
   
-That should get me started!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-326716395189621856?l=bradmontgomery.blogspot.com)
+That should get me started!

@@ -76,4 +76,4 @@ admin.site.register(MyModel, MyModelAdmin)
 ```
   
   
-At this point, the choices for User objects in the admin should contain the user's full name and their username in parenthesis.![](https://blogger.googleusercontent.com/tracker/4123748873183487963-2524432454961244471?l=bradmontgomery.blogspot.com)
+At this point, the choices for User objects in the admin should contain the user's full name and their username in parenthesis.

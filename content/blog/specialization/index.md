@@ -48,4 +48,4 @@ Things I've done (or similar)
 
   
   
-Hooray for Humanity!![](https://blogger.googleusercontent.com/tracker/4123748873183487963-763202299204946052?l=bradmontgomery.blogspot.com)
+Hooray for Humanity!
