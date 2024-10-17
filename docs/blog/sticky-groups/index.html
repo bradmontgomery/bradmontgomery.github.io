@@ -53,7 +53,7 @@ To give apache access to my public_html directory, I'd change ownership for the 
 <p>Now, if I modify any files in <em>public_html</em>, I don't want to have to change the group permissions (that is, apache's permissions), so lets make the group ownership <strong>sticky</strong>:</p>
 <pre><code>chmod g+s public_html
 </code></pre>
-<p>Now, any new files that I add beneath the <em>public_html</em> directory will be part of the <em>www-data</em> group.<img src="https://blogger.googleusercontent.com/tracker/4123748873183487963-7915480253587113591?l=bradmontgomery.blogspot.com" alt="" /></p>
+<p>Now, any new files that I add beneath the <em>public_html</em> directory will be part of the <em>www-data</em> group.</p>
 
   </section>
 
