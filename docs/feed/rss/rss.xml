@@ -1,5 +1,32 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>BradMontgomery.net</title><link>https://bradmontgomery.net</link><description>brad's blog</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Sat, 07 Dec 2024 20:56:33 +0000</lastBuildDate><item><title>We are all inventors</title><link>https://bradmontgomery.net/blog/we-are-all-inventors/</link><description>I just now realized...</description><content:encoded>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>BradMontgomery.net</title><link>https://bradmontgomery.net</link><description>brad's blog</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Sat, 07 Dec 2024 21:23:25 +0000</lastBuildDate><item><title>Thoughts from re:Invent 2024</title><link>https://bradmontgomery.net/blog/thoughts-from-reinvent-2024/</link><description>Generative AI, Bedrock, and easy (easier) data lakes.</description><content:encoded>
+&lt;p&gt;I've just gotten home from a week at AWS re:Invent. There were so many new product announcements,
+but the overarching theme of the conference was (surprising to no-body) Generative AI.&lt;/p&gt;
+&lt;p&gt;It was pretty eye-opening to hear stories from across a number of industries about how other
+companyies have already started integrating Generative AI into their processes and workflows —
+&lt;em&gt;although&lt;/em&gt; the most common story told was:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon Q for for developers.&lt;/li&gt;
+&lt;li&gt;Amazon Q to do big project upgrades (e.g. Java code)&lt;/li&gt;
+&lt;li&gt;Amazon Q to help write test cases.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;None of these are surprising, really.&lt;/p&gt;
+&lt;p&gt;And while I feel like I could absolutely see this coming, I've also realized that &lt;em&gt;my own&lt;/em&gt; journey into
+the world of Genative AI is lagging. But I have &lt;em&gt;some idead&lt;/em&gt;! (watch this space)&lt;/p&gt;
+&lt;p&gt;Personally, the exciting take-aways for me are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon Q &amp;amp; Bedrock are really powerful tools. I want to build something with Bedrock and see how
+this all works in practice.&lt;/li&gt;
+&lt;li&gt;S3 Table buckets and S3 Metadata buckets are going to save a lot of people a lot of work — Table Buckets
+provide native support for Apache Iceberg and handle all the maintenance behind the scences and Metadata buckets
+give you a reliable place to store metadata so S3 is now (if it wasn't already) the best way to build out a Data
+Lake, Lakhouse, wharehouse whatever you want to call it.&lt;/li&gt;
+&lt;li&gt;I'd somehow missed the memo that AWS was building &lt;a href="https://aws.amazon.com/silicon-innovation/"&gt;their own silicon&lt;/a&gt;
+cloud computing workloads. The &lt;a href="https://aws.amazon.com/ai/machine-learning/trainium/"&gt;AWS Trainium&lt;/a&gt; announcments
+just make me realized that's easier than ever to build &amp;amp; train ML models at scale.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This was my first time at re:Invent, so I have a ton of thoughts to process, but these are the (technology) highlights.&lt;/p&gt;
+</content:encoded><guid isPermaLink="false">https://bradmontgomery.net/blog/thoughts-from-reinvent-2024/</guid><pubDate>Sat, 07 Dec 2024 21:06:59 +0000</pubDate></item><item><title>We are all inventors</title><link>https://bradmontgomery.net/blog/we-are-all-inventors/</link><description>I just now realized...</description><content:encoded>
 &lt;h1&gt;We're all inventors.&lt;/h1&gt;
 &lt;p&gt;&lt;img src="https://i.imgur.com/OsPDfOK.png" alt="Dream Studio, Anime filter: Classic, early-american inventor hard at work in his workshop." /&gt;&lt;/p&gt;
 &lt;p&gt;When I was young, if you'd asked me what I wanted to be when I grew up, my most likely response would have been, &amp;quot;Inventor&amp;quot;.&lt;/p&gt;
