@@ -15,6 +15,7 @@ There are some opinions.
 """
 import http.server
 import logging
+import os
 import re
 import shutil
 import string
@@ -28,6 +29,7 @@ from time import time
 import arrow
 import ez_yaml
 import rich_click as click
+from feedgen.feed import FeedGenerator
 from jinja2 import Environment, PackageLoader, select_autoescape
 from markdown_it import MarkdownIt
 from mdit_py_plugins.front_matter import front_matter_plugin
@@ -222,7 +224,7 @@ def normalize_tag(value: str) -> str:
     return re.sub(r"[-\s]+", "-", value).strip("-_")
 
 
-def build_tags(env, output: str, index: list):
+def build_tags(env, output: str, index: list) -> None:
     """Site indexing based on tags"""
 
     # /blog/tags/ -> list of all tags.
@@ -249,6 +251,53 @@ def build_tags(env, output: str, index: list):
             "posts": posts,
         }
         render(env, f"{output}/blog/tags/{tag}", "index.html", context)
+
+
+def build_feeds(output: str, index: list) -> None:
+    """Build syndication feeds:
+
+    1. RSS feed at /feed/rss/
+    2. Atom feed at /feed/atom/
+
+    """
+    rss_path = Path(output) / Path("feed/rss/")
+    rss_file = rss_path / Path("rss.xml")
+    os.makedirs(rss_path, exist_ok=True)
+    rss_file.touch(exist_ok=True)
+
+    atom_path = Path(output) / Path("feed/atom/")
+    atom_file = atom_path / Path("atom.xml")
+    os.makedirs(atom_path, exist_ok=True)
+    atom_file.touch(exist_ok=True)
+
+    fg = FeedGenerator()
+    fg.id("https://BradMontgomery.net")
+    fg.title("BradMontgomery.net")
+    fg.author({"name": "Brad Montgomery"})
+    fg.link(href="https://bradmontgomery.net", rel="alternate")
+    fg.subtitle("brad's blog")
+    fg.language("en")
+
+    items = sorted(
+        [post for post in index if not post["draft"]], key=lambda p: p["date"]
+    )
+    for post in items:
+        fe = fg.add_entry()
+        fe.id("https://bradmontgomery.net" + post["url"])
+        fe.author(name="Brad Montgomery")
+        fe.title(post["title"])
+        fe.link(href="https://bradmontgomery.net" + post["url"])
+        fe.content(post["html_content"])
+        fe.description(description=post.get("description"))
+        fe.pubdate(post["date"])
+
+    logger.info("Generating ATOM feed")
+    fg.atom_file(atom_file)
+    logger.info("Wrote ATOM feed to %s", atom_file)
+
+    logger.info("Generating RSS feed")
+    fg.rss_file(rss_file)
+    logger.info("Wrote RSS feed to %s", rss_file)
 
 
 # -------------------------------------------------------------
@@ -341,10 +390,11 @@ def build(content, templates, output):
         if file.strip(content).startswith("/blog"):
             index.append(context)
 
-    # Build the index(es), tags list, and archives
+    # Build the index(es), tags list, archives, and feeds
     build_index(env, output, index)
     build_tags(env, output, index)
     build_date_archives(env, output, index)
+    build_feeds(output, index)
 
     # Build static files output
     build_static(output)
