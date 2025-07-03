@@ -314,7 +314,7 @@ def copy_texts(
     dst_path = Path(output)
     for file in glob(f"{src_path}/*.txt"):
         logger.info("Copying %s to %s", file, dst_path)
-        shutil.copyfile(file, str(dst_path))
+        shutil.copyfile(file, str(dst_path / Path(file).name))
 
 
 # -------------------------------------------------------------
