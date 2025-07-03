@@ -1,21 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="INDEX, FOLLOW" />
     <title>A for AJAX - OR - Dynamically generating options for a select element.</title>
-    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml">
-    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml">
-
+    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <link type="text/plain" rel="author" href="/llms.txt" />
     
-    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
     <style type="text/css">
-    h1,h2,h3 { font-family: 'Rubik Doodle Shadow', serif;}
-    h4,h5,h6 {font-family: 'Abril Fatface', serif}
-    code,pre { font-family: 'Anonymous Pro', monospace;}
+      h1,
+      h2,
+      h3 {
+        font-family: "Rubik Doodle Shadow", serif;
+      }
+      h4,
+      h5,
+      h6 {
+        font-family: "Abril Fatface", serif;
+      }
+      code,
+      pre {
+        font-family: "Anonymous Pro", monospace;
+      }
     </style>
   </head>
   <body>
@@ -46,8 +62,7 @@
   
 
     </header>
-    <main>
-    
+    <main> 
   <section>
   
 <p>I don't do a lot of AJAXy web development, but when I do, I usually make use of <a href="http://prototypejs.org/">Prototype</a>. I've recently created a form containing a <em><select></em> element whose *<option>*s are dynamically generated via an AJAX request. The problem however, is that a <em><strong>selected</strong> option</em> was already in the form. So before the AJAX request, my HTML looked something like this:</p>
@@ -133,10 +148,7 @@ document.observe('dom:loaded', function() {
 <p>So the moral of this story? Know your tools! It's always good to *Know what's going on!*™</p>
 
   </section>
-
-    </main>
-    <footer>
-      All content copyright &copy; Brad Montgomery.
-    </footer>
+ </main>
+    <footer> All content copyright &copy; Brad Montgomery. </footer>
   </body>
 </html>

@@ -1,21 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="INDEX, FOLLOW" />
     <title>Sticky Groups</title>
-    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml">
-    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml">
-
+    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <link type="text/plain" rel="author" href="/llms.txt" />
     
-    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
     <style type="text/css">
-    h1,h2,h3 { font-family: 'Rubik Doodle Shadow', serif;}
-    h4,h5,h6 {font-family: 'Abril Fatface', serif}
-    code,pre { font-family: 'Anonymous Pro', monospace;}
+      h1,
+      h2,
+      h3 {
+        font-family: "Rubik Doodle Shadow", serif;
+      }
+      h4,
+      h5,
+      h6 {
+        font-family: "Abril Fatface", serif;
+      }
+      code,
+      pre {
+        font-family: "Anonymous Pro", monospace;
+      }
     </style>
   </head>
   <body>
@@ -42,8 +58,7 @@
   
 
     </header>
-    <main>
-    
+    <main> 
   <section>
   
 <p>I often deploy web projects in a directory that's not <em>owned</em> by the user under which my webserver runs. Therefor, I often have to change permissions so the webserver can read from or write to certain files. So, for this example, let's assume I'm logged in to my linux box as <em>brad</em>, and I'm using apache which runs under the user <em>www-data</em>.<br />
@@ -59,10 +74,7 @@ To give apache access to my public_html directory, I'd change ownership for the 
 <p>Now, any new files that I add beneath the <em>public_html</em> directory will be part of the <em>www-data</em> group.</p>
 
   </section>
-
-    </main>
-    <footer>
-      All content copyright &copy; Brad Montgomery.
-    </footer>
+ </main>
+    <footer> All content copyright &copy; Brad Montgomery. </footer>
   </body>
 </html>
