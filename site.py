@@ -300,6 +300,23 @@ def build_feeds(output: str, index: list) -> None:
     logger.info("Wrote RSS feed to %s", rss_file)
 
 
+def copy_texts(
+    content: str,
+    output: str,
+) -> None:
+    """
+    Any .txt files located in /content/texts/ will just get
+    copied to the root of the domain. E.g. this can be used
+    for things like humans.txt or llms.txt.
+
+    """
+    src_path = Path(content) / Path("texts")
+    dst_path = Path(output)
+    for file in glob(f"{src_path}/*.txt"):
+        logger.info("Copying %s to %s", file, dst_path)
+        shutil.copyfile(file, str(dst_path))
+
+
 # -------------------------------------------------------------
 # CLI Commands.
 # -------------------------------------------------------------
@@ -398,6 +415,7 @@ def build(content, templates, output):
 
     # Build static files output
     build_static(output)
+    copy_texts(content, output)
 
     elapsed = round(time() - start, 2)
     logger.info("Completed in %s seconds", elapsed)
