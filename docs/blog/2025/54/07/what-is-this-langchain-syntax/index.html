@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="INDEX, FOLLOW" />
+    <title>What is this LangChain Syntax?</title>
+    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <link type="text/plain" rel="author" href="/llms.txt" />
+    
+    <meta name="description" content="Exploring how LangChain overloaded the | pipe operator." />
+    
+    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      h1,
+      h2,
+      h3 {
+        font-family: "Rubik Doodle Shadow", serif;
+      }
+      h4,
+      h5,
+      h6 {
+        font-family: "Abril Fatface", serif;
+      }
+      code,
+      pre {
+        font-family: "Anonymous Pro", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>What is this LangChain Syntax?</h1>
+      
+  <div>Published on 2025-10-07 17:54:12.925729+00:00</div>
+  
+    <div>
+    
+      <mark>python</mark> &nbsp;
+    
+    </div>
+  
+
+    </header>
+    <main> 
+  <section>
+  
+<h2>What's this got to do with LangChain?</h2>
+<p>Honestly... not much.</p>
+<p>I've been experimenting with <a href="https://python.langchain.com/docs/introduction/">LangChain</a> lately, and
+I really like something they did with their <a href="https://python.langchain.com/docs/concepts/lcel/">LCEL - LangChain Expression Language</a>.</p>
+<p>They <a href="https://python.langchain.com/docs/concepts/lcel/#the--operator">overloaded the <code>|</code> operator</a> in python. This
+let's them write code that <em>chains</em> runnables together; It looks something like:</p>
+<pre><code class="language-python">
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
+from langchain.chat_models import init_chat_model
+
+model = init_chat_model(&quot;gemini-2.5-flash&quot;, model_provider=&quot;google_genai&quot;)
+prompt = ChatPromptTemplate.from_template(&quot;tell me a joke about {topic}&quot;)
+chain = prompt | model | StrOutputParser()  # &lt;---- Chain these runnables together!
+</code></pre>
+<p>Or for a <a href="https://python.langchain.com/docs/how_to/sequence/">more advanced example from their docs</a>:</p>
+<pre><code class="language-python">composed_chain_with_lambda = (
+    chain
+    | (lambda input: {&quot;joke&quot;: input})
+    | analysis_prompt
+    | model
+    | StrOutputParser()
+)
+
+composed_chain_with_lambda.invoke({&quot;topic&quot;: &quot;beets&quot;})
+</code></pre>
+<h2>What is the <code>|</code> operator anyway?</h2>
+<p>In python, this is the <a href="https://docs.python.org/3/reference/expressions.html#binary-bitwise-operations">bitwise OR operator</a>.</p>
+<p>For example, if you just execute this code in the python REPL, you'll get the following.</p>
+<pre><code class="language-python">&gt;&gt;&gt; 0 | 0
+0
+
+&gt;&gt;&gt; 1 | 0
+1
+
+&gt;&gt;&gt; 1 | 1
+1
+</code></pre>
+<h2>Operator Overloading</h2>
+<p>In my opinion, this is just a neat example of polymorphism in Python. You can overload these operators to your heart's desire!</p>
+<p>Here's a simple example: Let's make the <code>|</code> operator perform concatenation for a string.</p>
+<pre><code class="language-python">class MagicString:
+    _data = &quot;&quot;
+
+    def __init__(self, data):
+        self._data = data
+    
+    def __str__(self):
+        &quot;&quot;&quot;Coerce this to a str data type.&quot;&quot;&quot;
+        return str(self._data)
+
+    def __or__(self, other):
+        return str(self) + str(other) 
+</code></pre>
+<p>This gives us a <code>MagicString</code> class that knows how to coerce itself to a plain old string and apply the <code>|</code> operator to do concatenation.</p>
+<p>See it in action:</p>
+<pre><code class="language-python">
+&gt;&gt;&gt; a = MagicString(&quot;hello&quot;)
+&gt;&gt;&gt; b = MagicString(&quot;world&quot;)
+&gt;&gt;&gt; a | b
+helloworld
+</code></pre>
+<p>It even works if the right-hand side operand is a plain old string.</p>
+<pre><code class="language-python">&gt;&gt;&gt; a = MagicString(&quot;hello&quot;)
+&gt;&gt;&gt; b = &quot; world&quot;
+&gt;&gt;&gt; a | b
+hello world
+</code></pre>
+<p>Operator Overloading is cool 😎</p>
+
+  </section>
+ </main>
+    <footer> All content copyright &copy; Brad Montgomery. </footer>
+  </body>
+</html>

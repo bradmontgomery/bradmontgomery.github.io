@@ -1,5 +1,75 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>BradMontgomery.net</title><link>https://bradmontgomery.net</link><description>brad's blog</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Thu, 03 Jul 2025 20:44:15 +0000</lastBuildDate><item><title>Thoughts from re:Invent 2024</title><link>https://bradmontgomery.net/blog/thoughts-from-reinvent-2024/</link><description>Generative AI, Bedrock, and easy (easier) data lakes.</description><content:encoded>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>BradMontgomery.net</title><link>https://bradmontgomery.net</link><description>brad's blog</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Tue, 07 Oct 2025 18:18:35 +0000</lastBuildDate><item><title>What is this LangChain Syntax?</title><link>https://bradmontgomery.net/blog/what-is-this-langchain-syntax/</link><description>Exploring how LangChain overloaded the | pipe operator.</description><content:encoded>
+&lt;h2&gt;What's this got to do with LangChain?&lt;/h2&gt;
+&lt;p&gt;Honestly... not much.&lt;/p&gt;
+&lt;p&gt;I've been experimenting with &lt;a href="https://python.langchain.com/docs/introduction/"&gt;LangChain&lt;/a&gt; lately, and
+I really like something they did with their &lt;a href="https://python.langchain.com/docs/concepts/lcel/"&gt;LCEL - LangChain Expression Language&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;They &lt;a href="https://python.langchain.com/docs/concepts/lcel/#the--operator"&gt;overloaded the &lt;code&gt;|&lt;/code&gt; operator&lt;/a&gt; in python. This
+let's them write code that &lt;em&gt;chains&lt;/em&gt; runnables together; It looks something like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.prompts import ChatPromptTemplate
+from langchain.chat_models import init_chat_model
+
+model = init_chat_model(&amp;quot;gemini-2.5-flash&amp;quot;, model_provider=&amp;quot;google_genai&amp;quot;)
+prompt = ChatPromptTemplate.from_template(&amp;quot;tell me a joke about {topic}&amp;quot;)
+chain = prompt | model | StrOutputParser()  # &amp;lt;---- Chain these runnables together!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Or for a &lt;a href="https://python.langchain.com/docs/how_to/sequence/"&gt;more advanced example from their docs&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;composed_chain_with_lambda = (
+    chain
+    | (lambda input: {&amp;quot;joke&amp;quot;: input})
+    | analysis_prompt
+    | model
+    | StrOutputParser()
+)
+
+composed_chain_with_lambda.invoke({&amp;quot;topic&amp;quot;: &amp;quot;beets&amp;quot;})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;What is the &lt;code&gt;|&lt;/code&gt; operator anyway?&lt;/h2&gt;
+&lt;p&gt;In python, this is the &lt;a href="https://docs.python.org/3/reference/expressions.html#binary-bitwise-operations"&gt;bitwise OR operator&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For example, if you just execute this code in the python REPL, you'll get the following.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;&amp;gt;&amp;gt;&amp;gt; 0 | 0
+0
+
+&amp;gt;&amp;gt;&amp;gt; 1 | 0
+1
+
+&amp;gt;&amp;gt;&amp;gt; 1 | 1
+1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2&gt;Operator Overloading&lt;/h2&gt;
+&lt;p&gt;In my opinion, this is just a neat example of polymorphism in Python. You can overload these operators to your heart's desire!&lt;/p&gt;
+&lt;p&gt;Here's a simple example: Let's make the &lt;code&gt;|&lt;/code&gt; operator perform concatenation for a string.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;class MagicString:
+    _data = &amp;quot;&amp;quot;
+
+    def __init__(self, data):
+        self._data = data
+    
+    def __str__(self):
+        &amp;quot;&amp;quot;&amp;quot;Coerce this to a str data type.&amp;quot;&amp;quot;&amp;quot;
+        return str(self._data)
+
+    def __or__(self, other):
+        return str(self) + str(other) 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This gives us a &lt;code&gt;MagicString&lt;/code&gt; class that knows how to coerce itself to a plain old string and apply the &lt;code&gt;|&lt;/code&gt; operator to do concatenation.&lt;/p&gt;
+&lt;p&gt;See it in action:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;
+&amp;gt;&amp;gt;&amp;gt; a = MagicString(&amp;quot;hello&amp;quot;)
+&amp;gt;&amp;gt;&amp;gt; b = MagicString(&amp;quot;world&amp;quot;)
+&amp;gt;&amp;gt;&amp;gt; a | b
+helloworld
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;It even works if the right-hand side operand is a plain old string.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-python"&gt;&amp;gt;&amp;gt;&amp;gt; a = MagicString(&amp;quot;hello&amp;quot;)
+&amp;gt;&amp;gt;&amp;gt; b = &amp;quot; world&amp;quot;
+&amp;gt;&amp;gt;&amp;gt; a | b
+hello world
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Operator Overloading is cool 😎&lt;/p&gt;
+</content:encoded><guid isPermaLink="false">https://bradmontgomery.net/blog/what-is-this-langchain-syntax/</guid><pubDate>Tue, 07 Oct 2025 17:54:12 +0000</pubDate></item><item><title>Thoughts from re:Invent 2024</title><link>https://bradmontgomery.net/blog/thoughts-from-reinvent-2024/</link><description>Generative AI, Bedrock, and easy (easier) data lakes.</description><content:encoded>
 &lt;p&gt;I've just gotten home from a week at AWS re:Invent. There were so many new product announcements,
 but the overarching theme of the conference was (surprising to no-body) Generative AI.&lt;/p&gt;
 &lt;p&gt;It was pretty eye-opening to hear stories from across a number of industries about how other
@@ -4254,7 +4324,7 @@ document.observe('dom:loaded', function() {
 });
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This is fairly basic AJAX behavior, but for those of us who don't live, breathe, eat, and sleep AJAX, this is an easy mistake to make.&lt;/p&gt;
-&lt;p&gt;So the moral of this story? Know your tools! It's always good to *Know what's going on!*™&lt;/p&gt;
+&lt;p&gt;So the moral of this story? Know your tools! It's always good to &lt;em&gt;Know what's going on!&lt;/em&gt;™&lt;/p&gt;
 </description><guid isPermaLink="false">https://bradmontgomery.net/blog/a-for-ajax-or-dynamically-generating-options-for-a-select-element/</guid><pubDate>Tue, 14 Jul 2009 11:42:00 +0000</pubDate></item><item><title>My PYTHONPATH bit me.</title><link>https://bradmontgomery.net/blog/my-pythonpath-bit-me/</link><description>
 &lt;p&gt;I'd just finished the first version of a new django app (&lt;em&gt;myapp&lt;/em&gt;), and so I pushed it out to my development server. All the new code was in place, so I ran &lt;em&gt;python manage.py syncdb&lt;/em&gt;. The result?&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;  
