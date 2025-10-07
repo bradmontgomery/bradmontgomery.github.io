@@ -334,6 +334,7 @@ def cli():
 @click.option("--addr", default="")
 @click.option("--port", default=8000)
 def server(output, addr, port):
+    """Run a local preview HTTP server."""
     class Handler(http.server.SimpleHTTPRequestHandler):
         def __init__(self, request, client_address, server, directory=output):
             super().__init__(request, client_address, server, directory=output)
@@ -345,6 +346,7 @@ def server(output, addr, port):
 
 @cli.command()
 def new():
+    """Create a new post."""
     # set up the jinja environment
     env = Environment(loader=PackageLoader("site"), autoescape=select_autoescape())
 
@@ -383,6 +385,7 @@ def new():
 @click.option("--templates", default="templates", help="Template directory")
 @click.option("--output", default="docs", help="Output directory")
 def build(content, templates, output):
+    """Build the site"""
     start = time()
 
     # set up the jinja environment
