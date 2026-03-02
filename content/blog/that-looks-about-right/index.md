@@ -3,8 +3,8 @@ date: '2008-12-04T16:27:00+00:00'
 title: That Looks about Right
 draft: false
 tags:
-- Programming
-- meme
+- programming
+- fun
 slug: that-looks-about-right
 description: ''
 markup: md

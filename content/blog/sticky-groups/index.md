@@ -3,7 +3,7 @@ date: '2009-11-24T12:07:00+00:00'
 title: Sticky Groups
 draft: false
 tags:
-- Linux
+- linux
 - web
 slug: sticky-groups
 description: ''

@@ -3,13 +3,10 @@ date: '2010-02-25T15:40:00+00:00'
 title: 'Building PIL on OS X: Snow Leopard'
 draft: false
 tags:
-- Mac
-- OS
-- PIL
-- Python
-- X
-- homebrew
-- virtualenv
+- macos
+- image-processing
+- python
+- devops
 slug: building-pil-on-os-x-snow-leopard
 description: ''
 markup: md

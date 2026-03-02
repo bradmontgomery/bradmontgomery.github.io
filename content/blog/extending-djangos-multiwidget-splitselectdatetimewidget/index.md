@@ -3,7 +3,7 @@ date: '2008-11-19T12:49:00+00:00'
 title: "Extending Django's MultiWidget: SplitSelectDateTimeWidget"
 draft: false
 tags:
-- Python
+- python
 - django
 slug: extending-djangos-multiwidget-splitselectdatetimewidget
 description: ''

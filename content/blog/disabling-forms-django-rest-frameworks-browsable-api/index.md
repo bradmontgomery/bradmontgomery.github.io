@@ -3,11 +3,9 @@ date: '2015-09-03T20:12:42.347829+00:00'
 title: Disabling the Forms in Django Rest Framework's Browsable API
 draft: false
 tags:
-- api
+- web
 - django
-- djangorestframework
 - python
-- restframework
 slug: disabling-forms-django-rest-frameworks-browsable-api
 description: ''
 markup: md

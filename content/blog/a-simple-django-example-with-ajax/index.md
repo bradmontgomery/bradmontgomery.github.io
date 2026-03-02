@@ -3,8 +3,7 @@ date: '2008-11-24T15:11:00+00:00'
 title: A simple Django example with Ajax
 draft: false
 tags:
-- Javascript
-- ajax
+- javascript
 - django
 slug: a-simple-django-example-with-ajax
 description: ''

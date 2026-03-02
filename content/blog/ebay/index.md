@@ -3,7 +3,7 @@ date: '2006-06-30T21:35:00+00:00'
 title: ebay?
 draft: false
 tags:
-- Hardware
+- hardware
 slug: ebay
 description: ''
 markup: md

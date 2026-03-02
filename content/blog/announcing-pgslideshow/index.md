@@ -3,9 +3,8 @@ date: '2007-10-31T10:13:00+00:00'
 title: Announcing pgSlideShow
 draft: false
 tags:
-- Apps
-- Python
-- pygame
+- macos
+- python
 slug: announcing-pgslideshow
 description: ''
 markup: md

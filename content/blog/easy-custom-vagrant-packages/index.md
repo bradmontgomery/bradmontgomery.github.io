@@ -3,10 +3,8 @@ date: '2012-04-16T18:44:44+00:00'
 title: Easy Custom Vagrant Packages
 draft: false
 tags:
-- chef
+- devops
 - linux
-- vagrant
-- virtualbox
 slug: easy-custom-vagrant-packages
 description: ''
 markup: md

@@ -3,8 +3,8 @@ date: '2010-03-23T15:02:00+00:00'
 title: On select_related()
 draft: false
 tags:
-- Python
-- awesome
+- python
+- fun
 - django
 - web
 slug: on-select_related

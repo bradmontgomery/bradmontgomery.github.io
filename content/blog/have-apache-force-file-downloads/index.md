@@ -3,7 +3,7 @@ date: '2009-05-01T14:27:00+00:00'
 title: Have Apache Force File Downloads
 draft: false
 tags:
-- apache
+- linux
 - django
 - web
 slug: have-apache-force-file-downloads

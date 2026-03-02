@@ -3,8 +3,8 @@ date: '2008-05-02T19:02:00+00:00'
 title: A Go at California Rolls
 draft: false
 tags:
-- Food
-- Fun
+- food
+- fun
 slug: a-go-at-california-rolls
 description: ''
 markup: md

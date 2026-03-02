@@ -4,9 +4,6 @@ title: Looking Back. Looking Forward.
 draft: false
 tags:
 - personal
-- professional
-- review
-- year end
 slug: looking-back-looking-forward
 description: ''
 url: /blog/looking-back-looking-forward/

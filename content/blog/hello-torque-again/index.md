@@ -3,8 +3,8 @@ date: '2007-05-16T20:57:00+00:00'
 title: Hello Torque, again.
 draft: false
 tags:
-- Games
-- Programming
+- fun
+- programming
 slug: hello-torque-again
 description: ''
 markup: md

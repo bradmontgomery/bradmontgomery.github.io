@@ -3,7 +3,7 @@ date: '2007-03-09T21:01:00+00:00'
 title: Casual Games
 draft: false
 tags:
-- Games
+- fun
 slug: casual-games
 description: ''
 markup: md

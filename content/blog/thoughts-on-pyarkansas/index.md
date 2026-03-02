@@ -3,10 +3,8 @@ date: '2012-10-28T15:08:44+00:00'
 title: Thoughts on PyArkansas
 draft: false
 tags:
-- awesome
+- fun
 - community
-- conference
-- pyarkansas
 - python
 slug: thoughts-on-pyarkansas
 description: ''

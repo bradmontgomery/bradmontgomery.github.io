@@ -3,10 +3,8 @@ date: '2013-03-07T19:39:54.168594+00:00'
 title: Calculate a Week Range for a Date
 draft: false
 tags:
-- date
-- isocalendar
+- programming
 - python
-- range
 slug: calculate-week-range-date
 description: ''
 markup: md

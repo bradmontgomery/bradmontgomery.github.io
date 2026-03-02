@@ -3,8 +3,8 @@ date: '2006-09-06T21:29:00+00:00'
 title: OpenCV on Mac OS X
 draft: false
 tags:
-- OpenCV
-- Programming
+- image-processing
+- programming
 slug: opencv-on-mac-os-x
 description: ''
 markup: md

@@ -3,7 +3,7 @@ date: '2007-05-22T20:56:00+00:00'
 title: Easy Video Conferencing?
 draft: false
 tags:
-- Apps
+- macos
 slug: easy-video-conferencing
 description: ''
 markup: md

@@ -3,7 +3,7 @@ date: '2009-06-26T09:47:00+00:00'
 title: '"Adding" Q objects in Django'
 draft: false
 tags:
-- Python
+- python
 - django
 - web
 slug: adding-q-objects-in-django

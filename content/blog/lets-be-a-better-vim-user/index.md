@@ -3,10 +3,9 @@ date: '2012-11-04T15:16:47+00:00'
 title: Let's be a better vim user
 draft: false
 tags:
-- editor
+- tools
 - programming
-- unix
-- vim
+- linux
 slug: lets-be-a-better-vim-user
 description: ''
 markup: md

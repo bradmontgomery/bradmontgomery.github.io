@@ -3,8 +3,8 @@ date: '2007-02-09T21:07:00+00:00'
 title: magic SysRq
 draft: false
 tags:
-- Linux
-- Programming
+- linux
+- programming
 slug: magic-sysrq
 description: ''
 markup: md

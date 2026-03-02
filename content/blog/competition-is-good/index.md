@@ -3,7 +3,7 @@ date: '2006-07-22T21:33:00+00:00'
 title: Competition is Good
 draft: false
 tags:
-- Apps
+- macos
 slug: competition-is-good
 description: ''
 markup: md

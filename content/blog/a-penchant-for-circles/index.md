@@ -3,7 +3,7 @@ date: '2006-07-11T21:34:00+00:00'
 title: A Penchant for Circles
 draft: false
 tags:
-- Fun
+- fun
 slug: a-penchant-for-circles
 description: ''
 markup: md

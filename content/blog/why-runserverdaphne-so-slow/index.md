@@ -3,12 +3,9 @@ date: '2017-01-03T16:59:52.007696+00:00'
 title: Why is runserver/daphne so slow?
 draft: false
 tags:
-- channels
-- daphne
 - django
-- node
-- node_modules
-- react
+- devops
+- javascript
 slug: why-runserverdaphne-so-slow
 description: ''
 markup: md

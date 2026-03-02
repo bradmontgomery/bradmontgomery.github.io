@@ -3,9 +3,9 @@ date: '2008-05-20T10:01:00+00:00'
 title: pyCropper
 draft: false
 tags:
-- Fun
-- Image
-- Python
+- fun
+- image-processing
+- python
 slug: pycropper
 description: ''
 markup: md

@@ -3,9 +3,8 @@ date: '2010-03-25T15:21:00+00:00'
 title: Dealing with Unicode and ASCII using Python
 draft: false
 tags:
-- ascii
+- programming
 - python
-- unicode
 slug: dealing-with-unicode-and-ascii-using-python
 description: ''
 markup: md

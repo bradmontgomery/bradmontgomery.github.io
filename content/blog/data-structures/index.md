@@ -3,7 +3,7 @@ date: '2006-09-28T21:27:00+00:00'
 title: Data Structures
 draft: false
 tags:
-- Programming
+- programming
 slug: data-structures
 description: ''
 markup: md

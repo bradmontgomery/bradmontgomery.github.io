@@ -3,7 +3,7 @@ date: '2006-05-31T21:38:00+00:00'
 title: Pleonasms...
 draft: false
 tags:
-- Fun
+- fun
 slug: pleonasms
 description: ''
 markup: md

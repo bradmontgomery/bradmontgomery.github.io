@@ -3,7 +3,7 @@ date: '2009-06-30T14:23:00+00:00'
 title: My PYTHONPATH bit me.
 draft: false
 tags:
-- Python
+- python
 - django
 - web
 slug: my-pythonpath-bit-me

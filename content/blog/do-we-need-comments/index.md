@@ -4,10 +4,8 @@ title: Do we need comments?
 draft: false
 tags:
 - web
-- blog
+- personal
 - community
-- humanity 
-- spam
 slug: do-we-need-comments
 description: 'Does this site need comments?'
 markup: md

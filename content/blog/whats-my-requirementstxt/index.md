@@ -5,7 +5,7 @@ draft: false
 tags:
 - programming
 - python
-- unix
+- linux
 slug: whats-my-requirementstxt
 description: ''
 markup: md

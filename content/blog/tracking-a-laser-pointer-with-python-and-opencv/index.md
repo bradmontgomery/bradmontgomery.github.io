@@ -3,7 +3,7 @@ date: '2008-01-24T13:13:00+00:00'
 title: Tracking a Laser pointer with Python and OpenCV
 draft: false
 tags:
-- opencv
+- image-processing
 - python
 slug: tracking-a-laser-pointer-with-python-and-opencv
 description: ''

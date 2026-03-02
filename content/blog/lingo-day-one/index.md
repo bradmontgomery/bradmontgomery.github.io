@@ -4,7 +4,6 @@ title: Lingo Day One
 draft: false
 tags:
 - food
-- health
 - fitness
 slug: lingo-day-
 description: 'My experience with the Lingo CGM: Day 1'

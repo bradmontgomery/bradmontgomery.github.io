@@ -3,10 +3,8 @@ date: '2013-12-29T18:50:15.583798+00:00'
 title: The little things
 draft: false
 tags:
-- generators
-- lambda
-- map
 - python
+- programming
 slug: little-things
 description: ''
 markup: md

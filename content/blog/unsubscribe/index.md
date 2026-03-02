@@ -3,9 +3,8 @@ date: '2014-12-01T15:16:07.590430+00:00'
 title: Unsubscribe
 draft: false
 tags:
-- comedy
-- computing
-- technology
+- fun
+- programming
 slug: unsubscribe
 description: ''
 url: /blog/unsubscribe/

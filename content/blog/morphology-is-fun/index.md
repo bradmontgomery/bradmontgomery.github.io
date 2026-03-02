@@ -3,11 +3,9 @@ date: '2009-01-04T14:27:00+00:00'
 title: Morphology is Fun!
 draft: false
 tags:
-- Fun
-- Image
-- Programming
-- morphology
-- vision
+- fun
+- image-processing
+- programming
 slug: morphology-is-fun
 description: ''
 markup: md

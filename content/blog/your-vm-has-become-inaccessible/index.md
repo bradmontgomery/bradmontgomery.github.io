@@ -3,8 +3,7 @@ date: '2014-03-21T20:16:55.011764+00:00'
 title: Your VM has become "inaccessible."
 draft: false
 tags:
-- vagrant
-- virtualbox
+- devops
 slug: your-vm-has-become-inaccessible
 description: ''
 url: /blog/your-vm-has-become-inaccessible/

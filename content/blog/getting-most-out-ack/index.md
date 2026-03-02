@@ -3,8 +3,7 @@ date: '2013-10-12T04:29:57.421012+00:00'
 title: Getting the Most out of ack
 draft: false
 tags:
-- ack
-- grep
+- linux
 - tools
 slug: getting-most-out-ack
 description: ''

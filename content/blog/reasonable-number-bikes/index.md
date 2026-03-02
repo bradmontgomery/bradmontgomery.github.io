@@ -3,7 +3,7 @@ date: '2019-05-06T16:47:06.310488+00:00'
 title: A reasonable number of bikes
 draft: false
 tags:
-- bikes
+- fitness
 slug: reasonable-number-bikes
 description: ''
 markup: md

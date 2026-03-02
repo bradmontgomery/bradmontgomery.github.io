@@ -3,8 +3,7 @@ date: '2014-02-16T22:55:19.543756+00:00'
 title: Wrapping up the WORS with a 10k at Shelby Farms
 draft: false
 tags:
-- running
-- trails
+- fitness
 slug: wrapping-wors-10k-shelby-farms
 description: ''
 url: /blog/wrapping-wors-10k-shelby-farms/

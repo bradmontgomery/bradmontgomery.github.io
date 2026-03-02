@@ -3,12 +3,9 @@ date: '2009-09-30T12:15:00+00:00'
 title: Mercurial installation woes on Mac OS X
 draft: false
 tags:
-- Mac
-- OS
-- Python
-- X
-- hg
-- mercurial
+- macos
+- python
+- tools
 slug: mercurial-installation-woes-on-mac-os-x
 description: ''
 markup: md

@@ -3,8 +3,8 @@ date: '2007-02-27T21:06:00+00:00'
 title: 'Javascript: What is the standard?'
 draft: false
 tags:
-- Javascript
-- Programming
+- javascript
+- programming
 - web
 slug: javascript-what-is-the-standard
 description: ''

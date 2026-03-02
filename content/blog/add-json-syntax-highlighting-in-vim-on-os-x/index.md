@@ -2,7 +2,7 @@
 date: '2010-01-15T15:03:00+00:00'
 title: Add JSON syntax highlighting in Vim on OS X
 draft: false
-tags: []
+tags:
 slug: add-json-syntax-highlighting-in-vim-on-os-x
 description: ''
 markup: md

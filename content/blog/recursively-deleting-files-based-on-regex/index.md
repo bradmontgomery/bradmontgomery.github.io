@@ -2,7 +2,7 @@
 date: '2008-09-09T06:20:00+00:00'
 title: Recursively deleting files (based on regex)
 draft: false
-tags: []
+tags:
 slug: recursively-deleting-files-based-on-regex
 description: ''
 markup: md

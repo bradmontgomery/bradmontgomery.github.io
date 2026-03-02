@@ -3,9 +3,8 @@ date: '2014-10-18T14:08:40.629793+00:00'
 title: Running Miles, Curing Cancer
 draft: false
 tags:
-- donate
-- running
-- stjude
+- community
+- fitness
 slug: running-miles-curing-cancer
 description: ''
 url: /blog/running-miles-curing-cancer/

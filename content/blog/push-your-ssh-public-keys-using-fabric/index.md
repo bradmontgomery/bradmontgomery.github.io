@@ -3,8 +3,8 @@ date: '2009-04-30T15:45:00+00:00'
 title: Push Your SSH Public keys using Fabric
 draft: false
 tags:
-- Python
-- fabric
+- python
+- devops
 slug: push-your-ssh-public-keys-using-fabric
 description: ''
 markup: md

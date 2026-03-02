@@ -3,8 +3,8 @@ date: '2006-10-01T21:26:00+00:00'
 title: Peppers!
 draft: false
 tags:
-- Food
-- Fun
+- food
+- fun
 slug: peppers
 description: ''
 markup: md

@@ -3,8 +3,8 @@ date: '2008-12-17T19:37:00+00:00'
 title: How to convert HTML to PDF using Python.
 draft: false
 tags:
-- PDF
-- Python
+- tools
+- python
 - web
 slug: how-to-convert-html-to-pdf-using-python
 description: ''

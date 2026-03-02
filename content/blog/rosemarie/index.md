@@ -3,8 +3,8 @@ date: '2006-05-25T21:38:00+00:00'
 title: Rosemarie
 draft: false
 tags:
-- Family
-- Fun
+- personal
+- fun
 slug: rosemarie
 description: ''
 markup: md

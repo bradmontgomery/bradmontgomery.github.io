@@ -3,9 +3,8 @@ date: '2013-03-15T03:43:17.745865+00:00'
 title: How in the world do you Mock a name attribute?
 draft: false
 tags:
-- mock
+- programming
 - python
-- testing
 slug: how-world-do-you-mock-name-attribute
 description: ''
 markup: md

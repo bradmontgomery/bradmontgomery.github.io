@@ -2,7 +2,7 @@
 date: '2015-12-16T15:20:03.113439+00:00'
 title: Ignoring SuspiciousOperation requests for fun and (profit?)
 draft: false
-tags: []
+tags:
 slug: ignoring-suspiciousoperation-requests-fun-and-profit
 description: ''
 markup: md

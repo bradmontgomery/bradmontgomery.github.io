@@ -3,9 +3,9 @@ date: '2015-03-17T04:54:01.779392+00:00'
 title: 'Django hack: Help text on a model instance'
 draft: false
 tags:
-- curry
+- python
 - django
-- functional
+- programming
 slug: django-hack-help-text-modal-instance
 description: ''
 markup: md

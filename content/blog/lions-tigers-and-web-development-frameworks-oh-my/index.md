@@ -3,10 +3,9 @@ date: '2008-06-17T20:05:00+00:00'
 title: Lions, Tigers, and Web Development Frameworks, oh my!
 draft: false
 tags:
-- Javascript
-- Programming
-- Python
-- php
+- javascript
+- programming
+- python
 - web
 slug: lions-tigers-and-web-development-frameworks-oh-my
 description: ''

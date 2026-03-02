@@ -3,9 +3,9 @@ date: '2009-05-06T15:03:00+00:00'
 title: Data Truncated Errors
 draft: false
 tags:
-- Python
+- python
 - django
-- mysql
+- database
 - web
 slug: data-truncated-errors
 description: ''

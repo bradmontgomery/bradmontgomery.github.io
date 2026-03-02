@@ -3,10 +3,9 @@ date: '2007-01-05T21:13:00+00:00'
 title: Migrating PHP scripts to MySQL from PostgreSQL
 draft: false
 tags:
-- Programming
-- mysql
-- php
-- postgresql
+- programming
+- database
+- web
 slug: migrating-php-scripts-to-mysql-from-postgresql
 description: ''
 markup: md

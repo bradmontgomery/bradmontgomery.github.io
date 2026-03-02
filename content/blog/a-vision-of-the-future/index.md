@@ -3,11 +3,8 @@ date: '2012-09-20T18:20:16+00:00'
 title: A Vision of the Future
 draft: false
 tags:
-- fiction
-- fightthefuture
 - fun
-- law
-- patents
+- community
 slug: a-vision-of-the-future
 description: ''
 markup: md

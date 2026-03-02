@@ -3,9 +3,7 @@ date: '2008-12-04T19:11:00+00:00'
 title: radiohead - 15 steps video
 draft: false
 tags:
-- Fun
-- awesome
-- music
+- fun
 slug: radiohead-15-steps-video
 description: ''
 markup: md

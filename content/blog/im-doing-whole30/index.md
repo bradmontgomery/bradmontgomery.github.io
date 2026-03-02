@@ -3,11 +3,8 @@ date: '2019-02-03T18:11:01.976320+00:00'
 title: I'm doing a Whole30
 draft: false
 tags:
-- diet
+- food
 - fitness
-- health
-- nutrition
-- whole30
 slug: im-doing-whole30
 description: ''
 markup: md

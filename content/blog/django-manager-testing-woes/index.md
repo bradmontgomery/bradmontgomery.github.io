@@ -4,11 +4,8 @@ title: Django Manager Testing Woes
 draft: false
 tags:
 - django
-- managers
-- mock
-- models
+- programming
 - python
-- testing
 slug: django-manager-testing-woes
 description: ''
 markup: md

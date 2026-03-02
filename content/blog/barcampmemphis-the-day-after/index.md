@@ -3,8 +3,7 @@ date: '2008-11-09T18:53:00+00:00'
 title: BarCampMemphis, the Day After
 draft: false
 tags:
-- '#bcmem'
-- BarCampMemphis
+- community
 - django
 slug: barcampmemphis-the-day-after
 description: ''

@@ -3,9 +3,8 @@ date: '2008-10-22T16:41:00+00:00'
 title: A topic for BarCampMemphis
 draft: false
 tags:
-- '#bcmem'
-- BarCampMemphis
-- Python
+- community
+- python
 - django
 slug: a-topic-for-barcampmemphis
 description: ''

@@ -3,10 +3,8 @@ date: '2007-04-23T20:58:00+00:00'
 title: MacMathematics
 draft: false
 tags:
-- Apps
-- Math
-- OS
-- X
+- macos
+- programming
 slug: macmathematics
 description: ''
 markup: md

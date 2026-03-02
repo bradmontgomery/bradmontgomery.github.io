@@ -3,7 +3,7 @@ date: '2008-08-13T08:30:00+00:00'
 title: Net Neutrality
 draft: false
 tags:
-- networking
+- linux
 - web
 slug: net-neutrality
 description: ''

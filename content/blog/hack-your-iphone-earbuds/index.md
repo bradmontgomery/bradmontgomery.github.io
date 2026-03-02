@@ -3,10 +3,10 @@ date: '2008-09-23T19:31:00+00:00'
 title: hack your iphone earbuds...
 draft: false
 tags:
-- Fun
-- Hack
-- Hardware
-- iPhone
+- fun
+- community
+- hardware
+- apple
 slug: hack-your-iphone-earbuds
 description: ''
 markup: md

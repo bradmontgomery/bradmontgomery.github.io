@@ -3,9 +3,8 @@ date: '2014-06-25T03:12:55.160380+00:00'
 title: My Development Environment
 draft: false
 tags:
-- development
-- environment
-- software
+- programming
+- devops
 - tools
 slug: my-development-environment
 description: ''

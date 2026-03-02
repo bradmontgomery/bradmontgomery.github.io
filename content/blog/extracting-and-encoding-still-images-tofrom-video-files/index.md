@@ -3,8 +3,8 @@ date: '2008-08-11T09:05:00+00:00'
 title: Extracting and Encoding Still images to/from Video files
 draft: false
 tags:
-- Apps
-- Video
+- macos
+- hardware
 slug: extracting-and-encoding-still-images-tofrom-video-files
 description: ''
 markup: md

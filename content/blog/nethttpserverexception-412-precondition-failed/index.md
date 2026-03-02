@@ -3,7 +3,7 @@ date: '2012-02-05T20:15:19+00:00'
 title: 'Net::HTTPServerException: 412 "Precondition Failed"'
 draft: false
 tags:
-- chef
+- devops
 slug: nethttpserverexception-412-precondition-failed
 description: ''
 markup: md

@@ -4,7 +4,7 @@ title: We are all inventors
 draft: false
 tags:
 - fun
-- image
+- image-processing
 - ai
 slug: we-are-all-inventors
 description: 'I just now realized...'

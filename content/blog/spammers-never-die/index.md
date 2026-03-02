@@ -3,8 +3,8 @@ date: '2006-12-17T21:20:00+00:00'
 title: Spammers never die!
 draft: false
 tags:
-- Programming
-- Spam
+- programming
+- web
 slug: spammers-never-die
 description: ''
 markup: md

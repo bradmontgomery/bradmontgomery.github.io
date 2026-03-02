@@ -3,10 +3,10 @@ date: '2009-11-24T13:47:00+00:00'
 title: Gahhh!! Django, virtualenv, and cx_Oracle
 draft: false
 tags:
-- apache
-- cx_oracle
+- linux
+- database
 - django
-- virtualenv
+- devops
 slug: gahhh-django-virtualenv-and-cx_oracle
 description: ''
 markup: md

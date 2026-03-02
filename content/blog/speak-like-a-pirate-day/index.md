@@ -3,7 +3,7 @@ date: '2006-09-19T21:28:00+00:00'
 title: Speak like a Pirate Day!
 draft: false
 tags:
-- Fun
+- fun
 slug: speak-like-a-pirate-day
 description: ''
 markup: md

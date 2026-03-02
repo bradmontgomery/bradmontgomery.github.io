@@ -3,8 +3,7 @@ date: '2007-01-03T21:15:00+00:00'
 title: Blocking outgoing UDP traffic using iptables
 draft: false
 tags:
-- Linux
-- networking
+- linux
 slug: blocking-outgoing-udp-traffic-using-iptables
 description: ''
 markup: md

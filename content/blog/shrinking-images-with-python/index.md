@@ -3,7 +3,7 @@ date: '2008-02-15T18:26:00+00:00'
 title: Shrinking Images with Python
 draft: false
 tags:
-- Python
+- python
 slug: shrinking-images-with-python
 description: ''
 markup: md

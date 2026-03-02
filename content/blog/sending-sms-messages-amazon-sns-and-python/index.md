@@ -3,11 +3,9 @@ date: '2017-02-01T22:46:52.151549+00:00'
 title: Sending SMS messages with Amazon SNS and Python
 draft: false
 tags:
-- aws
+- devops
 - python
-- sms
-- sns
-- texting
+- web
 slug: sending-sms-messages-amazon-sns-and-python
 description: ''
 markup: md

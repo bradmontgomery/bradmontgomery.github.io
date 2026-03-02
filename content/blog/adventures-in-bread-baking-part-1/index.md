@@ -3,8 +3,7 @@ date: '2010-01-23T09:57:00+00:00'
 title: 'Adventures in Bread-Baking: Part 1'
 draft: false
 tags:
-- Food
-- bread
+- food
 slug: adventures-in-bread-baking-part-1
 description: ''
 markup: md

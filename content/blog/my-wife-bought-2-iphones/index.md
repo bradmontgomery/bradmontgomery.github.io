@@ -3,7 +3,7 @@ date: '2007-07-04T20:51:00+00:00'
 title: My wife bought 2 iPhones!!!
 draft: false
 tags:
-- iPhone
+- apple
 slug: my-wife-bought-2-iphones
 description: ''
 markup: md

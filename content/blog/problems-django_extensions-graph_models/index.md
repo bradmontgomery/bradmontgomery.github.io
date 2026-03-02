@@ -4,7 +4,6 @@ title: problems with django_extension's graph_models?
 draft: false
 tags:
 - django
-- django_extensions
 - python
 slug: problems-django_extensions-graph_models
 description: ''

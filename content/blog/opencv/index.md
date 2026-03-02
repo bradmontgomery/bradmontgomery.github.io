@@ -3,8 +3,8 @@ date: '2006-08-18T21:31:00+00:00'
 title: OpenCV
 draft: false
 tags:
-- OpenCV
-- Programming
+- image-processing
+- programming
 slug: opencv
 description: ''
 markup: md

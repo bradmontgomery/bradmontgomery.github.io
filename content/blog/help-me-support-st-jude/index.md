@@ -3,10 +3,8 @@ date: '2016-05-21T18:54:19.840131+00:00'
 title: Help me support St Jude
 draft: false
 tags:
-- fundraising
-- marathon
-- running
-- stjude
+- community
+- fitness
 slug: help-me-support-st-jude
 description: ''
 markup: md

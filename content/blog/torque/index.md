@@ -3,8 +3,8 @@ date: '2006-10-15T21:25:00+00:00'
 title: Torque
 draft: false
 tags:
-- Games
-- Programming
+- fun
+- programming
 slug: torque
 description: ''
 markup: md

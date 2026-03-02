@@ -3,8 +3,8 @@ date: '2007-03-05T21:04:00+00:00'
 title: Mac mini disassembly
 draft: false
 tags:
-- Hardware
-- Mac
+- hardware
+- macos
 slug: mac-mini-disassembly
 description: ''
 markup: md

@@ -3,8 +3,8 @@ date: '2009-01-05T19:29:00+00:00'
 title: Add a Context Processor for your Django app using Sites
 draft: false
 tags:
-- Programming
-- Python
+- programming
+- python
 - django
 slug: add-a-context-processor-for-your-django-app-using-sites
 description: ''

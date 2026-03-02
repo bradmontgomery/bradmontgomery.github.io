@@ -3,10 +3,9 @@ date: '2013-04-01T16:29:14.615885+00:00'
 title: Python's zip, map, and lambda
 draft: false
 tags:
-- lambda
-- map
+- programming
 - python
-- zip
+- tools
 slug: pythons-zip-map-and-lambda
 description: ''
 markup: md

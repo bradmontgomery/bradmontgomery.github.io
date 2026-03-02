@@ -3,8 +3,8 @@ date: '2006-07-24T21:32:00+00:00'
 title: YouOS
 draft: false
 tags:
-- Fun
-- Programming
+- fun
+- programming
 - web
 slug: youos
 description: ''

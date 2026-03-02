@@ -3,10 +3,9 @@ date: '2008-07-11T11:09:00+00:00'
 title: 'Games for Kids: dodger'
 draft: false
 tags:
-- Apps
-- Games
-- Python
-- pyglet
+- macos
+- fun
+- python
 slug: games-for-kids-dodger
 description: ''
 markup: md

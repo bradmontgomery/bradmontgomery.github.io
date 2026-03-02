@@ -3,7 +3,7 @@ date: '2007-07-04T20:47:00+00:00'
 title: Using (and Abusing) the iPhone
 draft: false
 tags:
-- iPhone
+- apple
 slug: using-and-abusing-the-iphone
 description: ''
 markup: md

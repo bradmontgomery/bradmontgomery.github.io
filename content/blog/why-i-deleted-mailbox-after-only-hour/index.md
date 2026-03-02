@@ -3,11 +3,9 @@ date: '2013-03-13T15:44:30.420174+00:00'
 title: Why I deleted Mailbox after only an hour.
 draft: false
 tags:
-- email
-- gmail
-- inboxzero
-- ios
-- mailbox
+- web
+- tools
+- apple
 slug: why-i-deleted-mailbox-after-only-hour
 description: ''
 markup: md

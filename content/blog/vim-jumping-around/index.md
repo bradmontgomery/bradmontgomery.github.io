@@ -3,10 +3,8 @@ date: '2012-11-12T17:51:31+00:00'
 title: 'Vim: Jumping around!'
 draft: false
 tags:
-- editor
-- unix
-- vi
-- vim
+- tools
+- linux
 slug: vim-jumping-around
 description: ''
 markup: md

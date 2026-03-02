@@ -2,7 +2,7 @@
 date: '2008-07-30T15:29:00+00:00'
 title: PHP is chopping off my Access Memo Fields
 draft: false
-tags: []
+tags:
 slug: php-is-chopping-off-my-access-memo-fields
 description: ''
 markup: md

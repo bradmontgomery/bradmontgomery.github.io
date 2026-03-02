@@ -3,10 +3,9 @@ date: '2024-12-07 21:06:59.241301+00:00'
 title: Thoughts from re:Invent 2024
 draft: false
 tags:
-- aws
-- developer
-- technology
-- industry
+- devops
+- programming
+- community
 slug: thoughts-from-reinvent-
 description: 'Generative AI, Bedrock, and easy (easier) data lakes.'
 markup: md
