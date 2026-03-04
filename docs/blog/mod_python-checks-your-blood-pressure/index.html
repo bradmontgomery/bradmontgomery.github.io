@@ -1,68 +1,25 @@
+<!-- Example blog post template with timezone-aware dates -->
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="robots" content="INDEX, FOLLOW" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mod_python checks your blood pressure</title>
-    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
-    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
-    <link type="text/plain" rel="author" href="/humans.txt" />
-    <link type="text/plain" rel="author" href="/llms.txt" />
-    
-    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
-      rel="stylesheet"
-    />
-    <style type="text/css">
-      h1,
-      h2,
-      h3 {
-        font-family: "Rubik Doodle Shadow", serif;
-      }
-      h4,
-      h5,
-      h6 {
-        font-family: "Abril Fatface", serif;
-      }
-      code,
-      pre {
-        font-family: "Anonymous Pro", monospace;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
-        <a href="/blog/tags/">Tags</a>
-        <a href="/about/">About</a>
-        <a href="/services/">Services</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-      <h1>mod_python checks your blood pressure</h1>
-      
-  <div>Published on 2009-03-24 09:28:00+00:00</div>
-  
-    <div>
-    
-      <mark>Fun</mark> &nbsp;
-    
-      <mark>Python</mark> &nbsp;
-    
-      <mark>django</mark> &nbsp;
-    
-    </div>
-  
-
-    </header>
-    <main> 
-  <section>
-  
+</head>
+<body>
+    <article>
+        <h1>mod_python checks your blood pressure</h1>
+        
+        <!-- Published date with client-side timezone conversion -->
+        
+        <time datetime="2009-03-24T09:28:00+00:00" data-local="true">
+            2009-03-24 09:28 UTC
+        </time>
+        
+        
+        <!-- Post content -->
+        <div class="content">
+            
 <p>I'm deploying a <a href="http://www.djangoproject.com/">django</a> project using <a href="http://www.modpython.org/">mod_python</a>... now, usually I will just use my package management tools to install a binary version, but this time I need to build it from source.</p>
 <p>As I get ready to go through the whole configure/make/make install process, I peruse the output of configure just to make sure everything is ok...</p>
 <p>checking for gcc... gcc<br />
@@ -116,8 +73,10 @@ config.status: creating dist/setup.py<br />
 config.status: creating dist/Makefile</p>
 <p>Thank you for caring for my health, mod_python.</p>
 
-  </section>
- </main>
-    <footer> All content copyright &copy; Brad Montgomery. </footer>
-  </body>
+        </div>
+    </article>
+    
+    <!-- Load timezone converter at end of page -->
+    <script src="/static/js/timezone.js"></script>
+</body>
 </html>

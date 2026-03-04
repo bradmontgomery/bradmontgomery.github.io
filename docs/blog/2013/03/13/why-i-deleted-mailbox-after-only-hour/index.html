@@ -1,72 +1,25 @@
+<!-- Example blog post template with timezone-aware dates -->
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="robots" content="INDEX, FOLLOW" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why I deleted Mailbox after only an hour.</title>
-    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
-    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
-    <link type="text/plain" rel="author" href="/humans.txt" />
-    <link type="text/plain" rel="author" href="/llms.txt" />
-    
-    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
-      rel="stylesheet"
-    />
-    <style type="text/css">
-      h1,
-      h2,
-      h3 {
-        font-family: "Rubik Doodle Shadow", serif;
-      }
-      h4,
-      h5,
-      h6 {
-        font-family: "Abril Fatface", serif;
-      }
-      code,
-      pre {
-        font-family: "Anonymous Pro", monospace;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
-        <a href="/blog/tags/">Tags</a>
-        <a href="/about/">About</a>
-        <a href="/services/">Services</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-      <h1>Why I deleted Mailbox after only an hour.</h1>
-      
-  <div>Published on 2013-03-13 15:44:30.420174+00:00</div>
-  
-    <div>
-    
-      <mark>email</mark> &nbsp;
-    
-      <mark>gmail</mark> &nbsp;
-    
-      <mark>inboxzero</mark> &nbsp;
-    
-      <mark>ios</mark> &nbsp;
-    
-      <mark>mailbox</mark> &nbsp;
-    
-    </div>
-  
-
-    </header>
-    <main> 
-  <section>
-  
+</head>
+<body>
+    <article>
+        <h1>Why I deleted Mailbox after only an hour.</h1>
+        
+        <!-- Published date with client-side timezone conversion -->
+        
+        <time datetime="2013-03-13T15:44:30.420174+00:00" data-local="true">
+            2013-03-13 15:44 UTC
+        </time>
+        
+        
+        <!-- Post content -->
+        <div class="content">
+            
 <p>I'll be honest; I was really excited about <a href="http://www.mailboxapp.com/">Mailbox</a>.
 When I first heard about it, I'd become increasingly <a href="http://markosullivan.ca/dont-suck-at-email/">Sucky at Email</a>.
 My inbox was a mess. I had <strong>five</strong> different kinds of flags/stars,
@@ -104,8 +57,10 @@ of using it, I deleted it from my phone.</p>
 <hr />
 <p><strong>Update</strong>: Mailbox is gone now, but the folks over at <a href="https://www.getmailbird.com">mailbird</a> asked if I'd link to their article about what might have happened. And so, <a href="https://www.getmailbird.com/what-happened-to-mailboxapp-com/">here it is: what happened to mailbox</a>.</p>
 
-  </section>
- </main>
-    <footer> All content copyright &copy; Brad Montgomery. </footer>
-  </body>
+        </div>
+    </article>
+    
+    <!-- Load timezone converter at end of page -->
+    <script src="/static/js/timezone.js"></script>
+</body>
 </html>

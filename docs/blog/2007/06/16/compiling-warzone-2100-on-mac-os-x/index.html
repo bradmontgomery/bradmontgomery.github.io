@@ -1,68 +1,25 @@
+<!-- Example blog post template with timezone-aware dates -->
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="robots" content="INDEX, FOLLOW" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compiling Warzone 2100 on Mac OS X</title>
-    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
-    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
-    <link type="text/plain" rel="author" href="/humans.txt" />
-    <link type="text/plain" rel="author" href="/llms.txt" />
-    
-    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
-      rel="stylesheet"
-    />
-    <style type="text/css">
-      h1,
-      h2,
-      h3 {
-        font-family: "Rubik Doodle Shadow", serif;
-      }
-      h4,
-      h5,
-      h6 {
-        font-family: "Abril Fatface", serif;
-      }
-      code,
-      pre {
-        font-family: "Anonymous Pro", monospace;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
-        <a href="/blog/tags/">Tags</a>
-        <a href="/about/">About</a>
-        <a href="/services/">Services</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-      <h1>Compiling Warzone 2100 on Mac OS X</h1>
-      
-  <div>Published on 2007-06-16 20:53:00+00:00</div>
-  
-    <div>
-    
-      <mark>Games</mark> &nbsp;
-    
-      <mark>OS</mark> &nbsp;
-    
-      <mark>X</mark> &nbsp;
-    
-    </div>
-  
-
-    </header>
-    <main> 
-  <section>
-  
+</head>
+<body>
+    <article>
+        <h1>Compiling Warzone 2100 on Mac OS X</h1>
+        
+        <!-- Published date with client-side timezone conversion -->
+        
+        <time datetime="2007-06-16T20:53:00+00:00" data-local="true">
+            2007-06-16 20:53 UTC
+        </time>
+        
+        
+        <!-- Post content -->
+        <div class="content">
+            
 <p>I recently ran across <a href="http://wz2100.net/">The Warzone 2100 Resurrection Project</a>, and I thought to myself,&quot;cool, I wonder if there's an OS X version...&quot; So, I hit their <a href="http://wz2100.net/downloads.html">downloads</a> page only to find the message: &quot;(The MacOSX diskimage will follow soon)&quot;</p>
 <p>So I thought, &quot;oh well, I'll just grab the source code and compile it!&quot; After about two hours of digging, I finally got it compiled, and here's how! (NOTE: I've got quite a bit of Unix stuff installed via <a href="http://finkproject.org/">fink</a>, so your mileage may vary)</p>
 <ol>
@@ -117,8 +74,10 @@ sudo make install
 <p>And this &quot;should&quot; lauch the application!</p>
 <p>Enjoy!</p>
 
-  </section>
- </main>
-    <footer> All content copyright &copy; Brad Montgomery. </footer>
-  </body>
+        </div>
+    </article>
+    
+    <!-- Load timezone converter at end of page -->
+    <script src="/static/js/timezone.js"></script>
+</body>
 </html>

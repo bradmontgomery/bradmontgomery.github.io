@@ -1,66 +1,25 @@
+<!-- Example blog post template with timezone-aware dates -->
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="robots" content="INDEX, FOLLOW" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your VM has become &#34;inaccessible.&#34;</title>
-    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
-    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
-    <link type="text/plain" rel="author" href="/humans.txt" />
-    <link type="text/plain" rel="author" href="/llms.txt" />
-    
-    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
-      rel="stylesheet"
-    />
-    <style type="text/css">
-      h1,
-      h2,
-      h3 {
-        font-family: "Rubik Doodle Shadow", serif;
-      }
-      h4,
-      h5,
-      h6 {
-        font-family: "Abril Fatface", serif;
-      }
-      code,
-      pre {
-        font-family: "Anonymous Pro", monospace;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
-        <a href="/blog/tags/">Tags</a>
-        <a href="/about/">About</a>
-        <a href="/services/">Services</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-      <h1>Your VM has become &#34;inaccessible.&#34;</h1>
-      
-  <div>Published on 2014-03-21 20:16:55.011764+00:00</div>
-  
-    <div>
-    
-      <mark>vagrant</mark> &nbsp;
-    
-      <mark>virtualbox</mark> &nbsp;
-    
-    </div>
-  
-
-    </header>
-    <main> 
-  <section>
-  
+</head>
+<body>
+    <article>
+        <h1>Your VM has become &#34;inaccessible.&#34;</h1>
+        
+        <!-- Published date with client-side timezone conversion -->
+        
+        <time datetime="2014-03-21T20:16:55.011764+00:00" data-local="true">
+            2014-03-21 20:16 UTC
+        </time>
+        
+        
+        <!-- Post content -->
+        <div class="content">
+            
 <p>Today I ran out of disk space on my Macbook Air. I mean, <em>completely</em> out of
 space. I use vagrant and
 Virtualbox for work, and I knew that had
@@ -122,8 +81,10 @@ VirtualBox config file, prior to it saving a VM. So, here's what I did:</p>
 <p>After that, my both VirtualBox and vagrant appeared to work with my VMs.</p>
 <p>Crisis averted, and with only a couple hours lost.</p>
 
-  </section>
- </main>
-    <footer> All content copyright &copy; Brad Montgomery. </footer>
-  </body>
+        </div>
+    </article>
+    
+    <!-- Load timezone converter at end of page -->
+    <script src="/static/js/timezone.js"></script>
+</body>
 </html>

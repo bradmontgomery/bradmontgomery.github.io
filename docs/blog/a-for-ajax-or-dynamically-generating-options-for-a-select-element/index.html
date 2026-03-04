@@ -1,70 +1,25 @@
+<!-- Example blog post template with timezone-aware dates -->
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="robots" content="INDEX, FOLLOW" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A for AJAX - OR - Dynamically generating options for a select element.</title>
-    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
-    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
-    <link type="text/plain" rel="author" href="/humans.txt" />
-    <link type="text/plain" rel="author" href="/llms.txt" />
-    
-    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
-      rel="stylesheet"
-    />
-    <style type="text/css">
-      h1,
-      h2,
-      h3 {
-        font-family: "Rubik Doodle Shadow", serif;
-      }
-      h4,
-      h5,
-      h6 {
-        font-family: "Abril Fatface", serif;
-      }
-      code,
-      pre {
-        font-family: "Anonymous Pro", monospace;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
-        <a href="/blog/tags/">Tags</a>
-        <a href="/about/">About</a>
-        <a href="/services/">Services</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-      <h1>A for AJAX - OR - Dynamically generating options for a select element.</h1>
-      
-  <div>Published on 2009-07-14 11:42:00+00:00</div>
-  
-    <div>
-    
-      <mark>Javascript</mark> &nbsp;
-    
-      <mark>Prototype</mark> &nbsp;
-    
-      <mark>ajax</mark> &nbsp;
-    
-      <mark>web</mark> &nbsp;
-    
-    </div>
-  
-
-    </header>
-    <main> 
-  <section>
-  
+</head>
+<body>
+    <article>
+        <h1>A for AJAX - OR - Dynamically generating options for a select element.</h1>
+        
+        <!-- Published date with client-side timezone conversion -->
+        
+        <time datetime="2009-07-14T11:42:00+00:00" data-local="true">
+            2009-07-14 11:42 UTC
+        </time>
+        
+        
+        <!-- Post content -->
+        <div class="content">
+            
 <p>I don't do a lot of AJAXy web development, but when I do, I usually make use of <a href="http://prototypejs.org/">Prototype</a>. I've recently created a form containing a <em><select></em> element whose *<option>*s are dynamically generated via an AJAX request. The problem however, is that a <em><strong>selected</strong> option</em> was already in the form. So before the AJAX request, my HTML looked something like this:</p>
 <pre><code>&lt;select name=&quot;s&quot; id=&quot;s&quot;&gt;  
 &lt;option value=&quot;val1&quot;&gt;Value 1&lt;/option&gt;  
@@ -147,8 +102,10 @@ document.observe('dom:loaded', function() {
 <p>This is fairly basic AJAX behavior, but for those of us who don't live, breathe, eat, and sleep AJAX, this is an easy mistake to make.</p>
 <p>So the moral of this story? Know your tools! It's always good to <em>Know what's going on!</em>™</p>
 
-  </section>
- </main>
-    <footer> All content copyright &copy; Brad Montgomery. </footer>
-  </body>
+        </div>
+    </article>
+    
+    <!-- Load timezone converter at end of page -->
+    <script src="/static/js/timezone.js"></script>
+</body>
 </html>
