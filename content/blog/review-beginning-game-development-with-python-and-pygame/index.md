@@ -2,7 +2,7 @@
 date: '2008-04-13T19:40:00+00:00'
 title: 'Review: Beginning Game Development with Python and Pygame'
 draft: false
-tags: []
+tags:
 slug: review-beginning-game-development-with-python-and-pygame
 description: ''
 markup: md

@@ -3,10 +3,9 @@ date: '2007-01-10T21:10:00+00:00'
 title: Automatic Backups with cron, tar, and SSH
 draft: false
 tags:
-- Backup
-- Linux
-- OS
-- X
+- devops
+- linux
+- macos
 slug: automatic-backups-with-cron-tar-and-ssh
 description: ''
 markup: md

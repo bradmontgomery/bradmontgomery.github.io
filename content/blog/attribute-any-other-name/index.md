@@ -3,12 +3,8 @@ date: '2013-09-12T04:24:13.304178+00:00'
 title: An Attribute by any other name...
 draft: false
 tags:
-- __gettattr__
-- attributes
-- descriptors
-- programming
-- properties
 - python
+- programming
 slug: attribute-any-other-name
 description: ''
 markup: md

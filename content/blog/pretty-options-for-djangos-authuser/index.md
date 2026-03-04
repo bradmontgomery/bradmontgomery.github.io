@@ -3,7 +3,7 @@ date: '2010-04-22T09:07:00+00:00'
 title: Pretty options for Django's auth.User
 draft: false
 tags:
-- Python
+- python
 - django
 - web
 slug: pretty-options-for-djangos-authuser

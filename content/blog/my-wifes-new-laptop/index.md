@@ -3,7 +3,7 @@ date: '2006-12-23T21:18:00+00:00'
 title: My Wife's New Laptop
 draft: false
 tags:
-- Hardware
+- hardware
 slug: my-wifes-new-laptop
 description: ''
 markup: md

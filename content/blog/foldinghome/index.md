@@ -2,7 +2,7 @@
 date: '2008-05-24T07:59:00+00:00'
 title: Folding@Home
 draft: false
-tags: []
+tags:
 slug: foldinghome
 description: ''
 markup: md

@@ -2,7 +2,7 @@
 date: '2007-09-15T20:42:00+00:00'
 title: $100 iPhone Early adopter Credit
 draft: false
-tags: []
+tags:
 slug: 100-iphone-early-adopter-credit
 description: ''
 markup: md

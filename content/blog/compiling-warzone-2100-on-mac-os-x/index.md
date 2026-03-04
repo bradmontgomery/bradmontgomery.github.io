@@ -3,9 +3,8 @@ date: '2007-06-16T20:53:00+00:00'
 title: Compiling Warzone 2100 on Mac OS X
 draft: false
 tags:
-- Games
-- OS
-- X
+- fun
+- macos
 slug: compiling-warzone-2100-on-mac-os-x
 description: ''
 markup: md

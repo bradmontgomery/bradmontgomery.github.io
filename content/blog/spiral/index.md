@@ -3,10 +3,9 @@ date: '2006-07-28T21:31:00+00:00'
 title: Spiral
 draft: false
 tags:
-- Fun
-- Linux
-- OS
-- X
+- fun
+- linux
+- macos
 slug: spiral
 description: ''
 markup: md

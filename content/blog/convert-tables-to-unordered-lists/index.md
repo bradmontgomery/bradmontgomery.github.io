@@ -3,9 +3,8 @@ date: '2010-05-28T15:39:00+00:00'
 title: Convert Tables to Unordered Lists
 draft: false
 tags:
-- BeautifulSoup
-- Programming
-- Python
+- python
+- programming
 - web
 slug: convert-tables-to-unordered-lists
 description: ''

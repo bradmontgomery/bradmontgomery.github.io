@@ -3,12 +3,9 @@ date: '2015-09-30T22:42:44.207595+00:00'
 title: Django Admin Filters from ArrayFields
 draft: false
 tags:
-- admin
-- array
-- arrayfield
 - django
-- filter
-- postgresql
+- programming
+- database
 slug: django-admin-filters-arrayfields
 description: ''
 markup: md

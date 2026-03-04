@@ -2,7 +2,7 @@
 date: '2007-10-16T21:04:00+00:00'
 title: On the Move...
 draft: false
-tags: []
+tags:
 slug: on-the-move
 description: ''
 markup: md

@@ -3,8 +3,8 @@ date: '2008-07-12T10:12:00+00:00'
 title: Why Bluetooth headsets didn't catch on in the '90s
 draft: false
 tags:
-- Fun
-- Hardware
+- fun
+- hardware
 slug: why-bluetooth-headsets-didnt-catch-on-in-the-90s
 description: ''
 markup: md

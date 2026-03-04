@@ -4,9 +4,8 @@ title: String Theory
 draft: false
 tags:
 - fun
-- physics
-- running
-- strings
+- programming
+- fitness
 slug: string-theory
 description: ''
 markup: md

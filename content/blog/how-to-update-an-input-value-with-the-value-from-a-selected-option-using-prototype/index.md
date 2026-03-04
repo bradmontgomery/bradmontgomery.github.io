@@ -3,8 +3,8 @@ date: '2008-08-12T10:32:00+00:00'
 title: How to update an input value with the value from a selected option using Prototype
 draft: false
 tags:
-- Javascript
-- Programming
+- javascript
+- programming
 - web
 slug: how-to-update-an-input-value-with-the-value-from-a-selected-option-using-prototype
 description: ''

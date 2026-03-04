@@ -3,8 +3,7 @@ date: '2014-02-12T03:19:30.547456+00:00'
 title: WORS 8K+ at Stanky Creek
 draft: false
 tags:
-- running
-- trails
+- fitness
 slug: wors-8k-stanky-creek
 description: ''
 url: /blog/wors-8k-stanky-creek/

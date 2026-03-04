@@ -4,10 +4,7 @@ title: 'Giving Tuesday: My Favorite Memphis Nonprofits'
 draft: false
 tags:
 - fitness
-- giving
-- memphis
-- memtech
-- nonprofits
+- community
 slug: giving-tuesday-my-favorite-memphis-nonprofits
 description: ''
 markup: md

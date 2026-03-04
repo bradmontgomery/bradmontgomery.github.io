@@ -4,7 +4,6 @@ title: ChatGPT on choosing a JavaScript framework
 draft: false
 tags:
 - ai
-- chatgpt
 - fun
 slug: chatgpt-choosing-javascript-framework
 description: ''

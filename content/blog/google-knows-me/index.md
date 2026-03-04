@@ -3,8 +3,8 @@ date: '2006-06-07T21:37:00+00:00'
 title: Google Knows Me!!
 draft: false
 tags:
-- Fun
-- Programming
+- fun
+- programming
 slug: google-knows-me
 description: ''
 markup: md

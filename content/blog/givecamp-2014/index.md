@@ -4,10 +4,8 @@ title: GiveCamp 2014
 draft: false
 tags:
 - community
-- developer
-- givecamp
-- memphis
-- rackspace
+- programming
+- devops
 slug: givecamp-2014
 description: ''
 url: /blog/givecamp-2014/

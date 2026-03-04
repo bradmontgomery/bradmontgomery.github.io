@@ -3,9 +3,7 @@ date: '2006-11-01T21:24:00+00:00'
 title: DiskWarrior Rocks!
 draft: false
 tags:
-- Apps
-- OS
-- X
+- macos
 slug: diskwarrior-rocks
 description: ''
 markup: md

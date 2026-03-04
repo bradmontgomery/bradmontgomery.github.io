@@ -3,10 +3,8 @@ date: '2009-12-13T14:57:00+00:00'
 title: Ubuntu Audio, YES! Windows XP, NO.
 draft: false
 tags:
-- Hardware
-- Linux
-- Ubuntu
-- audio
+- hardware
+- linux
 slug: ubuntu-audio-yes-windows-xp-no
 description: ''
 markup: md

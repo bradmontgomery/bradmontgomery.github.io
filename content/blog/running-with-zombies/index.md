@@ -4,9 +4,8 @@ title: Running with Zombies.
 draft: false
 tags:
 - fun
-- iphone
-- running
-- zombies
+- apple
+- fitness
 slug: running-with-zombies
 description: ''
 markup: md

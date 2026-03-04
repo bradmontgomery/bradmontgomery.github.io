@@ -4,7 +4,7 @@ title: A django iconbool filter
 draft: false
 tags:
 - django
-- filter
+- programming
 - python
 slug: django-iconbool-filter
 description: ''

@@ -3,7 +3,7 @@ date: '2007-07-13T20:44:00+00:00'
 title: Building Apps for the iPhone
 draft: false
 tags:
-- iPhone
+- apple
 - web
 slug: building-apps-for-the-iphone
 description: ''

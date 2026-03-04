@@ -3,10 +3,8 @@ date: '2007-12-05T08:59:00+00:00'
 title: Computing Correlation Coefficients in Python
 draft: false
 tags:
-- Image
-- Python
-- numpy
-- pil
+- image-processing
+- python
 slug: computing-correlation-coefficients-in-python
 description: ''
 markup: md

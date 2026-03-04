@@ -4,9 +4,8 @@ title: Django Models & Mixins for cleaner code
 draft: false
 tags:
 - django
-- mixins
-- programming
 - python
+- programming
 slug: django-models-mixins-for-cleaner-code
 description: ''
 markup: md

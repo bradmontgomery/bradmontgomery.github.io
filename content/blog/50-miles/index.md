@@ -3,9 +3,7 @@ date: '2016-03-11T12:56:30.461985+00:00'
 title: 50 miles
 draft: false
 tags:
-- lhrl
-- running
-- ultra
+- fitness
 slug: 50-miles
 description: ''
 markup: md

@@ -3,11 +3,9 @@ date: '2014-01-28T14:55:24.172398+00:00'
 title: Old-school Skitch and CloudFiles with ftp-cloudfs
 draft: false
 tags:
-- cloudfiles
-- ftpcloudfs
+- devops
 - python
-- rackspace
-- skitch
+- tools
 slug: old-school-skitch-and-cloudfiles-ftp-cloudfs
 description: ''
 url: /blog/old-school-skitch-and-cloudfiles-ftp-cloudfs/

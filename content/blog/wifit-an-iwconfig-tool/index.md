@@ -3,9 +3,7 @@ date: '2007-02-08T21:09:00+00:00'
 title: wifit - an iwconfig tool
 draft: false
 tags:
-- Linux
-- networking
-- wifi
+- linux
 slug: wifit-an-iwconfig-tool
 description: ''
 markup: md

@@ -4,7 +4,6 @@ title: Streaming Replication in PostgreSQL 9.1
 draft: false
 tags:
 - database
-- postgresql
 slug: streaming-replication-in-postgresql-91
 description: ''
 markup: md

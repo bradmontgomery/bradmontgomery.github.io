@@ -3,8 +3,8 @@ date: '2009-04-01T14:49:00+00:00'
 title: How to Set up a Foreign Key Constraint in MySQL
 draft: false
 tags:
-- Programming
-- mysql
+- programming
+- database
 - web
 slug: how-to-set-up-a-foreign-key-constraint-in-mysql
 description: ''

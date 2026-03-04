@@ -3,9 +3,8 @@ date: '2012-08-27T17:20:53+00:00'
 title: A scenario for the future.
 draft: false
 tags:
-- fiction
-- fightthefuture
 - fun
+- community
 slug: a-scenario-for-the-future
 description: ''
 markup: md

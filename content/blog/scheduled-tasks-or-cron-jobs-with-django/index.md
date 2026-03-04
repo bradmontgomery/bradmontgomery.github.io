@@ -3,8 +3,8 @@ date: '2009-02-20T10:15:00+00:00'
 title: Scheduled Tasks (or cron jobs) with Django
 draft: false
 tags:
-- Python
-- cron
+- python
+- linux
 - django
 - web
 slug: scheduled-tasks-or-cron-jobs-with-django

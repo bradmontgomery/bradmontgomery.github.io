@@ -3,7 +3,7 @@ date: '2009-04-24T18:36:00+00:00'
 title: Restricting Access by Group in Django
 draft: false
 tags:
-- Python
+- python
 - django
 - web
 slug: restricting-access-by-group-in-django

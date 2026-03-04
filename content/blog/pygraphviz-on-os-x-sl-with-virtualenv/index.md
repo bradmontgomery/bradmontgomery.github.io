@@ -3,12 +3,10 @@ date: '2010-07-14T22:14:00+00:00'
 title: PyGraphviz on OS X (SL) with virtualenv
 draft: false
 tags:
-- Mac
-- OS
-- Python
-- X
-- graphviz
-- virtualenv
+- macos
+- python
+- tools
+- devops
 slug: pygraphviz-on-os-x-sl-with-virtualenv
 description: ''
 markup: md

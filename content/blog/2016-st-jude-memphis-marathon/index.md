@@ -2,7 +2,7 @@
 date: '2016-12-10T22:42:04.055160+00:00'
 title: 2016 St Jude Memphis Marathon
 draft: false
-tags: []
+tags:
 slug: 2016-st-jude-memphis-marathon
 description: ''
 markup: md

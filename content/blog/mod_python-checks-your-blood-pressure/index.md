@@ -3,8 +3,8 @@ date: '2009-03-24T09:28:00+00:00'
 title: mod_python checks your blood pressure
 draft: false
 tags:
-- Fun
-- Python
+- fun
+- python
 - django
 slug: mod_python-checks-your-blood-pressure
 description: ''

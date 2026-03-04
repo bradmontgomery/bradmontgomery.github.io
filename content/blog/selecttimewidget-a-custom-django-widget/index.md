@@ -3,7 +3,7 @@ date: '2008-11-18T19:40:00+00:00'
 title: 'SelectTimeWidget: A custom Django Widget'
 draft: false
 tags:
-- Python
+- python
 - django
 slug: selecttimewidget-a-custom-django-widget
 description: ''

@@ -3,8 +3,8 @@ date: '2008-10-05T13:22:00+00:00'
 title: on beards
 draft: false
 tags:
-- Fun
-- beard
+- fun
+- personal
 slug: on-beards
 description: ''
 markup: md

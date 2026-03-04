@@ -3,11 +3,9 @@ date: '2017-02-12T16:55:40.164303+00:00'
 title: The Blue Collar Programmer
 draft: false
 tags:
-- industry
+- community
 - programming
-- skills
-- technology
-- wired
+- fun
 slug: blue-collar-programmer
 description: ''
 markup: md

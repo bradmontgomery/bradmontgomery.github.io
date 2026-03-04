@@ -3,10 +3,9 @@ date: '2007-10-16T20:17:00+00:00'
 title: PyOpenGL on OS X
 draft: false
 tags:
-- OS
-- OpenGL
-- Python
-- X
+- macos
+- image-processing
+- python
 slug: pyopengl-on-os-x
 description: ''
 markup: md

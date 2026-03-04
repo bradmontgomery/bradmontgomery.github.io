@@ -3,8 +3,8 @@ date: '2009-03-25T15:20:00+00:00'
 title: Public Keys don't like write access!
 draft: false
 tags:
-- Backup
-- Linux
+- devops
+- linux
 slug: public-keys-dont-like-write-access
 description: ''
 markup: md

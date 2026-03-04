@@ -2,7 +2,7 @@
 date: '2016-02-09T00:31:00.530693+00:00'
 title: Young Coders at PyTennessee 2016
 draft: false
-tags: []
+tags:
 slug: young-coders-pytennessee-2016
 description: ''
 markup: md

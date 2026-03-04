@@ -3,7 +3,7 @@ date: '2009-04-21T13:31:00+00:00'
 title: Dynamically Displaying Fields in a ModelForm
 draft: false
 tags:
-- Programming
+- programming
 - django
 - web
 slug: dynamically-displaying-fields-in-a-modelform

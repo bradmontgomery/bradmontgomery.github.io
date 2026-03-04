@@ -3,10 +3,7 @@ date: '2008-09-04T15:12:00+00:00'
 title: Safari is Cooler than you Think!
 draft: false
 tags:
-- Apps
-- OS
-- Safari
-- X
+- macos
 - web
 slug: safari-is-cooler-than-you-think
 description: ''

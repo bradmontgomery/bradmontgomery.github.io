@@ -3,8 +3,8 @@ date: '2008-01-14T13:51:00+00:00'
 title: Super Spicy Creamy Veggie Chili
 draft: false
 tags:
-- Food
-- Fun
+- food
+- fun
 slug: super-spicy-creamy-veggie-chili
 description: ''
 markup: md

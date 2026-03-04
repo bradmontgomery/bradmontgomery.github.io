@@ -3,7 +3,7 @@ date: '2010-10-15T11:26:00+00:00'
 title: 'Python: stray commas cause tuples?'
 draft: false
 tags:
-- Python
+- python
 slug: python-stray-commas-cause-tuples
 description: ''
 markup: md

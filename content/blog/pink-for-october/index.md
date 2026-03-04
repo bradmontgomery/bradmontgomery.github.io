@@ -3,7 +3,7 @@ date: '2006-10-02T21:26:00+00:00'
 title: Pink for October
 draft: false
 tags:
-- Fun
+- fun
 slug: pink-for-october
 description: ''
 markup: md

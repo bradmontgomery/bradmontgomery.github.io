@@ -3,9 +3,8 @@ date: '2012-11-23T19:40:50+00:00'
 title: Division By Zero
 draft: false
 tags:
-- division
-- math
-- zero
+- programming
+- personal
 slug: division-by-zero
 description: ''
 markup: md

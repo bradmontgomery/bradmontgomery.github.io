@@ -3,9 +3,7 @@ date: '2009-07-14T11:42:00+00:00'
 title: A for AJAX - OR - Dynamically generating options for a select element.
 draft: false
 tags:
-- Javascript
-- Prototype
-- ajax
+- javascript
 - web
 slug: a-for-ajax-or-dynamically-generating-options-for-a-select-element
 description: ''

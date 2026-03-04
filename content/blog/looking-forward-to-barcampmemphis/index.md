@@ -3,8 +3,7 @@ date: '2008-09-05T09:05:00+00:00'
 title: Looking Forward to BarCampMemphis
 draft: false
 tags:
-- '#bcmem'
-- BarCampMemphis
+- community
 slug: looking-forward-to-barcampmemphis
 description: ''
 markup: md

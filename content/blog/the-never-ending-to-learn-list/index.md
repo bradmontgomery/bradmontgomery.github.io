@@ -3,8 +3,8 @@ date: '2007-09-10T20:43:00+00:00'
 title: The Never-ending "To-Learn" List
 draft: false
 tags:
-- Programming
-- Python
+- programming
+- python
 slug: the-never-ending-to-learn-list
 description: ''
 markup: md

@@ -2,7 +2,7 @@
 date: '2011-01-24T15:56:59+00:00'
 title: SiteSprint III - An update
 draft: false
-tags: []
+tags:
 slug: sitesprint-iii-an-update
 description: ''
 markup: md

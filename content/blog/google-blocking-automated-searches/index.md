@@ -2,7 +2,7 @@
 date: '2008-03-04T10:14:00+00:00'
 title: Google blocking automated searches?
 draft: false
-tags: []
+tags:
 slug: google-blocking-automated-searches
 description: ''
 markup: md

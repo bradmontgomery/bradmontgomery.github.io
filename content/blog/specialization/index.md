@@ -3,8 +3,8 @@ date: '2010-02-24T13:50:00+00:00'
 title: Specialization
 draft: false
 tags:
-- Fun
-- humanity
+- fun
+- personal
 slug: specialization
 description: ''
 markup: md

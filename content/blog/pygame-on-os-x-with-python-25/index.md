@@ -3,9 +3,8 @@ date: '2007-09-23T20:38:00+00:00'
 title: Pygame on OS X with python 2.5
 draft: false
 tags:
-- OS
-- Python
-- X
+- macos
+- python
 slug: pygame-on-os-x-with-python-25
 description: ''
 markup: md

@@ -3,10 +3,10 @@ date: '2016-04-29T16:04:11.732863+00:00'
 title: Let's convert a Word Doc to HTML
 draft: false
 tags:
-- html
-- pandoc
+- web
+- tools
 - python
-- word
+- fun
 slug: lets-convert-word-doc-html
 description: ''
 markup: md

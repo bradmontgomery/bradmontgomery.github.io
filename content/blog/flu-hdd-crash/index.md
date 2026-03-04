@@ -3,9 +3,8 @@ date: '2006-10-23T21:24:00+00:00'
 title: Flu + HDD crash
 draft: false
 tags:
-- Backup
-- OS
-- X
+- devops
+- macos
 slug: flu-hdd-crash
 description: ''
 markup: md

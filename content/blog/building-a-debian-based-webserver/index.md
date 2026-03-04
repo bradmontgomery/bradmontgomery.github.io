@@ -3,7 +3,7 @@ date: '2006-12-31T21:17:00+00:00'
 title: Building a Debian-Based Webserver
 draft: false
 tags:
-- Linux
+- linux
 slug: building-a-debian-based-webserver
 description: ''
 markup: md

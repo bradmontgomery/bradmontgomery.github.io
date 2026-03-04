@@ -3,8 +3,8 @@ date: '2008-07-15T10:57:00+00:00'
 title: The Structure of a Django App
 draft: false
 tags:
-- Programming
-- Python
+- programming
+- python
 - django
 - web
 slug: the-structure-of-a-django-app

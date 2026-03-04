@@ -3,8 +3,8 @@ date: '2008-11-17T12:41:00+00:00'
 title: Soup's On! And it IS Beautiful!
 draft: false
 tags:
-- Programming
-- Python
+- programming
+- python
 - web
 slug: soups-on-and-it-is-beautiful
 description: ''

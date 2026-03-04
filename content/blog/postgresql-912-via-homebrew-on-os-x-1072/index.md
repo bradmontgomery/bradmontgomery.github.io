@@ -4,9 +4,8 @@ title: PostgreSQL 9.1.2 via homebrew on OS X 10.7.2
 draft: false
 tags:
 - django
-- homebrew
-- osx
-- postgresql
+- macos
+- database
 - python
 slug: postgresql-912-via-homebrew-on-os-x-1072
 description: ''

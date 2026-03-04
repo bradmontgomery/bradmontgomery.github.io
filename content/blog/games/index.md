@@ -3,8 +3,7 @@ date: '2006-06-20T21:36:00+00:00'
 title: Games!
 draft: false
 tags:
-- Fun
-- Games
+- fun
 slug: games
 description: ''
 markup: md

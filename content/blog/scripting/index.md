@@ -3,7 +3,7 @@ date: '2006-06-12T21:36:00+00:00'
 title: Scripting!
 draft: false
 tags:
-- Programming
+- programming
 slug: scripting
 description: ''
 markup: md

@@ -3,8 +3,8 @@ date: '2008-08-08T21:39:00+00:00'
 title: The Apple Dock is a Mirror!
 draft: false
 tags:
-- Fun
-- Mac
+- fun
+- macos
 slug: the-apple-dock-is-a-mirror
 description: ''
 markup: md

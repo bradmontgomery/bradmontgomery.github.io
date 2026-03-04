@@ -3,12 +3,9 @@ date: '2011-10-06T13:00:00+00:00'
 title: Think Different.
 draft: false
 tags:
-- americandream
+- personal
 - apple
-- death
-- osx
-- stevejobs
-- thinkdifferent
+- macos
 slug: think-different
 description: ''
 markup: md

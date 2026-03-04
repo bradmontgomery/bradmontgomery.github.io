@@ -4,7 +4,7 @@ title: SiteSprint III - The Reclaimation
 draft: false
 tags:
 - django
-- sitesprint
+- community
 - web
 slug: sitesprint-iii-the-reclaimation
 description: ''

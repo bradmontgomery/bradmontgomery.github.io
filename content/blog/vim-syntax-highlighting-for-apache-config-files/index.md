@@ -3,9 +3,9 @@ date: '2010-06-09T09:12:00+00:00'
 title: Vim Syntax highlighting for Apache Config Files
 draft: false
 tags:
-- apache
+- linux
 - django
-- vim
+- tools
 slug: vim-syntax-highlighting-for-apache-config-files
 description: ''
 markup: md

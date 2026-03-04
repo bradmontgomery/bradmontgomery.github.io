@@ -2,7 +2,7 @@
 date: '2008-07-16T10:37:00+00:00'
 title: 'Django: Generating an Image with PIL'
 draft: false
-tags: []
+tags:
 slug: django-generating-an-image-with-pil
 description: ''
 markup: md

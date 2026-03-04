@@ -2,7 +2,7 @@
 date: '2011-01-05T15:58:04+00:00'
 title: 'Fix: Leopard libedit detected.'
 draft: false
-tags: []
+tags:
 slug: fix-leopard-libedit-detected
 description: ''
 markup: md

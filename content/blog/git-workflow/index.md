@@ -3,9 +3,8 @@ date: '2020-05-17T23:28:36.891528+00:00'
 title: Git workflow
 draft: false
 tags:
-- git
-- process
-- workflow
+- tools
+- programming
 slug: git-workflow
 description: ''
 markup: md

@@ -2,7 +2,7 @@
 date: '2007-07-08T20:46:00+00:00'
 title: iPhone Disappointments
 draft: false
-tags: []
+tags:
 slug: iphone-disappointments
 description: ''
 markup: md

@@ -3,12 +3,9 @@ date: '2015-08-30T12:33:31.592430+00:00'
 title: 'Webucator: zip, map, and lambda'
 draft: false
 tags:
-- lambda
-- map
 - programming
 - python
-- tutorial
-- zip
+- tools
 slug: webucator-zip-map-and-lambda
 description: ''
 markup: md

@@ -3,8 +3,7 @@ date: '2013-02-23T21:28:56.724485+00:00'
 title: How to use a turning lane
 draft: false
 tags:
-- comic
-- driving
+- fun
 slug: how-use-turning-lane
 description: ''
 markup: md

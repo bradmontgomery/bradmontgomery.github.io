@@ -6,7 +6,7 @@ tags:
 - python
 - web
 - tools
-- software
+- programming
 slug: welp-i-built-a-static-site-generator
 description: 'Hello new website.'
 markup: md

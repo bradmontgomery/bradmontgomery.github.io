@@ -2,7 +2,7 @@
 date: '2008-09-16T13:48:00+00:00'
 title: iTunes Genius Lies!
 draft: false
-tags: []
+tags:
 slug: itunes-genius-lies
 description: ''
 markup: md

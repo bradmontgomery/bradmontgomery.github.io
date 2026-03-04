@@ -3,10 +3,8 @@ date: '2010-01-14T09:47:00+00:00'
 title: Resize the iTunes Window
 draft: false
 tags:
-- Mac
-- Programming
-- applescript
-- iTunes
+- macos
+- programming
 slug: resize-the-itunes-window
 description: ''
 markup: md

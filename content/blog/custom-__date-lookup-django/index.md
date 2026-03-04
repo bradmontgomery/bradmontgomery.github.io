@@ -5,9 +5,6 @@ draft: false
 tags:
 - database
 - django
-- lookups
-- orm
-- postgres
 - python
 slug: custom-__date-lookup-django
 description: ''

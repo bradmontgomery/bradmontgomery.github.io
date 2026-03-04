@@ -4,7 +4,7 @@ title: The Mintbook Air
 draft: false
 tags:
 - linux
-- macbook
+- macos
 - apple
 slug: the-mintbook-air
 description: 'I installed Mint on a 2012 MacBook Air'

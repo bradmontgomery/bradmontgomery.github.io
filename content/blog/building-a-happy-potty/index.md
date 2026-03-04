@@ -3,9 +3,8 @@ date: '2012-06-11T16:44:51+00:00'
 title: Building a Happy Potty
 draft: false
 tags:
-- ios
+- apple
 - javascript
-- mobile
 - web
 slug: building-a-happy-potty
 description: ''

@@ -3,9 +3,8 @@ date: '2013-02-08T19:06:17+00:00'
 title: The Minimum Working Thing
 draft: false
 tags:
-- entrepreneurship
+- community
 - programming
-- startups
 - web
 slug: the-minimum-working-thing
 description: ''

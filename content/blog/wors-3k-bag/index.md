@@ -3,7 +3,7 @@ date: '2014-01-05T22:08:33.848604+00:00'
 title: WORS 3k in the bag
 draft: false
 tags:
-- running
+- fitness
 slug: wors-3k-bag
 url: /blog/wors-3k-bag/
 aliases:

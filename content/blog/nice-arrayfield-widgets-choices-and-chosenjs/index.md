@@ -3,9 +3,8 @@ date: '2015-04-25T22:50:25.238289+00:00'
 title: Nice ArrayField widgets with choices and chosen.js
 draft: false
 tags:
-- arrayfield
 - django
-- postgresql
+- database
 - python
 slug: nice-arrayfield-widgets-choices-and-chosenjs
 description: ''

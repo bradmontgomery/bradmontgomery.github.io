@@ -3,11 +3,8 @@ date: '2008-06-25T08:29:00+00:00'
 title: 'Mac OS X, Python, and Fink: Playing Nicely Together'
 draft: false
 tags:
-- Fink
-- Mac
-- OS
-- Python
-- X
+- macos
+- python
 slug: mac-os-x-python-and-fink-playing-nicely-together
 description: ''
 markup: md

@@ -3,8 +3,7 @@ date: '2022-01-26T23:31:28.672179+00:00'
 title: Happy New Year 2022
 draft: false
 tags:
-- bikes
-- family
+- fitness
 - personal
 slug: happy-new-year-2022
 description: ''

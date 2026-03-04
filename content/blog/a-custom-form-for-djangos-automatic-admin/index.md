@@ -3,7 +3,7 @@ date: '2009-01-14T16:08:00+00:00'
 title: A Custom form for Django's Automatic Admin.
 draft: false
 tags:
-- Python
+- python
 - django
 - web
 slug: a-custom-form-for-djangos-automatic-admin

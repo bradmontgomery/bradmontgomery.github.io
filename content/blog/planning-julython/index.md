@@ -2,7 +2,7 @@
 date: '2012-07-02T02:36:24+00:00'
 title: planning julython
 draft: false
-tags: []
+tags:
 slug: planning-julython
 description: ''
 markup: md

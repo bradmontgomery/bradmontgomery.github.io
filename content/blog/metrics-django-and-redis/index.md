@@ -4,9 +4,8 @@ title: Metrics with Django and Redis
 draft: false
 tags:
 - django
-- django-redis-metrics
-- metrics
-- redis
+- programming
+- database
 slug: metrics-django-and-redis
 description: ''
 markup: md

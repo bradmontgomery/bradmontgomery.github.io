@@ -3,10 +3,8 @@ date: '2011-12-13T16:00:48+00:00'
 title: Chosen.js in the Django admin
 draft: false
 tags:
-- chosenjs
-- django
 - javascript
-- jquery
+- django
 - python
 - web
 slug: chosenjs-in-the-django-admin

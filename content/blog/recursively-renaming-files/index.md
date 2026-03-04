@@ -3,9 +3,9 @@ date: '2008-09-05T19:10:00+00:00'
 title: Recursively Renaming files
 draft: false
 tags:
-- Linux
-- Mac
-- Programming
+- linux
+- macos
+- programming
 slug: recursively-renaming-files
 description: ''
 markup: md

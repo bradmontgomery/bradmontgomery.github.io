@@ -3,10 +3,9 @@ date: '2019-01-03T16:39:30.740522+00:00'
 title: New Year, New Site (2019 edition)
 draft: false
 tags:
-- blog
+- personal
 - django
-- meta
-- opensource
+- open-source
 slug: new-year-new-site-2019-edition
 description: ''
 markup: md

@@ -3,9 +3,9 @@ date: '2008-09-13T10:23:00+00:00'
 title: Pondering a Robotic Lawn Mower
 draft: false
 tags:
-- Fun
-- Hardware
-- robots
+- fun
+- hardware
+- web
 slug: pondering-a-robotic-lawn-mower
 description: ''
 markup: md

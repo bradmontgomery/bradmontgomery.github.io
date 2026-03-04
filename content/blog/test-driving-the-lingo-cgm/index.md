@@ -4,7 +4,6 @@ title: Test-driving the Lingo CGM
 draft: false
 tags:
 - food
-- health
 - fitness
 slug: test-driving-the-lingo-cgm
 description: 'I ordered the Lingo CGM, and this is the first post in a series describing my experiences.'

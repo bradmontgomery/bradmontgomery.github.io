@@ -3,8 +3,7 @@ date: '2014-09-21T15:09:22.018668+00:00'
 title: '#HACKMemphis 2014'
 draft: false
 tags:
-- hackmemphis
-- memtech
+- community
 slug: hackmemphis-2014
 description: ''
 url: /blog/hackmemphis-2014/

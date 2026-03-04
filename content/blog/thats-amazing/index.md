@@ -3,10 +3,9 @@ date: '2006-12-02T21:21:00+00:00'
 title: That's Amazing
 draft: false
 tags:
-- Family
-- Fun
-- Girls
-- The
+- personal
+- fun
+- community
 slug: thats-amazing
 description: ''
 markup: md

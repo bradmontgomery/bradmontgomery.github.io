@@ -1,64 +1,25 @@
+<!-- Example blog post template with timezone-aware dates -->
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="robots" content="INDEX, FOLLOW" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A reasonable number of bikes</title>
-    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
-    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
-    <link type="text/plain" rel="author" href="/humans.txt" />
-    <link type="text/plain" rel="author" href="/llms.txt" />
-    
-    <link rel="stylesheet" href="/static/simple.css-2.2.1/simple.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
-      rel="stylesheet"
-    />
-    <style type="text/css">
-      h1,
-      h2,
-      h3 {
-        font-family: "Rubik Doodle Shadow", serif;
-      }
-      h4,
-      h5,
-      h6 {
-        font-family: "Abril Fatface", serif;
-      }
-      code,
-      pre {
-        font-family: "Anonymous Pro", monospace;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <a href="/">Home</a>
-        <a href="/blog/">Blog</a>
-        <a href="/blog/tags/">Tags</a>
-        <a href="/about/">About</a>
-        <a href="/services/">Services</a>
-        <a href="/contact/">Contact</a>
-      </nav>
-      <h1>A reasonable number of bikes</h1>
-      
-  <div>Published on 2019-05-06 16:47:06.310488+00:00</div>
-  
-    <div>
-    
-      <mark>bikes</mark> &nbsp;
-    
-    </div>
-  
-
-    </header>
-    <main> 
-  <section>
-  
+</head>
+<body>
+    <article>
+        <h1>A reasonable number of bikes</h1>
+        
+        <!-- Published date with client-side timezone conversion -->
+        
+        <time datetime="2019-05-06T16:47:06.310488+00:00" data-local="true">
+            2019-05-06 16:47 UTC
+        </time>
+        
+        
+        <!-- Post content -->
+        <div class="content">
+            
 <p>If you know me in person, then it's possible that you know I <a href="https://www.strava.com/athletes/1020859">have a thing about cycling</a>. And bikes. And shame on me for not writing about this stuff here. Anyway, a recent conversation among friends led me to thinking about the question: *What is a reasonable number of bikes?*</p>
 <p>You see, among cyclists, there's the <a href="https://www.bikeforums.net/fifty-plus-50/822639-what-does-n-1-rule-mean.html">N+1</a> debate. (it's not really a debate, you need N+1 bikes)</p>
 <p>Anyway, when confronted with the question, here's my answer to this pressing question:</p>
@@ -81,8 +42,10 @@
 </ul>
 <p>Thoughts? Suggestions? What bikes do you own or strive to own? Let me know :)</p>
 
-  </section>
- </main>
-    <footer> All content copyright &copy; Brad Montgomery. </footer>
-  </body>
+        </div>
+    </article>
+    
+    <!-- Load timezone converter at end of page -->
+    <script src="/static/js/timezone.js"></script>
+</body>
 </html>
