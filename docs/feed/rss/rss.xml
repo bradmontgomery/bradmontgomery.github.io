@@ -1,5 +1,83 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Brad Montgomery</title><link>https://bradmontgomery.net</link><description>brad's blog</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Fri, 08 May 2026 15:32:33 +0000</lastBuildDate><item><title>What is this LangChain Syntax?</title><link>https://bradmontgomery.net/blog/what-is-this-langchain-syntax/</link><description>Exploring how LangChain overloaded the | pipe operator.</description><content:encoded>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Brad Montgomery</title><link>https://bradmontgomery.net</link><description>brad's blog</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Fri, 08 May 2026 16:30:07 +0000</lastBuildDate><item><title>My AI Journey (for now)</title><link>https://bradmontgomery.net/blog/my-ai-journey-for-now/</link><description>I'm on the AI bandwagon. Here's how I got there.</description><content:encoded>
+&lt;p&gt;It was re:Invent 2024 where it really hit me. AI — particularly LLMs — were coming, and in a big way (btw,
+yes, I'm using the em-dash. Don't hate on it, it has a purpose. Long live the em-dash). Anyway, I'm on the AI bandwagon,
+and this is how I got here.&lt;/p&gt;
+&lt;h2&gt;let's back up a bit&lt;/h2&gt;
+&lt;p&gt;Ok, I was skeptical for a long time. I signed up for ChatGPT in 2022, and at the time I really struggled to think
+about how to use these tools for &lt;em&gt;work&lt;/em&gt; (writing code in particular). I did some experiments, and had models
+write snippets of Python, and was impressed — but try as I might, I couldn't see how to roll that into a workflow.&lt;/p&gt;
+&lt;p&gt;You see, I was already proficient. I didn't see LLMs as an accelerant for my dev work. Quite the opposite actually. I
+didn't like some of the decisions it made (fwiw, I still don't but that's another matter).&lt;/p&gt;
+&lt;p&gt;I thought &lt;a href="https://bradmontgomery.net/blog/chatgpt-choosing-javascript-framework/"&gt;ChatGPT was a toy&lt;/a&gt;, and that's how
+I treated it. Much like &lt;a href="https://github.com/bradmontgomery/shaney"&gt;I would treat the output of a Markov chain&lt;/a&gt;.&lt;/p&gt;
+&lt;h2&gt;But the image models were surprising&lt;/h2&gt;
+&lt;p&gt;I will admit however, that the &lt;a href="https://bradmontgomery.net/blog/we-are-all-inventors/"&gt;image models&lt;/a&gt; were something
+fascinating. I played with them. I kept coming back to them. I knew something magical was happening.&lt;/p&gt;
+&lt;p&gt;We've been hearing &amp;amp; seeing deepfakes on the internet for some time, and I think collectively all of us in tech knew
+this was coming. So, looking back it's hilarious to me that I understood that AI models could generate audio, video, and
+images that would fool us, but I was dense to realize that it would be able to generate &lt;em&gt;really good&lt;/em&gt; text, and even
+code.&lt;/p&gt;
+&lt;h2&gt;So I experimented&lt;/h2&gt;
+&lt;p&gt;In early 2025 I got access to Amazon Q for developers (quickly renamed to Kiro). That's really where I started to see
+what's possible. Now, my &lt;em&gt;primary professional role&lt;/em&gt; is no longer that of a heads-down, hands-on-keyboard all day
+developer. So most of what I created was proof of concept code, rough ideas for how to implement something, examples
+on how to fix security findings, etc.&lt;/p&gt;
+&lt;p&gt;One of the breakthrough moments for me was a prompt like the following (using kiro, and probably Claude Sonnet):&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Use the aws cli tool to connect to my aws account using the environment variables set in my terminal. Map out what's
+configured in this account, and create a Markdown file describing the account. Use Mermaidjs to create a diagram
+of AWS services that are configured.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And it worked. It worked really really well.  This just instantly solved a problem that I was facing on a day-to-day
+basis.&lt;/p&gt;
+&lt;p&gt;We started investigating how to build AI-powered applications. I learned about LangChain and all their related tools. I
+learned about Amazon Bedrock. I learned about Guardrails, Agents, and context limitations.&lt;/p&gt;
+&lt;h2&gt;Then I dove in head-first.&lt;/h2&gt;
+&lt;p&gt;What happened next (over the course of a year and a half) was a whirlwind of learning, experimenting, using, failing,
+learning, and repeating. This is going to be really abbreviated, but hopefully you get the idea.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;I paid for github copilot, and set up the copilot-cli tool.&lt;/li&gt;
+&lt;li&gt;I dove into projects that I've published (and some that I haven't), and brought almost everything up to date. Updated
+project directories, everything using pyproject.toml and uv. Modern packages. More tests. If you look at my github
+profile you'll see a flurry of activity in late 2025.&lt;/li&gt;
+&lt;li&gt;I stopped looking at code outside of &lt;code&gt;git diff&lt;/code&gt;. Everything's just an AI agent on the CLI.&lt;/li&gt;
+&lt;li&gt;I ditched copilot-cli and started using Claude Code — but still with models served by GitHub.&lt;/li&gt;
+&lt;li&gt;I started exploring local models via Ollama &amp;amp; Hugging Face.&lt;/li&gt;
+&lt;li&gt;I finally closed my Flickr account and downloaded all my images. I have a very crude Flickr clone running on my PC. I did not write a line of code for this.&lt;/li&gt;
+&lt;li&gt;I built a little Strava clone (more data visualization, zero socials -- it's still a private repo, but maybe not forever)&lt;/li&gt;
+&lt;li&gt;I continued.&lt;/li&gt;
+&lt;li&gt;I worked with and advised a team of CodeCrew graduates during a project with &lt;a href="https://uncomplicatedinc.com/"&gt;Uncomplicated Inc&lt;/a&gt;. Everything was AI-driven. We made mistakes, we learned. We continued.&lt;/li&gt;
+&lt;li&gt;I signed up for Claude Code, and started doing all of this again.&lt;/li&gt;
+&lt;li&gt;In my day-job, I got access to Claude Code. I'm mapping out bigger projects. I'm building skills for code review, project analysis, security reviews.&lt;/li&gt;
+&lt;li&gt;I'm talking to people. Lots of people. I'm asking questions. I'm reading. I'm watching YouTube.&lt;/li&gt;
+&lt;li&gt;I help teach a pilot class for Tech901 that lead to Azure AI-900 and AI-102; Microsofts AI Fundamentals and AI Engineering certifications.&lt;/li&gt;
+&lt;li&gt;I learned how to use Azure Foundry.&lt;/li&gt;
+&lt;li&gt;Repeat repeat repeat.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;What I've learned&lt;/h2&gt;
+&lt;p&gt;The tools are really good. The models are really good. This &lt;em&gt;really is&lt;/em&gt; an evolution of &lt;em&gt;how&lt;/em&gt; we build software.&lt;/p&gt;
+&lt;p&gt;But these are all still tools. They have limitations. There's a skillset that accompanies these tools -- yes, prompt
+engineering is still a thing. Writing Skills is still a thing. Knowing when and why you might use an MCP server is
+a thing. Managing context, and knowing why that's important is a thing.&lt;/p&gt;
+&lt;p&gt;But also, everything else we know about building software is still relevant.&lt;/p&gt;
+&lt;p&gt;I've seen people really struggle to build software by prompting AI, because they didn't know how to build software
+already — just watch LinkedIn to see people telling stories about this. There's a VAST well of knowledge beyond code,
+syntax, and programming languages that goes into building software. ALL of that is more important than ever.&lt;/p&gt;
+&lt;h2&gt;What I fear&lt;/h2&gt;
+&lt;p&gt;I lived through the first dot-com crash. Shortly after, there was a prevalent sense that software engineering in the US
+was dead — that outsourcing software development would be the way of the future. This had a decades-long impact of driving
+people away from Computer Science. We saw what happened — the premise was wrong, there was a rush to hire, and there just
+weren't enough people to fill the needs. I'm a little afraid that we'll repeat this mistake.&lt;/p&gt;
+&lt;p&gt;Some people think AI is going to remove the need to study computer science, software engineering, or programming. I don't think it's true.&lt;/p&gt;
+&lt;p&gt;I think this is a false premise. Yes, &lt;em&gt;writing the code&lt;/em&gt; itself might be de-prioritized, but there's still EVERYTHING ELSE
+that's involved. And that's a lot.&lt;/p&gt;
+&lt;p&gt;None of us know what the future holds. I'm excited about the new tools we have, I'm excited about the ability to create
+software more quickly. But all the problems that caused software delivery to be difficult are still there.&lt;/p&gt;
+&lt;p&gt;We still need smart people to work on this stuff.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;This article was proofread and edited by Claude (Anthropic).&lt;/em&gt;&lt;/p&gt;
+</content:encoded><guid isPermaLink="false">https://bradmontgomery.net/blog/my-ai-journey-for-now/</guid><pubDate>Fri, 08 May 2026 15:38:11 +0000</pubDate></item><item><title>What is this LangChain Syntax?</title><link>https://bradmontgomery.net/blog/what-is-this-langchain-syntax/</link><description>Exploring how LangChain overloaded the | pipe operator.</description><content:encoded>
 &lt;h2&gt;What's this got to do with LangChain?&lt;/h2&gt;
 &lt;p&gt;Honestly... not much.&lt;/p&gt;
 &lt;p&gt;I've been experimenting with &lt;a href="https://python.langchain.com/docs/introduction/"&gt;LangChain&lt;/a&gt; lately, and
