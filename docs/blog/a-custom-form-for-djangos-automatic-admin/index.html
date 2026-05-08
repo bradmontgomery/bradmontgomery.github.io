@@ -1,25 +1,64 @@
-<!-- Example blog post template with timezone-aware dates -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="INDEX, FOLLOW" />
     <title>A Custom form for Django&#39;s Automatic Admin.</title>
-</head>
-<body>
+    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <link type="text/plain" rel="author" href="/llms.txt" />
+    
+    <link rel="stylesheet" href="/static/simple.css-2.3.7/simple.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      h1,
+      h2,
+      h3 {
+        font-family: "Rubik Doodle Shadow", serif;
+      }
+      h4,
+      h5,
+      h6 {
+        font-family: "Abril Fatface", serif;
+      }
+      code,
+      pre {
+        font-family: "Anonymous Pro", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>A Custom form for Django&#39;s Automatic Admin.</h1>
+      
+    </header>
+    <main> 
+  
+  <section>
+    
+      <p>Published on 2009-01-14 16:08:00+00:00</p>
+    
+    
+      <p>Tags: python, django, web</p>
+    
+
     <article>
-        <h1>A Custom form for Django&#39;s Automatic Admin.</h1>
-        
-        <!-- Published date with client-side timezone conversion -->
-        
-        <time datetime="2009-01-14T16:08:00+00:00" data-local="true">
-            2009-01-14 16:08 UTC
-        </time>
-        
-        
-        <!-- Post content -->
-        <div class="content">
-            
+    
 <p>A huge selling-point for Django (at least for developers) is its <a href="http://docs.djangoproject.com/en/dev/ref/contrib/admin/#ref-contrib-admin">Automatic Admin</a>. However, the ease at which the Admin can be set up, might make one second-guess an attempt to customize what is provided by default. Of course, the default admin site may not be without its drawbacks...</p>
 <p>Many of the django Apps that I have built, tap into Django's <a href="http://docs.djangoproject.com/en/dev/topics/auth/#topics-auth">User Authentication System</a>. Simply put, when I build a model, it has a Foreign Key to django's User Class.</p>
 <p>Here's an example Model:</p>
@@ -60,10 +99,9 @@ admin.site.register(Book, BookAdmin)
 </code></pre>
 <p>Now, when you use the Automatic admin to add or edit existing Book entries, the drop-down list of Author names will be a bit more user-friendly.</p>
 
-        </div>
     </article>
-    
-    <!-- Load timezone converter at end of page -->
-    <script src="/static/js/timezone.js"></script>
-</body>
+  </section>
+ </main>
+    <footer> All content copyright &copy; Brad Montgomery. </footer>
+  </body>
 </html>

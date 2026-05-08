@@ -1,0 +1,9 @@
+  [site]
+  title = "Brad Montgomery"
+  url = "https://bradmontgomery.net"
+  author = "Brad Montgomery"
+  subtitle = "brad's blog"
+
+  [build]
+  templates_dir = "templates"  # optional custom templates
+  static_dir = "static"        # optional, defaults to "static"

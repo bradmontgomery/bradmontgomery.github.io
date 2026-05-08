@@ -1,25 +1,64 @@
-<!-- Example blog post template with timezone-aware dates -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="INDEX, FOLLOW" />
     <title>Automatic Backups with cron, tar, and SSH</title>
-</head>
-<body>
+    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <link type="text/plain" rel="author" href="/llms.txt" />
+    
+    <link rel="stylesheet" href="/static/simple.css-2.3.7/simple.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      h1,
+      h2,
+      h3 {
+        font-family: "Rubik Doodle Shadow", serif;
+      }
+      h4,
+      h5,
+      h6 {
+        font-family: "Abril Fatface", serif;
+      }
+      code,
+      pre {
+        font-family: "Anonymous Pro", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Automatic Backups with cron, tar, and SSH</h1>
+      
+    </header>
+    <main> 
+  
+  <section>
+    
+      <p>Published on 2007-01-10 21:10:00+00:00</p>
+    
+    
+      <p>Tags: devops, linux, macos</p>
+    
+
     <article>
-        <h1>Automatic Backups with cron, tar, and SSH</h1>
-        
-        <!-- Published date with client-side timezone conversion -->
-        
-        <time datetime="2007-01-10T21:10:00+00:00" data-local="true">
-            2007-01-10 21:10 UTC
-        </time>
-        
-        
-        <!-- Post content -->
-        <div class="content">
-            
+    
 <p>Everyone knows that backups are important, but how many of us regularly back up our own websites, blogs, or whatever? Well, I've put together a relatively simple way for my Mac to log into my Linux-based webserver, archive some content, and download it for me. All of this is done Automatically, too!</p>
 <p>The first thing I had to do, was set up my home machine (a Mac, but any Unix-based system should work, too) so that it could log into a remote host without requiring me to type a password. This is accomplished by generating a public key, which I can store on my webserver. To do this, I opened a Terminal, and typed the following:</p>
 <pre><code>ssh-keygen -t rsa
@@ -84,10 +123,9 @@ ssh myusername@mywebserver.com rm -f ~/$FILE
 <a href="http://en.wikipedia.org/wiki/Cron">Wikipedia</a><br />
 <a href="http://www.linuxproblem.org/art_9.html">linuxproblem.org</a></p>
 
-        </div>
     </article>
-    
-    <!-- Load timezone converter at end of page -->
-    <script src="/static/js/timezone.js"></script>
-</body>
+  </section>
+ </main>
+    <footer> All content copyright &copy; Brad Montgomery. </footer>
+  </body>
 </html>

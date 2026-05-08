@@ -1,25 +1,64 @@
-<!-- Example blog post template with timezone-aware dates -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="INDEX, FOLLOW" />
     <title>Streaming Replication in PostgreSQL 9.1</title>
-</head>
-<body>
+    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <link type="text/plain" rel="author" href="/llms.txt" />
+    
+    <link rel="stylesheet" href="/static/simple.css-2.3.7/simple.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      h1,
+      h2,
+      h3 {
+        font-family: "Rubik Doodle Shadow", serif;
+      }
+      h4,
+      h5,
+      h6 {
+        font-family: "Abril Fatface", serif;
+      }
+      code,
+      pre {
+        font-family: "Anonymous Pro", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Streaming Replication in PostgreSQL 9.1</h1>
+      
+    </header>
+    <main> 
+  
+  <section>
+    
+      <p>Published on 2012-03-03 15:29:24+00:00</p>
+    
+    
+      <p>Tags: database</p>
+    
+
     <article>
-        <h1>Streaming Replication in PostgreSQL 9.1</h1>
-        
-        <!-- Published date with client-side timezone conversion -->
-        
-        <time datetime="2012-03-03T15:29:24+00:00" data-local="true">
-            2012-03-03 15:29 UTC
-        </time>
-        
-        
-        <!-- Post content -->
-        <div class="content">
-            
+    
 <p>Not long ago, I set up <em>synchronous</em>, streaming replication in PostgreSQL 9.1 in order to build a <em>Hot Standby</em> system. This is the story of that journey.</p>
 <p>This post is mostly based on the <a href="http://wiki.postgresql.org/wiki/Binary_Replication_Tutorial#5_Minutes_to_Simple_Replication">5-minute simple replication</a> tutorial from the PostgreSQL wiki, but with a few modifications and clarifications. There's also lots of good information in the <a href="http://wiki.postgresql.org/wiki/Streaming_Replication">Streaming Replication wiki</a> from the PostgreSQL wiki.</p>
 <p>For the remainder of this post, assume that you have a Master at 111.111.111.111 (host named <code>db0</code>) and a Standby at 222.222.222.222 (host named <code>db1</code>).</p>
@@ -146,10 +185,9 @@ $ psql
 </ul>
 <p>Enjoy!</p>
 
-        </div>
     </article>
-    
-    <!-- Load timezone converter at end of page -->
-    <script src="/static/js/timezone.js"></script>
-</body>
+  </section>
+ </main>
+    <footer> All content copyright &copy; Brad Montgomery. </footer>
+  </body>
 </html>
