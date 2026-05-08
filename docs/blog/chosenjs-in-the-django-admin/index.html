@@ -32,6 +32,16 @@
       pre {
         font-family: "Anonymous Pro", monospace;
       }
+      .tag {
+        display: inline-block;
+        padding: 0.25em 0.75em;
+        background-color: var(--accent);
+        color: var(--bg);
+        border-radius: 0.5em;
+        font-size: 0.875em;
+        margin: 0 0.25em;
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
@@ -41,7 +51,7 @@
         <a href="/blog/">Blog</a>
         <a href="/blog/tags/">Tags</a>
         <a href="/about/">About</a>
-        <a href="/services/">Services</a>
+        <a href="/projects/">Projects</a>
         <a href="/contact/">Contact</a>
       </nav>
       <h1>Chosen.js in the Django admin</h1>
@@ -51,10 +61,22 @@
   
   <section>
     
-      <p>Published on 2011-12-13 16:00:48+00:00</p>
+      <p>Published on:
+        <time datetime="2011-12-13 16:00:48+00:00" data-local="true">2011-12-13 16:00:48+00:00</time>
+      </p>
     
     
-      <p>Tags: javascript, django, python, web</p>
+      <p>Tags:
+      
+        <span class="tag">javascript</span>
+      
+        <span class="tag">django</span>
+      
+        <span class="tag">python</span>
+      
+        <span class="tag">web</span>
+      
+      </p>
     
 
     <article>
@@ -152,5 +174,6 @@ for <code>&lt;select&gt;</code> elements outweigh the cost of loading the plugin
   </section>
  </main>
     <footer> All content copyright &copy; Brad Montgomery. </footer>
+    <script src="/static/js/timezone.js"></script>
   </body>
 </html>

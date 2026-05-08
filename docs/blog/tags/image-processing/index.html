@@ -32,6 +32,16 @@
       pre {
         font-family: "Anonymous Pro", monospace;
       }
+      .tag {
+        display: inline-block;
+        padding: 0.25em 0.75em;
+        background-color: var(--accent);
+        color: var(--bg);
+        border-radius: 0.5em;
+        font-size: 0.875em;
+        margin: 0 0.25em;
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
@@ -41,7 +51,7 @@
         <a href="/blog/">Blog</a>
         <a href="/blog/tags/">Tags</a>
         <a href="/about/">About</a>
-        <a href="/services/">Services</a>
+        <a href="/projects/">Projects</a>
         <a href="/contact/">Contact</a>
       </nav>
       <h1>Brad Montgomery</h1>
@@ -55,16 +65,16 @@
       <strong>
        <a href="/blog/we-are-all-inventors/">We are all inventors</a>
       </strong>
-      published on 2024-10-17 21:56:53.551535+00:00
+      published on <time datetime="2024-10-17 21:56:53.551535+00:00" data-local="true">2024-10-17 21:56:53.551535+00:00</time>
       
         <br/>I just now realized... &mdash;
       
       
-        <mark>fun</mark>
+        <span class="tag">fun</span>
       
-        <mark>image-processing</mark>
+        <span class="tag">image-processing</span>
       
-        <mark>ai</mark>
+        <span class="tag">ai</span>
       
     </p>
   
@@ -72,16 +82,16 @@
       <strong>
        <a href="/blog/building-pil-on-os-x-snow-leopard/">Building PIL on OS X: Snow Leopard</a>
       </strong>
-      published on 2010-02-25 15:40:00+00:00
+      published on <time datetime="2010-02-25 15:40:00+00:00" data-local="true">2010-02-25 15:40:00+00:00</time>
       
       
-        <mark>macos</mark>
+        <span class="tag">macos</span>
       
-        <mark>image-processing</mark>
+        <span class="tag">image-processing</span>
       
-        <mark>python</mark>
+        <span class="tag">python</span>
       
-        <mark>devops</mark>
+        <span class="tag">devops</span>
       
     </p>
   
@@ -89,14 +99,14 @@
       <strong>
        <a href="/blog/morphology-is-fun/">Morphology is Fun!</a>
       </strong>
-      published on 2009-01-04 14:27:00+00:00
+      published on <time datetime="2009-01-04 14:27:00+00:00" data-local="true">2009-01-04 14:27:00+00:00</time>
       
       
-        <mark>fun</mark>
+        <span class="tag">fun</span>
       
-        <mark>image-processing</mark>
+        <span class="tag">image-processing</span>
       
-        <mark>programming</mark>
+        <span class="tag">programming</span>
       
     </p>
   
@@ -104,14 +114,14 @@
       <strong>
        <a href="/blog/pycropper/">pyCropper</a>
       </strong>
-      published on 2008-05-20 10:01:00+00:00
+      published on <time datetime="2008-05-20 10:01:00+00:00" data-local="true">2008-05-20 10:01:00+00:00</time>
       
       
-        <mark>fun</mark>
+        <span class="tag">fun</span>
       
-        <mark>image-processing</mark>
+        <span class="tag">image-processing</span>
       
-        <mark>python</mark>
+        <span class="tag">python</span>
       
     </p>
   
@@ -119,12 +129,12 @@
       <strong>
        <a href="/blog/tracking-a-laser-pointer-with-python-and-opencv/">Tracking a Laser pointer with Python and OpenCV</a>
       </strong>
-      published on 2008-01-24 13:13:00+00:00
+      published on <time datetime="2008-01-24 13:13:00+00:00" data-local="true">2008-01-24 13:13:00+00:00</time>
       
       
-        <mark>image-processing</mark>
+        <span class="tag">image-processing</span>
       
-        <mark>python</mark>
+        <span class="tag">python</span>
       
     </p>
   
@@ -132,12 +142,12 @@
       <strong>
        <a href="/blog/computing-correlation-coefficients-in-python/">Computing Correlation Coefficients in Python</a>
       </strong>
-      published on 2007-12-05 08:59:00+00:00
+      published on <time datetime="2007-12-05 08:59:00+00:00" data-local="true">2007-12-05 08:59:00+00:00</time>
       
       
-        <mark>image-processing</mark>
+        <span class="tag">image-processing</span>
       
-        <mark>python</mark>
+        <span class="tag">python</span>
       
     </p>
   
@@ -145,14 +155,14 @@
       <strong>
        <a href="/blog/pyopengl-on-os-x/">PyOpenGL on OS X</a>
       </strong>
-      published on 2007-10-16 20:17:00+00:00
+      published on <time datetime="2007-10-16 20:17:00+00:00" data-local="true">2007-10-16 20:17:00+00:00</time>
       
       
-        <mark>macos</mark>
+        <span class="tag">macos</span>
       
-        <mark>image-processing</mark>
+        <span class="tag">image-processing</span>
       
-        <mark>python</mark>
+        <span class="tag">python</span>
       
     </p>
   
@@ -160,12 +170,12 @@
       <strong>
        <a href="/blog/opencv-on-mac-os-x/">OpenCV on Mac OS X</a>
       </strong>
-      published on 2006-09-06 21:29:00+00:00
+      published on <time datetime="2006-09-06 21:29:00+00:00" data-local="true">2006-09-06 21:29:00+00:00</time>
       
       
-        <mark>image-processing</mark>
+        <span class="tag">image-processing</span>
       
-        <mark>programming</mark>
+        <span class="tag">programming</span>
       
     </p>
   
@@ -173,17 +183,18 @@
       <strong>
        <a href="/blog/opencv/">OpenCV</a>
       </strong>
-      published on 2006-08-18 21:31:00+00:00
+      published on <time datetime="2006-08-18 21:31:00+00:00" data-local="true">2006-08-18 21:31:00+00:00</time>
       
       
-        <mark>image-processing</mark>
+        <span class="tag">image-processing</span>
       
-        <mark>programming</mark>
+        <span class="tag">programming</span>
       
     </p>
   
   </section>
  </main>
     <footer> All content copyright &copy; Brad Montgomery. </footer>
+    <script src="/static/js/timezone.js"></script>
   </body>
 </html>

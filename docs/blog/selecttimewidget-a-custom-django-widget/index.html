@@ -32,6 +32,16 @@
       pre {
         font-family: "Anonymous Pro", monospace;
       }
+      .tag {
+        display: inline-block;
+        padding: 0.25em 0.75em;
+        background-color: var(--accent);
+        color: var(--bg);
+        border-radius: 0.5em;
+        font-size: 0.875em;
+        margin: 0 0.25em;
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
@@ -41,7 +51,7 @@
         <a href="/blog/">Blog</a>
         <a href="/blog/tags/">Tags</a>
         <a href="/about/">About</a>
-        <a href="/services/">Services</a>
+        <a href="/projects/">Projects</a>
         <a href="/contact/">Contact</a>
       </nav>
       <h1>SelectTimeWidget: A custom Django Widget</h1>
@@ -51,10 +61,18 @@
   
   <section>
     
-      <p>Published on 2008-11-18 19:40:00+00:00</p>
+      <p>Published on:
+        <time datetime="2008-11-18 19:40:00+00:00" data-local="true">2008-11-18 19:40:00+00:00</time>
+      </p>
     
     
-      <p>Tags: python, django</p>
+      <p>Tags:
+      
+        <span class="tag">python</span>
+      
+        <span class="tag">django</span>
+      
+      </p>
     
 
     <article>
@@ -152,5 +170,6 @@ def test(request):
   </section>
  </main>
     <footer> All content copyright &copy; Brad Montgomery. </footer>
+    <script src="/static/js/timezone.js"></script>
   </body>
 </html>
