@@ -1,323 +1,944 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="INDEX, FOLLOW" />
     <title>Brad Montgomery</title>
-</head>
-<body>
+    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <link type="text/plain" rel="author" href="/llms.txt" />
+    
+    <link rel="stylesheet" href="/static/simple.css-2.3.7/simple.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      h1,
+      h2,
+      h3 {
+        font-family: "Rubik Doodle Shadow", serif;
+      }
+      h4,
+      h5,
+      h6 {
+        font-family: "Abril Fatface", serif;
+      }
+      code,
+      pre {
+        font-family: "Anonymous Pro", monospace;
+      }
+    </style>
+  </head>
+  <body>
     <header>
-        <h1>Brad Montgomery</h1>
-        <p>Tagged python</p>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Brad Montgomery</h1>
+      
     </header>
-
-    <main>
-        
-        <ul>
-        
-            <li>
-                <time datetime="2025-10-07T17:54:12.925729+00:00" data-local="true" class="date-local">2025-10-07</time>
-                <a href="/blog/what-is-this-langchain-syntax/">What is this LangChain Syntax?</a>
-            </li>
-        
-            <li>
-                <time datetime="2023-12-27T22:37:02.626926+00:00" data-local="true" class="date-local">2023-12-27</time>
-                <a href="/blog/welp-i-built-a-static-site-generator/">Welp, I built a static site generator</a>
-            </li>
-        
-            <li>
-                <time datetime="2017-05-14T16:19:03.519517+00:00" data-local="true" class="date-local">2017-05-14</time>
-                <a href="/blog/whats-my-requirementstxt/">What&#39;s in my requirements.txt</a>
-            </li>
-        
-            <li>
-                <time datetime="2017-02-01T22:46:52.151549+00:00" data-local="true" class="date-local">2017-02-01</time>
-                <a href="/blog/sending-sms-messages-amazon-sns-and-python/">Sending SMS messages with Amazon SNS and Python</a>
-            </li>
-        
-            <li>
-                <time datetime="2016-04-29T16:04:11.732863+00:00" data-local="true" class="date-local">2016-04-29</time>
-                <a href="/blog/lets-convert-word-doc-html/">Let&#39;s convert a Word Doc to HTML</a>
-            </li>
-        
-            <li>
-                <time datetime="2015-10-18T20:40:37.236361+00:00" data-local="true" class="date-local">2015-10-18</time>
-                <a href="/blog/custom-__date-lookup-django/">A custom __date lookup for Django</a>
-            </li>
-        
-            <li>
-                <time datetime="2015-10-10T19:27:40.047401+00:00" data-local="true" class="date-local">2015-10-10</time>
-                <a href="/blog/date-lookups-django/">Date lookups in Django</a>
-            </li>
-        
-            <li>
-                <time datetime="2015-09-03T20:12:42.347829+00:00" data-local="true" class="date-local">2015-09-03</time>
-                <a href="/blog/disabling-forms-django-rest-frameworks-browsable-api/">Disabling the Forms in Django Rest Framework&#39;s Browsable API</a>
-            </li>
-        
-            <li>
-                <time datetime="2015-08-30T12:33:31.592430+00:00" data-local="true" class="date-local">2015-08-30</time>
-                <a href="/blog/webucator-zip-map-and-lambda/">Webucator: zip, map, and lambda</a>
-            </li>
-        
-            <li>
-                <time datetime="2015-08-26T16:58:38.410252+00:00" data-local="true" class="date-local">2015-08-26</time>
-                <a href="/blog/django-iconbool-filter/">A django iconbool filter</a>
-            </li>
-        
-            <li>
-                <time datetime="2015-04-25T22:50:25.238289+00:00" data-local="true" class="date-local">2015-04-25</time>
-                <a href="/blog/nice-arrayfield-widgets-choices-and-chosenjs/">Nice ArrayField widgets with choices and chosen.js</a>
-            </li>
-        
-            <li>
-                <time datetime="2015-03-17T04:54:01.779392+00:00" data-local="true" class="date-local">2015-03-17</time>
-                <a href="/blog/django-hack-help-text-modal-instance/">Django hack: Help text on a model instance</a>
-            </li>
-        
-            <li>
-                <time datetime="2014-01-28T14:55:24.172398+00:00" data-local="true" class="date-local">2014-01-28</time>
-                <a href="/blog/old-school-skitch-and-cloudfiles-ftp-cloudfs/">Old-school Skitch and CloudFiles with ftp-cloudfs</a>
-            </li>
-        
-            <li>
-                <time datetime="2013-12-29T18:50:15.583798+00:00" data-local="true" class="date-local">2013-12-29</time>
-                <a href="/blog/little-things/">The little things</a>
-            </li>
-        
-            <li>
-                <time datetime="2013-11-15T20:14:01.470801+00:00" data-local="true" class="date-local">2013-11-15</time>
-                <a href="/blog/problems-django_extensions-graph_models/">problems with django_extension&#39;s graph_models?</a>
-            </li>
-        
-            <li>
-                <time datetime="2013-09-12T04:24:13.304178+00:00" data-local="true" class="date-local">2013-09-12</time>
-                <a href="/blog/attribute-any-other-name/">An Attribute by any other name...</a>
-            </li>
-        
-            <li>
-                <time datetime="2013-04-07T21:19:19.991633+00:00" data-local="true" class="date-local">2013-04-07</time>
-                <a href="/blog/django-manager-testing-woes/">Django Manager Testing Woes</a>
-            </li>
-        
-            <li>
-                <time datetime="2013-04-01T16:29:14.615885+00:00" data-local="true" class="date-local">2013-04-01</time>
-                <a href="/blog/pythons-zip-map-and-lambda/">Python&#39;s zip, map, and lambda</a>
-            </li>
-        
-            <li>
-                <time datetime="2013-03-15T03:43:17.745865+00:00" data-local="true" class="date-local">2013-03-15</time>
-                <a href="/blog/how-world-do-you-mock-name-attribute/">How in the world do you Mock a name attribute?</a>
-            </li>
-        
-            <li>
-                <time datetime="2013-03-07T19:39:54.168594+00:00" data-local="true" class="date-local">2013-03-07</time>
-                <a href="/blog/calculate-week-range-date/">Calculate a Week Range for a Date</a>
-            </li>
-        
-            <li>
-                <time datetime="2012-10-30T21:30:49+00:00" data-local="true" class="date-local">2012-10-30</time>
-                <a href="/blog/customizing-djangos-password_change-view/">Customizing Django&#39;s password_change view</a>
-            </li>
-        
-            <li>
-                <time datetime="2012-10-28T15:08:44+00:00" data-local="true" class="date-local">2012-10-28</time>
-                <a href="/blog/thoughts-on-pyarkansas/">Thoughts on PyArkansas</a>
-            </li>
-        
-            <li>
-                <time datetime="2012-09-26T20:28:07+00:00" data-local="true" class="date-local">2012-09-26</time>
-                <a href="/blog/django-models-mixins-for-cleaner-code/">Django Models &amp; Mixins for cleaner code</a>
-            </li>
-        
-            <li>
-                <time datetime="2011-12-22T06:20:39+00:00" data-local="true" class="date-local">2011-12-22</time>
-                <a href="/blog/postgresql-912-via-homebrew-on-os-x-1072/">PostgreSQL 9.1.2 via homebrew on OS X 10.7.2</a>
-            </li>
-        
-            <li>
-                <time datetime="2011-12-13T16:00:48+00:00" data-local="true" class="date-local">2011-12-13</time>
-                <a href="/blog/chosenjs-in-the-django-admin/">Chosen.js in the Django admin</a>
-            </li>
-        
-            <li>
-                <time datetime="2010-10-15T11:26:00+00:00" data-local="true" class="date-local">2010-10-15</time>
-                <a href="/blog/python-stray-commas-cause-tuples/">Python: stray commas cause tuples?</a>
-            </li>
-        
-            <li>
-                <time datetime="2010-07-19T16:25:00+00:00" data-local="true" class="date-local">2010-07-19</time>
-                <a href="/blog/a-case-for-values_list/">A case for values_list</a>
-            </li>
-        
-            <li>
-                <time datetime="2010-07-14T22:14:00+00:00" data-local="true" class="date-local">2010-07-14</time>
-                <a href="/blog/pygraphviz-on-os-x-sl-with-virtualenv/">PyGraphviz on OS X (SL) with virtualenv</a>
-            </li>
-        
-            <li>
-                <time datetime="2010-05-28T15:39:00+00:00" data-local="true" class="date-local">2010-05-28</time>
-                <a href="/blog/convert-tables-to-unordered-lists/">Convert Tables to Unordered Lists</a>
-            </li>
-        
-            <li>
-                <time datetime="2010-04-22T09:07:00+00:00" data-local="true" class="date-local">2010-04-22</time>
-                <a href="/blog/pretty-options-for-djangos-authuser/">Pretty options for Django&#39;s auth.User</a>
-            </li>
-        
-            <li>
-                <time datetime="2010-03-25T15:21:00+00:00" data-local="true" class="date-local">2010-03-25</time>
-                <a href="/blog/dealing-with-unicode-and-ascii-using-python/">Dealing with Unicode and ASCII using Python</a>
-            </li>
-        
-            <li>
-                <time datetime="2010-03-23T15:02:00+00:00" data-local="true" class="date-local">2010-03-23</time>
-                <a href="/blog/on-select_related/">On select_related()</a>
-            </li>
-        
-            <li>
-                <time datetime="2010-02-25T15:40:00+00:00" data-local="true" class="date-local">2010-02-25</time>
-                <a href="/blog/building-pil-on-os-x-snow-leopard/">Building PIL on OS X: Snow Leopard</a>
-            </li>
-        
-            <li>
-                <time datetime="2009-09-30T12:15:00+00:00" data-local="true" class="date-local">2009-09-30</time>
-                <a href="/blog/mercurial-installation-woes-on-mac-os-x/">Mercurial installation woes on Mac OS X</a>
-            </li>
-        
-            <li>
-                <time datetime="2009-06-30T14:23:00+00:00" data-local="true" class="date-local">2009-06-30</time>
-                <a href="/blog/my-pythonpath-bit-me/">My PYTHONPATH bit me.</a>
-            </li>
-        
-            <li>
-                <time datetime="2009-06-26T09:47:00+00:00" data-local="true" class="date-local">2009-06-26</time>
-                <a href="/blog/adding-q-objects-in-django/">&#34;Adding&#34; Q objects in Django</a>
-            </li>
-        
-            <li>
-                <time datetime="2009-05-06T15:03:00+00:00" data-local="true" class="date-local">2009-05-06</time>
-                <a href="/blog/data-truncated-errors/">Data Truncated Errors</a>
-            </li>
-        
-            <li>
-                <time datetime="2009-04-30T15:45:00+00:00" data-local="true" class="date-local">2009-04-30</time>
-                <a href="/blog/push-your-ssh-public-keys-using-fabric/">Push Your SSH Public keys using Fabric</a>
-            </li>
-        
-            <li>
-                <time datetime="2009-04-24T18:36:00+00:00" data-local="true" class="date-local">2009-04-24</time>
-                <a href="/blog/restricting-access-by-group-in-django/">Restricting Access by Group in Django</a>
-            </li>
-        
-            <li>
-                <time datetime="2009-03-24T09:28:00+00:00" data-local="true" class="date-local">2009-03-24</time>
-                <a href="/blog/mod_python-checks-your-blood-pressure/">mod_python checks your blood pressure</a>
-            </li>
-        
-            <li>
-                <time datetime="2009-02-20T10:15:00+00:00" data-local="true" class="date-local">2009-02-20</time>
-                <a href="/blog/scheduled-tasks-or-cron-jobs-with-django/">Scheduled Tasks (or cron jobs) with Django</a>
-            </li>
-        
-            <li>
-                <time datetime="2009-01-14T16:08:00+00:00" data-local="true" class="date-local">2009-01-14</time>
-                <a href="/blog/a-custom-form-for-djangos-automatic-admin/">A Custom form for Django&#39;s Automatic Admin.</a>
-            </li>
-        
-            <li>
-                <time datetime="2009-01-05T19:29:00+00:00" data-local="true" class="date-local">2009-01-05</time>
-                <a href="/blog/add-a-context-processor-for-your-django-app-using-sites/">Add a Context Processor for your Django app using Sites</a>
-            </li>
-        
-            <li>
-                <time datetime="2008-12-17T19:37:00+00:00" data-local="true" class="date-local">2008-12-17</time>
-                <a href="/blog/how-to-convert-html-to-pdf-using-python/">How to convert HTML to PDF using Python.</a>
-            </li>
-        
-            <li>
-                <time datetime="2008-11-19T12:49:00+00:00" data-local="true" class="date-local">2008-11-19</time>
-                <a href="/blog/extending-djangos-multiwidget-splitselectdatetimewidget/">Extending Django&#39;s MultiWidget: SplitSelectDateTimeWidget</a>
-            </li>
-        
-            <li>
-                <time datetime="2008-11-18T19:40:00+00:00" data-local="true" class="date-local">2008-11-18</time>
-                <a href="/blog/selecttimewidget-a-custom-django-widget/">SelectTimeWidget: A custom Django Widget</a>
-            </li>
-        
-            <li>
-                <time datetime="2008-11-17T12:41:00+00:00" data-local="true" class="date-local">2008-11-17</time>
-                <a href="/blog/soups-on-and-it-is-beautiful/">Soup&#39;s On! And it IS Beautiful!</a>
-            </li>
-        
-            <li>
-                <time datetime="2008-10-22T16:41:00+00:00" data-local="true" class="date-local">2008-10-22</time>
-                <a href="/blog/a-topic-for-barcampmemphis/">A topic for BarCampMemphis</a>
-            </li>
-        
-            <li>
-                <time datetime="2008-07-15T10:57:00+00:00" data-local="true" class="date-local">2008-07-15</time>
-                <a href="/blog/the-structure-of-a-django-app/">The Structure of a Django App</a>
-            </li>
-        
-            <li>
-                <time datetime="2008-07-11T11:09:00+00:00" data-local="true" class="date-local">2008-07-11</time>
-                <a href="/blog/games-for-kids-dodger/">Games for Kids: dodger</a>
-            </li>
-        
-            <li>
-                <time datetime="2008-06-25T08:29:00+00:00" data-local="true" class="date-local">2008-06-25</time>
-                <a href="/blog/mac-os-x-python-and-fink-playing-nicely-together/">Mac OS X, Python, and Fink: Playing Nicely Together</a>
-            </li>
-        
-            <li>
-                <time datetime="2008-06-17T20:05:00+00:00" data-local="true" class="date-local">2008-06-17</time>
-                <a href="/blog/lions-tigers-and-web-development-frameworks-oh-my/">Lions, Tigers, and Web Development Frameworks, oh my!</a>
-            </li>
-        
-            <li>
-                <time datetime="2008-05-20T10:01:00+00:00" data-local="true" class="date-local">2008-05-20</time>
-                <a href="/blog/pycropper/">pyCropper</a>
-            </li>
-        
-            <li>
-                <time datetime="2008-02-15T18:26:00+00:00" data-local="true" class="date-local">2008-02-15</time>
-                <a href="/blog/shrinking-images-with-python/">Shrinking Images with Python</a>
-            </li>
-        
-            <li>
-                <time datetime="2008-01-24T13:13:00+00:00" data-local="true" class="date-local">2008-01-24</time>
-                <a href="/blog/tracking-a-laser-pointer-with-python-and-opencv/">Tracking a Laser pointer with Python and OpenCV</a>
-            </li>
-        
-            <li>
-                <time datetime="2007-12-05T08:59:00+00:00" data-local="true" class="date-local">2007-12-05</time>
-                <a href="/blog/computing-correlation-coefficients-in-python/">Computing Correlation Coefficients in Python</a>
-            </li>
-        
-            <li>
-                <time datetime="2007-10-31T10:13:00+00:00" data-local="true" class="date-local">2007-10-31</time>
-                <a href="/blog/announcing-pgslideshow/">Announcing pgSlideShow</a>
-            </li>
-        
-            <li>
-                <time datetime="2007-10-16T20:17:00+00:00" data-local="true" class="date-local">2007-10-16</time>
-                <a href="/blog/pyopengl-on-os-x/">PyOpenGL on OS X</a>
-            </li>
-        
-            <li>
-                <time datetime="2007-09-23T20:38:00+00:00" data-local="true" class="date-local">2007-09-23</time>
-                <a href="/blog/pygame-on-os-x-with-python-25/">Pygame on OS X with python 2.5</a>
-            </li>
-        
-            <li>
-                <time datetime="2007-09-10T20:43:00+00:00" data-local="true" class="date-local">2007-09-10</time>
-                <a href="/blog/the-never-ending-to-learn-list/">The Never-ending &#34;To-Learn&#34; List</a>
-            </li>
-        
-        </ul>
-    </main>
-
-    <script src="/static/js/timezone.js"></script>
-</body>
+    <main> 
+  <section>
+  <h2>Tagged python</h2>
+  
+    <p>
+      <strong>
+       <a href="/blog/what-is-this-langchain-syntax/">What is this LangChain Syntax?</a>
+      </strong>
+      published on 2025-10-07 17:54:12.925729+00:00
+      
+        <br/>Exploring how LangChain overloaded the | pipe operator. &mdash;
+      
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/welp-i-built-a-static-site-generator/">Welp, I built a static site generator</a>
+      </strong>
+      published on 2023-12-27 22:37:02.626926+00:00
+      
+        <br/>Hello new website. &mdash;
+      
+      
+        <mark>python</mark>
+      
+        <mark>web</mark>
+      
+        <mark>tools</mark>
+      
+        <mark>programming</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/whats-my-requirementstxt/">What&#39;s in my requirements.txt</a>
+      </strong>
+      published on 2017-05-14 16:19:03.519517+00:00
+      
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+        <mark>linux</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/sending-sms-messages-amazon-sns-and-python/">Sending SMS messages with Amazon SNS and Python</a>
+      </strong>
+      published on 2017-02-01 22:46:52.151549+00:00
+      
+      
+        <mark>devops</mark>
+      
+        <mark>python</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/lets-convert-word-doc-html/">Let&#39;s convert a Word Doc to HTML</a>
+      </strong>
+      published on 2016-04-29 16:04:11.732863+00:00
+      
+      
+        <mark>web</mark>
+      
+        <mark>tools</mark>
+      
+        <mark>python</mark>
+      
+        <mark>fun</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/custom-__date-lookup-django/">A custom __date lookup for Django</a>
+      </strong>
+      published on 2015-10-18 20:40:37.236361+00:00
+      
+      
+        <mark>database</mark>
+      
+        <mark>django</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/date-lookups-django/">Date lookups in Django</a>
+      </strong>
+      published on 2015-10-10 19:27:40.047401+00:00
+      
+      
+        <mark>database</mark>
+      
+        <mark>django</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/disabling-forms-django-rest-frameworks-browsable-api/">Disabling the Forms in Django Rest Framework&#39;s Browsable API</a>
+      </strong>
+      published on 2015-09-03 20:12:42.347829+00:00
+      
+      
+        <mark>web</mark>
+      
+        <mark>django</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/webucator-zip-map-and-lambda/">Webucator: zip, map, and lambda</a>
+      </strong>
+      published on 2015-08-30 12:33:31.592430+00:00
+      
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+        <mark>tools</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/django-iconbool-filter/">A django iconbool filter</a>
+      </strong>
+      published on 2015-08-26 16:58:38.410252+00:00
+      
+      
+        <mark>django</mark>
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/nice-arrayfield-widgets-choices-and-chosenjs/">Nice ArrayField widgets with choices and chosen.js</a>
+      </strong>
+      published on 2015-04-25 22:50:25.238289+00:00
+      
+      
+        <mark>django</mark>
+      
+        <mark>database</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/django-hack-help-text-modal-instance/">Django hack: Help text on a model instance</a>
+      </strong>
+      published on 2015-03-17 04:54:01.779392+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+        <mark>programming</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/old-school-skitch-and-cloudfiles-ftp-cloudfs/">Old-school Skitch and CloudFiles with ftp-cloudfs</a>
+      </strong>
+      published on 2014-01-28 14:55:24.172398+00:00
+      
+      
+        <mark>devops</mark>
+      
+        <mark>python</mark>
+      
+        <mark>tools</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/little-things/">The little things</a>
+      </strong>
+      published on 2013-12-29 18:50:15.583798+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>programming</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/problems-django_extensions-graph_models/">problems with django_extension&#39;s graph_models?</a>
+      </strong>
+      published on 2013-11-15 20:14:01.470801+00:00
+      
+      
+        <mark>django</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/attribute-any-other-name/">An Attribute by any other name...</a>
+      </strong>
+      published on 2013-09-12 04:24:13.304178+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>programming</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/django-manager-testing-woes/">Django Manager Testing Woes</a>
+      </strong>
+      published on 2013-04-07 21:19:19.991633+00:00
+      
+      
+        <mark>django</mark>
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/pythons-zip-map-and-lambda/">Python&#39;s zip, map, and lambda</a>
+      </strong>
+      published on 2013-04-01 16:29:14.615885+00:00
+      
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+        <mark>tools</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/how-world-do-you-mock-name-attribute/">How in the world do you Mock a name attribute?</a>
+      </strong>
+      published on 2013-03-15 03:43:17.745865+00:00
+      
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/calculate-week-range-date/">Calculate a Week Range for a Date</a>
+      </strong>
+      published on 2013-03-07 19:39:54.168594+00:00
+      
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/customizing-djangos-password_change-view/">Customizing Django&#39;s password_change view</a>
+      </strong>
+      published on 2012-10-30 21:30:49+00:00
+      
+      
+        <mark>django</mark>
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/thoughts-on-pyarkansas/">Thoughts on PyArkansas</a>
+      </strong>
+      published on 2012-10-28 15:08:44+00:00
+      
+      
+        <mark>fun</mark>
+      
+        <mark>community</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/django-models-mixins-for-cleaner-code/">Django Models &amp; Mixins for cleaner code</a>
+      </strong>
+      published on 2012-09-26 20:28:07+00:00
+      
+      
+        <mark>django</mark>
+      
+        <mark>python</mark>
+      
+        <mark>programming</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/postgresql-912-via-homebrew-on-os-x-1072/">PostgreSQL 9.1.2 via homebrew on OS X 10.7.2</a>
+      </strong>
+      published on 2011-12-22 06:20:39+00:00
+      
+      
+        <mark>django</mark>
+      
+        <mark>macos</mark>
+      
+        <mark>database</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/chosenjs-in-the-django-admin/">Chosen.js in the Django admin</a>
+      </strong>
+      published on 2011-12-13 16:00:48+00:00
+      
+      
+        <mark>javascript</mark>
+      
+        <mark>django</mark>
+      
+        <mark>python</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/python-stray-commas-cause-tuples/">Python: stray commas cause tuples?</a>
+      </strong>
+      published on 2010-10-15 11:26:00+00:00
+      
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/a-case-for-values_list/">A case for values_list</a>
+      </strong>
+      published on 2010-07-19 16:25:00+00:00
+      
+      
+        <mark>django</mark>
+      
+        <mark>python</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/pygraphviz-on-os-x-sl-with-virtualenv/">PyGraphviz on OS X (SL) with virtualenv</a>
+      </strong>
+      published on 2010-07-14 22:14:00+00:00
+      
+      
+        <mark>macos</mark>
+      
+        <mark>python</mark>
+      
+        <mark>tools</mark>
+      
+        <mark>devops</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/convert-tables-to-unordered-lists/">Convert Tables to Unordered Lists</a>
+      </strong>
+      published on 2010-05-28 15:39:00+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>programming</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/pretty-options-for-djangos-authuser/">Pretty options for Django&#39;s auth.User</a>
+      </strong>
+      published on 2010-04-22 09:07:00+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/dealing-with-unicode-and-ascii-using-python/">Dealing with Unicode and ASCII using Python</a>
+      </strong>
+      published on 2010-03-25 15:21:00+00:00
+      
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/on-select_related/">On select_related()</a>
+      </strong>
+      published on 2010-03-23 15:02:00+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>fun</mark>
+      
+        <mark>django</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/building-pil-on-os-x-snow-leopard/">Building PIL on OS X: Snow Leopard</a>
+      </strong>
+      published on 2010-02-25 15:40:00+00:00
+      
+      
+        <mark>macos</mark>
+      
+        <mark>image-processing</mark>
+      
+        <mark>python</mark>
+      
+        <mark>devops</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/mercurial-installation-woes-on-mac-os-x/">Mercurial installation woes on Mac OS X</a>
+      </strong>
+      published on 2009-09-30 12:15:00+00:00
+      
+      
+        <mark>macos</mark>
+      
+        <mark>python</mark>
+      
+        <mark>tools</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/my-pythonpath-bit-me/">My PYTHONPATH bit me.</a>
+      </strong>
+      published on 2009-06-30 14:23:00+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/adding-q-objects-in-django/">&#34;Adding&#34; Q objects in Django</a>
+      </strong>
+      published on 2009-06-26 09:47:00+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/data-truncated-errors/">Data Truncated Errors</a>
+      </strong>
+      published on 2009-05-06 15:03:00+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+        <mark>database</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/push-your-ssh-public-keys-using-fabric/">Push Your SSH Public keys using Fabric</a>
+      </strong>
+      published on 2009-04-30 15:45:00+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>devops</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/restricting-access-by-group-in-django/">Restricting Access by Group in Django</a>
+      </strong>
+      published on 2009-04-24 18:36:00+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/mod_python-checks-your-blood-pressure/">mod_python checks your blood pressure</a>
+      </strong>
+      published on 2009-03-24 09:28:00+00:00
+      
+      
+        <mark>fun</mark>
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/scheduled-tasks-or-cron-jobs-with-django/">Scheduled Tasks (or cron jobs) with Django</a>
+      </strong>
+      published on 2009-02-20 10:15:00+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>linux</mark>
+      
+        <mark>django</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/a-custom-form-for-djangos-automatic-admin/">A Custom form for Django&#39;s Automatic Admin.</a>
+      </strong>
+      published on 2009-01-14 16:08:00+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/add-a-context-processor-for-your-django-app-using-sites/">Add a Context Processor for your Django app using Sites</a>
+      </strong>
+      published on 2009-01-05 19:29:00+00:00
+      
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/how-to-convert-html-to-pdf-using-python/">How to convert HTML to PDF using Python.</a>
+      </strong>
+      published on 2008-12-17 19:37:00+00:00
+      
+      
+        <mark>tools</mark>
+      
+        <mark>python</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/extending-djangos-multiwidget-splitselectdatetimewidget/">Extending Django&#39;s MultiWidget: SplitSelectDateTimeWidget</a>
+      </strong>
+      published on 2008-11-19 12:49:00+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/selecttimewidget-a-custom-django-widget/">SelectTimeWidget: A custom Django Widget</a>
+      </strong>
+      published on 2008-11-18 19:40:00+00:00
+      
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/soups-on-and-it-is-beautiful/">Soup&#39;s On! And it IS Beautiful!</a>
+      </strong>
+      published on 2008-11-17 12:41:00+00:00
+      
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/a-topic-for-barcampmemphis/">A topic for BarCampMemphis</a>
+      </strong>
+      published on 2008-10-22 16:41:00+00:00
+      
+      
+        <mark>community</mark>
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/the-structure-of-a-django-app/">The Structure of a Django App</a>
+      </strong>
+      published on 2008-07-15 10:57:00+00:00
+      
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+        <mark>django</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/games-for-kids-dodger/">Games for Kids: dodger</a>
+      </strong>
+      published on 2008-07-11 11:09:00+00:00
+      
+      
+        <mark>macos</mark>
+      
+        <mark>fun</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/mac-os-x-python-and-fink-playing-nicely-together/">Mac OS X, Python, and Fink: Playing Nicely Together</a>
+      </strong>
+      published on 2008-06-25 08:29:00+00:00
+      
+      
+        <mark>macos</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/lions-tigers-and-web-development-frameworks-oh-my/">Lions, Tigers, and Web Development Frameworks, oh my!</a>
+      </strong>
+      published on 2008-06-17 20:05:00+00:00
+      
+      
+        <mark>javascript</mark>
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+        <mark>web</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/pycropper/">pyCropper</a>
+      </strong>
+      published on 2008-05-20 10:01:00+00:00
+      
+      
+        <mark>fun</mark>
+      
+        <mark>image-processing</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/shrinking-images-with-python/">Shrinking Images with Python</a>
+      </strong>
+      published on 2008-02-15 18:26:00+00:00
+      
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/tracking-a-laser-pointer-with-python-and-opencv/">Tracking a Laser pointer with Python and OpenCV</a>
+      </strong>
+      published on 2008-01-24 13:13:00+00:00
+      
+      
+        <mark>image-processing</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/computing-correlation-coefficients-in-python/">Computing Correlation Coefficients in Python</a>
+      </strong>
+      published on 2007-12-05 08:59:00+00:00
+      
+      
+        <mark>image-processing</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/announcing-pgslideshow/">Announcing pgSlideShow</a>
+      </strong>
+      published on 2007-10-31 10:13:00+00:00
+      
+      
+        <mark>macos</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/pyopengl-on-os-x/">PyOpenGL on OS X</a>
+      </strong>
+      published on 2007-10-16 20:17:00+00:00
+      
+      
+        <mark>macos</mark>
+      
+        <mark>image-processing</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/pygame-on-os-x-with-python-25/">Pygame on OS X with python 2.5</a>
+      </strong>
+      published on 2007-09-23 20:38:00+00:00
+      
+      
+        <mark>macos</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+    <p>
+      <strong>
+       <a href="/blog/the-never-ending-to-learn-list/">The Never-ending &#34;To-Learn&#34; List</a>
+      </strong>
+      published on 2007-09-10 20:43:00+00:00
+      
+      
+        <mark>programming</mark>
+      
+        <mark>python</mark>
+      
+    </p>
+  
+  </section>
+ </main>
+    <footer> All content copyright &copy; Brad Montgomery. </footer>
+  </body>
 </html>

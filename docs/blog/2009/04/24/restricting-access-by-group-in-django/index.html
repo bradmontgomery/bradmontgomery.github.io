@@ -1,25 +1,64 @@
-<!-- Example blog post template with timezone-aware dates -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="INDEX, FOLLOW" />
     <title>Restricting Access by Group in Django</title>
-</head>
-<body>
+    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <link type="text/plain" rel="author" href="/llms.txt" />
+    
+    <link rel="stylesheet" href="/static/simple.css-2.3.7/simple.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      h1,
+      h2,
+      h3 {
+        font-family: "Rubik Doodle Shadow", serif;
+      }
+      h4,
+      h5,
+      h6 {
+        font-family: "Abril Fatface", serif;
+      }
+      code,
+      pre {
+        font-family: "Anonymous Pro", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>Restricting Access by Group in Django</h1>
+      
+    </header>
+    <main> 
+  
+  <section>
+    
+      <p>Published on 2009-04-24 18:36:00+00:00</p>
+    
+    
+      <p>Tags: python, django, web</p>
+    
+
     <article>
-        <h1>Restricting Access by Group in Django</h1>
-        
-        <!-- Published date with client-side timezone conversion -->
-        
-        <time datetime="2009-04-24T18:36:00+00:00" data-local="true">
-            2009-04-24 18:36 UTC
-        </time>
-        
-        
-        <!-- Post content -->
-        <div class="content">
-            
+    
 <p>Django's <a href="http://docs.djangoproject.com/en/1.0/topics/auth/">authentication</a>
 system provides built-in support for Groups. When developing an app, you may
 want to prevent users in a particular group from accessing part of your app.</p>
@@ -79,10 +118,9 @@ def some\_view(request):
 
 </code></pre>
 
-        </div>
     </article>
-    
-    <!-- Load timezone converter at end of page -->
-    <script src="/static/js/timezone.js"></script>
-</body>
+  </section>
+ </main>
+    <footer> All content copyright &copy; Brad Montgomery. </footer>
+  </body>
 </html>

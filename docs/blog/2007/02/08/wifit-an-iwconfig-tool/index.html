@@ -1,25 +1,64 @@
-<!-- Example blog post template with timezone-aware dates -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="INDEX, FOLLOW" />
     <title>wifit - an iwconfig tool</title>
-</head>
-<body>
+    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <link type="text/plain" rel="author" href="/llms.txt" />
+    
+    <link rel="stylesheet" href="/static/simple.css-2.3.7/simple.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      h1,
+      h2,
+      h3 {
+        font-family: "Rubik Doodle Shadow", serif;
+      }
+      h4,
+      h5,
+      h6 {
+        font-family: "Abril Fatface", serif;
+      }
+      code,
+      pre {
+        font-family: "Anonymous Pro", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>wifit - an iwconfig tool</h1>
+      
+    </header>
+    <main> 
+  
+  <section>
+    
+      <p>Published on 2007-02-08 21:09:00+00:00</p>
+    
+    
+      <p>Tags: linux</p>
+    
+
     <article>
-        <h1>wifit - an iwconfig tool</h1>
-        
-        <!-- Published date with client-side timezone conversion -->
-        
-        <time datetime="2007-02-08T21:09:00+00:00" data-local="true">
-            2007-02-08 21:09 UTC
-        </time>
-        
-        
-        <!-- Post content -->
-        <div class="content">
-            
+    
 <p>I've recently installed <a href="http://www.mepis.org/">Mepis Linux</a> on a couple of laptops (a Compaq Presario 2195US and a Dell Latitude D610, both of which use <a href="http://ndiswrapper.sourceforge.net/">NdisWrapper</a> for wifi drivers).I'm fairly mobile, so I needed a way to quickly change my wireless settings. I wrote this simple bash script to let me do that, and I thought I'd just share it.</p>
 <pre><code>  
 #!/bin/bash  
@@ -61,10 +100,9 @@ fi
 <p>Alternatively, you could place this file in your /usr/local/bin or /usr/bin directories so that it would be included in your PATH. If you find this useful, or if you decide to add to is, feel free to <a href="http://bradmontgomery.net/show.php?page=contact">Contact Me</a>!</p>
 <p>Enjoy.</p>
 
-        </div>
     </article>
-    
-    <!-- Load timezone converter at end of page -->
-    <script src="/static/js/timezone.js"></script>
-</body>
+  </section>
+ </main>
+    <footer> All content copyright &copy; Brad Montgomery. </footer>
+  </body>
 </html>

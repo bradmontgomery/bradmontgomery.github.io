@@ -8,7 +8,7 @@ the [`site`](https://github.com/bradmontgomery/site) static site generator.
 - **Static site generator**: [`site`](https://github.com/bradmontgomery/site) (custom, Python-based)
 - **Templating**: Jinja2 (`templates/`)
 - **Markdown**: CommonMark via markdown-it-py
-- **CSS**: [simple.css](https://simplecss.org/) v2.2.1 (`static/simple.css-2.2.1/`)
+- **CSS**: [simple.css](https://simplecss.org/) v2.3.7 (`static/simple.css-2.3.7/`)
 - **Hosting**: GitHub Pages, served from `docs/`
 
 ## Directory Structure
@@ -96,3 +96,7 @@ draft: false
 - The `aliases` field preserves old URLs from prior blog platforms
 - The `url` field controls the canonical path for the generated page
 - RSS/Atom feeds are auto-generated at `/feed/rss/rss.xml` and `/feed/atom/atom.xml`
+
+## Writing
+If you are ever used to write content (anything that lives in or is a subdirectory of `content/`), append a footer
+note explaining that the post was written in collaboration with an AI model (name yourself).

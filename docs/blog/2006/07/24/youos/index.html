@@ -1,33 +1,71 @@
-<!-- Example blog post template with timezone-aware dates -->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="INDEX, FOLLOW" />
     <title>YouOS</title>
-</head>
-<body>
+    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <link type="text/plain" rel="author" href="/llms.txt" />
+    
+    <link rel="stylesheet" href="/static/simple.css-2.3.7/simple.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      h1,
+      h2,
+      h3 {
+        font-family: "Rubik Doodle Shadow", serif;
+      }
+      h4,
+      h5,
+      h6 {
+        font-family: "Abril Fatface", serif;
+      }
+      code,
+      pre {
+        font-family: "Anonymous Pro", monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/services/">Services</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <h1>YouOS</h1>
+      
+    </header>
+    <main> 
+  
+  <section>
+    
+      <p>Published on 2006-07-24 21:32:00+00:00</p>
+    
+    
+      <p>Tags: fun, programming, web</p>
+    
+
     <article>
-        <h1>YouOS</h1>
-        
-        <!-- Published date with client-side timezone conversion -->
-        
-        <time datetime="2006-07-24T21:32:00+00:00" data-local="true">
-            2006-07-24 21:32 UTC
-        </time>
-        
-        
-        <!-- Post content -->
-        <div class="content">
-            
+    
 <p>Occasionally, I run across some project that's implementing an idea that I've had ... That's the case with <a href="https://www.youos.com/">YouOS</a>. I think I even wrote a paper about it in 1998, but that's what happens when your lazy (read: too many other things you have to do!)</p>
 <p>I created an account, and though it was a little slow for my wife's laptop, YouOS is really a very impressive project. Now, all the world needs is a very small OS that runs on every hardware platform (for connectivity/etc), and a very fast standards-compliant browser that runs on top of that (maybe the guys at <a href="http://www.dillo.org/">dillo</a> should reevaluate their roadmap); AND NOTHING ELSE!</p>
 <p>You know, I just had one other thought: Maybe this is the GUI necessary for widespread use of <a href="http://cm.bell-labs.com/plan9/">Plan9</a>.</p>
 
-        </div>
     </article>
-    
-    <!-- Load timezone converter at end of page -->
-    <script src="/static/js/timezone.js"></script>
-</body>
+  </section>
+ </main>
+    <footer> All content copyright &copy; Brad Montgomery. </footer>
+  </body>
 </html>
