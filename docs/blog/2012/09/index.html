@@ -32,6 +32,16 @@
       pre {
         font-family: "Anonymous Pro", monospace;
       }
+      .tag {
+        display: inline-block;
+        padding: 0.25em 0.75em;
+        background-color: var(--accent);
+        color: var(--bg);
+        border-radius: 0.5em;
+        font-size: 0.875em;
+        margin: 0 0.25em;
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
@@ -41,7 +51,7 @@
         <a href="/blog/">Blog</a>
         <a href="/blog/tags/">Tags</a>
         <a href="/about/">About</a>
-        <a href="/services/">Services</a>
+        <a href="/projects/">Projects</a>
         <a href="/contact/">Contact</a>
       </nav>
       <h1>Archive</h1>
@@ -53,16 +63,29 @@
   
     <p>
       <strong>
+       <a href="/blog/fixing-bugs/">Fixing Bugs.</a>
+      </strong>
+      published on <time datetime="2012-09-25 22:44:13+00:00" data-local="true">2012-09-25 22:44:13+00:00</time>
+      
+      
+        <span class="tag">fun</span>
+      
+        <span class="tag">programming</span>
+      
+    </p>
+  
+    <p>
+      <strong>
        <a href="/blog/django-models-mixins-for-cleaner-code/">Django Models &amp; Mixins for cleaner code</a>
       </strong>
-      published on 2012-09-26 20:28:07+00:00
+      published on <time datetime="2012-09-26 20:28:07+00:00" data-local="true">2012-09-26 20:28:07+00:00</time>
       
       
-        <mark>django</mark>
+        <span class="tag">django</span>
       
-        <mark>python</mark>
+        <span class="tag">python</span>
       
-        <mark>programming</mark>
+        <span class="tag">programming</span>
       
     </p>
   
@@ -70,30 +93,18 @@
       <strong>
        <a href="/blog/a-vision-of-the-future/">A Vision of the Future</a>
       </strong>
-      published on 2012-09-20 18:20:16+00:00
+      published on <time datetime="2012-09-20 18:20:16+00:00" data-local="true">2012-09-20 18:20:16+00:00</time>
       
       
-        <mark>fun</mark>
+        <span class="tag">fun</span>
       
-        <mark>community</mark>
-      
-    </p>
-  
-    <p>
-      <strong>
-       <a href="/blog/fixing-bugs/">Fixing Bugs.</a>
-      </strong>
-      published on 2012-09-25 22:44:13+00:00
-      
-      
-        <mark>fun</mark>
-      
-        <mark>programming</mark>
+        <span class="tag">community</span>
       
     </p>
   
   </section>
  </main>
     <footer> All content copyright &copy; Brad Montgomery. </footer>
+    <script src="/static/js/timezone.js"></script>
   </body>
 </html>

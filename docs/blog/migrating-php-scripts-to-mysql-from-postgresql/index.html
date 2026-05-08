@@ -32,6 +32,16 @@
       pre {
         font-family: "Anonymous Pro", monospace;
       }
+      .tag {
+        display: inline-block;
+        padding: 0.25em 0.75em;
+        background-color: var(--accent);
+        color: var(--bg);
+        border-radius: 0.5em;
+        font-size: 0.875em;
+        margin: 0 0.25em;
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
@@ -41,7 +51,7 @@
         <a href="/blog/">Blog</a>
         <a href="/blog/tags/">Tags</a>
         <a href="/about/">About</a>
-        <a href="/services/">Services</a>
+        <a href="/projects/">Projects</a>
         <a href="/contact/">Contact</a>
       </nav>
       <h1>Migrating PHP scripts to MySQL from PostgreSQL</h1>
@@ -51,10 +61,20 @@
   
   <section>
     
-      <p>Published on 2007-01-05 21:13:00+00:00</p>
+      <p>Published on:
+        <time datetime="2007-01-05 21:13:00+00:00" data-local="true">2007-01-05 21:13:00+00:00</time>
+      </p>
     
     
-      <p>Tags: programming, database, web</p>
+      <p>Tags:
+      
+        <span class="tag">programming</span>
+      
+        <span class="tag">database</span>
+      
+        <span class="tag">web</span>
+      
+      </p>
     
 
     <article>
@@ -132,5 +152,6 @@ of analogous functions from <a href="http://php.net">php.net</a>:</p>
   </section>
  </main>
     <footer> All content copyright &copy; Brad Montgomery. </footer>
+    <script src="/static/js/timezone.js"></script>
   </body>
 </html>

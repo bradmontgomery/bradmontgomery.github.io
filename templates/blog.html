@@ -3,10 +3,16 @@
   {% if draft %}<h1>DRAFT</h1>{% endif %}
   <section>
     {% if date %}
-      <p>Published on {{ date }}</p>
+      <p>Published on:
+        <time datetime="{{ date }}" data-local="true">{{ date }}</time>
+      </p>
     {% endif %}
     {% if tags %}
-      <p>Tags: {{ tags|join(", ") }}</p>
+      <p>Tags:
+      {% for tag in tags %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
+      </p>
     {% endif %}
 
     <article>

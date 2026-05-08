@@ -5,7 +5,7 @@
   {% if tags|length  > 0 %}
     <div>
     {% for tag in tags %}
-      <mark>{{ tag }}</mark> &nbsp;
+      <span class="tag">{{ tag }}</span> &nbsp;
     {% endfor %}
     </div>
   {% endif %}

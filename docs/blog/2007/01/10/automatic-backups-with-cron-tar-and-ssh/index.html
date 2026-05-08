@@ -32,6 +32,16 @@
       pre {
         font-family: "Anonymous Pro", monospace;
       }
+      .tag {
+        display: inline-block;
+        padding: 0.25em 0.75em;
+        background-color: var(--accent);
+        color: var(--bg);
+        border-radius: 0.5em;
+        font-size: 0.875em;
+        margin: 0 0.25em;
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
@@ -41,7 +51,7 @@
         <a href="/blog/">Blog</a>
         <a href="/blog/tags/">Tags</a>
         <a href="/about/">About</a>
-        <a href="/services/">Services</a>
+        <a href="/projects/">Projects</a>
         <a href="/contact/">Contact</a>
       </nav>
       <h1>Automatic Backups with cron, tar, and SSH</h1>
@@ -51,10 +61,20 @@
   
   <section>
     
-      <p>Published on 2007-01-10 21:10:00+00:00</p>
+      <p>Published on:
+        <time datetime="2007-01-10 21:10:00+00:00" data-local="true">2007-01-10 21:10:00+00:00</time>
+      </p>
     
     
-      <p>Tags: devops, linux, macos</p>
+      <p>Tags:
+      
+        <span class="tag">devops</span>
+      
+        <span class="tag">linux</span>
+      
+        <span class="tag">macos</span>
+      
+      </p>
     
 
     <article>
@@ -127,5 +147,6 @@ ssh myusername@mywebserver.com rm -f ~/$FILE
   </section>
  </main>
     <footer> All content copyright &copy; Brad Montgomery. </footer>
+    <script src="/static/js/timezone.js"></script>
   </body>
 </html>
