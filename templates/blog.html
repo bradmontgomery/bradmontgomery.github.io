@@ -1,19 +1,13 @@
 {% extends "base.html" %}
+{% block progress_bar %}<div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>{% endblock %}
 {% block body%}
   {% if draft %}<h1>DRAFT</h1>{% endif %}
   <section>
-    {% if date %}
-      <p>Published on:
-        <time datetime="{{ date }}" data-local="true">{{ date }}</time>
-      </p>
-    {% endif %}
-    {% if tags %}
-      <p>Tags:
-      {% for tag in tags %}
-        <span class="tag">{{ tag }}</span>
-      {% endfor %}
-      </p>
-    {% endif %}
+    <p class="post-meta">
+      {% if date %}Published on: <time datetime="{{ date }}" data-local="true">{{ date }}</time>{% endif %}
+      {% if date and tags %}&nbsp;&middot;&nbsp;{% endif %}
+      {% if tags %}Tags: {% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}{% endif %}
+    </p>
 
     <article>
     {{ html_content|safe }}

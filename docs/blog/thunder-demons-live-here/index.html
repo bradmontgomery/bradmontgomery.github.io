@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Rubik+Doodle+Shadow&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Commissioner:wght@100..900&family=Rubik+Doodle+Shadow&display=swap"
       rel="stylesheet"
     />
     <style type="text/css">
@@ -42,9 +42,124 @@
         margin: 0 0.25em;
         white-space: nowrap;
       }
+      html[data-theme="light"] {
+        color-scheme: light;
+        --bg: #fff;
+        --accent-bg: #f5f7ff;
+        --text: #212121;
+        --text-light: #585858;
+        --border: #898ea4;
+        --accent: #0d47a1;
+        --accent-hover: #1266e2;
+        --code: #d81b60;
+        --preformatted: #444;
+        --marked: #fd3;
+        --disabled: #efefef;
+      }
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        --bg: #212121;
+        --accent-bg: #2b2b2b;
+        --text: #dcdcdc;
+        --text-light: #ababab;
+        --accent: #ffb300;
+        --accent-hover: #ffe099;
+        --code: #f06292;
+        --preformatted: #ccc;
+        --disabled: #111;
+      }
+      html[data-theme="dark"] img,
+      html[data-theme="dark"] video {
+        opacity: 0.8;
+      }
+      #theme-toggle {
+        background: none;
+        border: none;
+        color: var(--text);
+        padding: 0.4rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0.75rem;
+        right: 1rem;
+        opacity: 0.6;
+        line-height: 1;
+      }
+      #theme-toggle:hover {
+        color: var(--accent);
+        opacity: 1;
+      }
+      body > header {
+        position: relative;
+      }
+      #reading-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background-color: var(--accent);
+        z-index: 1000;
+        transition: width 0.1s linear;
+      }
+      body {
+        font-family: "Commissioner", sans-serif;
+        font-optical-sizing: auto;
+        font-variation-settings: "slnt" 0, "FLAR" 0, "VOLM" 0;
+        line-height: 1.65;
+      }
+      h5 {
+        font-weight: 700;
+      }
+      h6 {
+        font-size: 1.15rem;
+        font-weight: 300;
+      }
+      article {
+        border: none;
+        padding: 0;
+        font-size: 1.3rem;
+      }
+      ::selection {
+        background-color: var(--accent);
+        color: var(--bg);
+      }
+      .post-meta {
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+      #back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 1.5rem;
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        z-index: 999;
+      }
+      #back-to-top.visible {
+        opacity: 0.8;
+        pointer-events: auto;
+      }
+      #back-to-top:hover {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
+    <div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
     <header>
       <nav>
         <a href="/">Home</a>
@@ -54,24 +169,18 @@
         <a href="/projects/">Projects</a>
         <a href="/contact/">Contact</a>
       </nav>
+      <button id="theme-toggle" aria-label="Toggle dark/light mode"></button>
       <h1>Thunder Demons live here!</h1>
       
     </header>
     <main> 
   
   <section>
-    
-      <p>Published on:
-        <time datetime="2007-05-26 20:55:00+00:00" data-local="true">2007-05-26 20:55:00+00:00</time>
-      </p>
-    
-    
-      <p>Tags:
-      
-        <span class="tag">fun</span>
-      
-      </p>
-    
+    <p class="post-meta">
+      Published on: <time datetime="2007-05-26 20:55:00+00:00" data-local="true">2007-05-26 20:55:00+00:00</time>
+      &nbsp;&middot;&nbsp;
+      Tags: <span class="tag">fun</span>
+    </p>
 
     <article>
     
@@ -81,6 +190,64 @@
   </section>
  </main>
     <footer> All content copyright &copy; Brad Montgomery. </footer>
+    <button id="back-to-top" aria-label="Back to top">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
     <script src="/static/js/timezone.js"></script>
+    <script>
+      (function () {
+        var topBtn = document.getElementById("back-to-top");
+        window.addEventListener("scroll", function () {
+          topBtn.classList.toggle("visible", window.scrollY > 300);
+        }, { passive: true });
+        topBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var bar = document.getElementById("reading-progress");
+        if (bar) {
+          window.addEventListener("scroll", function () {
+            var scrollTop = window.scrollY || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + "%";
+          }, { passive: true });
+        }
+      })();
+    </script>
+    <script>
+      (function () {
+        var html = document.documentElement;
+        var btn = document.getElementById("theme-toggle");
+        var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        var SUN = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+        var MOON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
+        function applyTheme(theme) {
+          html.setAttribute("data-theme", theme);
+          btn.innerHTML = theme === "dark" ? SUN : MOON;
+          btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+        }
+
+        var saved = localStorage.getItem("theme");
+        if (saved) {
+          applyTheme(saved);
+        } else {
+          btn.innerHTML = systemDark ? SUN : MOON;
+          btn.setAttribute("aria-label", systemDark ? "Switch to light mode" : "Switch to dark mode");
+        }
+
+        btn.addEventListener("click", function () {
+          var current = html.getAttribute("data-theme");
+          var isDark = current === "dark" || (!current && systemDark);
+          var next = isDark ? "light" : "dark";
+          localStorage.setItem("theme", next);
+          applyTheme(next);
+        });
+      })();
+    </script>
   </body>
 </html>
