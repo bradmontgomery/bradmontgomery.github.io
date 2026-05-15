@@ -1,5 +1,25 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Brad Montgomery</title><link>https://bradmontgomery.net</link><description>a blog about tech, bikes, and occasionally food</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Fri, 15 May 2026 20:56:32 +0000</lastBuildDate><item><title>My AI Journey (for now)</title><link>https://bradmontgomery.net/blog/my-ai-journey-for-now/</link><description>I'm on the AI bandwagon. Here's how I got there.</description><content:encoded>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Brad Montgomery</title><link>https://bradmontgomery.net</link><description>a blog about tech, bikes, and occasionally food</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Fri, 15 May 2026 21:13:08 +0000</lastBuildDate><item><title>The Minimum number of Bikes</title><link>https://bradmontgomery.net/blog/the-minimum-number-of-bikes/</link><description>I'm down to three bikes. That's the bare minimum.</description><content:encoded>
+&lt;p&gt;I've previously written about what I think is a &lt;a href="/blog/reasonable-number-bikes/"&gt;reasonable number of bikes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;And yet, recently I've found myself to be the owner of &lt;em&gt;only&lt;/em&gt; three bikes. I have some opinions about this.&lt;/p&gt;
+&lt;h2&gt;Let's break it down&lt;/h2&gt;
+&lt;p&gt;This is where I'm at:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;The Road Bike&lt;/strong&gt;. I'm primarily a &lt;em&gt;roadie&lt;/em&gt;. Many people are surprised to learn that Memphis, TN has a great cycling community, and we have organized &lt;a href="https://www.memphishightailers.com/content.aspx?page_id=22&amp;amp;club_id=631861&amp;amp;module_id=154509"&gt;group rides&lt;/a&gt; &lt;em&gt;nearly every day of the week&lt;/em&gt;. So, a ton of my riding is on the road -- and while I do the occasional road race or crit, it's mostly road group rides. So, the road bike is my primary. It's my go-to for the vast majority of rides.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The Gravel Bike&lt;/strong&gt;. I do like my occasional gravel epic. Unfortunately, in West Tennessee we like to pave over every little farm road possible. Something about getting elected I guess. However, the gravel bike is my backup road ride because I've got a second set of wheels with some Vittoria 34's on there and that's just a fun way to ride on the road.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The Mountain Bike&lt;/strong&gt;. Unfortunately this one's still hanging up from over the winter, but I AM getting antsy about hitting my local trails. I've got a new tire, a new SRAM GX Axis upgrade for the bike, and pretty soon I'll be &amp;quot;droppin in&amp;quot; for a lap of &lt;a href="https://www.alltrails.com/trail/us/tennessee/stanky-creek-trail"&gt;Stanky Creek&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;So that's it. That's the minimum. I wouldn't want to lose any of those or have fewer, so don't ask me which one I'd get rid of first.&lt;/p&gt;
+&lt;h3&gt;The pros&lt;/h3&gt;
+&lt;p&gt;There &lt;em&gt;are some&lt;/em&gt; benefits to just having three bikes: less maintenance, fewer choices about which one you're riding. I made some money selling the other ones.&lt;/p&gt;
+&lt;h3&gt;The cons&lt;/h3&gt;
+&lt;p&gt;I have few choices. Right now the Gravel bike has a crank-fell-off problem, so were I to have any issues with the road bike, I don't have a backup to the road bike. Just gonna get that fixed.&lt;/p&gt;
+&lt;h2&gt;Conclusion.&lt;/h2&gt;
+&lt;p&gt;Three. Three bikes is the minimum. No less.&lt;/p&gt;
+&lt;p&gt;You need three bikes.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;em&gt;This post was written in collaboration with &lt;a href="https://www.anthropic.com/claude"&gt;Claude Sonnet 4.6&lt;/a&gt;, an AI model by Anthropic.&lt;/em&gt;&lt;/p&gt;
+</content:encoded><guid isPermaLink="false">https://bradmontgomery.net/blog/the-minimum-number-of-bikes/</guid><pubDate>Fri, 15 May 2026 20:57:43 +0000</pubDate></item><item><title>My AI Journey (for now)</title><link>https://bradmontgomery.net/blog/my-ai-journey-for-now/</link><description>I'm on the AI bandwagon. Here's how I got there.</description><content:encoded>
 &lt;p&gt;It was re:Invent 2024 where it really hit me. AI — particularly LLMs — were coming, and in a big way (btw,
 yes, I'm using the em-dash. Don't hate on it, it has a purpose. Long live the em-dash). Anyway, I'm on the AI bandwagon,
 and this is how I got here.&lt;/p&gt;
