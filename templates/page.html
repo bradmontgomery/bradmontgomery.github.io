@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 
 {% block extra_header %}
-  {% if date %}<div>Published on {{ date }}</div>{% endif %}
-  {% if tags|length  > 0 %}
-    <div>
-    {% for tag in tags %}
-      <span class="tag">{{ tag }}</span> &nbsp;
-    {% endfor %}
-    </div>
-  {% endif %}
+  <p class="post-meta">
+    {% if date %}Published on {{ date }}{% endif %}
+    {% if date and tags|length > 0 %}&nbsp;&middot;&nbsp;{% endif %}
+    {% if tags|length > 0 %}{% for tag in tags %}<span class="tag">{{ tag }}</span>{% endfor %}{% endif %}
+  </p>
 {% endblock %}
 
 {% block body%}

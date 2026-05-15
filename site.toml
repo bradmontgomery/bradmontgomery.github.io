@@ -2,7 +2,7 @@
   title = "Brad Montgomery"
   url = "https://bradmontgomery.net"
   author = "Brad Montgomery"
-  subtitle = "brad's blog"
+  subtitle = "a blog about tech, bikes, and occasionally food"
 
   [build]
   templates_dir = "templates"  # optional custom templates
