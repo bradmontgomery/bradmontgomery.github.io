@@ -1,7 +1,7 @@
 ---
-date: '2026-05-16 00:00:00+00:00'
+date: '2026-05-17 04:32:00+00:00'
 title: Thoughts on AI and Negative Work
-draft: true
+draft: false
 tags:
 - ai
 - programming
