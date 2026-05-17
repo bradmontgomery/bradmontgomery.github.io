@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="INDEX, FOLLOW" />
+    <title>Thoughts on AI and Negative Work</title>
+    <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
+    <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
+    <link type="text/plain" rel="author" href="/humans.txt" />
+    <link type="text/plain" rel="author" href="/llms.txt" />
+    
+    <meta name="description" content="Thoughts on software development with AI, and the concept of Negative Work." />
+    
+    <link rel="stylesheet" href="/static/simple.css-2.3.7/simple.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anonymous+Pro:wght@700&family=Commissioner:wght@100..900&family=Rubik+Doodle+Shadow&display=swap"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      h1,
+      h2,
+      h3 {
+        font-family: "Rubik Doodle Shadow", serif;
+      }
+      h4,
+      h5,
+      h6 {
+        font-family: "Abril Fatface", serif;
+      }
+      code,
+      pre {
+        font-family: "Anonymous Pro", monospace;
+      }
+      .tag {
+        display: inline-block;
+        padding: 0.25em 0.75em;
+        background-color: var(--accent);
+        color: var(--bg);
+        border-radius: 0.5em;
+        font-size: 0.875em;
+        margin: 0 0.25em;
+        white-space: nowrap;
+      }
+      html[data-theme="light"] {
+        color-scheme: light;
+        --bg: #fff;
+        --accent-bg: #f5f7ff;
+        --text: #212121;
+        --text-light: #585858;
+        --border: #898ea4;
+        --accent: #0d47a1;
+        --accent-hover: #1266e2;
+        --code: #d81b60;
+        --preformatted: #444;
+        --marked: #fd3;
+        --disabled: #efefef;
+      }
+      html[data-theme="dark"] {
+        color-scheme: dark;
+        --bg: #212121;
+        --accent-bg: #2b2b2b;
+        --text: #dcdcdc;
+        --text-light: #ababab;
+        --accent: #ffb300;
+        --accent-hover: #ffe099;
+        --code: #f06292;
+        --preformatted: #ccc;
+        --disabled: #111;
+      }
+      html[data-theme="dark"] img,
+      html[data-theme="dark"] video {
+        opacity: 0.8;
+      }
+      #theme-toggle {
+        background: none;
+        border: none;
+        color: var(--text);
+        padding: 0.4rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0.75rem;
+        right: 1rem;
+        opacity: 0.6;
+        line-height: 1;
+      }
+      #theme-toggle:hover {
+        color: var(--accent);
+        opacity: 1;
+      }
+      body > header {
+        position: relative;
+      }
+      #reading-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background-color: var(--accent);
+        z-index: 1000;
+        transition: width 0.1s linear;
+      }
+      body {
+        font-family: "Commissioner", sans-serif;
+        font-optical-sizing: auto;
+        font-variation-settings: "slnt" 0, "FLAR" 0, "VOLM" 0;
+        line-height: 1.65;
+      }
+      h5 {
+        font-weight: 700;
+      }
+      h6 {
+        font-size: 1.15rem;
+        font-weight: 300;
+      }
+      article {
+        border: none;
+        padding: 0;
+        font-size: 1.3rem;
+      }
+      ::selection {
+        background-color: var(--accent);
+        color: var(--bg);
+      }
+      .post-meta {
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+      #back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 1.5rem;
+        background: var(--accent);
+        color: var(--bg);
+        border: none;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+        z-index: 999;
+      }
+      #back-to-top.visible {
+        opacity: 0.8;
+        pointer-events: auto;
+      }
+      #back-to-top:hover {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="/blog/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/projects/">Projects</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+      <button id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+      <h1>Thoughts on AI and Negative Work</h1>
+      
+    </header>
+    <main> 
+  
+  <section>
+    <p class="post-meta">
+      Published on: <time datetime="2026-05-17 04:32:00+00:00" data-local="true">2026-05-17 04:32:00+00:00</time>
+      &nbsp;&middot;&nbsp;
+      Tags: <span class="tag">ai</span><span class="tag">programming</span>
+    </p>
+
+    <article>
+    
+<p>There's a lot happening in the software industry right now, and honestly it's hard to know what to make of it. Companies are laying off engineers. Middle management is getting hollowed out. People who've never written a line of production code in their careers are being handed development responsibilities — because, hey, AI can do the hard parts, right?</p>
+<p>It's exciting. It's confusing. And it's making me think about some old ideas that feel suddenly very relevant again.</p>
+<h2>The 10x Developer and the Developer Who Does Negative Work</h2>
+<p>You've probably heard of the &quot;10x developer&quot; — the mythical programmer who produces ten times the output of their peers. The concept traces back to research by Tom DeMarco and Tim Lister, who ran <a href="https://medium.com/ingeniouslysimple/the-origins-of-the-10x-developer-2e0177ecef60">Coding War Games</a> starting in 1977. They found enormous productivity differences between organizations, but here's the thing: they attributed that variance to <em>work environment</em>, not to individual talent. Quiet offices beat open-plan chaos (you know... where EVERYBODY in the industry is forced to work).</p>
+<p>But buried in that same body of research is a concept that doesn't get nearly as much airtime: the <strong>Net Negative Producing Programmer</strong> (NNPP). G. Gordon Schulmeyer coined the term to describe a developer whose output — through excessive bugs, unnecessary complexity, or just plain bad code — is so costly to clean up that the team would actually be <em>more</em> productive without them. Removing them increases throughput. That's a harsh framing, but it points at something real: not all code contribution is positive contribution.</p>
+<p>The Stack Overflow blog has a pretty good piece (from 2020) on <a href="https://stackoverflow.blog/2020/12/07/measuring-developer-productivity/">measuring developer productivity</a> that extends this idea with the concept of <strong>negative work</strong>. Developers who are exhausted, distracted, or just grinding through the motions don't just slow down — they produce code that <em>increases</em> the total amount of work remaining. It has to be found, understood, and fixed before anything can move forward. The effort to undo it costs more than if nothing had been written at all.</p>
+<p>The piece also surfaces a warning that's worth keeping in mind any time someone proposes a new productivity metric:</p>
+<blockquote>
+<p>When a measure becomes a target, it ceases to be a good measure.
+— Goodhart's Law</p>
+</blockquote>
+<p>Lines of code, commits per week, tickets closed — pick your favorite. The moment you optimize for it, you stop measuring what you actually cared about. Which is going to be a recurring theme as companies try to figure out how to evaluate developer productivity in an AI-assisted world.</p>
+<h2>So What Does This Have to Do with AI?</h2>
+<p>Here's my concern: I think we're about to see a wave of Net Negative Producing Programmers, and a lot of them are going to be wielding AI tools.</p>
+<p>LinkedIn has been buzzing with takes about how the future of software development belongs to good engineers who will clean up the messes left behind by &quot;vibe-coded&quot; solutions — the kind of software that looks functional on a demo screen but is quietly a maintenance nightmare underneath. I think those takes are largely right. I also think the more interesting question is: <em>why</em> does that keep happening, and will AI make it better or worse?</p>
+<p>Surely this has nothing to do with token usage as a metric. Ahem — <a href="https://leaddev.com/ai/tokenmaxxing-and-the-search-for-ai-metrics-that-matter"><strong>Tokenmaxxing</strong></a> is a thing now. (Yes, Jensen Huang has reportedly said he'd be &quot;deeply alarmed&quot; if a $500K engineer wasn't burning at least $250K in tokens. Goodhart would like a word.)</p>
+<p>The AI optimist case is that LLMs level the playing field. Anyone can now produce working code. The AI pessimist case is that NNPPs used to be limited by their own ability to write bad code — AI removes that constraint. Now anyone can produce <em>a lot</em> of bad code, very quickly, with a high degree of confidence that it sort of works until it definitely doesn't.</p>
+<p>I've already seen this happen. Both with small groups of people working on greenfield projects, and in larger groups trying to build software and tools <em>for the enterprise</em>. I hope we're learning from it.</p>
+<h2>But Wait — Does Any of This Matter Anymore?</h2>
+<p>Here's the counterargument, and I think it's worth taking seriously: <strong>maybe negative work isn't really a problem if code is cheap enough to throw away.</strong></p>
+<p>Chad Fowler has been writing a series called <a href="https://aicoding.leaflet.pub/">The Phoenix Architecture</a> that makes exactly this case. The foundational argument is that code generation has been commoditized — writing code stopped being the hard part (<em>I'd argue that writing code was never the hard part, but that's another post</em>). What that means in practice is that software should be designed to be <em>disposable</em>. Components should pass what Fowler calls the Deletion Test: if you can't safely remove a piece of your system, your architecture isn't suited to the AI era. The goal isn't long-lived code. It's safe-to-delete code.</p>
+<p>One of the most clarifying reframes in the series is this: <em>&quot;Code Was Never the Asset.&quot;</em> Customers don't pay for your implementation. They pay for outcomes. The real codebase, in this view, is your evaluations — the specifications and behaviors that define what the system is supposed to do. Those outlive any particular implementation. A working, well-specified system that you regenerate every year is better than a legacy monolith that nobody dares touch.</p>
+<p>If Chad Fowler is right — and I think he's largely right — then the concept of negative work has to evolve. Bad code doesn't matter as much if it's safe to delete and regenerate. The NNPP who writes a thousand lines of spaghetti Python is less dangerous if that code can be cleanly replaced next quarter.</p>
+<p><em>But.</em> (There's always a but.)</p>
+<p>The premise only holds if the rest of your system is actually designed for disposability. Most software in production today is not. And even in systems built for it, the <em>specifications</em> — the clarity about what the system should actually do — don't get cheaper just because code generation does. If anything, they get more important. Garbage in, garbage out, but now at scale and velocity.</p>
+<p>So the NNPP concept doesn't disappear in the Phoenix Architecture world. It mutates. The net negative producer isn't the one who writes bad code anymore. It's the one who generates bad <em>outcomes</em> — who ships systems that don't serve customers, who moves fast because the tools let them and never slows down to ask whether the thing they built was the right thing to build.</p>
+<h2>What Martin Fowler Is Thinking About</h2>
+<p>Martin Fowler recently published <a href="https://martinfowler.com/fragments/2026-02-13.html">some fragments</a> that I think are worth chewing on here.</p>
+<p>On junior developers: the expectation is that they should thrive with LLMs — they're open-minded about the tools and grew up using them. An LLM can serve as an always-available mentor. That's genuinely exciting. But Fowler's caveat is important: juniors still need healthy skepticism of AI guidance. An LLM will confidently teach you the wrong thing if you don't already know enough to push back. That's a tough spot to be in when you're just starting out.</p>
+<p>On senior developers: interestingly, many initially resisted LLMs but changed their tune fast after actually using them. A third of them, in Martin Fowler's telling, were &quot;instantly converted.&quot; (me included... sort-of, if instantly means 6 months of active usage). Senior devs seem to be gravitating toward using AI to get back to hands-on work — less context-switching into architecture reviews and more time actually building.</p>
+<p>On <strong>cognitive debt</strong>: this is where it gets interesting. Fowler references Margaret-Anne Storey's concept, which parallels technical debt but focuses on <em>shared understanding</em> rather than code quality. The &quot;cruft&quot; in cognitive debt isn't messy functions — it's lost knowledge about what the system does and why. When you bring AI into a codebase as a generator of code that nobody fully understands, you're not just accumulating technical debt. You're accumulating cognitive debt at an alarming rate. Future maintainers — human or AI — will inherit a system that works until it doesn't, and nobody will know why.</p>
+<p>I'm already feeling this too. In my day job and in some of my personal projects, and I know I am not alone.</p>
+<h2>The Part Nobody Warned Us About</h2>
+<p>But the thing that's been rattling around in my head most is this quote from Camille Fournier, which Fowler highlights:</p>
+<blockquote>
+<p>&quot;The part of 'everyone becomes a manager' in AI that I didn't really think about until now was the mental fatigue of context switching and keeping many tasks going at once, which of course is one of the hardest parts of being a manager and now you all get to enjoy it too&quot;</p>
+</blockquote>
+<p>Yes. <em>That.</em></p>
+<p>When you're working with AI tools at any real scale, you're no longer just writing code. You're supervising multiple threads of work, reviewing output, deciding what to keep and what to throw away, maintaining context across several parallel tasks. That is management work. It's cognitively exhausting in exactly the way that management is exhausting, and most developers didn't sign up for it — and haven't been trained for it.</p>
+<p>The people who will thrive in this environment aren't just good coders. They're good at managing cognitive load, maintaining context, and knowing when to slow down and actually <em>understand</em> what's been generated rather than just shipping it.</p>
+<h2>Where Does This Leave Us?</h2>
+<p>I don't think AI tools are going anywhere, nor do I want them to. I use them. They're useful. But I do think the industry is a bit too optimistic about the net outcome of putting powerful code-generation tools in the hands of everyone, regardless of their understanding of what good software looks like.</p>
+<p>The Phoenix Architecture framing is genuinely useful — orienting around outcomes rather than implementations is the right direction. Code being cheap and disposable is a feature, not a bug. But &quot;code is cheap&quot; doesn't mean <em>understanding is cheap</em>. It doesn't mean <em>clarity about what you're building is cheap</em>. It doesn't mean the cognitive debt of a system that nobody fully comprehends just evaporates because you can regenerate the implementation.</p>
+<p>The NNPP concept has always been uncomfortable because it implies some contributions are worse than nothing. In an AI-assisted world, that doesn't go away — it just shifts. The question stops being &quot;did you write good code?&quot; and becomes &quot;did you produce good outcomes?&quot; And the cognitive debt that accumulates when nobody can answer that question is going to be an interesting mess to untangle.</p>
+<p>I don't know how this plays out. But I know the people who'll do well are the ones who still own the critical thinking.</p>
+<p>Code was never the asset. It was just the embodiment of that thinking — and sometimes we got it wrong, which is why we had to rewrite and refine and (yes, <em>yes</em>) now get a little help from AI to collaborate more quickly.</p>
+<p><em>…wink, nudge. The footer's right there.</em></p>
+<hr />
+<p><em>This post was written in collaboration with <a href="https://www.anthropic.com/claude">Claude Sonnet 4.6</a> and <a href="https://www.anthropic.com/claude">Claude Opus 4.7</a>, AI models by Anthropic.</em></p>
+
+    </article>
+  </section>
+ </main>
+    <footer> All content copyright &copy; Brad Montgomery. </footer>
+    <button id="back-to-top" aria-label="Back to top">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+    <script src="/static/js/timezone.js"></script>
+    <script>
+      (function () {
+        var topBtn = document.getElementById("back-to-top");
+        window.addEventListener("scroll", function () {
+          topBtn.classList.toggle("visible", window.scrollY > 300);
+        }, { passive: true });
+        topBtn.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        var bar = document.getElementById("reading-progress");
+        if (bar) {
+          window.addEventListener("scroll", function () {
+            var scrollTop = window.scrollY || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + "%";
+          }, { passive: true });
+        }
+      })();
+    </script>
+    <script>
+      (function () {
+        var html = document.documentElement;
+        var btn = document.getElementById("theme-toggle");
+        var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+        var SUN = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+        var MOON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
+        function applyTheme(theme) {
+          html.setAttribute("data-theme", theme);
+          btn.innerHTML = theme === "dark" ? SUN : MOON;
+          btn.setAttribute("aria-label", theme === "dark" ? "Switch to light mode" : "Switch to dark mode");
+        }
+
+        var saved = localStorage.getItem("theme");
+        if (saved) {
+          applyTheme(saved);
+        } else {
+          btn.innerHTML = systemDark ? SUN : MOON;
+          btn.setAttribute("aria-label", systemDark ? "Switch to light mode" : "Switch to dark mode");
+        }
+
+        btn.addEventListener("click", function () {
+          var current = html.getAttribute("data-theme");
+          var isDark = current === "dark" || (!current && systemDark);
+          var next = isDark ? "light" : "dark";
+          localStorage.setItem("theme", next);
+          applyTheme(next);
+        });
+      })();
+    </script>
+  </body>
+</html>
