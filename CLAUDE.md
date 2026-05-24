@@ -98,5 +98,4 @@ draft: false
 - RSS/Atom feeds are auto-generated at `/feed/rss/rss.xml` and `/feed/atom/atom.xml`
 
 ## Writing
-If you are ever used to write content (anything that lives in or is a subdirectory of `content/`), append a footer
-note explaining that the post was written in collaboration with an AI model (name yourself).
+If you are ever used to write or CHANGE content in any way (anything that lives in or is a subdirectory of `content/`), append a footer note explaining that the post was written in collaboration with an AI model (name yourself). Prefix this footer message with a random emoji.
