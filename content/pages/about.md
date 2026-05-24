@@ -1,6 +1,6 @@
 ---
 title: "About"
-date: 2022-12-03T19:31:15-06:00
+date: 2026-05-24T17:06:28-00:00
 draft: false
 ---
 
@@ -35,7 +35,7 @@ Brad advocates for an agile-inspired work methodology and champions the cause of
 
 ## Other places online
 
-- [Github](https://github.com/bradmontgomery)
-- [LinkedIn](http://www.linkedin.com/in/bkmontgomery)
-- [Strava](https://www.strava.com/athletes/1020859)
-- [`#memtech` community slack](https://memphistechnology.org/blog/2015/05/19/join-memtech-on-slack-chat/)
+- Join me sharing code stuff on [Github](https://github.com/bradmontgomery)
+- Let's maximize ROI on [LinkedIn](http://www.linkedin.com/in/bkmontgomery)
+- Let's kudos each other on [Strava](https://www.strava.com/athletes/1020859)
+- Let's post snaryk comments in the [`#memtech` Discord](https://memphistechnology.org/blog/2015/05/19/join-memtech-on-discord-chat/)
