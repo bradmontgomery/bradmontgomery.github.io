@@ -173,6 +173,7 @@
       </nav>
       <button id="theme-toggle" aria-label="Toggle dark/light mode"></button>
       <h1>{{ title }}</h1>
+      {% include "_sparkline.html" %}
       {% block extra_header %}{% endblock %}
     </header>
     <main> {% block body %}{% endblock %} </main>
