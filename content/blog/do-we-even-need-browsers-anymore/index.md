@@ -7,7 +7,7 @@ tags:
 - tools
 - web
 slug: do-we-even-need-browsers-anymore
-description: 'Will AI remove the need for browsers in the future? Let's think through it.'
+description: "Will AI remove the need for browsers in the future? Let's think through it."
 markup: md
 url: /blog/do-we-even-need-browsers-anymore/
 aliases:
