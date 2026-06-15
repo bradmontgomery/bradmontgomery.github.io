@@ -1,5 +1,50 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Brad Montgomery</title><link>https://bradmontgomery.net</link><description>a blog about tech, bikes, and occasionally food</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Sun, 24 May 2026 22:42:52 +0000</lastBuildDate><item><title>Do we even need browsers anymore?</title><link>https://bradmontgomery.net/blog/do-we-even-need-browsers-anymore/</link><description>Will AI remove the need for browsers in the future? Let's think through it.</description><content:encoded>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Brad Montgomery</title><link>https://bradmontgomery.net</link><description>a blog about tech, bikes, and occasionally food</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Mon, 15 Jun 2026 02:09:40 +0000</lastBuildDate><item><title>Robot Overlord News</title><link>https://bradmontgomery.net/blog/robot-overlord-news/</link><description>I built an AI news aggregator that uses AI to aggregate some news.</description><content:encoded>
+&lt;p&gt;Say hello to &lt;a href="https://robot-overlord.news/" id="robot-overlord-news"&gt;robot-overlord.news&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This is a new project I launched this weekend... and by &lt;em&gt;project&lt;/em&gt; I mean really simple experiment. The basic premise is easy:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Can an AI agent search for news/articles/content for me.&lt;/li&gt;
+&lt;li&gt;Can it save, summarize, and categorize those articles.&lt;/li&gt;
+&lt;li&gt;Can I have a place to skim and/or read them quickly.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The answer -- of course -- is Yes.&lt;/p&gt;
+&lt;h2&gt;The Agent&lt;/h2&gt;
+&lt;p&gt;None of this is open source or available (yet), but the agent is intentionally simple. It's
+&lt;a href="https://reference.langchain.com/python/langgraph"&gt;Python + LangGraph&lt;/a&gt; that implements a ReAct-style loop. I'm
+only using simple langgraph primitives for this one: StateGraph + MessagesState + ToolNode + hand-written conditional routing.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Graph:
+START → agent → [should_continue] → tools → agent (loop)
+                    ↓ (no tool_calls)
+                   END
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The basic idea is this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The agent fires up and starts searching the web using the &lt;code&gt;langchain_community.tools.DuckDuckGoSearchResults&lt;/code&gt; tools.&lt;/li&gt;
+&lt;li&gt;It has a list of topics it should search&lt;/li&gt;
+&lt;li&gt;It then summarizes &amp;amp; categorizes any results &amp;amp; stores those in a Sqlite database.&lt;/li&gt;
+&lt;li&gt;It ends if it can't find any results.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;All of that runs in a python loop that just sleeps and repeats every hour or so.&lt;/p&gt;
+&lt;p&gt;For the moment, this is running locally on my PC using Ollama &amp;amp; Qwen2.5:7b.&lt;/p&gt;
+&lt;h2&gt;The website&lt;/h2&gt;
+&lt;p&gt;The website -- I'm still surprised I was able to snag &lt;em&gt;robot-overlord.news&lt;/em&gt; -- is a simple Golang app that I vibe-coded in less than 10 minutes using Claude Code (Sonnet 4.6 with an Opus 4.8 advisor). I didn't save the original prompt, but it was pretty much a one-shot.&lt;/p&gt;
+&lt;p&gt;I think I made two minor tweaks to the UI.&lt;/p&gt;
+&lt;p&gt;The next several prompts were to get a working &lt;code&gt;cloudformation.yaml&lt;/code&gt; + &lt;code&gt;nginx.conf&lt;/code&gt; and a service file to run the binary.  By the way, being able to bundle all your templates + css + code logic into a go binary is freaking amazing. It's so simple, all this runs on a t3.micro EC2 instance.&lt;/p&gt;
+&lt;p&gt;I'm sure there will be updates in the future, but for now, this is it. Just a simple aggregation of AI-related news.&lt;/p&gt;
+&lt;h2&gt;The takeaway&lt;/h2&gt;
+&lt;p&gt;All together this entire project took me less than 4 hours.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The LangGraph agent was a random idea that I vibe-coded (and actually read all the python) in about 1.5 hours. I spent more time looking at the results it spit out than I spent looking at the code.&lt;/li&gt;
+&lt;li&gt;The website literally took 5 minutes.&lt;/li&gt;
+&lt;li&gt;It took a little longer to get it deployed, but building it &amp;amp; deploying it to AWS took less than an hour.&lt;/li&gt;
+&lt;li&gt;I spent more time brainstorming on a domain name.&lt;/li&gt;
+&lt;li&gt;I literally spent the most amount of time just thinking up the idea.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And isn't that last bullet the point? Isn't this what we've been searching for all along in computing? We now have a way to dream up ideas and accelerate the execution.&lt;/p&gt;
+&lt;p&gt;It may be a dumb idea at the end of the day, but who cares. I got to experiment &amp;amp; had a little fun along the way.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;🤖 This post was reviewed and edited in collaboration with Claude Sonnet 4.6.&lt;/p&gt;
+</content:encoded><guid isPermaLink="false">https://bradmontgomery.net/blog/robot-overlord-news/</guid><pubDate>Mon, 15 Jun 2026 01:44:04 +0000</pubDate></item><item><title>Do we even need browsers anymore?</title><link>https://bradmontgomery.net/blog/do-we-even-need-browsers-anymore/</link><description>Will AI remove the need for browsers in the future? Let's think through it.</description><content:encoded>
 &lt;h2&gt;AI is coming for your job, Browser.&lt;/h2&gt;
 &lt;p&gt;I fired up my computer today, and as I typically do on the weekends, I went to check out the &lt;a href="https://memphistechnology.org/blog/2015/05/19/join-memtech-on-discord-chat/"&gt;#memtech Discord&lt;/a&gt;, and I found a poll that said, &amp;quot;What desktop web browser would you recommend these days?&amp;quot; Surprisingly, Firefox wasn't on the list of options, so I chose &amp;quot;Other&amp;quot;, and proceeded to do what I do -- post a snarky comments:&lt;/p&gt;
 &lt;blockquote&gt;

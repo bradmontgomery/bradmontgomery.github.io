@@ -4,11 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="robots" content="INDEX, FOLLOW" />
-    <title>Archive</title>
+    <title>Robot Overlord News</title>
     <link rel="alternate" type="application/atom+xml" title="BradMontgomery.net Atom Feed" href="/feed/atom/atom.xml" />
     <link rel="alternate" type="application/rss+xml" title="BradMontgomery.net RSS Feed" href="/feed/rss/rss.xml" />
     <link type="text/plain" rel="author" href="/humans.txt" />
     <link type="text/plain" rel="author" href="/llms.txt" />
+    
+    <meta name="description" content="I built an AI news aggregator that uses AI to aggregate some news." />
     
     <link rel="stylesheet" href="/static/simple.css-2.3.7/simple.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -159,7 +161,7 @@
     </style>
   </head>
   <body>
-    
+    <div id="reading-progress" role="progressbar" aria-label="Reading progress"></div>
     <header>
       <nav>
         <a href="/">Home</a>
@@ -170,98 +172,68 @@
         <a href="/contact/">Contact</a>
       </nav>
       <button id="theme-toggle" aria-label="Toggle dark/light mode"></button>
-      <h1>Archive</h1>
+      <h1>Robot Overlord News</h1>
       
 
       
     </header>
     <main> 
+  
   <section>
-  
-  
-    <p>
-      <strong>
-       <a href="/blog/robot-overlord-news/">Robot Overlord News</a>
-      </strong>
-      published on <time datetime="2026-06-15 01:44:04.277411+00:00" data-local="true">2026-06-15 01:44:04.277411+00:00</time>
-      
-        <br/>I built an AI news aggregator that uses AI to aggregate some news. &mdash;
-      
-      
-        <span class="tag">ai</span>
-      
-        <span class="tag">programming</span>
-      
-        <span class="tag">web</span>
-      
-        <span class="tag">tools</span>
-      
+    <p class="post-meta">
+      Published on: <time datetime="2026-06-15 01:44:04.277411+00:00" data-local="true">2026-06-15 01:44:04.277411+00:00</time>
+      &nbsp;&middot;&nbsp;
+      Tags: <span class="tag">ai</span><span class="tag">programming</span><span class="tag">web</span><span class="tag">tools</span>
     </p>
-  
-    <p>
-      <strong>
-       <a href="/blog/the-minimum-number-of-bikes/">The Minimum number of Bikes</a>
-      </strong>
-      published on <time datetime="2026-05-15 20:57:43.917329+00:00" data-local="true">2026-05-15 20:57:43.917329+00:00</time>
-      
-        <br/>I&#39;m down to three bikes. That&#39;s the bare minimum. &mdash;
-      
-      
-        <span class="tag">fitness</span>
-      
-        <span class="tag">bikes</span>
-      
-    </p>
-  
-    <p>
-      <strong>
-       <a href="/blog/do-we-even-need-browsers-anymore/">Do we even need browsers anymore?</a>
-      </strong>
-      published on <time datetime="2026-05-24 16:13:28.908626+00:00" data-local="true">2026-05-24 16:13:28.908626+00:00</time>
-      
-        <br/>Will AI remove the need for browsers in the future? Let&#39;s think through it. &mdash;
-      
-      
-        <span class="tag">ai</span>
-      
-        <span class="tag">tools</span>
-      
-        <span class="tag">web</span>
-      
-    </p>
-  
-    <p>
-      <strong>
-       <a href="/blog/thoughts-on-ai-and-negative-work/">Thoughts on AI and Negative Work</a>
-      </strong>
-      published on <time datetime="2026-05-17 04:32:00+00:00" data-local="true">2026-05-17 04:32:00+00:00</time>
-      
-        <br/>Thoughts on software development with AI, and the concept of Negative Work. &mdash;
-      
-      
-        <span class="tag">ai</span>
-      
-        <span class="tag">programming</span>
-      
-    </p>
-  
-    <p>
-      <strong>
-       <a href="/blog/my-ai-journey-for-now/">My AI Journey (for now)</a>
-      </strong>
-      published on <time datetime="2026-05-08 15:38:11.872360+00:00" data-local="true">2026-05-08 15:38:11.872360+00:00</time>
-      
-        <br/>I&#39;m on the AI bandwagon. Here&#39;s how I got there. &mdash;
-      
-      
-        <span class="tag">ai</span>
-      
-        <span class="tag">programming</span>
-      
-        <span class="tag">personal</span>
-      
-    </p>
-  
+
+    <article>
+    
+<p>Say hello to <a href="https://robot-overlord.news/" id="robot-overlord-news">robot-overlord.news</a>.</p>
+<p>This is a new project I launched this weekend... and by <em>project</em> I mean really simple experiment. The basic premise is easy:</p>
+<ol>
+<li>Can an AI agent search for news/articles/content for me.</li>
+<li>Can it save, summarize, and categorize those articles.</li>
+<li>Can I have a place to skim and/or read them quickly.</li>
+</ol>
+<p>The answer -- of course -- is Yes.</p>
+<h2>The Agent</h2>
+<p>None of this is open source or available (yet), but the agent is intentionally simple. It's
+<a href="https://reference.langchain.com/python/langgraph">Python + LangGraph</a> that implements a ReAct-style loop. I'm
+only using simple langgraph primitives for this one: StateGraph + MessagesState + ToolNode + hand-written conditional routing.</p>
+<pre><code>Graph:
+START → agent → [should_continue] → tools → agent (loop)
+                    ↓ (no tool_calls)
+                   END
+</code></pre>
+<p>The basic idea is this:</p>
+<ol>
+<li>The agent fires up and starts searching the web using the <code>langchain_community.tools.DuckDuckGoSearchResults</code> tools.</li>
+<li>It has a list of topics it should search</li>
+<li>It then summarizes &amp; categorizes any results &amp; stores those in a Sqlite database.</li>
+<li>It ends if it can't find any results.</li>
+</ol>
+<p>All of that runs in a python loop that just sleeps and repeats every hour or so.</p>
+<p>For the moment, this is running locally on my PC using Ollama &amp; Qwen2.5:7b.</p>
+<h2>The website</h2>
+<p>The website -- I'm still surprised I was able to snag <em>robot-overlord.news</em> -- is a simple Golang app that I vibe-coded in less than 10 minutes using Claude Code (Sonnet 4.6 with an Opus 4.8 advisor). I didn't save the original prompt, but it was pretty much a one-shot.</p>
+<p>I think I made two minor tweaks to the UI.</p>
+<p>The next several prompts were to get a working <code>cloudformation.yaml</code> + <code>nginx.conf</code> and a service file to run the binary.  By the way, being able to bundle all your templates + css + code logic into a go binary is freaking amazing. It's so simple, all this runs on a t3.micro EC2 instance.</p>
+<p>I'm sure there will be updates in the future, but for now, this is it. Just a simple aggregation of AI-related news.</p>
+<h2>The takeaway</h2>
+<p>All together this entire project took me less than 4 hours.</p>
+<ul>
+<li>The LangGraph agent was a random idea that I vibe-coded (and actually read all the python) in about 1.5 hours. I spent more time looking at the results it spit out than I spent looking at the code.</li>
+<li>The website literally took 5 minutes.</li>
+<li>It took a little longer to get it deployed, but building it &amp; deploying it to AWS took less than an hour.</li>
+<li>I spent more time brainstorming on a domain name.</li>
+<li>I literally spent the most amount of time just thinking up the idea.</li>
+</ul>
+<p>And isn't that last bullet the point? Isn't this what we've been searching for all along in computing? We now have a way to dream up ideas and accelerate the execution.</p>
+<p>It may be a dumb idea at the end of the day, but who cares. I got to experiment &amp; had a little fun along the way.</p>
+<hr />
+<p>🤖 This post was reviewed and edited in collaboration with Claude Sonnet 4.6.</p>
+
+    </article>
   </section>
  </main>
     <footer> All content copyright &copy; Brad Montgomery | Powered by <a href="https://bradmontgomery.net/site/">🌐 site</a>. </footer>
