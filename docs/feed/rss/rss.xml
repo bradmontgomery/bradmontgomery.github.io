@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Brad Montgomery</title><link>https://bradmontgomery.net</link><description>a blog about tech, bikes, and occasionally food</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Mon, 15 Jun 2026 02:07:43 +0000</lastBuildDate><item><title>Robot Overlord News</title><link>https://bradmontgomery.net/blog/robot-overlord-news/</link><description>I built an AI news aggregator that uses AI to aggregate some news.</description><content:encoded>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Brad Montgomery</title><link>https://bradmontgomery.net</link><description>a blog about tech, bikes, and occasionally food</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Mon, 15 Jun 2026 02:09:40 +0000</lastBuildDate><item><title>Robot Overlord News</title><link>https://bradmontgomery.net/blog/robot-overlord-news/</link><description>I built an AI news aggregator that uses AI to aggregate some news.</description><content:encoded>
 &lt;p&gt;Say hello to &lt;a href="https://robot-overlord.news/" id="robot-overlord-news"&gt;robot-overlord.news&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This is a new project I launched this weekend... and by &lt;em&gt;project&lt;/em&gt; I mean really simple experiment. The basic premise is easy:&lt;/p&gt;
 &lt;ol&gt;
@@ -42,6 +42,8 @@ START → agent → [should_continue] → tools → agent (loop)
 &lt;/ul&gt;
 &lt;p&gt;And isn't that last bullet the point? Isn't this what we've been searching for all along in computing? We now have a way to dream up ideas and accelerate the execution.&lt;/p&gt;
 &lt;p&gt;It may be a dumb idea at the end of the day, but who cares. I got to experiment &amp;amp; had a little fun along the way.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;🤖 This post was reviewed and edited in collaboration with Claude Sonnet 4.6.&lt;/p&gt;
 </content:encoded><guid isPermaLink="false">https://bradmontgomery.net/blog/robot-overlord-news/</guid><pubDate>Mon, 15 Jun 2026 01:44:04 +0000</pubDate></item><item><title>Do we even need browsers anymore?</title><link>https://bradmontgomery.net/blog/do-we-even-need-browsers-anymore/</link><description>Will AI remove the need for browsers in the future? Let's think through it.</description><content:encoded>
 &lt;h2&gt;AI is coming for your job, Browser.&lt;/h2&gt;
 &lt;p&gt;I fired up my computer today, and as I typically do on the weekends, I went to check out the &lt;a href="https://memphistechnology.org/blog/2015/05/19/join-memtech-on-discord-chat/"&gt;#memtech Discord&lt;/a&gt;, and I found a poll that said, &amp;quot;What desktop web browser would you recommend these days?&amp;quot; Surprisingly, Firefox wasn't on the list of options, so I chose &amp;quot;Other&amp;quot;, and proceeded to do what I do -- post a snarky comments:&lt;/p&gt;
