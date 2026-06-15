@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // \"\"' | { read -r fp; if echo \"$fp\" | grep -q '/content/'; then printf '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"REMINDER: You edited a content/ file. Per CLAUDE.md, you MUST append a footer note to this file stating it was written/edited in collaboration with Claude (name yourself). Prefix the footer with a random emoji. Do this before your next tool call.\"}}'; fi; } 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}
