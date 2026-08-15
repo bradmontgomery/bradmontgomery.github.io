@@ -1,5 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Brad Montgomery</title><link>https://bradmontgomery.net</link><description>a blog about tech, bikes, and occasionally food</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Mon, 15 Jun 2026 02:09:40 +0000</lastBuildDate><item><title>Robot Overlord News</title><link>https://bradmontgomery.net/blog/robot-overlord-news/</link><description>I built an AI news aggregator that uses AI to aggregate some news.</description><content:encoded>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>Brad Montgomery</title><link>https://bradmontgomery.net</link><description>a blog about tech, bikes, and occasionally food</description><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><language>en</language><lastBuildDate>Sat, 15 Aug 2026 17:52:39 +0000</lastBuildDate><item><title>Announcing Streben</title><link>https://bradmontgomery.net/blog/announcing-streben/</link><description>Announcing Streben: A local app for your garmin files or strava data.</description><content:encoded>
+&lt;p&gt;&lt;strong&gt;📢 Announcing Streben!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;It's a new (well, new to the world) app that allows you to save and analyze your own data from Strava (you'll need an
+api key), or from your own FIT files.&lt;/p&gt;
+&lt;p&gt;This is all very opinionated because this is a project &lt;em&gt;for me&lt;/em&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It gives you a simple list of activies&lt;/li&gt;
+&lt;li&gt;Each activity has stuff like your metrics, time in power or heart rate zones, and your GPS data on a map.&lt;/li&gt;
+&lt;li&gt;There are trends! Easily see any of your metrics over time.&lt;/li&gt;
+&lt;li&gt;Right now the source data primarily comes from Strava, because that's where I have all my stuff.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It's not a service.&lt;/p&gt;
+&lt;p&gt;It's not even a packaged app.&lt;/p&gt;
+&lt;p&gt;So you'll need to do a little work to get it running, but hopefully it's not that bad (especially if you've ever done
+any python development).&lt;/p&gt;
+&lt;p&gt;Check it out on GitHub: &lt;a href="https://github.com/bradmontgomery/streben"&gt;github.com/bradmontgomery/streben&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;If you use this, and you've got ideas or would like to see anything added, open up an Issue and let me know.&lt;/p&gt;
+</content:encoded><guid isPermaLink="false">https://bradmontgomery.net/blog/announcing-streben/</guid><pubDate>Sat, 15 Aug 2026 17:45:54 +0000</pubDate></item><item><title>Robot Overlord News</title><link>https://bradmontgomery.net/blog/robot-overlord-news/</link><description>I built an AI news aggregator that uses AI to aggregate some news.</description><content:encoded>
 &lt;p&gt;Say hello to &lt;a href="https://robot-overlord.news/" id="robot-overlord-news"&gt;robot-overlord.news&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;This is a new project I launched this weekend... and by &lt;em&gt;project&lt;/em&gt; I mean really simple experiment. The basic premise is easy:&lt;/p&gt;
 &lt;ol&gt;
