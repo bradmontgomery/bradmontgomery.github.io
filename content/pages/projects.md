@@ -1,21 +1,24 @@
 ---
 title: "Projects"
-date: 2026-05-08T00:00:00-06:00
+date: 2026-08-16T00:00:00-06:00
 draft: false
 ---
 
+**📢 Check out my developer portfolio at [bkmontgomery.dev](https://bkmontgomery.dev/).**
+
+
 Here are my top projects, ranked by community engagement and GitHub stars:
 
-## 1. [django-querycount](https://github.com/bradmontgomery/django-querycount) ⭐ 409
+## 1. [django-querycount](https://github.com/bradmontgomery/django-querycount) ⭐ 408
 Middleware that prints the number of DB queries to the runserver console. A handy debugging tool for Django developers looking to optimize their database access patterns.
 
 ## 2. [django-redis-metrics](https://github.com/bradmontgomery/django-redis-metrics) ⭐ 93
 Metrics for Django apps backed by Redis. Track application metrics with Redis as your backend storage system.
 
-## 3. [python-laser-tracker](https://github.com/bradmontgomery/python-laser-tracker) ⭐ 89
+## 3. [python-laser-tracker](https://github.com/bradmontgomery/python-laser-tracker) ⭐ 91
 A simple laser tracker using Python and OpenCV. Computer vision project for detecting and tracking laser points.
 
-## 4. [word2html](https://github.com/bradmontgomery/word2html) ⭐ 54
+## 4. [word2html](https://github.com/bradmontgomery/word2html) ⭐ 56
 A quick and dirty script to convert Word (docx) documents to HTML. Useful for document conversion workflows.
 
 ## 5. [django-rainbowtests](https://github.com/bradmontgomery/django-rainbowtests) ⭐ 43
@@ -39,3 +42,7 @@ A copy of the Mark V. Shaney Markov chain text generator. Fun text generation ex
 ---
 
 *For more of my projects, visit my [GitHub profile](https://github.com/bradmontgomery).*
+
+*Star counts last verified 2026-08-16.*
+
+🛰️ *This page was updated in collaboration with Claude (Opus 5), an AI model by Anthropic.*
